@@ -1,6 +1,8 @@
 # System Files
 .DS_Store
 Thumbs.db
+*.pdf
+*.doc
 
 # Backup / Temp files
 *.bak
