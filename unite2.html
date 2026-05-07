@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVT 2BAC — Unité 2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-back">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                Accueil
+            </a>
+            <span class="nav-title">Unité 2 — SVT 2BAC</span>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="text-center" style="padding:2.5rem 1rem 1rem;">
+        <h1 class="text-3xl text-gradient font-display" id="page-title">Chargement...</h1>
+        <p class="text-secondary text-sm" style="margin-top:0.5rem;">Banque de Questions · Flash Cards · Bilan intelligent</p>
+    </header>
+
+    <!-- TABS -->
+    <div class="container mb-lg">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="cours">📖 Cours</button>
+            <button class="tab-btn" data-tab="quiz">🎯 Quiz</button>
+            <button class="tab-btn" data-tab="flash">⚡ Flash</button>
+            <button class="tab-btn" data-tab="bilan">📊 Bilan</button>
+        </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- TAB 1 : COURS                  -->
+    <!-- ============================== -->
+    <div id="tab-cours" class="tab-content active">
+        <div class="container" style="max-width:900px;">
+            
+            <!-- Compagnons d'Élite (Agents) -->
+            <div class="card mb-lg" style="border: 1px solid rgba(139, 92, 246, 0.2); background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0) 100%);">
+                <h2 class="text-xl font-bold mb-xs" style="color:#c084fc;">🤖 Vos Compagnons d'Élite</h2>
+                <p class="text-muted text-xs mb-md">Entraînez-vous de manière ciblée avec nos agents pédagogiques spécialisés.</p>
+                <div class="grid grid-5-agents">
+                    <a href="agent_architecte.html?unite=2" class="agent-link-card">
+                        <span class="agent-link-icon">🏗️</span>
+                        <span class="agent-link-name">Architecte</span>
+                        <span class="agent-link-role">Concepts clés</span>
+                    </a>
+                    <a href="agent_forgeron.html?unite=2" class="agent-link-card">
+                        <span class="agent-link-icon">🔨</span>
+                        <span class="agent-link-name">Forgeron</span>
+                        <span class="agent-link-role">Flash Cards</span>
+                    </a>
+                    <a href="agent_piegeur.html?unite=2" class="agent-link-card">
+                        <span class="agent-link-icon">🎯</span>
+                        <span class="agent-link-name">Piégeur</span>
+                        <span class="agent-link-role">Chasse aux pièges</span>
+                    </a>
+                    <a href="agent_coach.html?unite=2" class="agent-link-card">
+                        <span class="agent-link-icon">🏃</span>
+                        <span class="agent-link-name">Coach</span>
+                        <span class="agent-link-role">Quiz Chrono</span>
+                    </a>
+                    <a href="agent_correcteur.html?unite=2" class="agent-link-card">
+                        <span class="agent-link-icon">✅</span>
+                        <span class="agent-link-name">Correcteur</span>
+                        <span class="agent-link-role">Erreurs types</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Fiche condensée -->
+            <div class="card mb-lg">
+                <h2 class="text-xl font-bold mb-md" style="color:#60a5fa;">📝 Fiche Express</h2>
+                <p class="text-muted text-sm mb-md">L'essentiel du chapitre en 2 minutes de lecture.</p>
+                <div id="condensed-list" class="space-y"></div>
+            </div>
+
+            <!-- Concepts piliers -->
+            <div class="card mb-lg">
+                <h2 class="text-xl font-bold mb-md" style="color:#34d399;">🧠 Concepts Piliers</h2>
+                <div id="concepts-list" class="space-y"></div>
+            </div>
+
+            <!-- Zones de confusion -->
+            <div class="card mb-lg">
+                <h2 class="text-xl font-bold mb-md" style="color:#c084fc;">⚠️ Zones de Confusion</h2>
+                <p class="text-muted text-sm mb-md">Ces notions se ressemblent et piègent souvent les étudiants.</p>
+                <div id="confusion-list" class="space-y"></div>
+            </div>
+
+            <!-- Objectifs -->
+            <div class="card">
+                <h2 class="text-xl font-bold mb-md" style="color:#fbbf24;">🎯 Matrice d'Objectifs</h2>
+                <div class="grid grid-3" style="gap:1rem;">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wide text-green mb-sm">Débutant</div>
+                        <ul id="obj-debutant"></ul>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wide text-blue mb-sm">Intermédiaire</div>
+                        <ul id="obj-intermediaire"></ul>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wide text-orange mb-sm">Expert</div>
+                        <ul id="obj-expert"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- TAB 2 : QUIZ                   -->
+    <!-- ============================== -->
+    <div id="tab-quiz" class="tab-content">
+        <div class="container" style="max-width:750px;">
+
+            <!-- Menu de sélection de mode -->
+            <div id="quiz-menu">
+                <div class="grid grid-3 mb-lg">
+                    <div class="mode-card" onclick="SVT.startQuiz('libre')">
+                        <div class="mode-icon" style="background:rgba(59,130,246,0.12);">🎯</div>
+                        <div class="mode-title">Entraînement Libre</div>
+                        <div class="mode-desc">Questions mélangées aléatoirement. Pas de chrono.</div>
+                    </div>
+                    <div class="mode-card" onclick="SVT.startQuiz('examen')">
+                        <div class="mode-icon" style="background:rgba(239,68,68,0.12);">📝</div>
+                        <div class="mode-title">Examen Blanc</div>
+                        <div class="mode-desc">20 questions au hasard. 15 minutes chrono. Conditions réelles.</div>
+                    </div>
+                    <div class="mode-card" onclick="SVT.startQuiz('faibles')">
+                        <div class="mode-icon" style="background:rgba(245,158,11,0.12);">🔁</div>
+                        <div class="mode-title">Mes Points Faibles</div>
+                        <div class="mode-desc">Rejoue uniquement les questions ratées. <span id="weak-count" class="text-orange">(0)</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zone de jeu du quiz -->
+            <div id="quiz-play" class="hidden">
+                
+                <!-- Timer examen -->
+                <div id="exam-timer" class="hidden flex justify-between items-center mb-md" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:var(--radius-md);padding:0.6rem 1rem;">
+                    <span class="text-sm font-bold text-red">⏱️ Temps restant</span>
+                    <span id="exam-timer-text" class="font-bold text-lg" style="font-family:monospace;color:#f87171;">15:00</span>
+                </div>
+
+                <!-- Barre de progression -->
+                <div class="progress-track mb-md">
+                    <div class="progress-fill" id="quiz-progress-fill" style="width:0%;"></div>
+                </div>
+
+                <div class="card">
+                    <!-- Header quiz -->
+                    <div class="flex justify-between items-center mb-md">
+                        <div class="flex items-center gap-sm">
+                            <span id="quiz-badge" class="badge badge-easy">FACILE</span>
+                            <span id="quiz-mode-label" class="text-xs text-muted font-bold">MODE</span>
+                        </div>
+                        <div class="flex gap-md text-sm font-bold">
+                            <span class="text-secondary" id="quiz-progress">0/0</span>
+                            <span class="text-green">Score: <span id="quiz-score-display">0</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Question -->
+                    <h2 id="quiz-question" class="text-xl font-bold mb-lg" style="line-height:1.5;"></h2>
+
+                    <!-- Options -->
+                    <div id="quiz-options" class="space-y"></div>
+
+                    <!-- Feedback -->
+                    <div id="quiz-feedback" class="feedback hidden">
+                        <div id="quiz-fb-title" class="feedback-title"></div>
+                        <p id="quiz-fb-explain" class="text-secondary text-sm" style="margin-top:0.5rem;line-height:1.6;"></p>
+                        <div id="quiz-fb-tip" class="tip-box hidden">
+                            <span class="tip-icon">💡</span>
+                            <div>
+                                <div class="tip-label">Astuce</div>
+                                <div class="tip-text"></div>
+                            </div>
+                        </div>
+                        <button id="quiz-next" class="btn btn-primary btn-block mt-lg" onclick="SVT.nextQuestion()">Suivant ➡️</button>
+                    </div>
+                </div>
+
+                <button class="btn btn-outline btn-block mt-md" onclick="SVT.showQuizMenu()">← Retour aux modes</button>
+            </div>
+
+            <!-- Résultat du quiz -->
+            <div id="quiz-result" class="hidden">
+                <div class="card text-center" style="padding:3rem 2rem;">
+                    <div class="text-4xl font-black font-display text-gradient mb-md" id="result-score">0%</div>
+                    <p id="result-detail" class="text-secondary mb-sm"></p>
+                    <p id="result-message" class="font-bold mb-xl"></p>
+                    <div class="flex justify-center gap-md">
+                        <button class="btn btn-primary" onclick="SVT.showQuizMenu()">Nouveau Quiz</button>
+                        <button class="btn btn-outline" onclick="SVT.switchTab('bilan')">Voir mon Bilan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- TAB 3 : FLASH CARDS            -->
+    <!-- ============================== -->
+    <div id="tab-flash" class="tab-content">
+        <div class="container" style="max-width:650px;">
+            <div class="flex justify-between items-center mb-lg">
+                <h2 class="text-xl font-bold">⚡ Flash Cards</h2>
+                <span id="flash-progress" class="text-sm text-muted font-bold">0/0</span>
+            </div>
+
+            <div id="flash-area">
+                <p class="text-muted text-center">Chargement des cartes...</p>
+            </div>
+
+            <div id="flash-controls" class="flex justify-center gap-md mt-lg hidden">
+                <button class="btn btn-outline" onclick="SVT.flashPrev()">← Précédente</button>
+                <button class="btn btn-primary" onclick="SVT.flashNext()">Suivante →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- TAB 4 : BILAN                  -->
+    <!-- ============================== -->
+    <div id="tab-bilan" class="tab-content">
+        <div class="container" style="max-width:900px;">
+            <div class="grid grid-2">
+                
+                <!-- Stats -->
+                <div class="card">
+                    <h2 class="text-xl font-bold mb-md" style="color:#60a5fa;">📊 Réussite par Thème</h2>
+                    <div class="flex gap-lg mb-lg">
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-green" id="bilan-best">—</div>
+                            <div class="text-xs text-muted font-bold">Meilleur score</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-red" id="bilan-err-count">0</div>
+                            <div class="text-xs text-muted font-bold">Erreurs actives</div>
+                        </div>
+                    </div>
+                    <div id="bilan-stats"></div>
+                    <button class="btn btn-outline btn-block mt-lg text-sm" onclick="SVT.clearErrors()">🗑️ Réinitialiser l'historique</button>
+                </div>
+
+                <!-- Erreurs + Parcours -->
+                <div>
+                    <div class="card mb-lg">
+                        <h2 class="text-xl font-bold mb-md" style="color:#f87171;">⚠️ Erreurs Fréquentes</h2>
+                        <div id="bilan-erreurs"></div>
+                    </div>
+
+                    <div class="card">
+                        <h2 class="text-xl font-bold mb-md" style="color:#2dd4bf;">🗺️ Parcours de Révision</h2>
+                        <div class="parcours-tabs mb-md">
+                            <button class="parcours-tab active" data-time="5min" onclick="SVT.showParcours('5min')">5 min</button>
+                            <button class="parcours-tab" data-time="15min" onclick="SVT.showParcours('15min')">15 min</button>
+                            <button class="parcours-tab" data-time="30min" onclick="SVT.showParcours('30min')">30 min</button>
+                        </div>
+                        <div class="text-sm font-bold text-teal mb-sm" id="parcours-title">⚡ Plan Express (5 min)</div>
+                        <ul id="parcours-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS (hors-ligne) -->
+    <script src="data/unite2.js"></script>
+    <script src="js/engine.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => SVT.init(UNITE_2));</script>
+</body>
+</html>

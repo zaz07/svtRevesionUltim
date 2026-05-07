@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVT 2BAC : Pack de Révision Ultime - Unité 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        h1, h2, h3, h4, .font-outfit { font-family: 'Outfit', sans-serif; }
+        
+        .bento-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #0284c7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .kw {
+            color: #0284c7;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            background: rgba(2, 132, 199, 0.1);
+            padding: 0 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .kw-green {
+            color: #10b981;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .section-header {
+            position: relative;
+            padding-left: 1rem;
+        }
+        .section-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            border-radius: 4px;
+            background: currentColor;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <nav class="max-w-7xl mx-auto flex items-center gap-4 mb-4 pt-4">
+        <a href="index.html" class="inline-flex items-center text-slate-500 hover:text-emerald-600 font-semibold text-sm transition-colors">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4"></path></svg>
+            Accueil
+        </a>
+        <span class="text-slate-300">|</span>
+        <span class="text-slate-400 text-sm">Unité 1 — Fiches de Révision</span>
+    </nav>
+
+    <header class="text-center mb-16 pt-4">
+        <div class="inline-block px-4 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold text-sm tracking-widest mb-4">BAC SVT MAROC</div>
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 gradient-text">Pack de Révision Ultime</h1>
+        <p class="text-2xl text-slate-600 font-medium max-w-3xl mx-auto">Unité 1 : Consommation de la Matière Organique et Flux d'Énergie</p>
+        
+        <div class="mt-8">
+            <a href="qcm_unite1.html" class="inline-block bg-gradient-to-r from-emerald-500 to-sky-600 hover:from-emerald-600 hover:to-sky-700 text-white font-bold py-3 px-8 rounded-full transition-transform hover:scale-105 shadow-lg text-lg">
+                S'entraîner avec le Méga-QCM Unité 1
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto space-y-16">
+
+        <!-- FICHE 1 : Respiration et Fermentation -->
+        <section>
+            <div class="bento-card relative">
+                <div class="absolute top-0 left-0 w-full h-2 bg-sky-500"></div>
+                <div class="p-8">
+                    <div class="flex items-center gap-4 mb-6 border-b border-slate-100 pb-4">
+                        <div class="bg-sky-100 text-sky-700 p-3 rounded-2xl">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <div>
+                            <span class="text-sky-600 font-bold tracking-widest text-sm">FICHE 1</span>
+                            <h2 class="text-3xl font-bold text-slate-800">Libération de l'énergie (ATP)</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Glycolyse et Fermentation -->
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 section-header text-sky-600 mb-3">L'étape commune : La Glycolyse</h3>
+                                <p class="text-slate-600 text-sm mb-2">Se déroule dans le <span class="kw">HYALOPLASME</span> (cytoplasme sans organites), sans consommation d'O2. Dégradation partielle d'une molécule de Glucose (C6H12O6).</p>
+                                <div class="bg-sky-50 p-4 rounded-xl border border-sky-100 text-sm">
+                                    <strong class="text-sky-800 block mb-1">Bilan chimique de la Glycolyse :</strong>
+                                    Glucose + 2 ADP + 2 Pi + 2 NAD+ &rarr; <span class="font-bold">2 Pyruvates</span> + 2 ATP + 2 NADH,H+
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 section-header text-emerald-600 mb-3">La Fermentation (Milieu Anaérobie)</h3>
+                                <p class="text-sm text-slate-600 mb-2">Dégradation incomplète du pyruvate dans le hyaloplasme (pas d'intervention de la mitochondrie). Rendement énergétique très faible (seulement <span class="font-bold">2 ATP</span>).</p>
+                                <ul class="text-sm text-slate-700 space-y-2">
+                                    <li class="bg-slate-50 p-3 rounded border border-slate-200">
+                                        <strong class="text-emerald-700">Fermentation lactique :</strong> Produit de l'acide lactique (ex: dans le muscle).<br>
+                                        <span class="text-xs text-slate-500">Glucose &rarr; 2 Acides Lactiques + 2 ATP</span>
+                                    </li>
+                                    <li class="bg-slate-50 p-3 rounded border border-slate-200">
+                                        <strong class="text-emerald-700">Fermentation alcoolique :</strong> Produit de l'éthanol + CO2 (ex: levures).<br>
+                                        <span class="text-xs text-slate-500">Glucose &rarr; 2 Éthanols + 2 CO2 + 2 ATP</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Respiration cellulaire -->
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 section-header text-red-500 mb-3">La Respiration Cellulaire (Milieu Aérobie)</h3>
+                                <p class="text-sm text-slate-700 mb-3">Dégradation totale de la matière organique grâce au dioxygène. Se déroule obligatoirement dans la <span class="kw-green">MITOCHONDRIE</span>. Rendement important (<span class="font-bold">38 ATP</span>).</p>
+                                
+                                <div class="space-y-3">
+                                    <div class="bg-red-50 p-3 rounded-lg border border-red-100">
+                                        <strong class="text-red-800 block mb-1">1. Dans la Matrice Mitochondriale :</strong>
+                                        <ul class="text-xs text-slate-700 list-disc pl-4">
+                                            <li>Formation de l'Acétyl-CoA à partir du pyruvate (libère CO2 et NADH,H+).</li>
+                                            <li><span class="font-bold">Le Cycle de Krebs :</span> Dégradation complète de l'Acétyl-CoA. Libère beaucoup de transporteurs réduits (NADH,H+ et FADH2), du CO2, et 1 ATP par tour.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-orange-50 p-3 rounded-lg border border-orange-100 shadow-sm">
+                                        <strong class="text-orange-800 block mb-1">2. Chaîne Respiratoire (Membrane Interne) :</strong>
+                                        <ul class="text-xs text-slate-700 list-decimal pl-4">
+                                            <li>Oxydation des transporteurs (NADH,H+, FADH2) qui cèdent leurs électrons (e-).</li>
+                                            <li>Transport des e- jusqu'à l'<span class="font-bold text-red-600">Oxygène (Accepteur final)</span> pour former de l'H2O.</li>
+                                            <li>Pompage des protons (H+) vers l'espace intermembranaire &rarr; <span class="font-bold">Gradient de protons</span>.</li>
+                                            <li>Retour des protons vers la matrice à travers les <span class="kw">Sphères Pédonculées</span> (ATP Synthase) &rarr; Synthèse massive d'ATP (Phosphorylation Oxydative).</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FICHE 2 : Le Muscle Squelettique -->
+        <section>
+            <div class="bento-card relative">
+                <div class="absolute top-0 left-0 w-full h-2 bg-emerald-500"></div>
+                <div class="p-8">
+                    <div class="flex items-center gap-4 mb-6 border-b border-slate-100 pb-4">
+                        <div class="bg-emerald-100 text-emerald-700 p-3 rounded-2xl">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                        </div>
+                        <div>
+                            <span class="text-emerald-600 font-bold tracking-widest text-sm">FICHE 2</span>
+                            <h2 class="text-3xl font-bold text-slate-800">Le Muscle Strié Squelettique</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Secousses et phénomènes -->
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-bold text-slate-800 border-b-2 border-emerald-200 pb-1">Enregistrements et Phénomènes</h3>
+                            
+                            <div class="text-sm text-slate-700 space-y-3">
+                                <div>
+                                    <strong class="text-slate-800">La Secousse Musculaire isolée :</strong>
+                                    <p class="text-xs">Réponse à une stimulation unique. Comprend 3 phases : Phase de latence, Phase de contraction, et Phase de relâchement.</p>
+                                </div>
+                                <div class="bg-sky-50 p-2 rounded border border-sky-100">
+                                    <strong class="text-sky-800">Notions clés :</strong>
+                                    <ul class="text-xs list-disc pl-4 mt-1">
+                                        <li><span class="kw">RHÉOBASE</span> : L'intensité minimale de l'excitation qui provoque une secousse musculaire.</li>
+                                        <li><span class="kw">RECRUTEMENT</span> : Principe selon lequel les unités motrices sont activées progressivement en fonction de l'intensité de l'excitation (plus l'intensité augmente, plus de fibres sont recrutées).</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-emerald-50 p-2 rounded border border-emerald-100">
+                                    <strong class="text-emerald-800">Sommation temporelle :</strong>
+                                    <ul class="text-xs list-disc pl-4 mt-1">
+                                        <li><span class="font-bold">Tétanos imparfait :</span> Fusion incomplète. La 2ème excitation arrive pendant le <em>relâchement</em>.</li>
+                                        <li><span class="font-bold">Tétanos parfait :</span> Fusion complète. La 2ème excitation arrive pendant la <em>contraction</em>.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <strong class="text-slate-800 block mb-1">Phénomènes Thermiques :</strong>
+                                    <p class="text-xs bg-red-50 p-2 rounded inline-block w-full"><span class="font-bold text-red-700">Chaleur initiale :</span> Dégagée pendant la secousse (liée aux voies anaérobies).<br><span class="font-bold text-orange-700">Chaleur retardée :</span> Dégagée après, lentement (liée à la respiration cellulaire aérobie).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ultrastructure et Mécanisme -->
+                        <div class="space-y-4 text-sm">
+                            <h3 class="text-xl font-bold text-slate-800 border-b-2 border-teal-200 pb-1">Mécanisme de Contraction</h3>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <strong class="text-teal-700 block mb-1">Le Sarcomère (Unité fonctionnelle)</strong>
+                                    <p class="text-slate-600 bg-teal-50 p-2 rounded">Limité par deux Stries Z. Formé de myofilaments fins (<span class="font-bold">Actine</span>) et épais (<span class="font-bold">Myosine</span>). Lors de la contraction : les sarcomères raccourcissent, les bandes H et I diminuent, mais la bande sombre (A) reste constante.</p>
+                                </div>
+                                
+                                <div>
+                                    <strong class="text-blue-700 block mb-1">Les Étapes de la Contraction :</strong>
+                                    <ul class="text-xs list-decimal pl-4 bg-slate-50 p-2 rounded border border-slate-100 space-y-1">
+                                        <li>Excitation nerveuse &rarr; libération de <span class="kw-blue">Ca2+</span> par le réticulum sarcoplasmique.</li>
+                                        <li>Fixation du Ca2+ sur la troponine &rarr; Démasquage des sites de l'actine.</li>
+                                        <li>Formation du complexe Actomyosine (ponts d'union).</li>
+                                        <li>Hydrolyse de l'ATP &rarr; Pivotement des têtes de myosine.</li>
+                                        <li><strong>Glissement de l'actine</strong> vers le centre du sarcomère (contraction).</li>
+                                        <li>Fixation d'un nouvel ATP &rarr; Détachement de la myosine (relâchement).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Voies de régénération de l'ATP -->
+                    <div class="mt-6 pt-6 border-t border-slate-100">
+                        <h4 class="font-bold text-slate-800 mb-3">Voies de régénération de l'ATP :</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-slate-700">
+                            <div class="bg-red-50 p-3 rounded-lg border border-red-100">
+                                <strong class="text-red-700 block">1. Rapide (Anaérobie alactique)</strong>
+                                Utilisation de la Phosphocréatine.<br> <span class="text-xs">PC + ADP &rarr; ATP + Créatine</span>
+                            </div>
+                            <div class="bg-amber-50 p-3 rounded-lg border border-amber-100">
+                                <strong class="text-amber-700 block">2. Moyenne (Anaérobie lactique)</strong>
+                                Fermentation lactique, produit de l'acide lactique (fatigue).<br><span class="text-xs">Glucose &rarr; Ac.Lactique + 2 ATP</span>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100">
+                                <strong class="text-green-700 block">3. Lente (Aérobie)</strong>
+                                Respiration cellulaire, grand rendement énergétique.<br><span class="text-xs">Glucose + O2 &rarr; CO2 + H2O + 38 ATP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 text-center text-slate-500 py-10 border-t border-slate-200 text-sm">
+        <p class="mb-2">Réalisé de manière exhaustive pour la préparation au Baccalauréat National (SVT) - Maroc</p>
+        <p class="opacity-75">Toutes les informations des Fiches 1 et 2 de l'Unité 1 ont été intégrées.</p>
+    </footer>
+</body>
+</html>

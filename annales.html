@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVT 2BAC — Simulateur d'Examens Nationaux</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Styles spécifiques pour le simulateur d'examens */
+        .sticky-sidebar {
+            position: sticky;
+            top: calc(1rem + var(--navbar-height, 70px));
+            height: fit-content;
+        }
+        
+        .question-grid-nav {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .nav-grid-btn {
+            aspect-ratio: 1;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: all var(--transition);
+        }
+        
+        .nav-grid-btn:hover {
+            border-color: var(--accent-blue);
+            color: var(--text-primary);
+        }
+        
+        .nav-grid-btn.answered {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+        
+        .nav-grid-btn.correct {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: var(--correct);
+            color: var(--correct);
+        }
+        
+        .nav-grid-btn.wrong {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: var(--wrong);
+            color: var(--wrong);
+        }
+
+        .exam-timer {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            text-align: center;
+            color: #fbbf24;
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+            margin: 0.5rem 0;
+        }
+
+        .exam-timer.urgent {
+            color: var(--accent-red);
+            animation: pulse 1s infinite alternate;
+            text-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
+        .score-circle-container {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .score-circle-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.05);
+            stroke-width: 12;
+        }
+
+        .score-circle-fill {
+            fill: none;
+            stroke-width: 12;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+
+        .score-circle-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .score-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 900;
+        }
+
+        .score-max {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .exam-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+        }
+
+        .exam-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .exam-meta-item svg {
+            color: var(--accent-blue);
+            flex-shrink: 0;
+        }
+
+        .result-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* Bento cards for exam selection */
+        .exam-grid-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .exam-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+        }
+
+        .exam-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow-blue);
+        }
+
+        .exam-card-year {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-blue);
+        }
+
+        .exam-card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin: 0.4rem 0 0.75rem;
+            line-height: 1.3;
+        }
+
+        .exam-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .exam-card-score {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .exam-card-score.passed {
+            color: var(--accent-green);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-back">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                Accueil
+            </a>
+            <span class="nav-title">Simulateur d'Examens Nationaux (Annales)</span>
+        </div>
+    </nav>
+
+    <div class="hero-glow"></div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container" style="position:relative; z-index:1; padding-top:2rem; padding-bottom:5rem;">
+        
+        <!-- SELECTION SCREEN -->
+        <div id="selection-screen">
+            <header class="text-center" style="margin-bottom: 3rem;">
+                <h1 class="text-4xl text-gradient font-display mb-sm">Simulateur de Baccalauréat</h1>
+                <p class="text-secondary" style="max-width: 600px; margin: 0 auto;">
+                    Entraînez-vous dans les conditions réelles de l'examen national marocain (2016-2025). Évaluez votre niveau sur de vraies questions d'annales avec chronomètre et corrections détaillées.
+                </p>
+            </header>
+
+            <div class="card mb-xl">
+                <div class="flex items-center justify-between" style="flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <h2 class="text-xl font-bold" style="color:#60a5fa;">📊 Tableau de Progression</h2>
+                        <p class="text-muted text-sm mt-md" id="overall-progress-text">Aucun examen complété pour le moment.</p>
+                    </div>
+                    <button class="btn btn-outline text-sm" onclick="clearAllScores()">🗑️ Réinitialiser l'historique d'examens</button>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-bold mb-md">🎯 Choisissez une Session d'Examen</h2>
+            <div class="exam-grid-selection" id="exams-list">
+                <!-- Les cartes d'examens seront injectées dynamiquement ici -->
+            </div>
+        </div>
+
+        <!-- EXAM ACTIVE SCREEN -->
+        <div id="exam-screen" class="hidden">
+            <div class="grid grid-2" style="grid-template-columns: 2fr 1fr; align-items: start;">
+                
+                <!-- Colonne Gauche : Questions -->
+                <div>
+                    <div class="card mb-md" style="padding: 1.5rem; background: rgba(30, 41, 59, 0.5);">
+                        <h2 class="text-2xl font-bold" id="active-exam-title">Chargement de l'épreuve...</h2>
+                        <div class="exam-meta-grid">
+                            <div class="exam-meta-item">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                                <span id="active-exam-qcount">0 questions</span>
+                            </div>
+                            <div class="exam-meta-item">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span id="active-exam-duration">Durée conseillée : —</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Liste des Questions -->
+                    <div id="exam-questions-container" class="space-y-lg">
+                        <!-- Questions injectées en JS -->
+                    </div>
+                </div>
+
+                <!-- Colonne Droite : Sidebar collante avec Timer et statut -->
+                <div class="sticky-sidebar">
+                    <div class="card">
+                        <div class="text-xs text-muted font-bold uppercase tracking-wide text-center">Temps Restant</div>
+                        <div class="exam-timer" id="timer-display">20:00</div>
+                        <div class="timer-track" style="margin-bottom: 1.5rem;">
+                            <div class="timer-fill" id="timer-bar" style="width: 100%;"></div>
+                        </div>
+
+                        <div class="text-xs text-muted font-bold uppercase tracking-wide mb-sm">Progression</div>
+                        <div class="text-sm font-bold mb-sm" id="exam-progress-text">0 / 0 questions répondues</div>
+                        <div class="progress-track mb-lg">
+                            <div class="progress-fill" id="exam-progress-fill" style="width: 0%;"></div>
+                        </div>
+
+                        <div class="text-xs text-muted font-bold uppercase tracking-wide mb-sm">Sauter à la question</div>
+                        <div class="question-grid-nav" id="exam-nav-grid">
+                            <!-- Boutons de navigation rapide injectés en JS -->
+                        </div>
+
+                        <button class="btn btn-primary btn-block mt-xl" id="submit-exam-btn" onclick="submitExam()">
+                            📥 Soumettre mon épreuve
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAM RESULTS SCREEN -->
+        <div id="results-screen" class="hidden">
+            <div class="card text-center mb-xl" style="max-width: 600px; margin: 0 auto;">
+                <h2 class="text-3xl font-bold mb-md">Résultat de l'Épreuve</h2>
+                
+                <div class="score-circle-container">
+                    <svg width="160" height="160" viewBox="0 0 160 160">
+                        <circle class="score-circle-bg" cx="80" cy="80" r="70"></circle>
+                        <circle class="score-circle-fill" id="score-circle-fill" cx="80" cy="80" r="70" stroke-dasharray="440" stroke-dashoffset="440"></circle>
+                    </svg>
+                    <div class="score-circle-text">
+                        <span class="score-value" id="result-score-val">0.0</span>
+                        <span class="score-max">/ 20</span>
+                    </div>
+                </div>
+
+                <div class="badge badge-expert mb-md" id="result-badge">Verdict...</div>
+                <p class="text-secondary mb-lg" id="result-comment">Excellent travail ! Vous maîtrisez les concepts clés de cette session d'examen.</p>
+
+                <div class="flex gap-md">
+                    <button class="btn btn-outline flex-1" onclick="backToSelection()">
+                        ⬅️ Autre examen
+                    </button>
+                    <button class="btn btn-primary flex-1" onclick="restartCurrentExam()">
+                        🔄 Recommencer
+                    </button>
+                </div>
+            </div>
+
+            <!-- Correction détaillée -->
+            <div style="max-width: 900px; margin: 3rem auto 0;">
+                <h3 class="text-2xl font-bold mb-lg text-center" style="color: #60a5fa;">📝 Correction Détaillée de vos Réponses</h3>
+                <div id="correction-questions-container" class="space-y-lg">
+                    <!-- Les questions corrigées seront affichées ici -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPTS (Purement hors-ligne) -->
+    <script src="data/unite1.js"></script>
+    <script src="data/unite2.js"></script>
+    <script src="data/unite3.js"></script>
+    <script src="data/unite4.js"></script>
+    
+    <script>
+        // --- ÉTAT GLOBAL DU SIMULATEUR ---
+        const ALL_UNITS = [UNITE_1, UNITE_2, UNITE_3, UNITE_4];
+        let currentExamId = null;
+        let currentExamQuestions = [];
+        let userAnswers = {}; // Map { questionId: "A" | "B" | "C" | "D" }
+        let examTimeLeft = 0;
+        let examTotalTime = 0;
+        let examTimerInterval = null;
+        let examCompleted = false;
+
+        // Titres officiels des examens pour affichage élégant
+        const SOURCE_TITLES = {
+            'national_2025_R': 'Bac 2025 — Session de Rattrapage',
+            'national_2025_N': 'Bac 2025 — Session Normale',
+            'national_2024_R': 'Bac 2024 — Session de Rattrapage',
+            'national_2024_N': 'Bac 2024 — Session Normale',
+            'national_2023_R': 'Bac 2023 — Session de Rattrapage',
+            'national_2023_N': 'Bac 2023 — Session Normale',
+            'national_2022_R': 'Bac 2022 — Session de Rattrapage',
+            'national_2022_N': 'Bac 2022 — Session Normale',
+            'national_2020_R': 'Bac 2020 — Session de Rattrapage',
+            'national_2020_N': 'Bac 2020 — Session Normale',
+            'national_2019_R': 'Bac 2019 — Session de Rattrapage',
+            'national_2019_N': 'Bac 2019 — Session Normale',
+            'national_2018_R': 'Bac 2018 — Session de Rattrapage',
+            'national_2018_N': 'Bac 2018 — Session Normale',
+            'national_2017_R': 'Bac 2017 — Session de Rattrapage',
+            'national_2017_N': 'Bac 2017 — Session Normale',
+            'national_2016_R': 'Bac 2016 — Session de Rattrapage',
+            'national_2016_N': 'Bac 2016 — Session Normale'
+        };
+
+        // --- INITIALISATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProgressDashboard();
+            renderExamsSelection();
+        });
+
+        // --- PROGRESS & LOCAL STORAGE ---
+        function getScores() {
+            try {
+                return JSON.parse(localStorage.getItem('svt_exam_scores')) || {};
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function saveScore(examId, score) {
+            const scores = getScores();
+            // Garder la meilleure note obtenue
+            if (scores[examId] === undefined || score > scores[examId]) {
+                scores[examId] = score;
+                localStorage.setItem('svt_exam_scores', JSON.stringify(scores));
+            }
+            renderProgressDashboard();
+            renderExamsSelection();
+        }
+
+        function clearAllScores() {
+            if (confirm("Voulez-vous vraiment supprimer tout votre historique de simulation d'examens ?")) {
+                localStorage.removeItem('svt_exam_scores');
+                renderProgressDashboard();
+                renderExamsSelection();
+            }
+        }
+
+        function renderProgressDashboard() {
+            const scores = getScores();
+            const keys = Object.keys(scores);
+            const textEl = document.getElementById('overall-progress-text');
+            
+            if (keys.length === 0) {
+                textEl.innerHTML = `Vous n'avez pas encore passé d'examen. Sélectionnez-en un ci-dessous pour démarrer !`;
+                return;
+            }
+
+            let sum = 0;
+            let successCount = 0;
+            keys.forEach(k => {
+                sum += scores[k];
+                if (scores[k] >= 10) successCount++;
+            });
+            const average = (sum / keys.length).toFixed(1);
+            
+            textEl.innerHTML = `Vous avez complété <strong>${keys.length} examens réels</strong> · Note moyenne globale : <strong>${average}/20</strong> · Taux de réussite : <strong>${successCount}/${keys.length} épreuves validées</strong> (≥ 10/20).`;
+        }
+
+        // --- RENDU SÉLECTION EXAMENS ---
+        function renderExamsSelection() {
+            const scores = getScores();
+            const examsMap = {};
+
+            // Regrouper toutes les questions du projet par source
+            ALL_UNITS.forEach(unite => {
+                unite.questions.forEach(q => {
+                    if (q.source && SOURCE_TITLES[q.source]) {
+                        if (!examsMap[q.source]) {
+                            examsMap[q.source] = [];
+                        }
+                        examsMap[q.source].push(q);
+                    }
+                });
+            });
+
+            const listContainer = document.getElementById('exams-list');
+            listContainer.innerHTML = '';
+
+            // Trier les examens chronologiquement (plus récents en premier)
+            const sortedKeys = Object.keys(examsMap).sort((a, b) => {
+                const yearA = parseInt(a.split('_')[1]);
+                const yearB = parseInt(b.split('_')[1]);
+                if (yearA !== yearB) return yearB - yearA;
+                // Rattrapage (R) après Session Normale (N) pour une même année
+                return a.split('_')[2].localeCompare(b.split('_')[2]);
+            });
+
+            sortedKeys.forEach(sourceKey => {
+                const questions = examsMap[sourceKey];
+                const bestScore = scores[sourceKey];
+                const qCount = questions.length;
+                const durationMinutes = Math.ceil((qCount * 45) / 60); // 45s par question en moyenne
+
+                const card = document.createElement('div');
+                card.className = 'exam-card';
+                card.onclick = () => startExam(sourceKey, questions);
+
+                let badgeHTML = '';
+                if (bestScore !== undefined) {
+                    const gradeClass = bestScore >= 16 ? 'text-green' : (bestScore >= 10 ? 'text-blue' : 'text-red');
+                    badgeHTML = `<span class="result-badge ${bestScore >= 10 ? 'badge-easy' : 'badge-expert'}">Meilleur score: <span class="${gradeClass}">${bestScore.toFixed(1)}/20</span></span>`;
+                }
+
+                card.innerHTML = `
+                    <div>
+                        <div class="exam-card-year">${sourceKey.split('_')[1]} — ${sourceKey.split('_')[2] === 'R' ? 'Rattrapage' : 'Session Normale'}</div>
+                        <h3 class="exam-card-title">${SOURCE_TITLES[sourceKey]}</h3>
+                        ${badgeHTML}
+                    </div>
+                    <div class="exam-card-footer">
+                        <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: bold;">
+                            📚 ${qCount} questions d'élite
+                        </div>
+                        <div class="btn btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: var(--radius-sm);">
+                            Lancer ⚡
+                        </div>
+                    </div>
+                `;
+
+                listContainer.appendChild(card);
+            });
+        }
+
+        // --- ACTIONS DE L'EXAMEN ---
+        function startExam(sourceKey, questions) {
+            currentExamId = sourceKey;
+            // Cloner et mélanger aléatoirement les questions pour casser l'ordre d'apprentissage par cœur
+            currentExamQuestions = [...questions].sort(() => Math.random() - 0.5);
+            userAnswers = {};
+            examCompleted = false;
+
+            // Masquer les écrans et afficher l'écran d'examen
+            document.getElementById('selection-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.add('hidden');
+            document.getElementById('exam-screen').classList.remove('hidden');
+
+            // Mettre à jour les métadonnées de l'épreuve active
+            document.getElementById('active-exam-title').textContent = SOURCE_TITLES[sourceKey];
+            document.getElementById('active-exam-qcount').textContent = `${currentExamQuestions.length} questions réelles`;
+            
+            // Calculer la durée autorisée : 30 secondes par question
+            examTotalTime = currentExamQuestions.length * 30; // 30s par question
+            examTimeLeft = examTotalTime;
+            const mins = Math.floor(examTotalTime / 60);
+            const secs = examTotalTime % 60;
+            document.getElementById('active-exam-duration').textContent = `Durée de l'épreuve : ${mins} min ${secs > 0 ? secs + ' s' : ''}`;
+
+            // Rendre le timer
+            updateTimerDisplay();
+
+            // Générer les questions dans le conteneur
+            renderExamQuestions();
+
+            // Générer la grille de navigation rapide
+            renderNavigationGrid();
+
+            // Mettre à jour la barre de progression
+            updateProgress();
+
+            // Activer le compte à rebours
+            clearInterval(examTimerInterval);
+            examTimerInterval = setInterval(() => {
+                examTimeLeft--;
+                updateTimerDisplay();
+                if (examTimeLeft <= 0) {
+                    clearInterval(examTimerInterval);
+                    alert("⏱️ Temps écoulé ! Votre copie va être soumise automatiquement.");
+                    submitExam();
+                }
+            }, 1000);
+
+            // Scroller au début du document
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderExamQuestions() {
+            const container = document.getElementById('exam-questions-container');
+            container.innerHTML = '';
+
+            currentExamQuestions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.id = `q-card-${idx}`;
+                card.style.scrollMarginTop = "90px"; // s'aligne bien sous la navbar collante
+
+                const themeText = q.theme ? q.theme.toUpperCase() : 'GENERAL';
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-center mb-md" style="flex-wrap: wrap; gap: 0.5rem;">
+                        <span class="badge badge-easy">Question ${idx + 1} / ${currentExamQuestions.length}</span>
+                        <span class="badge badge-trap">${themeText}</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-lg" style="line-height: 1.45; color: var(--text-primary);">${q.enonce}</h3>
+                    <div class="space-y" id="options-group-${idx}">
+                        <button class="option-btn" id="opt-${idx}-A" onclick="selectOption(${idx}, 'A')"><strong>A.</strong> ${q.choix.A}</button>
+                        <button class="option-btn" id="opt-${idx}-B" onclick="selectOption(${idx}, 'B')"><strong>B.</strong> ${q.choix.B}</button>
+                        <button class="option-btn" id="opt-${idx}-C" onclick="selectOption(${idx}, 'C')"><strong>C.</strong> ${q.choix.C}</button>
+                        <button class="option-btn" id="opt-${idx}-D" onclick="selectOption(${idx}, 'D')"><strong>D.</strong> ${q.choix.D}</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderNavigationGrid() {
+            const navGrid = document.getElementById('exam-nav-grid');
+            navGrid.innerHTML = '';
+
+            currentExamQuestions.forEach((_, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'nav-grid-btn';
+                btn.id = `nav-btn-${idx}`;
+                btn.textContent = idx + 1;
+                btn.onclick = () => {
+                    const el = document.getElementById(`q-card-${idx}`);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                };
+                navGrid.appendChild(btn);
+            });
+        }
+
+        function selectOption(qIdx, optionChar) {
+            if (examCompleted) return;
+
+            const question = currentExamQuestions[qIdx];
+            userAnswers[question.id] = optionChar;
+
+            // Réinitialiser le style de tous les boutons de cette question
+            ['A', 'B', 'C', 'D'].forEach(char => {
+                const btn = document.getElementById(`opt-${qIdx}-${char}`);
+                if (btn) btn.classList.remove('wrong'); // enlever tout style temporaire
+                btn.style.borderColor = 'var(--border-color)';
+                btn.style.color = 'var(--text-secondary)';
+                btn.style.background = 'var(--bg-input)';
+            });
+
+            // Mettre en évidence le bouton sélectionné
+            const selectedBtn = document.getElementById(`opt-${qIdx}-${optionChar}`);
+            if (selectedBtn) {
+                selectedBtn.style.borderColor = 'var(--accent-blue)';
+                selectedBtn.style.color = '#fff';
+                selectedBtn.style.background = 'rgba(59, 130, 246, 0.12)';
+            }
+
+            // Mettre à jour le bouton de navigation rapide associé
+            const navBtn = document.getElementById(`nav-btn-${qIdx}`);
+            if (navBtn) navBtn.classList.add('answered');
+
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const total = currentExamQuestions.length;
+            const answered = Object.keys(userAnswers).length;
+            const percent = total > 0 ? (answered / total) * 100 : 0;
+
+            document.getElementById('exam-progress-text').textContent = `${answered} / ${total} questions répondues`;
+            document.getElementById('exam-progress-fill').style.width = `${percent}%`;
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(examTimeLeft / 60);
+            const secs = examTimeLeft % 60;
+            const displayStr = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            
+            const displayEl = document.getElementById('timer-display');
+            displayEl.textContent = displayStr;
+
+            // Calcul du pourcentage restant
+            const pct = (examTimeLeft / examTotalTime) * 100;
+            const bar = document.getElementById('timer-bar');
+            bar.style.width = `${pct}%`;
+
+            // Signal d'urgence pour les 3 dernières minutes ou moins de 20%
+            if (examTimeLeft <= 60 || pct <= 20) {
+                displayEl.classList.add('urgent');
+                bar.classList.add('urgent');
+            } else {
+                displayEl.classList.remove('urgent');
+                bar.classList.remove('urgent');
+            }
+        }
+
+        // --- SOUMISSION DE L'ÉPREUVE ---
+        function submitExam() {
+            if (examCompleted) return;
+
+            const answeredCount = Object.keys(userAnswers).length;
+            const total = currentExamQuestions.length;
+
+            if (answeredCount < total && examTimeLeft > 0) {
+                const confirmed = confirm(`Il vous reste ${total - answeredCount} questions sans réponse. Souhaitez-vous vraiment soumettre votre copie ?`);
+                if (!confirmed) return;
+            }
+
+            // Arrêter le timer
+            clearInterval(examTimerInterval);
+            examCompleted = true;
+
+            // Calcul de la note finale
+            let correctAnswersCount = 0;
+            currentExamQuestions.forEach(q => {
+                if (userAnswers[q.id] === q.reponseCorrecte) {
+                    correctAnswersCount++;
+                }
+            });
+
+            const score20 = (correctAnswersCount / total) * 20;
+
+            // Sauvegarder la note
+            saveScore(currentExamId, score20);
+
+            // Afficher l'écran de résultats
+            document.getElementById('exam-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.remove('hidden');
+
+            // Rendre le verdict
+            const scoreEl = document.getElementById('result-score-val');
+            scoreEl.textContent = score20.toFixed(1);
+            
+            const badgeEl = document.getElementById('result-badge');
+            const commentEl = document.getElementById('result-comment');
+
+            if (score20 >= 16) {
+                badgeEl.textContent = "Excellent !";
+                badgeEl.className = "badge badge-easy";
+                commentEl.innerHTML = "Félicitations ! Vous possédez une maîtrise exceptionnelle digne d'une note d'excellence (18+/20) au Baccalauréat. Vous visez les sommets de la mention Très Bien et l'accès garanti aux filières d'élite !";
+            } else if (score20 >= 14) {
+                badgeEl.textContent = "Très Bien";
+                badgeEl.className = "badge badge-easy";
+                commentEl.innerHTML = "Très bon niveau ! Vous maîtrisez les pièges académiques et possédez de bases ultra-solides pour réussir haut la main.";
+            } else if (score20 >= 10) {
+                badgeEl.textContent = "Valide";
+                badgeEl.className = "badge badge-trap";
+                commentEl.innerHTML = "Moyenne validée ! C'est une bonne base, mais de petits détails et confusions peuvent encore être évités. Utilisez les fiches express et fiches mémo pour perfectionner votre score !";
+            } else {
+                badgeEl.textContent = "A perfectionner";
+                badgeEl.className = "badge badge-expert";
+                commentEl.innerHTML = "Des lacunes persistent sur les annales de cette session. Pas d'inquiétude ! Lisez attentivement la correction détaillée ci-dessous et utilisez nos astuces mnémotechniques exclusives pour sceller votre apprentissage !";
+            }
+
+            // Animation du cercle de score
+            const circle = document.getElementById('score-circle-fill');
+            const circumference = 440; // 2 * pi * r (70) -> environ 440
+            const offset = circumference - (score20 / 20) * circumference;
+            circle.style.strokeDashoffset = offset;
+            circle.style.stroke = score20 >= 16 ? '#10b981' : (score20 >= 10 ? '#3b82f6' : '#ef4444');
+
+            // Générer le tableau de correction détaillée
+            renderDetailedCorrection();
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- RENDU CORRECTION DÉTAILLÉE ---
+        function renderDetailedCorrection() {
+            const container = document.getElementById('correction-questions-container');
+            container.innerHTML = '';
+
+            currentExamQuestions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.marginBottom = '1.5rem';
+
+                const userAnswer = userAnswers[q.id];
+                const isCorrect = userAnswer === q.reponseCorrecte;
+
+                let feedbackTitleHTML = '';
+                let feedbackClass = '';
+                if (isCorrect) {
+                    feedbackTitleHTML = `<span class="text-green" style="font-weight:900;">✅ Réponse correcte (+${(20 / currentExamQuestions.length).toFixed(2)} pts)</span>`;
+                    feedbackClass = 'correct-fb';
+                } else {
+                    feedbackTitleHTML = `<span class="text-red" style="font-weight:900;">❌ Mauvaise réponse (0 pt)</span>`;
+                    feedbackClass = 'wrong-fb';
+                }
+
+                let choicesHTML = '';
+                ['A', 'B', 'C', 'D'].forEach(char => {
+                    let optClass = '';
+                    if (char === q.reponseCorrecte) {
+                        optClass = 'correct';
+                    } else if (char === userAnswer && !isCorrect) {
+                        optClass = 'wrong';
+                    }
+                    choicesHTML += `<button class="option-btn ${optClass}" disabled><strong>${char}.</strong> ${q.choix[char]}</button>`;
+                });
+
+                let mnemoHTML = '';
+                if (q.mnemotechnique) {
+                    mnemoHTML = `
+                        <div class="tip-box">
+                            <span class="tip-icon">⚡</span>
+                            <div>
+                                <div class="tip-label">Mnémo d'Élite du Prof Otmane-SVT</div>
+                                <div class="tip-text">${q.mnemotechnique}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-center mb-md">
+                        <span class="badge ${isCorrect ? 'badge-easy' : 'badge-expert'}">Question ${idx + 1}</span>
+                        ${feedbackTitleHTML}
+                    </div>
+                    <h4 class="text-lg font-bold mb-md" style="line-height:1.45;">${q.enonce}</h4>
+                    <div class="space-y mb-lg">
+                        ${choicesHTML}
+                    </div>
+                    <div class="feedback ${feedbackClass}">
+                        <div class="feedback-title ${isCorrect ? 'correct-t' : 'wrong-t'}">Explication & Analyse</div>
+                        <div class="text-sm text-secondary" style="line-height: 1.6;">${q.explication || "Pas d'explication disponible."}</div>
+                        ${mnemoHTML}
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // --- RETOUR OU RESET ---
+        function backToSelection() {
+            document.getElementById('results-screen').classList.add('hidden');
+            document.getElementById('exam-screen').classList.add('hidden');
+            document.getElementById('selection-screen').classList.remove('hidden');
+            renderProgressDashboard();
+            renderExamsSelection();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function restartCurrentExam() {
+            const questions = ALL_UNITS.reduce((acc, u) => {
+                return acc.concat(u.questions.filter(q => q.source === currentExamId));
+            }, []);
+            startExam(currentExamId, questions);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 Guide de Rédaction d'Élite — SVT 2BAC</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0f172a; color: #f8fafc; }
+        h1, h2, h3, h4, .font-outfit { font-family: 'Outfit', sans-serif; }
+
+        .glass-header {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            transform: translateX(-3px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #f472b6 0%, #a78bfa 50%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media (min-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Card styles */
+        .verbe-card {
+            background: rgba(30, 41, 59, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .verbe-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: currentColor;
+            opacity: 0.8;
+        }
+        .verbe-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Color schemes */
+        .color-describe { color: #38bdf8; }
+        .color-compare { color: #fbbf24; }
+        .color-explain { color: #f43f5e; }
+        .color-deduce { color: #10b981; }
+
+        .tabs-nav {
+            display: flex;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.3rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            gap: 0.25rem;
+        }
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .tab-btn.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        .color-describe .tab-btn.active { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+        .color-compare .tab-btn.active { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+        .color-explain .tab-btn.active { background: rgba(244, 63, 94, 0.15); color: #f43f5e; }
+        .color-deduce .tab-btn.active { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+
+        .tab-content {
+            display: none;
+            min-height: 180px;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .list-tips {
+            list-style: none;
+            padding: 0;
+        }
+        .list-tips li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.925rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+        .list-tips li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: currentColor;
+            font-weight: bold;
+        }
+
+        .code-box {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .badge-tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        .badge-correct { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-wrong { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+        /* Challenge section */
+        .challenge-section {
+            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.08) 0%, rgba(15, 23, 42, 0) 60%), rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin-top: 4rem;
+        }
+        .challenge-title {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            font-size: 1.75rem;
+        }
+        .student-copy {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+        .copy-comment {
+            display: none;
+            background: rgba(30, 41, 59, 0.9);
+            border-left: 4px solid #8b5cf6;
+            padding: 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            animation: slideDown 0.25s ease-out;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .btn-reveal {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+        .btn-reveal:hover {
+            background: #4f46e5;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+
+    <header class="glass-header py-4 px-6 sticky top-0 mb-10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="back-btn">
+                <span>⬅️</span> Accueil
+            </a>
+            <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-outfit">SVT 2BAC — Méthode Académique</span>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-block px-4 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-bold text-xs tracking-wider mb-4">COPIE PARFAITE — BARÈME OFFICIEL</div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight leading-tight">
+                Guide de <span class="text-gradient">Rédaction d'Élite</span>
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl font-medium leading-relaxed">
+                Apprenez à formuler vos phrases avec la rigueur scientifique exigée par les correcteurs nationaux. Maîtrisez les 4 verbes piliers de l'examen.
+            </p>
+        </div>
+
+        <div class="bento-grid">
+            
+            <!-- 1. Décrire -->
+            <div class="verbe-card color-describe">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <span>🔍</span> Décrire / Analyser
+                    </h2>
+                    <span class="text-xs font-extrabold tracking-widest uppercase text-slate-400">0.5 à 1.0 pt</span>
+                </div>
+                
+                <div class="tabs-nav">
+                    <button class="tab-btn active" onclick="switchTab(this, 'desc-rule')">Règle d'Or</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'desc-phrases')">Formulations</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'desc-example')">Cas Réel</button>
+                </div>
+
+                <div id="desc-rule" class="tab-content active">
+                    <ul class="list-tips">
+                        <li><strong>Pas d'interprétation</strong> : Dites uniquement ce que vous voyez, n'expliquez jamais la cause de la variation dans cette question.</li>
+                        <li><strong>Saucissonner le graphe</strong> : Divisez le graphique en phases temporelles ou zones de concentration évidentes.</li>
+                        <li><strong>Chiffres & Unités obligatoires</strong> : Donnez les valeurs de début, d'inflexion et de fin avec leurs unités pour chaque phase.</li>
+                    </ul>
+                </div>
+
+                <div id="desc-phrases" class="tab-content">
+                    <p class="text-sm text-slate-300 mb-3">La boîte à outils linguistique pour structurer votre réponse :</p>
+                    <div class="code-box">
+                        • « On observe une augmentation progressive de [A] de [Valeur 1] à [Valeur 2] entre [T1] et [T2]... »<br>
+                        • « Ensuite, la courbe atteint un plateau stable de [Valeur] de [T2] à [T3]... »<br>
+                        • « Enfin, on constate une chute brutale de [A] qui s'annule à [T4]... »
+                    </div>
+                </div>
+
+                <div id="desc-example" class="tab-content">
+                    <div class="student-copy border-l-4 border-rose-500 mb-3">
+                        <span class="badge-tag badge-wrong">Copie rejetée (0/0.75 pt)</span>
+                        <p class="text-xs text-slate-300">« La quantité de glucose diminue car les cellules musculaires la consomment pour produire de l'énergie. »</p>
+                    </div>
+                    <div class="student-copy border-l-4 border-emerald-500">
+                        <span class="badge-tag badge-correct">Copie d'Élite (0.75/0.75 pt)</span>
+                        <p class="text-xs text-slate-300">« De t0 à t10, la concentration de glucose chute fortement, passing de 5 mmol/L à 1.2 mmol/L, tandis qu'après t10, elle se stabilise à cette valeur constante. »</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Comparer -->
+            <div class="verbe-card color-compare">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <span>⚖️</span> Comparer
+                    </h2>
+                    <span class="text-xs font-extrabold tracking-widest uppercase text-slate-400">0.5 à 0.75 pt</span>
+                </div>
+                
+                <div class="tabs-nav">
+                    <button class="tab-btn active" onclick="switchTab(this, 'comp-rule')">Règle d'Or</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'comp-phrases')">Formulations</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'comp-example')">Cas Réel</button>
+                </div>
+
+                <div id="comp-rule" class="tab-content active">
+                    <ul class="list-tips">
+                        <li><strong>Parallélisme obligatoire</strong> : Ne décrivez pas le cas A puis le cas B de manière isolée. Comparez-les simultanément.</li>
+                        <li><strong>Similitudes & Différences</strong> : Mettez en avant ce qui est identique et ce qui diffère.</li>
+                        <li><strong>Adjectifs relatifs</strong> : Utilisez impérativement des termes comparatifs (*plus élevé*, *inférieur*, *semblable*).</li>
+                    </ul>
+                </div>
+
+                <div id="comp-phrases" class="tab-content">
+                    <p class="text-sm text-slate-300 mb-3">La boîte à outils linguistique pour structurer votre comparaison :</p>
+                    <div class="code-box">
+                        • « La valeur de [A] chez le témoin ([X]) est nettement supérieure à celle observée chez le malade ([Y])... »<br>
+                        • « Contrairement à [A] qui augmente rapidement, [B] montre une réression constante... »<br>
+                        • « On observe des cinétiques similaires, bien que le maximum de [A] soit deux fois plus élevé que celui de [B]... »
+                    </div>
+                </div>
+
+                <div id="comp-example" class="tab-content">
+                    <div class="student-copy border-l-4 border-rose-500 mb-3">
+                        <span class="badge-tag badge-wrong">Copie rejetée (0.25/1.0 pt)</span>
+                        <p class="text-xs text-slate-300">« Le taux d'acide lactique est de 1g/L chez le sédentaire. Chez l'athlète, il est de 0.2g/L. » (C'est de la description juxtaposée, pas de la comparaison !)</p>
+                    </div>
+                    <div class="student-copy border-l-4 border-emerald-500">
+                        <span class="badge-tag badge-correct">Copie d'Élite (1.0/1.0 pt)</span>
+                        <p class="text-xs text-slate-300">« Le taux d'acide lactique produit chez le sédentaire à l'effort (1g/L) est beaucoup plus élevé (5 fois plus) que celui produit chez l'athlète entraîné (0.2g/L) pour une même intensité de travail. »</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Expliquer -->
+            <div class="verbe-card color-explain">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <span>🧪</span> Expliquer
+                    </h2>
+                    <span class="text-xs font-extrabold tracking-widest uppercase text-slate-400">1.0 à 1.5 pt</span>
+                </div>
+                
+                <div class="tabs-nav">
+                    <button class="tab-btn active" onclick="switchTab(this, 'exp-rule')">Règle d'Or</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'exp-phrases')">Formulations</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'exp-example')">Cas Réel</button>
+                </div>
+
+                <div id="exp-rule" class="tab-content active">
+                    <ul class="list-tips">
+                        <li><strong>Lien de cause à effet</strong> : Répondez au "Pourquoi" et "Comment". Connectez l'observation macroscopique au mécanisme moléculaire/cours.</li>
+                        <li><strong>Le cheminement logique</strong> : Établissez une chaîne d'événements : [Fait de départ] ➔ [Mécanisme biologique] ➔ [Conséquence].</li>
+                        <li><strong>Rigueur lexicale</strong> : Utilisez des termes précis comme *phosphorylation*, *mutation par substitution*, *blocage de la chaîne respiratoire*.</li>
+                    </ul>
+                </div>
+
+                <div id="exp-phrases" class="tab-content">
+                    <p class="text-sm text-slate-300 mb-3">La boîte à outils linguistique pour articuler votre explication :</p>
+                    <div class="code-box">
+                        • « Cette baisse s'explique par le blocage du complexe [IV] de la chaîne mitochondriale, ce qui empêche le transfert des électrons... »<br>
+                        • « Ce phénomène résulte de la mutation par délétion du gène [X], entraînant la synthèse d'une protéine tronquée et non fonctionnelle... »<br>
+                        • « Par conséquent, il y a arrêt de la production d'ATP par la voie de la respiration... »
+                    </div>
+                </div>
+
+                <div id="exp-example" class="tab-content">
+                    <div class="student-copy border-l-4 border-rose-500 mb-3">
+                        <span class="badge-tag badge-wrong">Copie rejetée (0.5/1.25 pt)</span>
+                        <p class="text-xs text-slate-300">« Le patient est malade car ses globules rouges ont changé de forme et bouchent ses vaisseaux. » (Explication incomplète, omet la cause moléculaire)</p>
+                    </div>
+                    <div class="student-copy border-l-4 border-emerald-500">
+                        <span class="badge-tag badge-correct">Copie d'Élite (1.25/1.25 pt)</span>
+                        <p class="text-xs text-slate-300">« La substitution de l'acide aminé Glu par Val entraîne une polymérisation de l'hémoglobine HbS sous forme de fibres rigides. Cela provoque la déformation des hématies en faucille (drépanocytose) qui finissent par obstruer les capillaires sanguins. »</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Déduire -->
+            <div class="verbe-card color-deduce">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <span>💡</span> Déduire / Conclure
+                    </h2>
+                    <span class="text-xs font-extrabold tracking-widest uppercase text-slate-400">0.5 pt</span>
+                </div>
+                
+                <div class="tabs-nav">
+                    <button class="tab-btn active" onclick="switchTab(this, 'ded-rule')">Règle d'Or</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'ded-phrases')">Formulations</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'ded-example')">Cas Réel</button>
+                </div>
+
+                <div id="ded-rule" class="tab-content active">
+                    <ul class="list-tips">
+                        <li><strong>Le saut conceptuel</strong> : Ne répétez pas les observations de l'exercice. La déduction est une information *nouvelle* qui découle logiquement de vos résultats.</li>
+                        <li><strong>Localisation ou Statut</strong> : Souvent utilisé pour conclure sur le caractère (dominant/récessif, lié au sexe ou non) ou la localisation cellulaire d'un gène.</li>
+                        <li><strong>Synthèse et Clarté</strong> : Une déduction doit être formulée de manière concise et affirmative en une seule phrase bien ciselée.</li>
+                    </ul>
+                </div>
+
+                <div id="ded-phrases" class="tab-content">
+                    <p class="text-sm text-slate-300 mb-3">La boîte à outils linguistique pour formuler une déduction :</p>
+                    <div class="code-box">
+                        • « On en déduit que l'allèle responsable de la maladie est récessif car les parents sains ont donné naissance à des enfants malades... »<br>
+                        • « On déduit de ces faits que le gène de la couleur des yeux est porté par le chromosome sexuel X... »<br>
+                        • « Ces résultats nous permettent de conclure que le CO2 est un inhibiteur sélectif du cycle de Calvin... »
+                    </div>
+                </div>
+
+                <div id="ded-example" class="tab-content">
+                    <div class="student-copy border-l-4 border-rose-500 mb-3">
+                        <span class="badge-tag badge-wrong">Copie rejetée (0/0.5 pt)</span>
+                        <p class="text-xs text-slate-300">« On déduit que les parents ont un enfant atteint et un gène muté. » (C'est de la paraphrase, pas une déduction scientifique de la loi d'hérédité)</p>
+                    </div>
+                    <div class="student-copy border-l-4 border-emerald-500">
+                        <span class="badge-tag badge-correct">Copie d'Élite (0.5/0.5 pt)</span>
+                        <p class="text-xs text-slate-300">« Les parents sains (I1, I2) ayant un enfant malade (II2), on en déduit que l'allèle pathologique préexiste à l'état masqué chez les parents et qu'il est donc récessif. »</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Section Challenge Rédac -->
+        <div class="challenge-section">
+            <div class="text-center mb-8">
+                <span class="text-3xl">🏆</span>
+                <h2 class="challenge-title mt-2">Le Challenge Rédac' — Soyez le Correcteur !</h2>
+                <p class="text-slate-400 text-sm mt-1">Examinez ces réponses d'élèves tirées de vraies sessions du Bac et identifiez pourquoi elles ont perdu ou gagné leurs points.</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Challenge 1 -->
+                <div class="student-copy">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <span class="badge-tag bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">CONSIGNE DU BAC</span>
+                            <h4 class="text-white font-bold text-base mt-1">« Comparez la production d'ATP par la fermentation et la respiration. » (1.0 pt)</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-700/40 my-3">
+                        <p class="text-xs text-slate-400 italic block mb-1">Copie d'élève à évaluer :</p>
+                        <p class="text-sm text-amber-100 font-medium">« La fermentation produit de l'acide lactique avec 2 ATP. Alors que la respiration se passe dans la mitochondrie et produit 38 ATP. »</p>
+                    </div>
+
+                    <button class="btn-reveal" onclick="toggleCorrection(this)">🔍 Consulter l'évaluation du correcteur</button>
+                    
+                    <div class="copy-comment">
+                        <p class="text-sm text-red-400 font-bold mb-1">❌ NOTE DU CORRECTEUR : 0.25 / 1.0 pt</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            <strong>Pourquoi cette pénalité ?</strong> L'élève a commis deux erreurs fatales :<br>
+                            1. **Hors-sujet partiel** : Parler de la mitochondrie ou de l'acide lactique n'est pas demandé (la consigne cible exclusivement la *production d'ATP*).<br>
+                            2. **Comparaison incomplète** : L'élève n'utilise pas de terme comparatif quantitatif pour lier les deux valeurs (ex: *« beaucoup plus importante »* ou *« 19 fois supérieure »*).<br><br>
+                            <span class="text-emerald-400"><strong>Rédaction modèle attendue :</strong></span><br>
+                            « La respiration cellulaire produit un rendement d'ATP extrêmement élevé (**38 ATP** par molécule de glucose oxydée), alors que la fermentation produit un rendement très faible de seulement **2 ATP** par molécule de glucose, soit un rapport de 19 pour 1. »
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Challenge 2 -->
+                <div class="student-copy">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <span class="badge-tag bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">CONSIGNE DU BAC</span>
+                            <h4 class="text-white font-bold text-base mt-1">« Déduisez de ces données la localisation de la synthèse de la protéine X. » (0.5 pt)</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-700/40 my-3">
+                        <p class="text-xs text-slate-400 italic block mb-1">Copie d'élève à évaluer :</p>
+                        <p class="text-sm text-amber-100 font-medium">« On observe que la radioactivité apparaît d'abord dans le noyau puis migre dans le cytoplasme. »</p>
+                    </div>
+
+                    <button class="btn-reveal" onclick="toggleCorrection(this)">🔍 Consulter l'évaluation du correcteur</button>
+                    
+                    <div class="copy-comment">
+                        <p class="text-sm text-red-400 font-bold mb-1">❌ NOTE DU CORRECTEUR : 0 / 0.5 pt</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            <strong>Pourquoi cette pénalité ?</strong> L'élève a rédigé une *description* d'observation (on voit de la radioactivité), mais il n'a fait aucune *déduction* (quel organite synthétise la protéine). C'est un zéro pointé immédiat pour non-respect du verbe d'action.<br><br>
+                            <span class="text-emerald-400"><strong>Rédaction modèle attendue :</strong></span><br>
+                            « La radioactivité (témoin des protéines synthétisées) apparaissant initialement au niveau du réticulum endoplasmique granuleux (REG), **on en déduit que le REG est le lieu de synthèse de la protéine X.** »
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-center py-12 text-slate-500 border-t border-slate-800/50 mt-16 max-w-6xl mx-auto">
+        <p class="font-medium">Basé sur les Critères Officiels de Correction des Examens Nationaux SVT</p>
+        <p class="text-sm mt-1">Plateforme de Révision Ultime du Prof Otmane-SVT — Conçue pour l'excellence.</p>
+    </footer>
+
+    <script>
+        function switchTab(btn, contentId) {
+            // Find parent verbe-card
+            const card = btn.closest('.verbe-card');
+            
+            // Remove active class from all buttons and contents in this card
+            card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            card.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked button and target content
+            btn.classList.add('active');
+            card.querySelector('#' + contentId).classList.add('active');
+        }
+
+        function toggleCorrection(btn) {
+            const commentBox = btn.nextElementSibling;
+            if (commentBox.style.display === 'block') {
+                commentBox.style.display = 'none';
+                btn.textContent = '🔍 Consulter l\'évaluation du correcteur';
+            } else {
+                commentBox.style.display = 'block';
+                btn.textContent = '🙈 Masquer l\'évaluation';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎓 Guide de Réussite — Viser 18+/20 au Bac SVT PC</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --surface2: #263348;
+    --border: #334155;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --green: #10b981;
+    --red: #ef4444;
+    --orange: #f59e0b;
+    --blue: #38bdf8;
+    --purple: #a78bfa;
+    --indigo: #6366f1;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0c4a6e 100%);
+    padding: 4rem 1.5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,.25) 0%, transparent 65%);
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(99,102,241,.2);
+    border: 1px solid rgba(99,102,241,.4);
+    color: #a5b4fc;
+    padding: .35rem 1.1rem;
+    border-radius: 99px;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #38bdf8, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 640px;
+    margin: 0 auto 2rem;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    color: var(--text);
+    padding: .6rem 1.4rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: .9rem;
+    font-weight: 600;
+    transition: all .2s;
+  }
+  .back-btn:hover { background: rgba(255,255,255,.14); transform: translateY(-1px); }
+
+  /* LAYOUT */
+  .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  /* VERDICT CARD */
+  .verdict {
+    background: linear-gradient(135deg, #1e1b4b, #0c4a6e);
+    border: 1px solid rgba(99,102,241,.5);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+  .verdict-title { font-family:'Outfit',sans-serif; font-size:1.4rem; font-weight:800; color:#a5b4fc; margin-bottom:1rem; }
+  .verdict-table { width:100%; border-collapse:collapse; text-align:left; }
+  .verdict-table th { color:var(--blue); font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; padding:.6rem .8rem; border-bottom:1px solid var(--border); }
+  .verdict-table td { padding:.75rem .8rem; border-bottom:1px solid rgba(51,65,85,.5); font-size:.95rem; }
+  .verdict-table tr:last-child td { border-bottom:none; }
+  .score { font-weight:800; font-size:1.1rem; }
+  .score-low { color:#fb923c; }
+  .score-mid { color:#facc15; }
+  .score-high { color:var(--green); }
+
+  /* SECTION TITLES */
+  h2 {
+    font-family:'Outfit',sans-serif;
+    font-size:1.35rem;
+    font-weight:800;
+    margin-bottom:1.2rem;
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+  }
+  h2 span.icon { font-size:1.5rem; }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* COVERAGE TABLE */
+  .cover-table { width:100%; border-collapse:collapse; font-size:.9rem; }
+  .cover-table th { background:var(--surface2); padding:.6rem 1rem; text-align:left; color:var(--blue); font-size:.8rem; }
+  .cover-table td { padding:.75rem 1rem; border-bottom:1px solid rgba(51,65,85,.4); }
+  .cover-table tr:last-child td { border-bottom:none; }
+  .tag { display:inline-block; padding:.15rem .7rem; border-radius:99px; font-size:.75rem; font-weight:700; }
+  .tag-green { background:rgba(16,185,129,.15); color:#34d399; border:1px solid rgba(16,185,129,.3); }
+  .tag-orange { background:rgba(245,158,11,.15); color:#fbbf24; border:1px solid rgba(245,158,11,.3); }
+  .tag-red { background:rgba(239,68,68,.15); color:#f87171; border:1px solid rgba(239,68,68,.3); }
+
+  /* PROGRESS BARS */
+  .pb-row { display:flex; align-items:center; gap:.8rem; margin:.5rem 0; font-size:.9rem; }
+  .pb-label { min-width:220px; color:var(--text); }
+  .pb-wrap { flex:1; background:rgba(255,255,255,.07); border-radius:99px; height:12px; }
+  .pb-fill { height:12px; border-radius:99px; }
+  .pb-val { min-width:3rem; text-align:right; font-weight:700; color:var(--blue); font-size:.85rem; }
+
+  /* TIPS */
+  .tip-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  @media(max-width:640px){ .tip-grid { grid-template-columns:1fr; } }
+
+  .tip-card {
+    border-radius:14px;
+    padding:1.2rem;
+  }
+  .tip-card.green { background:rgba(16,185,129,.08); border:1px solid rgba(16,185,129,.25); }
+  .tip-card.red { background:rgba(239,68,68,.08); border:1px solid rgba(239,68,68,.25); }
+  .tip-card.orange { background:rgba(245,158,11,.08); border:1px solid rgba(245,158,11,.25); }
+  .tip-card.purple { background:rgba(167,139,250,.08); border:1px solid rgba(167,139,250,.25); }
+  .tip-card h3 { font-size:.95rem; font-weight:700; margin-bottom:.6rem; }
+  .tip-card.green h3 { color:#34d399; }
+  .tip-card.red h3 { color:#f87171; }
+  .tip-card.orange h3 { color:#fbbf24; }
+  .tip-card.purple h3 { color:#c4b5fd; }
+  .tip-card ul { padding-left:1.2rem; color:var(--muted); font-size:.88rem; }
+  .tip-card ul li { margin:.35rem 0; }
+
+  /* ROADMAP */
+  .road { display:flex; flex-direction:column; gap:0; }
+  .road-item { display:flex; gap:1.2rem; position:relative; }
+  .road-item:not(:last-child)::before {
+    content:'';
+    position:absolute;
+    left:19px;
+    top:40px;
+    bottom:0;
+    width:2px;
+    background:var(--border);
+  }
+  .road-num {
+    width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:.9rem; flex-shrink:0;
+    border: 2px solid;
+    margin-top:.2rem;
+  }
+  .road-num.r1 { border-color:#34d399; color:#34d399; background:rgba(16,185,129,.1); }
+  .road-num.r2 { border-color:#38bdf8; color:#38bdf8; background:rgba(56,189,248,.1); }
+  .road-num.r3 { border-color:#a78bfa; color:#a78bfa; background:rgba(167,139,250,.1); }
+  .road-num.r4 { border-color:#fbbf24; color:#fbbf24; background:rgba(245,158,11,.1); }
+  .road-num.r5 { border-color:#f472b6; color:#f472b6; background:rgba(244,114,182,.1); }
+  .road-body { padding-bottom:1.8rem; flex:1; }
+  .road-body h3 { font-weight:700; font-size:1rem; margin-bottom:.3rem; }
+  .road-body p { color:var(--muted); font-size:.88rem; }
+
+  /* ALERT */
+  .alert {
+    display:flex; gap:.8rem; align-items:flex-start;
+    background:rgba(245,158,11,.08);
+    border:1px solid rgba(245,158,11,.3);
+    border-radius:14px;
+    padding:1.2rem;
+    margin-bottom:2rem;
+  }
+  .alert-icon { font-size:1.5rem; flex-shrink:0; }
+  .alert p { font-size:.9rem; color:#fcd34d; }
+  .alert p b { color:#fbbf24; }
+
+  /* CTA */
+  .cta-row { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:2rem; }
+  .cta-btn {
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.75rem 1.5rem; border-radius:12px;
+    font-weight:700; font-size:.95rem; text-decoration:none;
+    transition:all .2s;
+    border:none; cursor:pointer;
+  }
+  .cta-btn:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.4); }
+  .cta-primary { background:linear-gradient(135deg,#6366f1,#a78bfa); color:#fff; }
+  .cta-green { background:#10b981; color:#fff; }
+  .cta-outline { background:transparent; border:1px solid var(--border); color:var(--text); }
+
+  /* Divider */
+  .divider { border:none; border-top:1px solid var(--border); margin:2rem 0; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div style="position:relative;z-index:1">
+    <div class="hero-tag">📊 Évaluation Honnête — Prof Otmane SVT</div>
+    <h1>Peut-on viser 18+/20<br>avec cette plateforme ?</h1>
+    <p>Une analyse franche de ce que le site couvre, ce qu'il ne couvre pas, et le plan d'action concret pour décrocher une excellente note au Bac.</p>
+    <a href="index.html" class="back-btn">← Retour à l'accueil</a>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- ALERT -->
+  <div class="alert">
+    <div class="alert-icon">⚠️</div>
+    <p><b>Message important :</b> Ce guide est une évaluation honnête et objective. Il ne s'agit pas de décourager, mais de vous montrer exactement où concentrer vos efforts pour maximiser votre note. La plateforme est un excellent outil — mais un outil seul ne suffit pas.</p>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <div class="verdict-title">🎯 Verdict par niveau de préparation</div>
+    <table class="verdict-table">
+      <tr>
+        <th>Niveau de préparation</th>
+        <th>Note estimée</th>
+        <th>Ce qu'il manque</th>
+      </tr>
+      <tr>
+        <td>Plateforme seule (QCM + Flash Cards)</td>
+        <td><span class="score score-low">13 — 15 / 20</span></td>
+        <td>Exploitation de documents, rédaction, schémas</td>
+      </tr>
+      <tr>
+        <td>Plateforme + Entraînement aux annales</td>
+        <td><span class="score score-mid">16 — 17 / 20</span></td>
+        <td>Pratique de la rédaction écrite</td>
+      </tr>
+      <tr>
+        <td>Plateforme + Annales + Pratique rédaction</td>
+        <td><span class="score score-high">18 — 19 / 20</span></td>
+        <td>Rien de majeur — affaire de régularité</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- CE QUE LA PLATEFORME COUVRE -->
+  <h2><span class="icon">✅</span> Ce que la plateforme couvre TRÈS BIEN</h2>
+  <div class="card">
+    <div class="pb-row">
+      <span class="pb-label">Définitions et notions clés</span>
+      <div class="pb-wrap"><div class="pb-fill" style="width:95%;background:linear-gradient(90deg,#10b981,#34d399)"></div></div>
+      <span class="pb-val">95%</span>
+    </div>
+    <div class="pb-row">
+      <span class="pb-label">QCU à choix unique (Partie 1)</span>
+      <div class="pb-wrap"><div class="pb-fill" style="width:90%;background:linear-gradient(90deg,#10b981,#34d399)"></div></div>
+      <span class="pb-val">90%</span>
+    </div>
+    <div class="pb-row">
+      <span class="pb-label">Mémorisation des concepts (Flash Cards)</span>
+      <div class="pb-wrap"><div class="pb-fill" style="width:80%;background:linear-gradient(90deg,#38bdf8,#6366f1)"></div></div>
+      <span class="pb-val">80%</span>
+    </div>
+    <div class="pb-row">
+      <span class="pb-label">Reconnaître erreurs fréquentes</span>
+      <div class="pb-wrap"><div class="pb-fill" style="width:75%;background:linear-gradient(90deg,#38bdf8,#6366f1)"></div></div>
+      <span class="pb-val">75%</span>
+    </div>
+    <div class="pb-row">
+      <span class="pb-label">Identifier les thèmes clés par unité</span>
+      <div class="pb-wrap"><div class="pb-fill" style="width:85%;background:linear-gradient(90deg,#a78bfa,#f472b6)"></div></div>
+      <span class="pb-val">85%</span>
+    </div>
+    <p style="margin-top:1rem;color:var(--muted);font-size:.85rem">→ Ces compétences couvrent la <b style="color:#34d399">Partie 1 entière (5 pts)</b> et une partie significative des questions de restitution dans les sujets.</p>
+  </div>
+
+  <!-- CE QUI MANQUE -->
+  <h2><span class="icon">❌</span> Ce que la plateforme ne couvre PAS (les 8 pts qui font la différence)</h2>
+  <div class="card">
+    <table class="cover-table">
+      <tr>
+        <th>Compétence testée à l'examen</th>
+        <th>Points en jeu</th>
+        <th>Couverture actuelle</th>
+      </tr>
+      <tr>
+        <td><b>Exploitation de documents</b> — décrire des graphes, comparer des tableaux, interpréter des résultats expérimentaux</td>
+        <td style="color:#f87171;font-weight:700">~8 pts</td>
+        <td><span class="tag tag-red">❌ Non entraîné</span></td>
+      </tr>
+      <tr>
+        <td><b>Rédiger des réponses développées</b> — "Expliquez…", "Justifiez…", "Déduisez…" avec une argumentation structurée</td>
+        <td style="color:#f87171;font-weight:700">~5 pts</td>
+        <td><span class="tag tag-red">❌ Non entraîné</span></td>
+      </tr>
+      <tr>
+        <td><b>Réaliser des schémas annotés</b> — échiquier de croisement, phases de méiose, chaîne respiratoire</td>
+        <td style="color:#fbbf24;font-weight:700">~3 pts</td>
+        <td><span class="tag tag-red">❌ Non entraîné</span></td>
+      </tr>
+      <tr>
+        <td><b>Calculs</b> — distance en cMg, % de recombinés, concentrations</td>
+        <td style="color:#fbbf24;font-weight:700">~2 pts</td>
+        <td><span class="tag tag-orange">⚠️ Partiel</span></td>
+      </tr>
+      <tr>
+        <td><b>Conditions réelles d'examen</b> — 3h chrono, sans aide, gestion du stress</td>
+        <td style="color:#94a3b8;font-weight:700">Indirect</td>
+        <td><span class="tag tag-red">❌ Non simulé</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- CONSEILS PRATIQUES -->
+  <h2><span class="icon">💡</span> Conseils pratiques pour combler les lacunes</h2>
+  <div class="tip-grid">
+    <div class="tip-card green">
+      <h3>✅ Maîtrisez la Partie 1 (5 pts gratuits)</h3>
+      <ul>
+        <li>Apprenez par cœur les définitions demandées chaque année</li>
+        <li>Entraînez-vous sur tous les QCU de la plateforme</li>
+        <li>15 min de la plateforme par jour suffisent pour cette partie</li>
+      </ul>
+    </div>
+    <div class="tip-card red">
+      <h3>❌ Entraînez-vous avec les vraies annales</h3>
+      <ul>
+        <li>Refaites les sujets des annales 2016-2025 en conditions réelles</li>
+        <li>Consultez la page "Analyse des examens" pour savoir quels sujets prioriser</li>
+        <li>Notez les thèmes qui reviennent chaque année (chaîne respiratoire, croisements…)</li>
+      </ul>
+    </div>
+    <div class="tip-card orange">
+      <h3>⚠️ Apprenez à rédiger comme l'examen</h3>
+      <ul>
+        <li><b>"Comparez" :</b> toujours mentionner les deux éléments + un verbe comparatif</li>
+        <li><b>"Expliquez" :</b> enchaînez les causes avec "→" ou "donc"</li>
+        <li><b>"Déduisez" :</b> partez des données → conclusion logique</li>
+        <li>Relisez les corrigés des annales pour copier le style de rédaction</li>
+      </ul>
+    </div>
+    <div class="tip-card purple">
+      <h3>🔬 Maîtrisez les 3 schémas incontournables</h3>
+      <ul>
+        <li><b>Chaîne respiratoire :</b> T1→T6, gradient H⁺, sphère pédonculée, ATP</li>
+        <li><b>Échiquier de croisement :</b> gamètes × gamètes → phénotypes</li>
+        <li><b>Phases de la méiose :</b> Prophase I, Métaphase I, Anaphase I, II</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PLAN D'ACTION -->
+  <h2><span class="icon">🗓️</span> Plan d'action — Semaine type pour viser 18+/20</h2>
+  <div class="card">
+    <div class="road">
+      <div class="road-item">
+        <div class="road-num r1">Lu</div>
+        <div class="road-body">
+          <h3 style="color:#34d399">Lundi — Révision Unité (30 min plateforme)</h3>
+          <p>Onglet Cours → Bento Grid. Puis 20 questions QCM en mode Libre. Vérifiez votre Bilan à la fin.</p>
+        </div>
+      </div>
+      <div class="road-item">
+        <div class="road-num r2">Ma</div>
+        <div class="road-body">
+          <h3 style="color:#38bdf8">Mardi — Flash Cards (15 min) + Annale (45 min)</h3>
+          <p>Flash Cards de l'unité étudiée. Puis refaire un sujet complet d'une annale en écrivant les réponses à la main.</p>
+        </div>
+      </div>
+      <div class="road-item">
+        <div class="road-num r3">Me</div>
+        <div class="road-body">
+          <h3 style="color:#a78bfa">Mercredi — Schémas (20 min) + QCM Pièges (20 min)</h3>
+          <p>Redessinez de mémoire un schéma clé (ex : chaîne respiratoire). Puis attaquez les questions pièges sur la plateforme.</p>
+        </div>
+      </div>
+      <div class="road-item">
+        <div class="road-num r4">Je</div>
+        <div class="road-body">
+          <h3 style="color:#fbbf24">Jeudi — Rédaction guidée (40 min)</h3>
+          <p>Prenez une question ouverte d'une annale ("Expliquez…") et rédigez une réponse complète. Comparez avec le corrigé officiel.</p>
+        </div>
+      </div>
+      <div class="road-item">
+        <div class="road-num r5">Ve</div>
+        <div class="road-body">
+          <h3 style="color:#f472b6">Vendredi — Examen Blanc (3h)</h3>
+          <p>Simulez une épreuve complète : les 4 sujets en 3h chrono, sans aide, dans le silence. C'est la meilleure préparation psychologique.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PIÈGES -->
+  <h2><span class="icon">⚠️</span> Les 5 pièges qui font perdre 3-4 pts inutilement</h2>
+  <div class="card">
+    <table class="cover-table">
+      <tr><th>#</th><th>Erreur classique</th><th>Comment l'éviter</th></tr>
+      <tr>
+        <td style="color:#f87171;font-weight:800">01</td>
+        <td>Confondre le <b>brin transcrit</b> et le <b>brin non transcrit</b></td>
+        <td>Le brin non transcrit a la même séquence que l'ARNm (T remplacé par U)</td>
+      </tr>
+      <tr>
+        <td style="color:#f87171;font-weight:800">02</td>
+        <td>Dire que l'O₂ intervient partout dans la chaîne respiratoire</td>
+        <td>L'O₂ n'intervient qu'au <b>complexe IV (T6)</b> — c'est l'accepteur final d'électrons</td>
+      </tr>
+      <tr>
+        <td style="color:#f87171;font-weight:800">03</td>
+        <td>Confondre granite d'anatexie et granite intrusif</td>
+        <td>Anatexie = limites floues avec les roches voisines. Intrusif = limites nettes</td>
+      </tr>
+      <tr>
+        <td style="color:#f87171;font-weight:800">04</td>
+        <td>Oublier le croisement réciproque pour tester la liaison au sexe</td>
+        <td>Si résultats différents selon le sens → gène porté par le chromosome X</td>
+      </tr>
+      <tr>
+        <td style="color:#f87171;font-weight:800">05</td>
+        <td>Ne pas justifier les réponses (répondre seulement "oui" ou "non")</td>
+        <td>Le correcteur note la <b>justification</b>, pas la réponse seule. Toujours argumenter.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- CTA -->
+  <div style="text-align:center;margin-top:2.5rem">
+    <p style="color:var(--muted);font-size:.95rem;margin-bottom:1.5rem">
+      La plateforme est votre meilleure alliée pour les fondamentaux. <br>
+      <b style="color:var(--text)">Combinez-la avec les annales et vous serez prêt(e) pour le grand jour.</b>
+    </p>
+    <div class="cta-row">
+      <a href="analyse_examens.html" class="cta-btn cta-primary">🎯 Analyse des Examens Nationaux</a>
+      <a href="unite1.html" class="cta-btn cta-green">🚀 Commencer à réviser</a>
+      <a href="index.html" class="cta-btn cta-outline">🏠 Accueil</a>
+    </div>
+  </div>
+
+</div><!-- /container -->
+</body>
+</html>

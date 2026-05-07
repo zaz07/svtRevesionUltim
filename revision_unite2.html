@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVT 2BAC : Pack de Révision Ultime - Unité 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        h1, h2, h3, h4, .font-outfit { font-family: 'Outfit', sans-serif; }
+        
+        .bento-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .kw {
+            color: #3b82f6;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .kw-purple {
+            color: #8b5cf6;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: rgba(139, 92, 246, 0.1);
+            padding: 0 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .kw-pink {
+            color: #ec4899;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: rgba(236, 72, 153, 0.1);
+            padding: 0 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .section-header {
+            position: relative;
+            padding-left: 1rem;
+        }
+        .section-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            border-radius: 4px;
+            background: currentColor;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <nav class="max-w-7xl mx-auto flex items-center gap-4 mb-4 pt-4">
+        <a href="index.html" class="inline-flex items-center text-slate-500 hover:text-purple-600 font-semibold text-sm transition-colors">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4"></path></svg>
+            Accueil
+        </a>
+        <span class="text-slate-300">|</span>
+        <span class="text-slate-400 text-sm">Unité 2 — Fiches de Révision</span>
+    </nav>
+
+    <header class="text-center mb-16 pt-4">
+        <div class="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-800 font-bold text-sm tracking-widest mb-4">BAC SVT MAROC</div>
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 gradient-text">Pack de Révision Ultime</h1>
+        <p class="text-2xl text-slate-600 font-medium max-w-3xl mx-auto">Unité 2 : Information Génétique et Lois Statistiques</p>
+        
+        <div class="mt-8">
+            <a href="qcm_unite2.html" class="inline-block bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-full transition-transform hover:scale-105 shadow-lg text-lg">
+                S'entraîner avec le Méga-QCM Unité 2
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto space-y-16">
+
+        <!-- FICHE 3 : L'information génétique -->
+        <section>
+            <div class="bento-card relative">
+                <div class="absolute top-0 left-0 w-full h-2 bg-blue-500"></div>
+                <div class="p-8">
+                    <div class="flex items-center gap-4 mb-6 border-b border-slate-100 pb-4">
+                        <div class="bg-blue-100 text-blue-700 p-3 rounded-2xl">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <div>
+                            <span class="text-blue-600 font-bold tracking-widest text-sm">FICHE 3</span>
+                            <h2 class="text-3xl font-bold text-slate-800">Expression de l'Information Génétique</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- ADN & Réplication -->
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 section-header text-blue-600 mb-3">ADN et Réplication</h3>
+                                <p class="text-slate-600 text-sm mb-2">L'ADN est un double brin antiparallèle de nucléotides (A, T, C, G). La réplication (phase S) est <span class="kw">SEMI-CONSERVATIVE</span>.</p>
+                                <ul class="list-disc pl-5 text-sm text-slate-700 bg-blue-50 p-4 rounded-xl border border-blue-100 space-y-1">
+                                    <li><strong>Hélicase :</strong> Casse les liaisons hydrogènes pour séparer les brins (œil de réplication).</li>
+                                    <li><strong>ADN Polymérase :</strong> Synthétise le nouveau brin dans le sens 5' &rarr; 3' par complémentarité. (Brin précoce = continu, Brin retardé = discontinu).</li>
+                                    <li><strong>Compactage :</strong> ADN + Histones = Nucléosome &rarr; Chromatine &rarr; Chromosome.</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 section-header text-purple-600 mb-3">La relation Gène-Protéine</h3>
+                                <div class="bg-purple-50 p-4 rounded-xl border border-purple-100 text-sm">
+                                    <div class="flex items-center justify-center gap-2 font-bold text-purple-800 mb-2">
+                                        ADN (Gène) <span class="text-slate-400">&rarr;</span> ARNm <span class="text-slate-400">&rarr;</span> Protéine <span class="text-slate-400">&rarr;</span> Caractère
+                                    </div>
+                                    <p class="text-slate-700 mb-2">Une <span class="kw-purple">MUTATION</span> (substitution, délétion, addition) d'un nucléotide modifie le gène, ce qui peut modifier l'acide aminé, donc la protéine, et in fine le caractère (phénotype).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transcription et Traduction -->
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 section-header text-pink-500 mb-3">Transcription (Noyau)</h3>
+                                <p class="text-sm text-slate-700 mb-2">Copie du gène (ADN) en <strong>ARNm</strong> (monocaténaire, Uracile à la place de Thymine, ribose).</p>
+                                <ul class="text-sm text-slate-700 list-disc pl-5 mb-4">
+                                    <li>Réalisée par l'<span class="font-bold">ARN polymérase</span>.</li>
+                                    <li>Synthèse dans le sens 5' &rarr; 3' par complémentarité avec le brin transcrit.</li>
+                                </ul>
+
+                                <h3 class="text-xl font-bold text-slate-800 section-header text-pink-500 mb-3">Traduction (Cytoplasme)</h3>
+                                <p class="text-sm text-slate-700 mb-2">Conversion du message de l'ARNm en protéine par les <span class="font-bold">Ribosomes</span>.</p>
+                                <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                                    <li><strong>Code Génétique :</strong> Universel, Dégénéré (redondant, plusieurs codons pour un Acide Aminé) et non-chevauchant.</li>
+                                    <li><strong>Initiation :</strong> Petite sous-unité s'attache sur l'ARNm au codon <span class="kw-pink">AUG</span>. Fixation de l'ARNt portant la Méthionine.</li>
+                                    <li><strong>Élongation :</strong> Le ribosome lit codon par codon, l'ARNt apporte l'acide aminé, formation de liaisons peptidiques.</li>
+                                    <li><strong>Terminaison :</strong> Rencontre d'un Codon Stop (UAA, UAG, UGA). Libération de la protéine.</li>
+                                    <li><strong>Polysome :</strong> Ensemble de ribosomes traduisant simultanément le même ARNm (augmente la vitesse de production de la protéine).</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 section-header text-indigo-500 mb-3">Notions complémentaires</h3>
+                                <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-sm space-y-2">
+                                    <div>
+                                        <strong class="text-indigo-800">Locus :</strong>
+                                        <span class="text-slate-700">Position précise d'un gène sur le chromosome qui le porte. Chez les diploïdes, chaque gène est représenté par deux allèles sur les deux chromosomes homologues.</span>
+                                    </div>
+                                    <div>
+                                        <strong class="text-indigo-800">Exons / Introns (Eucaryotes) :</strong>
+                                        <span class="text-slate-700">Les gènes eucaryotes contiennent des régions codantes (<span class="kw">EXONS</span>) et non-codantes (<span class="kw">INTRONS</span>). L'ARNm subit une <strong>maturation</strong> (épissage) pour enlever les introns avant de quitter le noyau. L'ARNm mature est donc plus court que le gène.</span>
+                                    </div>
+                                    <div>
+                                        <strong class="text-indigo-800">Eucaryote vs Procaryote :</strong>
+                                        <span class="text-slate-700">Chez les <strong>procaryotes</strong> (bactéries) : pas de vrai noyau, gènes 100% codants (pas d'introns), transcription et traduction dans le cytoplasme, ARNm directement traduit. Chez les <strong>eucaryotes</strong> : noyau à double membrane, gènes discontinus (exons + introns), transcription dans le noyau, maturation puis export de l'ARNm, traduction dans le cytoplasme.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FICHE 4 : Transmission par reproduction sexuée -->
+        <section>
+            <div class="bento-card relative">
+                <div class="absolute top-0 left-0 w-full h-2 bg-purple-500"></div>
+                <div class="p-8">
+                    <div class="flex items-center gap-4 mb-6 border-b border-slate-100 pb-4">
+                        <div class="bg-purple-100 text-purple-700 p-3 rounded-2xl">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        </div>
+                        <div>
+                            <span class="text-purple-600 font-bold tracking-widest text-sm">FICHE 4</span>
+                            <h2 class="text-3xl font-bold text-slate-800">Méiose et Fécondation</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- La méiose -->
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-bold text-slate-800 border-b-2 border-purple-200 pb-1">La Méiose (2n &rarr; n)</h3>
+                            <p class="text-sm text-slate-700">Produit 4 gamètes haploïdes à partir d'une cellule mère diploïde. Comprend 2 divisions :</p>
+                            
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <strong class="text-purple-800 block mb-2">1. Division Réductionnelle</strong>
+                                <ul class="text-xs text-slate-700 list-disc pl-4 space-y-1">
+                                    <li><span class="font-bold">Prophase I :</span> Appariement des chromosomes homologues en bivalents (tétrades). Lieu du brassage intrachromosomique.</li>
+                                    <li><span class="font-bold">Métaphase I :</span> Alignement des bivalents de part et d'autre de la plaque équatoriale.</li>
+                                    <li><span class="font-bold">Anaphase I :</span> Séparation des chromosomes homologues <strong>sans</strong> clivage du centromère. Migration aléatoire (<span class="kw-purple">BRASSAGE INTERCHROMOSOMIQUE</span>).</li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <strong class="text-purple-800 block mb-2">2. Division Équationnelle</strong>
+                                <p class="text-xs text-slate-700">Séparation des chromatides sœurs à l'Anaphase II avec clivage des centromères (ressemble à une mitose normale).</p>
+                            </div>
+                        </div>
+
+                        <!-- Brassages et diversité -->
+                        <div class="space-y-4 text-sm">
+                            <h3 class="text-xl font-bold text-slate-800 border-b-2 border-indigo-200 pb-1">Brassages Génétiques</h3>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <strong class="text-indigo-700 block mb-1">Brassage Intrachromosomique</strong>
+                                    <p class="text-slate-600 bg-indigo-50 p-2 rounded">A lieu en Prophase I (Crossing-over). Échange de fragments de chromatides entre chromosomes homologues. Touche les gènes <span class="font-bold">LIÉS</span> (donne des gamètes recombinés minoritaires).</p>
+                                </div>
+                                
+                                <div>
+                                    <strong class="text-blue-700 block mb-1">Brassage Interchromosomique</strong>
+                                    <p class="text-slate-600 bg-blue-50 p-2 rounded">A lieu en Anaphase I. Brassage dû à la séparation aléatoire des homologues. Touche les gènes <span class="font-bold">INDÉPENDANTS</span> (donne 4 types de gamètes équiprobables à 25%).</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-200 mt-4">
+                                <strong class="text-green-800 block mb-1">Fécondation et Caryotype</strong>
+                                <p class="text-xs text-slate-700">La fécondation rencontre les gamètes (n) aléatoirement, multipliant encore la diversité, et rétablit la diploïdie (2n) du zygote.<br>Formule (Humain) : 2n = 44A + XX/XY = 46. Gamète : n = 22A + X/Y = 23.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FICHE 5 : Lois statistiques -->
+        <section>
+            <div class="bento-card relative">
+                <div class="absolute top-0 left-0 w-full h-2 bg-pink-500"></div>
+                <div class="p-8">
+                    <div class="flex items-center gap-4 mb-6 border-b border-slate-100 pb-4">
+                        <div class="bg-pink-100 text-pink-700 p-3 rounded-2xl">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <span class="text-pink-600 font-bold tracking-widest text-sm">FICHE 5</span>
+                            <h2 class="text-3xl font-bold text-slate-800">Lois Statistiques (Mendel)</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        <!-- Monohybridisme -->
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-pink-800 text-lg border-b border-pink-200 pb-1">Monohybridisme (1 caractère)</h4>
+                            <p class="text-sm text-slate-600 mb-2">Les lois : 1 (Uniformité de F1 = lignée pure), 2 (Pureté des gamètes).</p>
+                            <ul class="space-y-2 text-sm text-slate-700">
+                                <li class="bg-pink-50 p-2 rounded shadow-sm border border-pink-100">
+                                    <strong class="text-pink-700">Dominance absolue :</strong> F1=100% [Dom]. F2 = <span class="font-bold">75% (3/4)</span> [Dom] et <span class="font-bold">25% (1/4)</span> [Rec].
+                                </li>
+                                <li class="bg-pink-50 p-2 rounded shadow-sm border border-pink-100">
+                                    <strong class="text-pink-700">Codominance :</strong> F1=100% phénotype intermédiaire. F2 = <span class="font-bold">25%</span> [P1], <span class="font-bold">50%</span> [Int], <span class="font-bold">25%</span> [P2].
+                                </li>
+                                <li class="bg-pink-50 p-2 rounded shadow-sm border border-pink-100">
+                                    <strong class="text-pink-700">Gène Létal :</strong> F2 présente les proportions atypiques <span class="font-bold">2/3 et 1/3</span> car l'homozygote dominant meurt.
+                                </li>
+                                <li class="bg-pink-50 p-2 rounded shadow-sm border border-pink-100">
+                                    <strong class="text-pink-700">Hérédité liée au sexe :</strong> Exception à la 1ère loi (F1 hétérogène bien que parents purs). Les croisements réciproques donnent des résultats différents. Caractère porté sur X (en général).
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Dihybridisme -->
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-pink-800 text-lg border-b border-pink-200 pb-1">Dihybridisme (2 caractères)</h4>
+                            <ul class="space-y-3 text-sm text-slate-700">
+                                <li class="bg-white border-l-4 border-emerald-500 p-3 shadow-sm">
+                                    <strong class="text-emerald-700 block">Gènes Indépendants (3ème loi vérifiée)</strong>
+                                    - F2 (F1xF1) donne 4 phénotypes : <span class="font-bold">9/16, 3/16, 3/16, 1/16</span>.<br>
+                                    - Le <strong>Croisement Test</strong> (Test Cross) donne 4 phénotypes équiprobables : <span class="font-bold">25%, 25%, 25%, 25%</span> (grâce au brassage inter).
+                                </li>
+                                <li class="bg-white border-l-4 border-red-500 p-3 shadow-sm">
+                                    <strong class="text-red-700 block">Gènes Liés (sur le même chromosome)</strong>
+                                    - <strong>Liaison absolue</strong> (pas de C.O.) : Le test cross donne 2 phénotypes parentaux à <span class="font-bold">50%, 50%</span>.<br>
+                                    - <strong>Liaison partielle</strong> (avec C.O.) : Le test cross donne 4 phénotypes mais avec des proportions inégales : 2 Phénotypes parentaux <strong>majoritaires</strong> (>50%) et 2 recombinés <strong>minoritaires</strong> (<50%).
+                                </li>
+                                <li class="bg-slate-100 p-2 rounded text-xs text-center">
+                                    <strong class="text-slate-800">Carte Factorielle :</strong> Distance entre gènes = % de recombinés (en cMg).
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 text-center text-slate-500 py-10 border-t border-slate-200 text-sm">
+        <p class="mb-2">Réalisé de manière exhaustive pour la préparation au Baccalauréat National (SVT) - Maroc</p>
+        <p class="opacity-75">Toutes les informations des Fiches 3, 4 et 5 de l'Unité 2 ont été intégrées.</p>
+    </footer>
+</body>
+</html>

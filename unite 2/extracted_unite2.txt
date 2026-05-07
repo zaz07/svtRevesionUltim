@@ -1,0 +1,1302 @@
+Notion de l’information génétique
+et mécanismes de son expression
+
+1
+
+Notion de l’information génétique
+
+La réplication d’ADN se fait selon le modèle semi-conservatif
+
+08 Mécanisme de la réplication d’ADN
+
+Œil de réplication
+Brin initial
+
+S
+
+Brin en
+formation
+
+7
+
+G2
+
+Hélicase:
+
+Enzyme
+
+qui
+
+casse
+
+les
+
+1 liaisons hydrogènes et provoque la
+dissociation des deux brins d’ADN;
+6
+
+G1
+
+M(M)
+M(T)
+
+2 Protéines SSB: fixent l’ADN monocaténaire;
+
+M(P)
+
+ADN polymérase: Enzyme qui synthétise le
+nouveau brin complémentaire à chaque
+3 brin parent, en associant en face de chaque
+nucléotide un nucléotide complémentaire
+dans le sens 5’→ 3’
+Brin précoce (synthétisé rapidement et de façon continue) car l’ADN poly a
+4 le même sens que l’hélicase;
+Brin retardé (synthétisé lentement et de façon discontinue) car l’ADN poly
+5 suit le sens inverse de l’hélicase;
+
+M(A)
+5
+
+N.B: La réplication se déroule lors de la phase S où la
+quantité d’ADN passe de q à 2q et pendant l’anaphase
+se dissocie les chromatides sœurs et la quantité s’ADN
+passe de 2q à q
+
+09 Compactage d’AND
+Après la synthèse d’ADN, les nouvelles molécules d’ADN subissent un
+processus de compactage qui suit les étapes ci-dessous:
+1) La molécule d’ADN s’enroule autour des protéines Histones;
+2) L’ADN enroulé auteur des Histones constitue le nucléofilament
+3) Le nucléofilament s’enroule auteur de lui-même pour former une
+structure appelée Chromatine;
+4) La chromatine s’enroule auteur de lui-même pour se transformer en
+chromosome;
+➢ Un fragment d’ADN enroulé auteur des protéines histones constitue
+une unité appelée Nucléosome;
+
+Mécanismes de l’expression de l’information génétique
+
+2
+
+01 Notion de gene, Allèle, Mutation et Caractère
+ADN
+
+Déf: Séquence d’ADN qui code pour un caractère: gène → caractère
+
+Ensemble de:
+
+Gènes
+
+Code pour
+
+Allèle
+
+Caractère héréditaire
+Déf: version d’un gène.
+
+Déf: modification de l’ADN (gène)
+pouvant changer un caractère
+
+Déf: Trait physique ou
+physiologique observable, qui se
+transmet de génération à l’autre.
+Substitution: changement d’un nucléotide par un autre
+Délétion: perte d’un ou quelques nucléotides
+
+Mutation
+
+Types
+
+Addition: Ajout d’un ou quelques nucléotides
+
+✓ La molécule d’ADN est un ensemble de gènes et chaque gène code pour un caractère bien déterminé (gène → caractère).
+✓ Le caractère peut se trouver sous plusieurs formes appelées phénotypes (Ex couleur noire des yeux)
+✓ Le phénotype c’est la forme observable ou mesurable que prend un caractère
+✓ Un gène peut être représenté par un ou plusieurs allèles
+
+Prof Otmane-Svt
+
+08
+
+WhatsApp: 0763306035 /Email: ottben30@gamil.com
+
+------------------------
+Notion de l’information génétique
+et mécanismes de son expression
+Mécanismes de l’expression de l’information génétique
+
+2
+
+02 Relation gène – protéine - caractère
+ADN
+
+Transcription
+
+Caractère
+
+Protéine
+
+ARNm
+
+Rôle d’intermédiaire entre
+le noyau et le cytoplasme
+
+Traduction
+
+▪ EN Réalité, Le gène (noyau) code pour la synthèse de la protéine (dans le cytoplasme)
+et cette dernière détermine le caractère. Sachant que le gène ne sort pas du noyau!!!
+•  et : sont deux étapes d’expression de l’information génétique
+
+03 Structure de l’ARNm: intermédiaire entre le noyeu et le cytoplasme
+ADN
+
+ARNm
+
+ARNm
+
+ADN
+
+Synthèse de
+protéines
+
+Noyau
+cytoplasme
+
+Caractère
+
+Caractère
+
+Protéine
+
+Tableau comparatif entre l’ADN et l’ARNm
+
+La molécule d’ARNm est un simple brin
+(monocaténaire), constituée de nucléotides,
+chaque nucléotide de l’ARNm se forme de:
+➢ Sucre ribose
+➢ Acide phosphorique
+➢ Bases azotées (Adénine- Uracile Guanine et Cytosine)
+
+Désoxyribose
+
+Ribose
+Guanine
+
+Adénine
+
+Guanine
+
+Adénine
+
+Uracile
+
+Cytosine
+
+Thymine
+
+Cytosine
+
+Simple brin (monocaténaire)
+
+Noyau + cytoplasme
+
+double brin (bicaténaire)
+Noyau
+
+04 Etapes de la synthèse de l’ARNm dans le noyau: Transcription
+➢ La transcription est la première étape de l’expression de l’information, elle correspond à la synthèse de l’ARNm à
+partir du brin transcrit de l’ ADN. Ce phénomène se déroule dans le noyau chez les eucaryotes grâce à une enzyme
+appelée ARN polymérase
+
+1- L’ARN poly. reconnait les séquences nucléotidiques qui codent pour le début le
+la transcription et provoque l’ouverture locale de la double hélice
+2- Polymérisation: ARN poly. Incorpore des nucléotides par complémentarité des
+bases azotées avec celles du brin transcrit dans le sens 5’→ 3’
+
+Prof Otmane-Svt
+
+09
+
+3- L’ARN poly. Reconnait des
+séquences indiquant la fin de
+transcription, se détache de la double
+hélice, l’ARNm est ainsi libérée
+
+WhatsApp: 0763306035 /Email: ottben30@gamil.com
+
+------------------------
+Notion de l’information génétique
+et mécanismes de son expression
+Mécanismes de l’expression de l’information génétique
+
+2
+
+05 La synthèse des proteins dans le cytoplasme: Traduction (ARNm → Protéine)
+➢ Notion du code génétique
+
+ARNm
+
+Traduction
+
+Protéine
+
+4 nucléotides =
+langue de 4 lettres
+
+Comment se
+fait la
+traduction?
+
+20 acides aminé =
+langue de 20 lettres
+
+Code génétique
+Système de correspondance entre les 64 codons
+dans l’ARNm ET 20 acides aminés dans la
+protéine
+Codon: triplet nucléotidique de l’ARNm qui
+code pour un acide aminé donné;
+
+1ère lettre
+
+3ème lettre
+
+Le tableau du code génétique (dictionnaire)
+Universel
+
+Codons Stop
+
+Redondance
+
+Tous les êtres
+vivants utilisent le
+même principe pour
+traduire les codons
+en acides aminés
+
+Trois codants ne
+désignent aucun
+acide aminé
+(UAA
+UAG/UGA)
+
+Un même acide
+aminé peut être
+codé par des
+codons différents:
+dégénératif
+
+➢ Eléments nécessaires à la traduction
+
+Ribosomes
+
+ARN de transfert
+Molécule simple brin spécialisé
+dans le transfert des acides
+aminés vers le ribosome,
+Chaque ARNt possède deux
+sites:
+➢ Site de fixation acides
+aminés
+➢ Site de l’anticodon : triplet
+de bases complémentaires au
+codon de l’ARNm.
+06 Etapes de la traduction
+• Attachement de la petite sous unité sur l’ARNm au
+niveau du codon d’initiation AUG;
+• Fixation d’ARNt initiateur qui porte l’acide aminé
+compléméntaire à AUG, qui est la Méthionine;
+• Association de la grande sous unité à la petite sous
+unité ribosomale au niveau de l’ARNm;
+
+• Lecture de 2ème codon fait appel au 2ème ARNt
+porteur de l’acide aminé complémentaire;
+• Fixation de ARNt sur le site A
+• Établissement d’une liaison peptique entre la
+méthionine et le 2ème acide aminé
+• Le 1er ARNt quitte alors le ribosome
+
+organites cellulaires constitués de protéines
+(20%) et d’ARNr (80%), chaque ribosome est
+formé de deux sous-unités: la petite sous-unité
+et la grande sous-unité.
+
+Initiation
+
+Elongation
+
+• Le ribosome se déplace sur l’ARNm au niveau d’un 3ème
+codon
+• Il y a appel au 3ème ARNt porteur d’un 3ème acide aminé,
+• Formation d’une liaison peptique et le cycle se répète
+
+Prof Otmane-Svt
+
+10
+
+WhatsApp: 0763306035 /Email: ottben30@gamil.com
+
+------------------------
+Notion de l’information génétique
+et mécanismes de son expression
+Mécanismes de l’expression de l’information génétique
+
+2
+06
+
+Les étapes de la traduction
+Terminaison
+
+• lorsque le ribosome passe par un codon stop, la
+traduction prend fin.
+• Il y a dissociation des deux sous-unités ribosomales
+et libération du polypeptide dans le cytoplasme
+• Détachement de la méthionine du polypeptide
+
+Astuces
+Polysome= polyribosome
+
+Transcription simultanée
+➢ Lors de la transcription on peut remarquer
+plusieurs « ARN polymérases » fixés sur le gène
+et qui sont entrain de transcrire le gène en ARNm
+→ Un seul gène est transcris simultanément en
+plusieurs ARNm par un ensemble d’ARNpoly.
+
+Ensemble de ribosomes
+traduisant simultanément le
+même ARNm constitue un
+complexe appelé Polysome
+
+Locus
+➢ Le chromosome est constitué d’ADN et la l’ADN
+contient les gènes
+➢ Les gènes se localisent sur les chromosomes
+➢ L’emplacement précis du gène sur le chromosome
+qui le porte s’appelle Locus
+
+Chez les organismes diploïdes:
+➢ Chaque individu hérite un chromosome de son père
+dit chromosome paternel, et un chromosome de sa
+mère dit chromosome maternel
+➢ Les chromosomes sont organisés en paires
+➢ Les deux chromosomes constituant chaque paire
+portent les mêmes gènes et sont dits homologues
+➢ Chez le même individu le gène est représenté par
+deux allèles dont chacun est porté par l’un des
+deux chromosomes homologues;
+
+Cellule eucaryote
+(animaux/végétaux)
+
+L ’ADN se trouve
+dans un noyau
+délimité par une
+double membrane
+(vrai noyau)
+
+Types de
+cellules
+
+Chromosome
+maternel
+
+Chromosome
+paternel
+
+Gène
+Allèles
+
+Paire de chromosomes
+homologues
+➢ Les gènes sont constitués de régions codants (Exons) et de
+régions non codants (Introns)
+➢ La transcription se fait dans le noyau
+➢ L’ARNm subit une étape de maturation avant de quitter le
+noyau pour en enlever les introns
+➢ Seulement les Exons sont conservés dans l’ARNm
+➢ L’ARNm est généralement plus court que les gènes
+➢ La traduction se dans le cytoplasme après l’export d’ARNm
+
+Différences
+
+Cellule procaryote
+(Bactéries)
+Prof Otmane-Svt
+
+L ’ADN se trouve
+dans le cytoplasme
+(Pas de vrai noyau)
+
+11
+
+➢ Les gènes sont continus = 100% codants
+➢ La transcription se fait dans le cytoplasme
+➢ L’ARNm est directement traduit et il a la même
+longueur que le gène transcrit
+WhatsApp: 0763306035 /Email: ottben30@gamil.com
+
+------------------------
+Transmission de l’information génétique par la
+reproduction sexuée
+
+Fiche 4
+
+SVT / PC
+
+La méiose
+Méiose
+Division II
+D. équationnelle
+n
+Q
+
+Division I
+D. réductionnelle
+
+n
+Q
+
+2n
+2Q
+
+Prophase II
+Métaphase II
+
+Sciences de la vie et de la terre
+
+La reproduction sexuée se passe par deux
+événements importants: La Méiose et la
+Fécondation:
+➢ La méiose est précédée par l’interphase
+➢ La méiose comprend deux divisions
+successives dont chacune se passe par 4
+phases (P, M, A et T):
+✓ division réductionnelle (2n → n/
+2Q → Q)
+✓ Division équationnelle (n → n /
+Q → Q/2)
+
+Anaphase II
+Télophase II
+n
+Q/2
+n
+Q/2
+
+n
+Q/2
+n
+Q/2
+
+Prophase I
+Métaphase I
+Anaphase I
+Télophase I
+n
+Q
+
+n
+Q
+
+4 Cellules haploïdes
+(gamètes)
+
+Mêmes événements de
+Mitose +
+Appariement des
+chromosomes homologues
+et crossing over
+
+Alignement des
+chromosomes homologues
+sur le plan équatorial de
+telle sorte que les
+centromères sont de part et
+d’autre du plan équatorial
+
+Séparation et migration
+des chromosomes
+homologues vers les
+pôles cellulaires sans
+clivage de centromères
+
+Mêmes événements de
+mitose sauf que
+les chromosomes restent
+condensés et les 2 cellules
+filles formées sont
+haploïdes
+
+Prophase I
+
+Métaphase I
+
+Anaphase I
+
+Télophase I
+
+Les étapes de la méiose
+
+Télophase II
+
+Anaphase II
+
+Métaphase II
+
+Prophase II
+
+Mêmes événements de
+la mitose + formation de
+4 cellules haploïdes
+(gamètes)
+
+Clivage des centromères et
+séparation et migration des
+chromatides sœurs de
+chaque chromosome vers les
+pôles cellulaires
+
+elle est normale, ressemble
+à la métaphase de mitose
+(les centromères sont
+disposés sur le plan
+équatorial)
+
+- Disparition de
+l’enveloppe nucléaire et
+du nucléole;
+- Apparition du fuseau
+de division
+
+Prof Otmane-Svt
+
+12
+
+WhatsApp: 0763306035 /Email: ottben30@gamil.com
+
+------------------------
+Fiche 4
+
+Transmission de l’information génétique par la
+reproduction sexuée
+
+SVT / PC
+
+Brassage intrachromosomique
+Définitions
+Le brassage intrachromosomique a lieu lors de la prophase I.
+Les chromosomes homologues s'associent pour former des
+paires : on dit qu'ils forment des bivalents.
+Un crossing-over est un échange réciproque de portions de
+chromatides appartenant à deux chromosomes homologues
+(chromatides non sœurs).
+→ Ce brassage s’applique sur les gènes liés
+Schéma 1
+Schéma 2
+
+Rôle du brassage intrachromosomique
+
+gamètes parentaux:
+(AB) et (ab)
+
+Sciences de la vie et de la terre
+
+Schémas souvent demandés aux
+examens nationaux
+
+gamètes parentaux:
+(AB) et (ab)
+gamètes recombinés:
+(Ab) et (Ab)
+
+➢ Sans crossing over, on obtient seulement
+les gamètes parentaux, (AB) et (ab)
+➢ Avec crossing over, on obtient 4 types de
+gamètes: 2 gamètes parentaux (AB)/ (ab)
+et 2 gamètes recombinés (Ab)/(aB)
+Message: le brassage intrachromosomique
+augmente la diversité génétique des
+gamètes et donc celle des individus.
+
+Brassage interchromosomique
+
+Définition:
+Le brassage interchromosomique s’opère lors de l’anaphase I où la migration des chromosomes vers les pôles
+opposés de la cellule se fait de façon aléatoire et indépendante; → Ce brassage s’applique sur les gènes
+indépendants!!!
+Rôle du brassage interchromosomique:
+grâce à la migration aléatoire des chromosomes on obtient 4 types de gamètes possibles avec une proportion
+de ¼ (25%) (A noter que sans migration aléatoire on obtiendrait seulement 2 types de gamètes!!!)
+types gamètes issus de ce brassage = 2n avec n le nombre de paires de chromosomes
+Message: le brassage interchromosomique augmente la diversité génétique des gamètes et donc celle des individus
+Prof Otmane-Svt
+
+13
+
+WhatsApp: 0763306035 /Email: ottben30@gamil.com
+
+------------------------
+Transmission de l’information génétique par la
+reproduction sexuée
+
+Fiche 4
+
+SVT / PC
+
+La fécondation
+Gamète
+Paternel
+
+Gamète
+maternel
+
+Au cours de la fécondation, un gamète mâle et un
+gamète femelle haploïdes s’unissent: leur fusion
+conduit à un zygote ou cellule-œuf diploïde: la
+fécondation établit la diploïdie dans la celluleœuf.
+n génotypes différents
+possibles pour le gamète
+mâle
+
+n’ génotypes
+différents
+possibles pour le
+gamète femelle
+
+Z= n× n’ génotypes
+différents possibles
+pour le zygote
+
+Diversité potentielle
+quasi-infinie des
+zygotes
+
+La rencontre des gamètes au cours de la fécondation se fait de manière aléatoire et au hasard ce qui
+amplifie le double brassage ayant lieu lors de la méiose (Inter et intrachromosomique):
+→ La fécondation augmente la diversité des zygotes et donc celle des individus;
+
+Notion du caryotype
+
+Sciences de la vie et de la terre
+
+Définition
+
+La formule chromosomique
+
+Le caryotype est la représentation photographique de
+l'ensemble (nombre et forme) des chromosomes
+présents dans les cellules d'une espèce donnée.
+Les chromosomes sont classés selon leur longueur et
+la position de leurs centromères.
+
+Caryotype de spermatogonie (cellule
+mère des gamètes mâles)
+
+Caryotype des gamètes males
+
+Etapes de la réalisation du caryotype
+
+Les chromosomes sont en
+paires, chaque paire est
+constitué d’un chromosome
+maternel et un chromosome
+paternel
+➢ Cette cellule est diploïde
+➢ Formule chromosomique:
+
+En division
+
+❑ 2n = 44 A + XY = 46
+ou
+❑ 2n = 22AA + XY = 46
+
+Cellule:
+diploïde: 2n
+/haploïde: n
+
+Nbre des
+autosomes
+
+Chromosomes sexuels
+Nbre totale des
+chromosomes
+
+2n = 44 A + XY = 46
+Prof Otmane-Svt
+
+14
+
+chromosomes
+sont
+individuels, les gamètes sont à
+n chromosomes.
+Les gamètes sont haploïdes
+➢ Formule chromosomique:
+Les
+
+Gamète 1: n = 44 A + Y =23
+Gamète 2: n = 44A + X = 23
+
+A: nbre de chromosomes individuels
+AA: nbre de paires de chromosomes
+
+Gamète: pas de paires!!
+
+WhatsApp: 0763306035 /Email: ottben30@gamil.com
+
+------------------------
+Fiche 5
+
+Les lois statistiques de la transmission des
+caractères héréditaires
+
+SVT / PC
+
+Fondateur de la génétique et conventions de notations
+Fondateurs de la génétique
+
+Définitions et conventions de notation
+Hybridation: croisement naturel ou artificiel entre des individus de
+souche ou d’espèces différentes, les descendants résultants sont dits
+hybrides;
+Lignée pure: les individus de lignée pure pour un caractère sont
+homozygotes, ils donnent le même phénotype lorsqu’ils sont croisés
+entre eux;
+
+Génotype: Ensemble de gènes portés par les chromosomes, chez
+les diploïdes chaque gène est représenté par deux allèles occupant
+la même position sur les chromosomes homologues:
+
+Allèle dominant : lettre majuscule A
+Allèle récessif : lettre minuscule a
+Phénotype : lettre(s) entre crochets. Exemples : [A], [AB], [B],
+Génotype : le couple d’allèles est placé de part et d’autre d’un
+double trait symbolisant la paire de chromosomes homologues.
+Exemples : A//A ; A//a ; a//a.
+
+➢ Si les deux allèles sont
+➢ Si les deux allèles sont
+identiques
+différents
+→ l’individu est homozygote → l’individu est hétérozygote
+A
+
+A
+
+A 2 allèles
+
+identiques
+d’un gène
+
+a 2 allèles
+
+différents
+d’un gène
+
+Les lois de Mendel
+1ère loi: Uniformité des hybrides
+les individus de F1 issus du
+croisement de parents de lignée
+pure sont homogènes.
+*******
+Les parent de lignée pure → F1
+est homogène
+Ne s’applique pas dans certains cas
+de gènes liés au sexe
+
+2ème loi: Pureté des gamètes
+il y a ségrégation (séparation) des
+deux facteurs (allèles) de chaque
+caractère au cours de la
+formation des gamètes.
+*******
+Le gamète prend un allèle de
+chaque gène
+
+3ème loi: ségrégation
+indépendante des allèles
+lors de la formation des gamètes la
+ségrégation des deux allèles d’un
+gène se fait indépendamment de la
+ségrégation des deux allèles d’un
+autre gène porté sur une autre
+paire de chromosomes.
+S’applique en cas de dihybridisme,
+gènes indépendants
+
+S’applique dans tous les cas
+
+Sciences de la vie et de la terre
+
+Monohybridisme (Etude de la transmission d’un seul caractère)
+Dominance complète
+
+Gène létal
+
+Codominance
+
+Deux allèles:
+➢ allèle dominant: A
+➢ Allèle récessif: a
+
+Deux allèles codominants
+➢ allèle dominant: A
+➢ Allèle dominant: B
+
+F1: 100% dominant [A]
+F2: deux phénotypes
+✓ ¾ (75%) [A]
+✓ ¼ (25%) [a]
+
+F1: 100% intermédiaire [AB]
+F2: Trois phénotypes
+✓ ¼ (25%) [A]
+✓ ¼ (25%) [B]
+✓ ½ (50%) [AB]
+
+On parle d’un gène létal lorsque
+une
+Combinaison
+d’allèles
+(génotype) est létal pour un
+individu,
+souvent
+à
+l’état
+homozygote dominant;
+F1: deux phénotypes
+✓ 2/3 (66,6%) [A]
+✓ 1/3 (33,3%) [a]
+Les individus manquants sont morts car
+ils portent le génotype létal;
+
+Cas de gène lié au sexe
+un gène est lié au sexe si:
+Les parents sont de lignée pure et
+que F1 est hétérogène
+➢ Exception de la 1ère loi de
+Mendel
+
+Prof Otmane-Svt
+
+Les Croisements réciproques
+ne donnent pas les mêmes
+résultats.
+
+Les femelles héritent le phénotype de leurs
+pères et les mâles héritent le phénotype de
+leurs mères (différence phénotypique entre
+les mâles et les femelles)
+
+15
+
+WhatsApp: 0763306035 /Email: ottben30@gamil.com
+
+------------------------
+Les lois statistiques de la transmission des
+caractères héréditaires
+
+Fiche 5
+
+SVT / PC
+
+Croisement test, réciproque et rétrocroisement
+Croisement test (test cross)
+
+Croisement entre un individu de
+génotype inconnu (testé) et
+individu testeur homozygote
+récessif, si la F1 est:
+• Homogène: l’individu testé est
+homozygote (A//A).
+• Hétérogène: l’individu testé est
+hétérozygote (A//a)
+
+Importance
+Permet de déterminer le génotype
+de l’individu testé (vérifier la
+pureté de la lignée)
+
+Croisements réciproques
+Consistent à croiser deux individus
+( et ) avec des phénotypes opposés
+pour un caractère donné, puis de
+répéter le croisement avec des sexes
+inversés;
+Si les 2 croisements récip. donnent:
+• Mêmes résultats: Gène autosomal
+• Résultats différents: gène lié au sexe
+
+Rétrocroisement (back cross)
+C’est un croisement entre un
+individu de la descendance
+(F1, F2 ou F3) avec l’un des
+deux parent dominant ou
+récessif.
+Nb: certains rétrocroisements
+sont considérés comme
+croisements tests
+
+Importance
+
+Importance
+
+Permet de savoir si le gène étudié
+est lié au sexe ou non et de vérifier
+si le crossing over se produit ou
+non chez le mâle ou la femelle.
+
+Permet d’introduire dans
+une lignée un nouveau
+caractère intéressant
+
+Dihybridisme (Etude de la transmission de deux caractères)
+
+Sciences de la vie et de la terre
+
+Cas gènes
+Croisement 1: parents de lignée pure
+Les deux gènes sont indépendants si:
+indépendants
+➢ F1: 100% [A,B]
+Croisement 2: F1 × F1(autofécondation)
+➢ F2: quatre phénotypes dont les proportions sont:
+Le croisement test
+Le 2ème croisement
+➢ 9/16 [A,B]
+donne quatre
+donne quatre
+➢ 3/16 [a,B]
+phénotypes de mêmes
+phénotypes de
+➢ 3/16 [A,b]
+proportions
+proportions:
+➢ 1/16 [a,b]
+(25%)
+(9/16- 3/16-3/16-1/16)
+Croisement 3: croisement test (F1 × double récessif)
+La loi de ségrégation indépendante des allèles (3ème
+➢ F’2: quatre phénotypes avec des
+loi de Mendel) est vérifiée:
+proportions égales (25%)
+Les gènes subissent le brassage interchromosomique
+Croisement 1: parents de lignée pure
+Cas gènes liés
+Les deux gènes sont liés si:
+➢ F1: 100% [A,B]
+Croisement 2: croisement test (F1 × double
+Le croisement test donne 2
+Le croisement test donne
+récessif)
+phénotypes parentaux de
+quatre
+phénotypes
+de
+❑
+Présence de crossing over (CO)
+mêmes proportions (50%)
+proportions inégales
+F2: quatre phénotypes :
+➢
+2
+Phénotypes
+parentaux
+➢ 2 phénotypes parentaux majoritaires (% )
+majoritaires
+➢ 2 phénotypes recombinés minoritaires (% )
+Liaison
+➢ 2 phénotypes recombinés
+Mâle de
+❑ Absence de crossing over (CO)
+absolue
+minoritaires
+drosophile
+➢ Deux phénotypes parentaux de proportions
+égales (50%)
+Absence de crossing
+▪ Liaison incomplète
+Présence de CO: liaison relative (partielle)
+over
+(relative)
+Absence de CO: liaison complète (absolue) +
+▪ Présence de crossing
+mâle de drosophile
+over
+Astuces
+✓ Les gènes se situe sur la même paire de chromosomes homologues
+✓ La loi de ségrégation indépendante des allèles (3ème loi de Mendel) n’est pas vérifiée;
+✓ Les gènes liés subissent le brassage intrachromosomique;
+✓ Pour que les gènes soient liés le pourcentage de recombinés doit être inférieur à 50%
+
+Prof Otmane-Svt
+
+16
+
+WhatsApp: 0763306035 /Email: ottben30@gamil.com
+
+------------------------
+Fiche 5
+
+Les lois statistiques de la transmission des
+caractères héréditaires
+
+SVT / PC
+
+Mesure de la distance entre deux gènes liés et mise ne place de la carte factorielle
+La distance entre les gènes
+
+Carte factorielle
+Déf.: C’est une représentation graphique de la position relative des gènes sur un chromosome
+Etapes de la réalisation:
+➢ Calculer la distance entre les gènes en cMg;
+➢ Prendre une échelle donnée: Ex: 2cMg = 1cm;
+➢ Tracer deux lignes horizontales et représenter les positions des gènes et la distance entre eux;
+
+g1
+
+distance
+
+g2
+
+Astuces et méthodologies
+➢ Méthodologie de réponse aux questions des lois statistique
+Q1: que déduisez vous des résultats de ce croisement.
+Conclusions à tirer
+
+1
+
+S’agit-il de mono ou dihybridisme
+(nombre de caractères étudiés)
+
+Sciences de la vie et de la terre
+
+2 ➢ La 1ère loi de Mendel est-elle
+vérifiée ou non
+➢ La 1ère loi de Mendel est-elle
+appliquée ou non appliquée
+3
+Les allèles sont-ils dominants ou
+récessifs + symboles des allèles
+
+méthodologie
+
+Vérifier le nombre de phénotypes chez l’un des parents;
+1phéno.→mono/ 2phén.→ dihybridisme
+F1 homogène → les parents sont de lignée pure → 1ère loi est
+vérifiée
+F1 hétérogène → les parents sont de lignée non pure → 1ère loi
+n’est pas vérifiée
+F1 hétérogène alors que les parents sont de lignée pure →
+exception de la 1ère loi de Mendel;
+Comparer les phénotypes de F1 avec des ceux des parents;
+F1 Homogène: le phénotype qui apparait en F1 est dominant /
+l’autre est récessif → dominance complète
+➢ Présence d’un phénotype intermédiaire → codominance /
+dominance intermédiaire
+
+Q2: donner l’interprétation chromosomique de ce croisement.
+Pour répondre à cette question, il faut:
+➢ Tirer auparavant les conclusions nécessaires à partir des résultats du croisement (Q1);
+➢ Être capable d’écrire les génotypes et les phénotypes des parents et de F1 conformément aux
+règles de notation en vigueur;
+➢ Maitriser le principe de la méiose et de la fécondation;
+➢ Savoir estimer les proportions des gamètes et des phénotypes obtenus en F1;
+Astuces:
+➢ Individu de lignée pure → l’individu est homozygote;
+➢ Individu hybride ou lignée non pure → individu hétérozygote;
+➢ F1 homogène → tous les individus de F1 ont le même phénotype;
+➢ Les pourcentages des phénotypes de F1 sont issus du produit (×) des proportions des gamètes
+Prof Otmane-Svt
+
+17
+
+WhatsApp: 0763306035 /Email: ottben30@gamil.com
+
+------------------------
+Notion de l’information génétique
+et mécanismes de son expression
+Notion de l’information génétique
+
+1
+
+01 Localisation
+Enveloppe nucléaire
+Pore nucléaire
+Nucléoplasme
+
+L’information
+
+Chromatine
+
+génétique se localise
+
+Nucléole
+
+dans le noyau des
+cellules
+
+Cellule en interphase
+structure du noyau interphasique
+(d’une cellule en interphase)
+
+02 Mitose
+
+03
+
+Prophase:
+▪
+
+Condensation de la chromatine en
+chromosomes (apparition des chromosomes);
+Disparition de l’enveloppe nucléaire et du
+nucléole;
+Début de formation du fuseau de division
+(fuseau achromatique)
+
+▪
+▪
+
+Comparaison entre la mitose animale et
+la mitose végétale
+construction d'une
+paroi séparatrice à
+l'équateur de la cellule
+mère → division du
+cytoplasme.
+
+Etranglement equatorial
+→ division du
+cytoplasme
+
+Métaphase:
+▪
+▪
+▪
+
+La condensation des chromosomes est
+maximale;
+Alignement des chromosomes sur le plan
+équatorial de la cellule;
+Apparition des fibres chromosomiques qui se
+lient aux centromères des chromosomes
+
+Pésence de calottes
+polaires
+Absence de
+centrosome
+
+Présence d’aster.
+Organite cytoplasmique
+appelé centrosome forme
+d’aster
+
+Anaphase:
+▪
+▪
+▪
+▪
+
+04 Le cycle cellulaire
+
+Raccourcissement des fibres chromosomiques
+Clivage des centromères;
+Séparation des chromatides sœurs;
+Migration des chromatides vers le pôle
+cellulaire le plus proche;
+
+Le cycle cellulaire =
+Interphase + Mitose
+
+Télophase:
+▪
+▪
+▪
+▪
+
+Décondensation des chromosomes;
+Formation de l’enveloppe nucléaire et du
+nucléole;
+Division du cytoplasme par l’étranglement
+équatorial (cytodiérèse ou cytokinèse);
+Formation de deux cellules filles identiques;
+
+Duplication des
+chromosomes
+
+Cycle cellulaire
+1ère phase de
+croissance
+Phase de synthèse
+
+05 La nature chimique de l’information génétique
+L’information
+génétique
+(IG)
+
+Clivage des
+chromosomes
+
+Cellules
+filles
+
+Expériences de:
+➢ Griffith
+➢ Avery
+
+La nature
+de l’IG
+est l’ADN
+
+1ère phase de
+croissance
+
+Mitose
+Interphase
+
+07 La structure de l’information génétique
+
+(Purine)
+(Pyrimidine)
+(Pyrimidine)
+
+06 La composition chimique de l’ADN
+
+(Purine)
+
+ADN: Acide
+désoxyribonucléique
+Acide
+phosphorique
+
+Désoxyribose
+(sucre à 5C)
+
+Bases azotées
+(T-A-C-G)
+
+Ces trois éléments s’unissent pour former Le Nucléotide
+➢L’unité strucurale de base de l’AND
+➢Le nucleotide porte toujours une seule
+base azotée (A, T, C ou G)
+➢Le nucleotide doit son nom de la base
+azotée qu’il porte
+
+Prof Otmane-Svt
+
+07
+
+➢L’AND est une double hélice constitué de:
+❑ Deux brins (deux helices)
+❑ Chaque brin est formé d’une série de nucleotides liés
+entre eux par des liaisons phosphodieters liant deux
+riboses successifs;
+❑ Les deux brins sont anitparallèles et complémentaires
+❑ Les deux brins sont liés par des liaisons hydrogens au
+niveau des bases azotées
+❑ La base C se lie à la base G par 3 liaisons hydrogènes
+❑ La bases A se lie à la base T par 2 liaisons hydrogènes
+WhatsApp: 0763306035 /Email: ottben30@gamil.com
+
+------------------------
