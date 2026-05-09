@@ -1,0 +1,222 @@
+# 🎯 MÉTHODE 4×4 POUR MAÎTRISER LE TEMPLATE B (Génétique Mendélienne)
+
+## 📍 PRINCIPE DIRECTEUR
+
+Le Template B est **encore plus mécanique** que le Template A : c'est un **arbre de décision** que vous devez exécuter sans réfléchir. Le correcteur attend une démarche **rigide en 5 étapes** + un **échiquier impeccable**. Maîtrisez l'arbre, et vous décrochez automatiquement 8 à 10 points.
+
+---
+
+## 🔷 ÉTAPE 1 — COMPRENDRE LA LOGIQUE PROFONDE (1 jour)
+
+Toute question de génétique mendélienne se résout en répondant **dans l'ordre** à 4 questions :
+
+```
+   ┌─────────────────────────────────────────────────┐
+   │  Q1 : Quel allèle est DOMINANT ?                │
+   │       → Regarder F1 (homogène ?)                │
+   ├─────────────────────────────────────────────────┤
+   │  Q2 : Le gène est-il LIÉ AU SEXE ?              │
+   │       → Croisement réciproque OU                │
+   │         différence ♂/♀ en F2 ?                  │
+   ├─────────────────────────────────────────────────┤
+   │  Q3 : Combien de GÈNES en jeu ?                 │
+   │       → 1 caractère = 1 gène                    │
+   │       → 2 caractères = 2 gènes (monohybridisme  │
+   │         ou dihybridisme)                        │
+   ├─────────────────────────────────────────────────┤
+   │  Q4 : Les gènes sont-ils LIÉS ou INDÉPENDANTS ? │
+   │       → Analyser les proportions du test-cross  │
+   └─────────────────────────────────────────────────┘
+```
+
+**🔑 Règle d'or à graver :**
+> *« Je ne devine jamais : je laisse les proportions parler. Chaque proportion correspond à UN scénario unique. »*
+
+**Action concrète :** Recopiez cet arbre de décision sur une feuille A4. Affichez-la à côté du Template A.
+
+---
+
+## 🔷 ÉTAPE 2 — AUTOMATISER LES 4 RÉFLEXES TECHNIQUES (3 jours)
+
+### ⚡ Réflexe n°1 : Identifier la dominance (à partir de F1)
+
+| Observation en F1 | Conclusion |
+|---|---|
+| **F1 100% homogène** (un seul phénotype) | Le phénotype exprimé = **allèle dominant** ; les parents étaient **de race pure** |
+| F1 montre les deux phénotypes | Au moins un parent était **hétérozygote** |
+| F1 montre un **phénotype intermédiaire** | **Codominance** ou **dominance incomplète** |
+
+**🚨 Phrase modèle :** *« La génération F1 est homogène et présente le phénotype [X]. On en déduit que l'allèle [X] est dominant sur l'allèle [x], et que les parents étaient de race pure (homozygotes). »*
+
+### ⚡ Réflexe n°2 : Détecter la liaison au sexe
+
+**3 indices pour conclure « gène lié au sexe » :**
+
+| Indice | Signification |
+|---|---|
+| **Croisement réciproque donne des résultats différents** | Gène porté par X (ou Y) |
+| **Phénotypes différents entre ♂ et ♀ en F2** | Gène lié au sexe |
+| **Caractère récessif apparaît surtout chez les ♂** | Gène récessif lié à X |
+
+**🚨 Phrase modèle :** *« Les résultats du croisement réciproque sont différents et la répartition des phénotypes diffère entre mâles et femelles. On en déduit que le gène est porté par le chromosome sexuel X. »*
+
+### ⚡ Réflexe n°3 : Lire les proportions du test-cross (LE CŒUR DU TEMPLATE)
+
+**Test-cross = croisement de F1 × individu doublement homozygote récessif**
+
+| Proportions observées | Conclusion |
+|---|---|
+| **25% / 25% / 25% / 25%** (4 phénotypes équiprobables) | **Gènes indépendants** (sur chromosomes différents) |
+| **2 phénotypes parentaux ≈ 50% chacun** + 2 recombinés ≈ 0% | **Liaison absolue** (gènes très proches) |
+| **2 parentaux majoritaires (ex. 40%+40%) + 2 recombinés minoritaires (ex. 10%+10%)** | **Liaison partielle avec crossing-over** |
+
+**Pour F2 (F1 × F1) en cas de gènes indépendants :** 9/16 - 3/16 - 3/16 - 1/16
+
+### ⚡ Réflexe n°4 : Calculer la distance génétique (si liaison partielle)
+
+```
+Distance (en cM) = % de gamètes recombinés
+                 = (nombre de recombinés / total) × 100
+```
+
+**Exemple :** Si test-cross donne 40% + 40% + 10% + 10% → distance = 20 cM
+
+---
+
+## 🔷 ÉTAPE 3 — MÉMORISER LES NOTATIONS CHROMOSOMIQUES (LA FORMULE 20/20)
+
+Le correcteur **enlève des points** si la notation est incorrecte. Voici les **3 cas obligatoires** :
+
+### 📝 CAS 1 : Gène autosomal (non lié au sexe)
+
+```
+Parent 1 (race pure dominant) :    A    A          A
+                                  ─── ───   noté  ───
+                                   A    A          A
+
+Parent 2 (race pure récessif) :    a    a          a
+                                  ─── ───   noté  ───
+                                   a    a          a
+```
+
+### 📝 CAS 2 : Gène lié au sexe (porté par X)
+
+```
+Femelle XX :    X^A  X^a       Mâle XY :    X^A  Y
+              ─────────                   ───────
+              (la barre représente la paire de chromosomes)
+```
+
+**🚨 Convention obligatoire :** L'allèle s'écrit **en exposant du X** : X^A, X^a — jamais à côté.
+
+### 📝 CAS 3 : Deux gènes (dihybridisme)
+
+```
+Gènes indépendants :   AB           Gènes liés :    AB
+                      ────                          ────
+                       ab                            ab
+                  (avec virgule)               (sans virgule, sur même barre)
+
+Notation correcte indépendants :  A/a  ;  B/b
+Notation correcte liés :          AB/ab
+```
+
+---
+
+## 🔷 ÉTAPE 4 — L'ÉCHIQUIER DE CROISEMENT PARFAIT
+
+Le correcteur cherche **5 éléments précis** dans votre échiquier. En manquer un = perdre 0,5 à 1 point.
+
+### 🏆 LES 5 ÉLÉMENTS OBLIGATOIRES DE L'ÉCHIQUIER
+
+```
+                    ┌─────────────────────────────────┐
+                    │ ① Génotype des parents en haut  │
+                    │ ② Gamètes de chaque parent      │
+                    │   (avec proportions)            │
+                    │ ③ Tableau croisé (échiquier)    │
+                    │ ④ Génotypes obtenus             │
+                    │ ⑤ Phénotypes + proportions      │
+                    └─────────────────────────────────┘
+```
+
+### 📊 EXEMPLE D'ÉCHIQUIER MODÈLE (gènes indépendants)
+
+```
+Parents :  P1 (AaBb)  ×  P2 (aabb)   [test-cross]
+
+Gamètes P1 : AB, Ab, aB, ab (1/4 chacun)
+Gamètes P2 : ab (100%)
+
+           │   AB    │   Ab    │   aB    │   ab    │
+   ────────┼─────────┼─────────┼─────────┼─────────┤
+     ab    │  AaBb   │  Aabb   │  aaBb   │  aabb   │
+           │ [A,B]   │ [A,b]   │ [a,B]   │ [a,b]   │
+           │  25%    │  25%    │  25%    │  25%    │
+
+Conclusion : 4 phénotypes équiprobables (1:1:1:1)
+→ Les gènes A et B sont INDÉPENDANTS
+```
+
+### 📊 EXEMPLE D'ÉCHIQUIER (gènes liés avec crossing-over)
+
+```
+Parents : F1 (AB/ab)  ×  Parent récessif (ab/ab)
+
+Gamètes F1 :  
+  • Parentaux : AB (40%) ; ab (40%)
+  • Recombinés : Ab (10%) ; aB (10%)
+Gamètes parent récessif : ab (100%)
+
+           │  AB(40%) │  ab(40%) │  Ab(10%) │  aB(10%) │
+   ────────┼──────────┼──────────┼──────────┼──────────┤
+   ab(100%)│  AB/ab   │  ab/ab   │  Ab/ab   │  aB/ab   │
+           │  [A,B]   │  [a,b]   │  [A,b]   │  [a,B]   │
+           │   40%    │   40%    │   10%    │   10%    │
+
+Distance génétique = 10% + 10% = 20 cM
+```
+
+---
+
+## 🔷 ÉTAPE 5 — ENTRAÎNEMENT ESPACÉ (méthode des 7 jours)
+
+| Jour | Action | Durée |
+|---|---|---|
+| **J1** | Exercice **monohybridisme autosomal** (annale 2020-2022) | 25 min |
+| **J2** | Exercice **monohybridisme lié au sexe** (drosophile, daltonisme) | 25 min |
+| **J3** | Exercice **dihybridisme — gènes indépendants** | 30 min |
+| **J4** | Exercice **dihybridisme — gènes liés** (avec calcul de distance) | 30 min |
+| **J5** | Exercice **mixte** (1 gène autosomal + 1 gène lié au sexe) | 35 min |
+| **J6** | **Réciter à voix haute** l'arbre de décision + reproduire 3 échiquiers de mémoire | 20 min |
+| **J7** | Examen blanc complet (3 exercices d'affilée, conditions réelles) | 90 min |
+
+### 📋 TABLEAU DE PROGRESSION PERSONNEL
+
+| Date | Type d'exercice | Erreur principale | Mot-clé oublié | Points perdus |
+|---|---|---|---|---|
+
+---
+
+## 🚫 LES 6 PIÈGES MORTELS À ÉVITER
+
+| ❌ Piège | ✅ Solution |
+|---|---|
+| Dire « les gènes sont indépendants » sans calculer | **Toujours vérifier les proportions exactes** |
+| Oublier les chromosomes sexuels chez la drosophile mâle | ♂ drosophile = **XY** (Y ne porte pas l'allèle) |
+| Mélanger F1 × F1 (donne 9:3:3:1) avec test-cross (donne 1:1:1:1) | **Lire 2× l'énoncé** : qui est croisé avec qui ? |
+| Utiliser une mauvaise notation chromosomique | Respecter **strictement** les conventions ci-dessus |
+| Conclure « liaison absolue » sans vérifier l'absence totale de recombinés | Liaison absolue = **0% de recombinés**, sinon liaison partielle |
+| Oublier de calculer la **distance génétique** | Toujours la donner en **cM (centiMorgans)** |
+
+---
+
+## 💡 PROCHAINE ÉTAPE — VOTRE FICHE HAUTE DENSITÉ
+
+Je vais maintenant générer votre **fiche recto-verso Template B** (comme pour le Template A) avec :
+- 🅰️ **Recto :** Définitions, arbre de décision, conventions de notation
+- 🅱️ **Verso :** Échiquiers modèles, phrases-types, top des exercices classiques, checklist finale
+
+**Souhaitez-vous que je la génère immédiatement ?** 📚
+
+(Tapez **« oui »** ou **« fiche »** pour la générer, ou **« banque »** pour avoir directement les 10 questions types corrigées.)

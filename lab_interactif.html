@@ -1,0 +1,2811 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVT 2BAC : Lab Interactif de Génétique</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #090d16;
+            --bg-card: rgba(15, 23, 42, 0.7);
+            --border-glow-blue: rgba(56, 189, 248, 0.4);
+            --border-glow-purple: rgba(139, 92, 246, 0.4);
+            --border-glow-green: rgba(16, 185, 129, 0.4);
+            --glow-blue: 0 0 25px rgba(56, 189, 248, 0.25);
+            --glow-purple: 0 0 25px rgba(139, 92, 246, 0.25);
+            --glow-green: 0 0 25px rgba(16, 185, 129, 0.25);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: radial-gradient(circle at top right, #0d1527 0%, #070a12 100%);
+            color: #f8fafc;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .lab-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Nav Glass Header */
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.25rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #94a3b8;
+            font-weight: 600;
+            transition: color 0.2s, transform 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .back-btn:hover {
+            color: #38bdf8;
+            transform: translateX(-3px);
+        }
+
+        .logo-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #e879f9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Lab Layout Grid */
+        .lab-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .lab-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar Navigation Cards */
+        .lab-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .lab-tab-btn {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            text-align: left;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #94a3b8;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lab-tab-btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: transparent;
+            transition: background 0.3s;
+        }
+
+        .lab-tab-btn:hover {
+            background: rgba(30, 41, 59, 0.7);
+            color: #f8fafc;
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .lab-tab-btn.active {
+            color: #ffffff;
+            background: rgba(30, 41, 59, 0.85);
+            box-shadow: 0 10px 20px -10px rgba(0,0,0,0.5);
+        }
+
+        .lab-tab-btn.active::before {
+            background: var(--btn-color, #38bdf8);
+        }
+
+        .lab-tab-btn.active.tab-a {
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+        }
+        .lab-tab-btn.active.tab-b {
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+        }
+        .lab-tab-btn.active.tab-game {
+            border-color: rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+        }
+
+        .tab-icon {
+            font-size: 1.8rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 0.75rem;
+            background: rgba(15, 23, 42, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .lab-tab-btn.active.tab-a .tab-icon { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+        .lab-tab-btn.active.tab-b .tab-icon { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+        .lab-tab-btn.active.tab-game .tab-icon { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+        .tab-title-text {
+            display: flex;
+            flex-col: column;
+            gap: 2px;
+        }
+
+        .tab-sub {
+            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tab-main-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        /* Lab Main Panel */
+        .lab-panel {
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            min-height: 650px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        @media (max-width: 640px) {
+            .lab-panel {
+                padding: 1.25rem;
+            }
+        }
+
+        /* --- STYLES LAB 1 : EXPRESSION GENETIQUE --- */
+        .dna-workspace {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .control-shelf {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .shelf-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        select, input[type="text"] {
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #ffffff;
+            padding: 0.6rem 1rem;
+            border-radius: 0.75rem;
+            outline: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        select:focus, input[type="text"]:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
+        .dna-strand-container {
+            position: relative;
+            background: #0b0f19;
+            border: 1px dashed rgba(56, 189, 248, 0.2);
+            border-radius: 1.25rem;
+            padding: 2rem 1.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        .strand-label {
+            position: absolute;
+            left: 1rem;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+        .lbl-codant { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); top: 0.5rem; }
+        .lbl-matrice { background: rgba(139, 92, 246, 0.15); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.3); top: 3.5rem; }
+        .lbl-mrna { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); top: 8rem; }
+        .lbl-protein { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); top: 12.5rem; }
+
+        .visual-sequence {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding-left: 7rem;
+            min-height: 250px;
+        }
+
+        .nucleotide-row {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            height: 42px;
+        }
+
+        .nuc-base {
+            width: 32px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            user-select: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nuc-base::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .row-codant .nuc-base::after { bottom: -11px; transform: translateX(-50%); }
+        .row-matrice .nuc-base::after { top: -11px; transform: translateX(-50%); }
+
+        .nuc-A { background: #3b82f6; color: #ffffff; border: 1px solid #2563eb; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+        .nuc-T { background: #ef4444; color: #ffffff; border: 1px solid #dc2626; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+        .nuc-U { background: #f59e0b; color: #1e293b; border: 1px solid #d97706; text-shadow: 0 1px 1px rgba(255,255,255,0.2); }
+        .nuc-C { background: #10b981; color: #ffffff; border: 1px solid #059669; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+        .nuc-G { background: #8b5cf6; color: #ffffff; border: 1px solid #7c3aed; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+        .nuc-blank { background: rgba(30, 41, 59, 0.3); border: 1px dashed rgba(255,255,255,0.15); color: #64748b; }
+
+        .nuc-base:hover {
+            transform: scale(1.15);
+            z-index: 5;
+            box-shadow: 0 0 12px currentColor;
+        }
+
+        .row-mrna {
+            border-top: 1px dashed rgba(245, 158, 11, 0.2);
+            padding-top: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .mrna-codon-box {
+            display: inline-flex;
+            gap: 2px;
+            padding: 3px 6px;
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.15);
+            border-radius: 8px;
+            margin-right: 8px;
+            position: relative;
+        }
+
+        .mrna-codon-box.shifted {
+            background: rgba(239, 68, 68, 0.08);
+            border-color: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.1);
+        }
+
+        .mrna-codon-box.mutated-codon {
+            background: rgba(139, 92, 246, 0.08);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .codon-index {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.65rem;
+            color: #64748b;
+            font-weight: 700;
+        }
+
+        .row-protein {
+            padding-top: 1rem;
+        }
+
+        .prot-aa {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 34px;
+            padding: 0 12px;
+            border-radius: 99px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: #ffffff;
+            margin-right: 1.8rem;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .prot-aa::after {
+            content: '';
+            position: absolute;
+            right: -1.9rem;
+            top: 50%;
+            width: 1.9rem;
+            height: 4px;
+            background: #059669;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+
+        .prot-aa:last-child::after {
+            display: none;
+        }
+
+        .prot-aa.aa-stop {
+            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+            border-color: rgba(239,68,68,0.4);
+        }
+        .prot-aa.aa-stop::after {
+            display: none;
+        }
+
+        .prot-aa.aa-mutated {
+            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+            box-shadow: 0 0 15px rgba(139,92,246,0.3);
+        }
+
+        .prot-aa.aa-shifted {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        /* Phrase-Type Output Card */
+        .phrase-output-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .card-glow-green { border-color: var(--border-glow-green); box-shadow: var(--glow-green); }
+        .card-glow-blue { border-color: var(--border-glow-blue); box-shadow: var(--glow-blue); }
+        .card-glow-purple { border-color: var(--border-glow-purple); box-shadow: var(--glow-purple); }
+
+        .phrase-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .phrase-text .kw-mut { color: #f43f5e; font-weight: 800; background: rgba(244,63,94,0.1); padding: 2px 6px; border-radius: 4px; }
+        .phrase-text .kw-cod { color: #f59e0b; font-weight: 800; background: rgba(245,158,11,0.1); padding: 2px 6px; border-radius: 4px; }
+        .phrase-text .kw-aa { color: #10b981; font-weight: 800; background: rgba(16,185,129,0.1); padding: 2px 6px; border-radius: 4px; }
+        .phrase-text .kw-prot { color: #a78bfa; font-weight: 800; background: rgba(167,139,250,0.1); padding: 2px 6px; border-radius: 4px; }
+
+        /* Mutation Dialog Pop-up */
+        .dialog-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(7, 10, 18, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .dialog-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .dialog-box {
+            background: #1e293b;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .dialog-overlay.active .dialog-box {
+            transform: scale(1);
+        }
+
+        .dialog-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            pb-3: 0.75rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .dialog-body {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .dialog-btn-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        /* --- STYLES LAB 2 : GENETIQUE MENDELIENNE --- */
+        .mendel-workspace {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .mendel-workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .setup-panel {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .setup-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .setup-group label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .results-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Meiosis Animation Stage */
+        .meiosis-stage {
+            background: #080c14;
+            border-radius: 1.25rem;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            padding: 1.5rem;
+            min-height: 200px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .meiosis-visualizer {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            position: relative;
+        }
+
+        .gamete-circle {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: 2px solid #8b5cf6;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+            animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        .gamete-circle .g-alleles {
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: #ffffff;
+        }
+
+        .gamete-circle .g-percent {
+            font-size: 0.72rem;
+            color: #a78bfa;
+            font-weight: 600;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0) translateY(30px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        /* Dynamic Punnett Square Grid */
+        .punnett-container {
+            background: rgba(30, 41, 59, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .punnett-table {
+            border-collapse: separate;
+            border-spacing: 6px;
+            margin: 0 auto;
+        }
+
+        .punnett-cell {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 0.75rem;
+            width: 130px;
+            height: 110px;
+            padding: 0.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .punnett-cell:hover:not(.header-cell) {
+            transform: scale(1.04);
+            border-color: #a78bfa;
+            background: rgba(139, 92, 246, 0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .header-cell {
+            background: rgba(30, 41, 59, 0.8) !important;
+            border-color: rgba(255,255,255,0.12) !important;
+            font-weight: 700;
+        }
+
+        .header-cell.p-female {
+            border-left: 3px solid #e879f9;
+        }
+
+        .header-cell.p-male {
+            border-top: 3px solid #38bdf8;
+        }
+
+        .cell-corner {
+            background: transparent !important;
+            border: none !important;
+            width: 80px;
+            height: 80px;
+        }
+
+        .punnett-cell .p-genotype {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #ffffff;
+            font-family: monospace;
+            white-space: nowrap;
+        }
+
+        .punnett-cell .p-phenotype {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #f43f5e;
+            background: rgba(244,63,94,0.12);
+            padding: 2px 6px;
+            border-radius: 6px;
+        }
+
+        .punnett-cell .p-freq {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        /* 5 Obligatory elements log */
+        .obligatory-checklist {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.25rem;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.92rem;
+            color: #94a3b8;
+            padding: 0.4rem 0;
+            transition: color 0.3s;
+        }
+
+        .check-item.active {
+            color: #ffffff;
+        }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .check-item.active .check-icon {
+            background: #10b981;
+            border-color: #10b981;
+            color: white;
+            box-shadow: 0 0 10px rgba(16,185,129,0.3);
+        }
+
+        /* --- STYLES GAMES ARCADE --- */
+        .arcade-workspace {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .game-card-hub {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .game-card-hub {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .game-module {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1.5rem;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-module:hover {
+            border-color: #34d399;
+            transform: translateY(-4px);
+            background: rgba(30, 41, 59, 0.5);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5), 0 0 20px rgba(16, 185, 129, 0.1);
+        }
+
+        .game-mod-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .game-mod-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 0.75rem;
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+        }
+
+        .game-active-stage {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Proportions Game Boards */
+        .blitz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .game-timer {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #fbbf24;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(245,158,11,0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 99px;
+            border: 1px solid rgba(245,158,11,0.25);
+        }
+
+        .game-score {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #34d399;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(16,185,129,0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 99px;
+            border: 1px solid rgba(16,185,129,0.25);
+        }
+
+        .blitz-question-box {
+            background: rgba(30, 41, 59, 0.3);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .blitz-options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .blitz-options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .blitz-opt-btn {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.85rem;
+            padding: 1.25rem 1rem;
+            font-weight: 700;
+            color: #cbd5e1;
+            font-size: 1rem;
+            text-align: left;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .blitz-opt-btn:hover {
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .blitz-opt-btn.correct {
+            background: rgba(16,185,129,0.15) !important;
+            border-color: #10b981 !important;
+            color: #34d399 !important;
+            box-shadow: 0 0 15px rgba(16,185,129,0.15);
+        }
+
+        .blitz-opt-btn.wrong {
+            background: rgba(239,68,68,0.15) !important;
+            border-color: #ef4444 !important;
+            color: #f87171 !important;
+            box-shadow: 0 0 15px rgba(239,68,68,0.15);
+        }
+
+        /* Phrase-Type Constructor (Drag/Drop) Board */
+        .puzzle-instruction {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .puzzle-scrambled {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .puzzle-piece {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .puzzle-piece:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: #a78bfa;
+            color: white;
+            transform: translateX(3px);
+        }
+
+        .puzzle-piece.selected {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.1);
+            opacity: 0.5;
+        }
+
+        .puzzle-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            border: 2px dashed rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            min-height: 250px;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .puzzle-slot-item {
+            background: linear-gradient(to right, rgba(139, 92, 246, 0.1), transparent);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            font-size: 0.95rem;
+            color: #ffffff;
+            animation: slideIn 0.3s ease both;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(15px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Helpers */
+        .btn-lab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.25s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-lab-blue { background: #38bdf8; color: #090d16; }
+        .btn-lab-blue:hover { background: #0ea5e9; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
+
+        .btn-lab-purple { background: #8b5cf6; color: white; }
+        .btn-lab-purple:hover { background: #7c3aed; box-shadow: 0 0 15px rgba(139, 92, 246, 0.3); }
+
+        .btn-lab-green { background: #10b981; color: white; }
+        .btn-lab-green:hover { background: #059669; box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); }
+
+        .btn-lab-outline { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; }
+        .btn-lab-outline:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); color: white; }
+
+        .glow-box-blue { border: 1px solid var(--border-glow-blue); box-shadow: var(--glow-blue); }
+        .glow-box-purple { border: 1px solid var(--border-glow-purple); box-shadow: var(--glow-purple); }
+
+        .badge-lab {
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            text-transform: uppercase;
+        }
+
+        .b-purple { background: rgba(139, 92, 246, 0.2); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.4); }
+        .b-blue { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
+        .b-green { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+
+        /* General Tab Content hide/show */
+        .lab-tab-content {
+            display: none;
+            animation: tabFadeIn 0.4s ease both;
+        }
+
+        .lab-tab-content.active {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @keyframes tabFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Confetti or simple particle effect */
+        .celebration-canvas {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="lab-container">
+        
+        <!-- Header Glass Panel -->
+        <header class="glass-nav">
+            <a href="index.html" class="back-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Retour à l'accueil
+            </a>
+            <div class="logo-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(45deg);"><path d="M4.5 16.5c-1.5 1.26-2 3.42-2 3.42s2.16-.5 3.42-2M21.5 2.5s-2.16.5-3.42 2c1.26 1.5 2 3.42 2 3.42M12 12L4 20M12 12l8-8M9 9l6 6M15 9l-6 6"></path></svg>
+                LAB INTERACTIF DE GÉNÉTIQUE
+            </div>
+            <div style="width: 140px; text-align: right;">
+                <span class="badge-lab b-blue">SV & T 2BAC</span>
+            </div>
+        </header>
+
+        <!-- Sidebar + Content Main Layout -->
+        <div class="lab-layout">
+            
+            <!-- Sidebar with tab cards -->
+            <aside class="lab-sidebar">
+                
+                <button class="lab-tab-btn active tab-a" style="--btn-color: #38bdf8;" onclick="switchLabTab('lab-expression', this)">
+                    <div class="tab-icon">🧬</div>
+                    <div class="tab-title-text">
+                        <span class="tab-sub">Template A</span>
+                        <span class="tab-main-title">Synthèse des Protéines</span>
+                    </div>
+                </button>
+
+                <button class="lab-tab-btn tab-b" style="--btn-color: #a78bfa;" onclick="switchLabTab('lab-mendel', this)">
+                    <div class="tab-icon">📊</div>
+                    <div class="tab-title-text">
+                        <span class="tab-sub">Template B</span>
+                        <span class="tab-main-title">Lois Statistiques</span>
+                    </div>
+                </button>
+
+                <button class="lab-tab-btn tab-game" style="--btn-color: #34d399;" onclick="switchLabTab('lab-arcade', this)">
+                    <div class="tab-icon">🎮</div>
+                    <div class="tab-title-text">
+                        <span class="tab-sub">Mode Arcade</span>
+                        <span class="tab-main-title">Jeux Réflexes Bac</span>
+                    </div>
+                </button>
+
+                <div class="tip-box" style="margin-top: 1rem;">
+                    <div class="tip-icon">💡</div>
+                    <div>
+                        <div class="tip-label">Objectif Bac</div>
+                        <p class="tip-text" style="font-size: 0.8rem;">Ce labo vous apprend la rigueur mathématique et rédactionnelle exigée pour l'examen national marocain.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Interactive Panel -->
+            <main class="lab-panel">
+                <canvas id="celebration-canvas" class="celebration-canvas"></canvas>
+
+                <!-- ================= TAB 1: EXPRESSION GENETIQUE ================= -->
+                <section id="lab-expression" class="lab-tab-content active">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-2 text-white">Labo 1 : Transcription, Traduction & Mutations</h2>
+                        <p class="text-secondary text-sm">Visualisez l'impact des mutations sur la séquence d'acides aminés (cadre de lecture) et apprenez la phrase-type de justification.</p>
+                    </div>
+
+                    <!-- Control Panel shelf -->
+                    <div class="control-shelf">
+                        <div class="shelf-group">
+                            <label class="text-sm font-bold text-slate-400">Gène d'étude :</label>
+                            <select id="gene-selector" onchange="loadSelectedGene()">
+                                <option value="hba">Drépanocytose — Hémoglobine HbA (Normal)</option>
+                                <option value="hbs">Drépanocytose — Hémoglobine HbS (Muté)</option>
+                                <option value="cftr-normal">Mucoviscidose — Canal CFTR (Normal)</option>
+                                <option value="cftr-delta">Mucoviscidose — Mutation ΔF508 (Délétion 3bp)</option>
+                                <option value="albinos-normal">Albinisme — Tyrosinase (Normal)</option>
+                                <option value="albinos-mute">Albinisme — Tyrosinase (Insertion - Décalage)</option>
+                                <option value="custom">Séquence libre (Personnalisée)</option>
+                            </select>
+                        </div>
+                        <div class="shelf-group" id="custom-sequence-input-group" style="display: none;">
+                            <input type="text" id="custom-sequence-input" placeholder="Entrez bases ADN (ex: ATGGCCGTA...)" style="width: 280px; text-transform: uppercase;" oninput="validateAndSetCustomDNA()">
+                        </div>
+                        <div class="shelf-group">
+                            <button class="btn-lab btn-lab-outline" onclick="resetGeneSimulation()">Réinitialiser</button>
+                            <button class="btn-lab btn-lab-blue" id="btn-animate-trans" onclick="startExpressionAnimation()">Lancer Simulation</button>
+                        </div>
+                    </div>
+
+                    <!-- DNA Strand Workspace Box -->
+                    <div class="dna-strand-container">
+                        <div class="visual-sequence">
+                            <!-- Brin Codant -->
+                            <div class="nucleotide-row row-codant" id="row-dna-codant">
+                                <span class="strand-label lbl-codant">Brin Codant 5'</span>
+                                <!-- Bases injected dynamically -->
+                            </div>
+                            <!-- Brin Matrice (Transcrit) -->
+                            <div class="nucleotide-row row-matrice" id="row-dna-matrice">
+                                <span class="strand-label lbl-matrice">Brin Transcrit 3'</span>
+                                <!-- Bases injected dynamically -->
+                            </div>
+                            <!-- mRNA Row -->
+                            <div class="nucleotide-row row-mrna" id="row-mrna">
+                                <span class="strand-label lbl-mrna">ARNm 5'</span>
+                                <div id="mrna-codons-container" style="display: inline-flex;">
+                                    <!-- Codons injected dynamically -->
+                                </div>
+                            </div>
+                            <!-- Protein Row -->
+                            <div class="nucleotide-row row-protein" id="row-protein">
+                                <span class="strand-label lbl-protein">Protéine</span>
+                                <div id="protein-chain-container" style="display: inline-flex; align-items: center;">
+                                    <!-- Amino acids injected dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; font-size: 0.85rem; color: #64748b; background: rgba(15,23,42,0.3); padding: 0.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.02);">
+                        <span>💡 Astuce : <strong>Cliquez sur n'importe quel nucléotide</strong> du brin d'ADN ci-dessus pour insérer une mutation (Substitution, Délétion, Addition) !</span>
+                    </div>
+
+                    <!-- Expected Examen Phrase Output -->
+                    <div class="phrase-output-card card-glow-blue" id="phrase-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                            <h4 class="text-lg font-bold text-sky-400 flex items-center gap-2">
+                                🏆 LA PHRASE MODÈLE DU CORRECTEUR (BAC 20/20)
+                            </h4>
+                            <span class="badge-lab b-blue">Template A</span>
+                        </div>
+                        <p class="phrase-text" id="phrase-model-text">
+                            Sélectionnez une mutation ou cliquez sur un nucléotide pour générer automatiquement la phrase explicative parfaite conforme au barème officiel.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ================= TAB 2: GENETIQUE MENDELIENNE ================= -->
+                <section id="lab-mendel" class="lab-tab-content">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-2 text-white">Labo 2 : Simulateur de Croisements & Échiquier de Croisement</h2>
+                        <p class="text-secondary text-sm">Configurez un croisement en dihybridisme, gérez le lien chromosomique et observez la construction de l'échiquier et les proportions.</p>
+                    </div>
+
+                    <div class="mendel-workspace">
+                        
+                        <!-- Left configuration panel -->
+                        <div class="setup-panel">
+                            <h3 class="text-lg font-bold text-white border-b border-slate-700 pb-2">🔩 Configuration</h3>
+                            
+                            <div class="setup-group">
+                                <label>Mode de croisement</label>
+                                <select id="cross-mode" onchange="adjustCrossSettings()">
+                                    <option value="monohybrid">Monohybridisme (1 gène)</option>
+                                    <option value="dihybrid">Dihybridisme (2 gènes)</option>
+                                </select>
+                            </div>
+
+                            <div class="setup-group" id="relationship-mono-group">
+                                <label>Relation d'allèles (Gène 1)</label>
+                                <select id="allele-relation-mono" onchange="adjustCrossSettings()">
+                                    <option value="dom-abs">Dominance Absolue (A > a)</option>
+                                    <option value="codom">Codominance (A = B)</option>
+                                    <option value="letal">Gène Létal (Zygote AA non viable)</option>
+                                </select>
+                            </div>
+
+                            <div class="setup-group" id="link-type-group" style="display: none;">
+                                <label>Liaison chromosomique</label>
+                                <select id="chromosome-link" onchange="adjustCrossingOverUI()">
+                                    <option value="independent">Gènes Indépendants (Chromosomes différents)</option>
+                                    <option value="linked-absolute">Liaison Absolue (Même chromosome, 0% CO)</option>
+                                    <option value="linked-partial">Liaison Partielle (Même chromosome, avec Crossing-Over)</option>
+                                </select>
+                            </div>
+
+                            <div class="setup-group" id="co-distance-group" style="display: none;">
+                                <label id="co-distance-label">Distance génétique : 15 cM</label>
+                                <input type="range" id="co-distance" min="1" max="49" value="15" oninput="updateCODistanceText()" style="width:100%; accent-color: #8b5cf6;">
+                            </div>
+
+                            <div class="setup-group">
+                                <label>Localisation</label>
+                                <select id="gene-loc" onchange="adjustCrossSettings()">
+                                    <option value="autosomal">Autosomale (Chromosomes non-sexuels)</option>
+                                    <option value="gonosomal">Gonosomale (Lié au sexe, porté par X)</option>
+                                </select>
+                            </div>
+
+                            <!-- Genotypes Selection -->
+                            <div class="setup-group">
+                                <label>Génotype Mère (♀)</label>
+                                <select id="mother-genotype">
+                                    <!-- Populated dynamically -->
+                                </select>
+                            </div>
+
+                            <div class="setup-group">
+                                <label>Génotype Père (♂)</label>
+                                <select id="father-genotype">
+                                    <!-- Populated dynamically -->
+                                </select>
+                            </div>
+
+                            <button class="btn-lab btn-lab-purple btn-block mt-md" onclick="runCrossSimulation()">
+                                🧬 Lancer le Croisement
+                            </button>
+                        </div>
+
+                        <!-- Right visualizer panel -->
+                        <div class="results-panel">
+                            
+                            <!-- Meiosis split animation stage -->
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">1. Division méiotique & Gamètes obtenus</h4>
+                                <div class="meiosis-stage" id="meiosis-stage">
+                                    <div class="text-slate-500 font-medium">Configurez le croisement et cliquez sur "Lancer le Croisement" pour voir la méiose.</div>
+                                </div>
+                            </div>
+
+                            <!-- Echiquier de croisement box -->
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">2. Échiquier de croisement parfait</h4>
+                                <div class="punnett-container">
+                                    <div id="punnett-output-stage" style="min-height: 200px; display: flex; align-items: center; justify-content: center;">
+                                        <div class="text-slate-500 font-medium text-center">
+                                            L'échiquier de croisement s'affichera ici avec toutes les proportions théoriques et notations rigoureuses.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 5 Elements Checker -->
+                            <div class="obligatory-checklist">
+                                <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-3">📋 Les 5 éléments obligatoires exigés par l'examinateur :</h4>
+                                <div class="check-item" id="chk-pgen">
+                                    <div class="check-icon">✓</div>
+                                    <span>① Génotypes précis des parents en en-tête</span>
+                                </div>
+                                <div class="check-item" id="chk-gam">
+                                    <div class="check-icon">✓</div>
+                                    <span>② Gamètes de chaque parent avec leurs proportions (e.g. 1/4 ou 25%)</span>
+                                </div>
+                                <div class="check-item" id="chk-table">
+                                    <div class="check-icon">✓</div>
+                                    <span>③ Tableau croisé ordonné (l'échiquier)</span>
+                                </div>
+                                <div class="check-item" id="chk-cgen">
+                                    <div class="check-icon">✓</div>
+                                    <span>④ Génotypes de la descendance écrits sous forme fractionnaire conventionnelle (e.g., A//a)</span>
+                                </div>
+                                <div class="check-item" id="chk-phen">
+                                    <div class="check-icon">✓</div>
+                                    <span>⑤ Phénotypes de la descendance entre crochets avec proportions finales (ex: [A] 75%)</span>
+                                </div>
+                            </div>
+
+                            <!-- Scientific 4x4 decision log -->
+                            <div class="phrase-output-card card-glow-purple">
+                                <h4 class="text-lg font-bold text-violet-400 mb-2 flex items-center gap-2">
+                                    🔬 ANALYSE DES PROPORTIONS & CONCLUSION (LOGIQUE 4×4)
+                                </h4>
+                                <p class="phrase-text" id="mendel-analysis-text" style="font-size: 0.95rem;">
+                                    En attente du croisement... Le moteur résoudra les questions Q1 à Q4 dans l'ordre strict de l'arbre de décision de la méthode 4x4.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ================= TAB 3: ARCADE MODE GAMES ================= -->
+                <section id="lab-arcade" class="lab-tab-content">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-2 text-white">Labo 3 : Espace Arcade SVT Réflexe</h2>
+                        <p class="text-secondary text-sm">Entraînez vos automatismes pour gagner du temps le jour du bac. Enchaînez les bonnes réponses et gagnez vos badges d'élite !</p>
+                    </div>
+
+                    <!-- Games Hub Menu (shows if game not active) -->
+                    <div class="game-card-hub" id="arcade-hub">
+                        
+                        <div class="game-module" onclick="launchBlitzGame()">
+                            <div class="game-mod-header">
+                                <div class="game-mod-icon">⚡</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Le Blitz des Proportions (4×4)</h3>
+                                    <span class="badge-lab b-blue" style="margin-top:4px; display:inline-block;">Diagnostic Rapide</span>
+                                </div>
+                            </div>
+                            <p class="text-secondary text-sm" style="line-height:1.5;">Analysez des résultats expérimentaux de croisements du bac et déterminez instantanément la dominance, liaison sexuelle, ou indépendance en moins de 15 secondes par question !</p>
+                            <div class="btn-lab btn-lab-blue" style="margin-top:auto;">Jouer maintenant</div>
+                        </div>
+
+                        <div class="game-module" onclick="launchPuzzleGame()">
+                            <div class="game-mod-header">
+                                <div class="game-mod-icon">🧩</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Le Puzzle de la Phrase-Type</h3>
+                                    <span class="badge-lab b-purple" style="margin-top:4px; display:inline-block;">Rigueur de rédaction</span>
+                                </div>
+                            </div>
+                            <p class="text-secondary text-sm" style="line-height:1.5;">Reconstituez la phrase de démonstration parfaite pour expliquer une mutation d'ADN en glissant-déposant les blocs logiques dans le bon ordre scientifique.</p>
+                            <div class="btn-lab btn-lab-purple" style="margin-top:auto;">Lancer le puzzle</div>
+                        </div>
+
+                    </div>
+
+                    <!-- Active Game Stage Area (initially hidden) -->
+                    <div class="game-active-stage hidden" id="game-stage">
+                        <!-- Content injected dynamically by JS -->
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- Mutation Pop-up Dialog -->
+    <div class="dialog-overlay" id="mutation-dialog">
+        <div class="dialog-box">
+            <h3 class="dialog-title">🧬 Modifier le Nucléotide</h3>
+            <div class="dialog-body">
+                <p class="text-sm text-slate-300">Sélectionnez le type de mutation à appliquer sur le nucléotide à l'index <strong id="mut-dialog-index">X</strong> (Allèle : <strong id="mut-dialog-base">N</strong>) :</p>
+                
+                <div class="setup-group">
+                    <label>Type de mutation</label>
+                    <select id="mut-action-select" onchange="toggleMutationValueUI()">
+                        <option value="substitute">Substitution (Remplacer)</option>
+                        <option value="delete">Délétion (Supprimer)</option>
+                        <option value="add">Addition (Insérer un nucléotide avant)</option>
+                    </select>
+                </div>
+
+                <div class="setup-group" id="mut-new-base-group">
+                    <label>Nouvelle Base ADN</label>
+                    <select id="mut-new-base-select">
+                        <option value="A">A (Adénine)</option>
+                        <option value="T">T (Thymine)</option>
+                        <option value="C">C (Cytosine)</option>
+                        <option value="G">G (Guanine)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="dialog-btn-grid">
+                <button class="btn-lab btn-lab-outline" onclick="closeMutationDialog()">Annuler</button>
+                <button class="btn-lab btn-lab-blue" onclick="applyCustomMutation()">Appliquer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration and Sound scripts (vanilla HTML5 offline compatible) -->
+    <script>
+        // Tab switching logic
+        function switchLabTab(tabId, btn) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.lab-tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Show selected tab content
+            const activeContent = document.getElementById(tabId);
+            if (activeContent) {
+                activeContent.classList.add('active');
+            }
+
+            // Reset tab button states
+            const buttons = document.querySelectorAll('.lab-tab-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+
+            // Set current button active
+            btn.classList.add('active');
+
+            // Specific tab init logic
+            if (tabId === 'lab-arcade') {
+                closeGameStage(); // Reset to hub when clicking the tab
+            }
+        }
+    </script>
+
+    <!-- JS Simulations Engine -->
+    <script>
+        // ================= GENES DATA & LAB 1 SIMULATOR =================
+        const GENES_DATABASE = {
+            hba: {
+                name: "Hémoglobine Saine HbA",
+                disease: "Symptômes : Sain (Pas de Drépanocytose). Globules rouges biconcaves normaux.",
+                dna: "ATGGTGCACCTGACTCCTGAGGAGAAG", // 27 bp (9 codons)
+                mutIndex: 19, // 20th nucleotide (A) (0-indexed)
+                substituteVal: "T", // gives HbS
+                mutTripletNum: 7,
+                normalCodon: "GAG",
+                mutatedCodon: "GUG",
+                normalAA: "Glu",
+                mutatedAA: "Val",
+                role: "le transport de l'oxygène dans le sang"
+            },
+            hbs: {
+                name: "Hémoglobine Drépanocytaire HbS",
+                disease: "Symptômes : Anémie falciforme, globules rouges en forme de faucille bouchant les capillaires.",
+                dna: "ATGGTGCACCTGACTCCTGTGGAGAAG",
+                mutIndex: 19,
+                substituteVal: "A", // reverts to HbA
+                mutTripletNum: 7,
+                normalCodon: "GAG",
+                mutatedCodon: "GUG",
+                normalAA: "Glu",
+                mutatedAA: "Val",
+                role: "le transport de l'oxygène dans le sang"
+            },
+            "cftr-normal": {
+                name: "Canal CFTR Normal (Poumon)",
+                disease: "Symptômes : Sain (Pas de Mucoviscidose). Mucus fluide dans les bronches.",
+                dna: "ATCATCTTTGGTGTT", // 15 bp
+                mutIndex: 5,
+                substituteVal: "C",
+                role: "le transport des ions chlorure à travers la membrane cellulaire afin de fluidifier le mucus"
+            },
+            "cftr-delta": {
+                name: "Canal CFTR Muté ΔF508",
+                disease: "Symptômes : Mucoviscidose. Mucus épais encombrant les bronches et provoquant de graves infections.",
+                dna: "ATCATTGGTGTT", // Missing CTT (Phe at codon 3 is deleted)
+                mutIndex: 5,
+                substituteVal: "T",
+                role: "le transport des ions chlorure à travers la membrane cellulaire afin de fluidifier le mucus"
+            },
+            "albinos-normal": {
+                name: "Tyrosinase Normale (Albinisme)",
+                disease: "Symptômes : Pigmentation normale de la peau, des yeux et des cheveux.",
+                dna: "ATGGGAAGACGGTGA",
+                mutIndex: 5,
+                substituteVal: "A",
+                role: "la synthèse de mélanine, pigment responsable de la coloration de la peau"
+            },
+            "albinos-mute": {
+                name: "Tyrosinase Mutée (Albinisme)",
+                disease: "Symptômes : Albinisme. Absence totale de mélanine (peau blanche, cheveux décolorés, yeux clairs).",
+                dna: "ATGGGAAAGACGGTGA", // Inserted A at index 6
+                mutIndex: 6,
+                substituteVal: "A",
+                role: "la synthèse de mélanine, pigment responsable de la coloration de la peau"
+            },
+            custom: {
+                name: "Gène personnalisé",
+                disease: "Entrez vos propres nucléotides pour analyser instantanément les conséquences.",
+                dna: "ATGGCCTTCGGCTAA",
+                mutIndex: 0,
+                substituteVal: "T",
+                role: "le métabolisme normal de la cellule"
+            }
+        };
+
+        const GENETIC_CODE_TABLE = {
+            "UUU":"Phe", "UUC":"Phe", "UUA":"Leu", "UUG":"Leu",
+            "CUU":"Leu", "CUC":"Leu", "CUA":"Leu", "CUG":"Leu",
+            "AUU":"Ile", "AUC":"Ile", "AUA":"Ile", "AUG":"Met", // START
+            "GUU":"Val", "GUC":"Val", "GUA":"Val", "GUG":"Val",
+            "UCU":"Ser", "UCC":"Ser", "UCA":"Ser", "UCG":"Ser",
+            "CCU":"Pro", "CCC":"Pro", "CCA":"Pro", "CCG":"Pro",
+            "ACU":"Thr", "ACC":"Thr", "ACA":"Thr", "ACG":"Thr",
+            "GCU":"Ala", "GCC":"Ala", "GCA":"Ala", "GCG":"Ala",
+            "UAU":"Tyr", "UAC":"Tyr", "UAA":"STOP", "UAG":"STOP",
+            "CAU":"His", "CAC":"His", "CAA":"Gln", "CAG":"Gln",
+            "AAU":"Asn", "AAC":"Asn", "AAA":"Lys", "AAG":"Lys",
+            "GAU":"Asp", "GAC":"Asp", "GAA":"Glu", "GAG":"Glu",
+            "UGU":"Cys", "UGC":"Cys", "UGA":"STOP", "UGG":"Trp",
+            "CGU":"Arg", "CGC":"Arg", "CGA":"Arg", "CGG":"Arg",
+            "AGU":"Ser", "AGC":"Ser", "AGA":"Arg", "AGG":"Arg",
+            "GGU":"Gly", "GGC":"Gly", "GGA":"Gly", "GGG":"Gly"
+        };
+
+        let currentActiveDNA = "";
+        let selectedGeneId = "hba";
+        let lastSelectedNucIndex = -1;
+
+        // Initialize Tab 1
+        function loadSelectedGene() {
+            const sel = document.getElementById('gene-selector');
+            selectedGeneId = sel.value;
+            
+            const customGroup = document.getElementById('custom-sequence-input-group');
+            if (selectedGeneId === 'custom') {
+                customGroup.style.display = 'flex';
+                currentActiveDNA = document.getElementById('custom-sequence-input').value.toUpperCase() || "ATGGCCTTCGGCTAA";
+            } else {
+                customGroup.style.display = 'none';
+                currentActiveDNA = GENES_DATABASE[selectedGeneId].dna;
+            }
+
+            renderDnaWorkspace();
+            resetInteractiveOutputs();
+        }
+
+        function validateAndSetCustomDNA() {
+            const input = document.getElementById('custom-sequence-input');
+            let val = input.value.toUpperCase().replace(/[^ATCG]/g, '');
+            input.value = val;
+            currentActiveDNA = val;
+            renderDnaWorkspace();
+        }
+
+        function renderDnaWorkspace() {
+            const rowCodant = document.getElementById('row-dna-codant');
+            const rowMatrice = document.getElementById('row-dna-matrice');
+            
+            // Clean old nucleotide elements (keep label)
+            const codantLabel = rowCodant.querySelector('.strand-label');
+            const matriceLabel = rowMatrice.querySelector('.strand-label');
+            rowCodant.innerHTML = "";
+            rowMatrice.innerHTML = "";
+            rowCodant.appendChild(codantLabel);
+            rowMatrice.appendChild(matriceLabel);
+
+            // Reconstruct the matching strands
+            for (let i = 0; i < currentActiveDNA.length; i++) {
+                const baseCodant = currentActiveDNA[i];
+                const baseMatrice = getComplementaryBase(baseCodant, false); // DNA complimentary
+
+                // Render Codant Base Element
+                const nucC = document.createElement('span');
+                nucC.className = `nuc-base nuc-${baseCodant}`;
+                nucC.textContent = baseCodant;
+                nucC.onclick = () => openMutationDialog(i, baseCodant);
+                rowCodant.appendChild(nucC);
+
+                // Render Matrice Base Element
+                const nucM = document.createElement('span');
+                nucM.className = `nuc-base nuc-${baseMatrice}`;
+                nucM.textContent = baseMatrice;
+                nucM.onclick = () => openMutationDialog(i, baseCodant); // click binds to same index
+                rowMatrice.appendChild(nucM);
+            }
+        }
+
+        function getComplementaryBase(base, toRNA = false) {
+            switch(base) {
+                case 'A': return toRNA ? 'U' : 'T';
+                case 'T': return 'A';
+                case 'C': return 'G';
+                case 'G': return 'C';
+                default: return 'N';
+            }
+        }
+
+        function openMutationDialog(index, base) {
+            lastSelectedNucIndex = index;
+            document.getElementById('mut-dialog-index').textContent = index + 1;
+            document.getElementById('mut-dialog-base').textContent = base;
+            document.getElementById('mutation-dialog').classList.add('active');
+        }
+
+        function closeMutationDialog() {
+            document.getElementById('mutation-dialog').classList.remove('active');
+        }
+
+        function toggleMutationValueUI() {
+            const act = document.getElementById('mut-action-select').value;
+            const group = document.getElementById('mut-new-base-group');
+            if (act === 'delete') {
+                group.style.display = 'none';
+            } else {
+                group.style.display = 'flex';
+            }
+        }
+
+        function applyCustomMutation() {
+            const action = document.getElementById('mut-action-select').value;
+            const newBase = document.getElementById('mut-new-base-select').value;
+            
+            let arr = currentActiveDNA.split('');
+            let mutDescription = "";
+            let mutationType = "";
+            let mutNum = Math.floor(lastSelectedNucIndex / 3) + 1;
+            let origBase = arr[lastSelectedNucIndex];
+
+            if (action === 'substitute') {
+                arr[lastSelectedNucIndex] = newBase;
+                mutationType = "substitution";
+                mutDescription = `On constate qu'au niveau du triplet n°${mutNum}, il y a eu une mutation par <span class="kw-mut">substitution</span> du nucléotide <span class="kw-mut">${origBase}</span> par <span class="kw-mut">${newBase}</span>`;
+            } else if (action === 'delete') {
+                arr.splice(lastSelectedNucIndex, 1);
+                mutationType = "délétion";
+                mutDescription = `On constate qu'au niveau du triplet n°${mutNum}, il y a eu une mutation par <span class="kw-mut">délétion</span> du nucléotide <span class="kw-mut">${origBase}</span>`;
+            } else if (action === 'add') {
+                arr.splice(lastSelectedNucIndex, 0, newBase);
+                mutationType = "addition";
+                mutDescription = `On constate qu'au niveau du triplet n°${mutNum}, il y a eu une mutation par <span class="kw-mut">addition</span> (insertion) du nucléotide <span class="kw-mut">${newBase}</span> avant le nucléotide <span class="kw-mut">${origBase}</span>`;
+            }
+
+            currentActiveDNA = arr.join('');
+            document.getElementById('gene-selector').value = 'custom';
+            document.getElementById('custom-sequence-input-group').style.display = 'flex';
+            document.getElementById('custom-sequence-input').value = currentActiveDNA;
+
+            renderDnaWorkspace();
+            closeMutationDialog();
+
+            // Run simulation instantly with custom explanation
+            runTranslationChain(mutDescription, mutationType, lastSelectedNucIndex);
+        }
+
+        function resetGeneSimulation() {
+            loadSelectedGene();
+        }
+
+        function resetInteractiveOutputs() {
+            document.getElementById('mrna-codons-container').innerHTML = "";
+            document.getElementById('protein-chain-container').innerHTML = "";
+            document.getElementById('phrase-model-text').innerHTML = "Cliquez sur 'Lancer Simulation' ou introduisez une mutation pour générer la justification de l'examen.";
+            document.getElementById('phrase-card').className = "phrase-output-card card-glow-blue";
+        }
+
+        function startExpressionAnimation() {
+            // Simply runs translation with default description corresponding to selected preset gene
+            let desc = "";
+            let mutType = "none";
+            let mutIdx = -1;
+
+            if (selectedGeneId === 'hbs') {
+                desc = `Dans le cas de l'allèle muté HbS responsable de la drépanocytose, on constate qu'au niveau du triplet n°7, il y a eu une mutation par <span class="kw-mut">substitution</span> du nucléotide <span class="kw-mut">A</span> par <span class="kw-mut">T</span>`;
+                mutType = "substitution";
+                mutIdx = 19;
+            } else if (selectedGeneId === 'cftr-delta') {
+                desc = `Dans le cas de l'allèle muté ΔF508 de la mucoviscidose, on observe une mutation par <span class="kw-mut">délétion</span> de trois nucléotides consécutifs (<span class="kw-mut">CTT</span>) au niveau du codon n°508`;
+                mutType = "deletion_3";
+                mutIdx = 6;
+            } else if (selectedGeneId === 'albinos-mute') {
+                desc = `Dans le cas de l'albinisme, on constate qu'au niveau du triplet n°3, il y a eu une mutation par <span class="kw-mut">addition</span> du nucléotide <span class="kw-mut">A</span>`;
+                mutType = "addition";
+                mutIdx = 6;
+            } else if (selectedGeneId === 'hba' || selectedGeneId === 'cftr-normal' || selectedGeneId === 'albinos-normal') {
+                desc = `Séquence normale (Saine) : La synthèse de la protéine s'effectue sans encombre. L'expression de l'information donne une protéine active et fonctionnelle.`;
+                mutType = "normal";
+            } else {
+                desc = `Analyse personnalisée : Synthèse en cours...`;
+                mutType = "custom";
+            }
+
+            runTranslationChain(desc, mutType, mutIdx);
+        }
+
+        function runTranslationChain(mutationIntroText, mutationType, mutIndex) {
+            const mrnaContainer = document.getElementById('mrna-codons-container');
+            const proteinContainer = document.getElementById('protein-chain-container');
+            mrnaContainer.innerHTML = "";
+            proteinContainer.innerHTML = "";
+
+            // 1. Transcribe current DNA to mRNA (monocaténaire based on complimentary to Matrice)
+            // Matrice is complimentary to Codant. ARNm is complementary to Matrice, meaning ARNm matches Codant with T replacing U.
+            let mrnaSeq = "";
+            for (let i = 0; i < currentActiveDNA.length; i++) {
+                if (currentActiveDNA[i] === 'T') {
+                    mrnaSeq += 'U';
+                } else {
+                    mrnaSeq += currentActiveDNA[i];
+                }
+            }
+
+            // Slice mRNA into codons (triplets)
+            let codons = [];
+            for (let i = 0; i < mrnaSeq.length; i += 3) {
+                if (i + 3 <= mrnaSeq.length) {
+                    codons.push(mrnaSeq.substring(i, i + 3));
+                } else {
+                    // trailing bases
+                    codons.push(mrnaSeq.substring(i));
+                }
+            }
+
+            // 2. Animate and Render Codons on screen
+            let isFrameShifted = false;
+            let mutTripletNum = Math.floor(mutIndex / 3) + 1;
+            let finalAminoAcids = [];
+            let stopEncountered = false;
+            let firstStopCodonIndex = -1;
+
+            codons.forEach((codon, idx) => {
+                const cBox = document.createElement('div');
+                cBox.className = "mrna-codon-box";
+                
+                // Add codon index floating label
+                const indexLabel = document.createElement('span');
+                indexLabel.className = "codon-index";
+                indexLabel.textContent = idx + 1;
+                cBox.appendChild(indexLabel);
+
+                // Check frame shift (all codons after addition/deletion of non-multiple-of-3 bases)
+                if ((mutationType === 'addition' || mutationType === 'délétion') && (idx + 1) >= mutTripletNum) {
+                    isFrameShifted = true;
+                }
+
+                if (isFrameShifted) {
+                    cBox.classList.add('shifted');
+                } else if ((idx + 1) === mutTripletNum && mutationType === 'substitution') {
+                    cBox.classList.add('mutated-codon');
+                }
+
+                // Render base letters inside codon
+                for (let b = 0; b < codon.length; b++) {
+                    const l = document.createElement('span');
+                    l.className = `nuc-base nuc-${codon[b]}`;
+                    l.textContent = codon[b];
+                    cBox.appendChild(l);
+                }
+
+                mrnaContainer.appendChild(cBox);
+
+                // Calculate matching amino acid
+                let aaName = "???";
+                if (codon.length === 3) {
+                    aaName = GENETIC_CODE_TABLE[codon] || "Inconnu";
+                }
+
+                if (aaName === "STOP" && !stopEncountered) {
+                    stopEncountered = true;
+                    firstStopCodonIndex = idx;
+                }
+
+                if (!stopEncountered) {
+                    finalAminoAcids.push({
+                        name: aaName,
+                        isMutated: (idx + 1) === mutTripletNum && mutationType === 'substitution',
+                        isShifted: isFrameShifted,
+                        codon: codon,
+                        triplet: idx + 1
+                    });
+                } else if (idx === firstStopCodonIndex) {
+                    finalAminoAcids.push({
+                        name: "STOP",
+                        isMutated: false,
+                        isShifted: isFrameShifted,
+                        codon: codon,
+                        triplet: idx + 1
+                    });
+                }
+            });
+
+            // 3. Render Protein Chain
+            finalAminoAcids.forEach((aa, idx) => {
+                const aaDiv = document.createElement('div');
+                aaDiv.className = "prot-aa";
+                aaDiv.textContent = aa.name;
+
+                if (aa.name === "STOP") {
+                    aaDiv.classList.add('aa-stop');
+                } else if (aa.isMutated) {
+                    aaDiv.classList.add('aa-mutated');
+                } else if (aa.isShifted) {
+                    aaDiv.classList.add('aa-shifted');
+                }
+
+                proteinContainer.appendChild(aaDiv);
+            });
+
+            // 4. Formulate the Perfect "Phrase-Type 20/20"
+            const phraseBox = document.getElementById('phrase-model-text');
+            const cardElement = document.getElementById('phrase-card');
+            
+            if (mutationType === 'none' || mutationType === 'normal') {
+                phraseBox.innerHTML = `<strong>Séquence Standard:</strong> Cette séquence d'ADN code pour une protéine normale saine. <br>L'ARNm obtenu est intégralement traduit en une chaîne d'acides aminés fonctionnelle (commençant par Met-). La protéine assure pleinement son rôle physiologique, assurant ainsi un phénotype sain.`;
+                cardElement.className = "phrase-output-card card-glow-green";
+                return;
+            }
+
+            // Build dynamic mutation sentence
+            let mutationClause = mutationIntroText;
+            let consequencesClause = "";
+            let proteinRôle = GENES_DATABASE[selectedGeneId]?.role || "le fonctionnement enzymatique de la cellule";
+
+            if (mutationType === 'substitution') {
+                let changedAA = finalAminoAcids[mutTripletNum - 1]?.name || "Inconnu";
+                let originalAA = GENES_DATABASE[selectedGeneId]?.normalAA || "Glu";
+                let origCodon = GENES_DATABASE[selectedGeneId]?.normalCodon || "GAG";
+                let mutCod = codons[mutTripletNum - 1] || "GUG";
+
+                if (originalAA === changedAA) {
+                    // Silent Mutation
+                    consequencesClause = `, entraînant le remplacement du codon <span class="kw-cod">${origCodon}</span> par le codon <span class="kw-cod">${mutCod}</span>, ce qui code pour le même acide aminé <span class="kw-aa">${changedAA}</span> (mutation silencieuse). La structure primaire de la protéine n'est pas altérée, la protéine reste <span class="kw-prot">fonctionnelle</span> et le phénotype est sain.`;
+                    cardElement.className = "phrase-output-card card-glow-green";
+                } else if (changedAA === "STOP") {
+                    // Non-sense
+                    consequencesClause = `, entraînant le remplacement du codon <span class="kw-cod">${origCodon}</span> par le codon STOP <span class="kw-cod">${mutCod}</span>. Cela stoppe prématurément la traduction, libérant une protéine tronquée et <span class="kw-prot">non fonctionnelle</span>, incapable d'assurer son rôle dans <span class="kw-prot">${proteinRôle}</span>, provoquant ainsi l'apparition du phénotype malade.`;
+                    cardElement.className = "phrase-output-card card-glow-purple";
+                } else {
+                    // Missense (faux-sens)
+                    consequencesClause = `, entraînant le remplacement du codon <span class="kw-cod">${origCodon}</span> par le codon <span class="kw-cod">${mutCod}</span>, ce qui se traduit par le remplacement de l'acide aminé <span class="kw-aa">${originalAA}</span> par l'acide aminé <span class="kw-aa">${changedAA}</span> au niveau de la protéine. Cette modification structurale produit une protéine <span class="kw-prot">non fonctionnelle</span>, incapable d'assurer son rôle de <span class="kw-prot">${proteinRôle}</span>, ce qui explique l'apparition des symptômes de la maladie chez l'individu atteint.`;
+                    cardElement.className = "phrase-output-card card-glow-purple";
+                }
+            } else if (mutationType === 'délétion' || mutationType === 'addition') {
+                let effect = stopEncountered ? "l'apparition d'un codon STOP prématuré arrêtant la traduction" : "un changement complet de la séquence d'acides aminés en aval";
+                consequencesClause = `, ce qui a provoqué un <span class="kw-mut">décalage du cadre de lecture</span> (frameshift). Cela se traduit par ${effect}. La protéine ainsi produite est totalement structurée différemment et est donc <span class="kw-prot">non fonctionnelle</span>, incapable d'assurer sa fonction pour <span class="kw-prot">${proteinRôle}</span>, d'où le phénotype malade de l'élève.`;
+                cardElement.className = "phrase-output-card card-glow-purple";
+            } else if (mutationType === 'deletion_3') {
+                // CFTR DeltaF508 specific
+                consequencesClause = `, provoquant la perte de l'acide aminé <span class="kw-aa">Phe</span> (Phénylalanine) en position 508 de la protéine CFTR, sans décalage du cadre de lecture. Cette délétion d'un acide aminé rend la protéine CFTR instable et <span class="kw-prot">non fonctionnelle</span> pour <span class="kw-prot">${proteinRôle}</span>, causant un mucus visqueux et le phénotype malade.`;
+                cardElement.className = "phrase-output-card card-glow-purple";
+            } else {
+                consequencesClause = `. La structure de la protéine a été substantiellement modifiée, devenant <span class="kw-prot">non fonctionnelle</span>, affectant ${proteinRôle}, causant le phénotype anormal.`;
+                cardElement.className = "phrase-output-card card-glow-purple";
+            }
+
+            phraseBox.innerHTML = `🏆 <strong>Phrase modèle rédigée :</strong> <br>« ${mutationClause}${consequencesClause} »`;
+        }
+
+        // Initialize defaults
+        window.addEventListener('load', () => {
+            loadSelectedGene();
+            adjustCrossSettings();
+        });
+
+
+        // ================= LAB 2: MENDELIAN LAWS SIMULATOR =================
+        const CROSS_GENOTYPES = {
+            monohybrid: {
+                autosomal: {
+                    female: [
+                        { text: "Pure Dominante [A] — A//A", val: "A//A" },
+                        { text: "Pure Récessive [a] — a//a", val: "a//a" },
+                        { text: "Hétérozygote [A] — A//a", val: "A//a" }
+                    ],
+                    male: [
+                        { text: "Pure Dominante [A] — A//A", val: "A//A" },
+                        { text: "Pure Récessive [a] — a//a", val: "a//a" },
+                        { text: "Hétérozygote [A] — A//a", val: "A//a" }
+                    ]
+                },
+                gonosomal: {
+                    female: [
+                        { text: "Pure Dominante [A] — XA//XA", val: "XA//XA" },
+                        { text: "Pure Récessive [a] — Xa//Xa", val: "Xa//Xa" },
+                        { text: "Hétérozygote [A] — XA//Xa", val: "XA//Xa" }
+                    ],
+                    male: [
+                        { text: "Dominant [A] — XA//Y", val: "XA//Y" },
+                        { text: "Récessif [a] — Xa//Y", val: "Xa//Y" }
+                    ]
+                }
+            },
+            dihybrid: {
+                autosomal: {
+                    female: [
+                        { text: "Double Homozygote Dom [A,B] — AB//AB", val: "AB//AB" },
+                        { text: "Double Homozygote Rec [a,b] — ab//ab", val: "ab//ab" },
+                        { text: "F1 Double Hétérozygote [A,B] — AB//ab", val: "AB//ab" },
+                        { text: "Double Hétérozygote Répulsion [A,B] — Ab//aB", val: "Ab//aB" }
+                    ],
+                    male: [
+                        { text: "Double Homozygote Dom [A,B] — AB//AB", val: "AB//AB" },
+                        { text: "Double Homozygote Rec [a,b] — ab//ab", val: "ab//ab" },
+                        { text: "F1 Double Hétérozygote [A,B] — AB//ab", val: "AB//ab" },
+                        { text: "Double Hétérozygote Répulsion [A,B] — Ab//aB", val: "Ab//aB" }
+                    ]
+                },
+                gonosomal: {
+                    female: [
+                        { text: "Double Homo Dom [A,B] — XAB//XAB", val: "XAB//XAB" },
+                        { text: "Double Homo Rec [a,b] — Xab//Xab", val: "Xab//Xab" },
+                        { text: "Double Hétérozygote [A,B] — XAB//Xab", val: "XAB//Xab" }
+                    ],
+                    male: [
+                        { text: "Double Dom [A,B] — XAB//Y", val: "XAB//Y" },
+                        { text: "Double Rec [a,b] — Xab//Y", val: "Xab//Y" }
+                    ]
+                }
+            }
+        };
+
+        function adjustCrossSettings() {
+            const crossMode = document.getElementById('cross-mode').value;
+            const loc = document.getElementById('gene-loc').value;
+            
+            const linkGroup = document.getElementById('link-type-group');
+            const coDistanceGroup = document.getElementById('co-distance-group');
+            const relMonoGroup = document.getElementById('relationship-mono-group');
+
+            if (crossMode === 'monohybrid') {
+                linkGroup.style.display = 'none';
+                coDistanceGroup.style.display = 'none';
+                relMonoGroup.style.display = 'flex';
+            } else {
+                linkGroup.style.display = 'flex';
+                relMonoGroup.style.display = 'none';
+                adjustCrossingOverUI();
+            }
+
+            // Repopulate genotypes selections based on mode & localisation
+            const motherSel = document.getElementById('mother-genotype');
+            const fatherSel = document.getElementById('father-genotype');
+            motherSel.innerHTML = "";
+            fatherSel.innerHTML = "";
+
+            const mOpts = CROSS_GENOTYPES[crossMode][loc].female;
+            const fOpts = CROSS_GENOTYPES[crossMode][loc].male;
+
+            mOpts.forEach(o => {
+                const opt = document.createElement('option');
+                opt.value = o.val;
+                opt.textContent = o.text;
+                motherSel.appendChild(opt);
+            });
+
+            fOpts.forEach(o => {
+                const opt = document.createElement('option');
+                opt.value = o.val;
+                opt.textContent = o.text;
+                fatherSel.appendChild(opt);
+            });
+        }
+
+        function adjustCrossingOverUI() {
+            const link = document.getElementById('chromosome-link').value;
+            const coDistanceGroup = document.getElementById('co-distance-group');
+            if (link === 'linked-partial') {
+                coDistanceGroup.style.display = 'flex';
+            } else {
+                coDistanceGroup.style.display = 'none';
+            }
+        }
+
+        function updateCODistanceText() {
+            const val = document.getElementById('co-distance').value;
+            document.getElementById('co-distance-label').textContent = `Distance génétique : ${val} cM`;
+        }
+
+        function runCrossSimulation() {
+            const crossMode = document.getElementById('cross-mode').value;
+            const loc = document.getElementById('gene-loc').value;
+            const mGen = document.getElementById('mother-genotype').value;
+            const fGen = document.getElementById('father-genotype').value;
+
+            // Trigger meiosis (gamete derivation)
+            let motherGametes = getGametes(mGen, 'female', crossMode, loc);
+            let fatherGametes = getGametes(fGen, 'male', crossMode, loc);
+
+            // 1. Animate Meiosis and draw gamete nodes
+            renderGametesMeiosis(motherGametes, fatherGametes);
+
+            // 2. Render Interactive Punnett Square
+            renderPunnettSquare(motherGametes, fatherGametes, crossMode, loc);
+
+            // 3. Tick off elements checklist
+            document.getElementById('chk-pgen').classList.add('active');
+            document.getElementById('chk-gam').classList.add('active');
+            document.getElementById('chk-table').classList.add('active');
+            document.getElementById('chk-cgen').classList.add('active');
+            document.getElementById('chk-phen').classList.add('active');
+
+            // 4. Run dynamic scientific tree reasoning
+            explainCrossReasoning(mGen, fGen, motherGametes, fatherGametes, crossMode, loc);
+        }
+
+        function getGametes(genotype, gender, crossMode, loc) {
+            let gametes = []; // list of {alleles: 'AB', freq: 0.25, display: 'AB'}
+
+            if (crossMode === 'monohybrid') {
+                if (loc === 'autosomal') {
+                    // A//A or a//a or A//a
+                    let alleles = genotype.split('//');
+                    if (alleles[0] === alleles[1]) {
+                        gametes.push({ alleles: alleles[0], freq: 1.0, display: alleles[0] });
+                    } else {
+                        gametes.push({ alleles: alleles[0], freq: 0.5, display: alleles[0] });
+                        gametes.push({ alleles: alleles[1], freq: 0.5, display: alleles[1] });
+                    }
+                } else {
+                    // XA//XA or Xa//Xa or XA//Xa or XA//Y or Xa//Y
+                    let alleles = genotype.split('//');
+                    if (gender === 'female') {
+                        let a1 = alleles[0];
+                        let a2 = alleles[1];
+                        if (a1 === a2) {
+                            gametes.push({ alleles: a1, freq: 1.0, display: a1 });
+                        } else {
+                            gametes.push({ alleles: a1, freq: 0.5, display: a1 });
+                            gametes.push({ alleles: a2, freq: 0.5, display: a2 });
+                        }
+                    } else {
+                        // Male XY : XA//Y or Xa//Y
+                        gametes.push({ alleles: alleles[0], freq: 0.5, display: alleles[0] });
+                        gametes.push({ alleles: alleles[1], freq: 0.5, display: alleles[1] });
+                    }
+                }
+            } else {
+                // Dihybridisme
+                if (loc === 'autosomal') {
+                    // AB//AB or ab//ab or AB//ab (F1) or Ab//aB
+                    if (genotype === 'AB//AB') {
+                        gametes.push({ alleles: 'AB', freq: 1.0, display: 'AB' });
+                    } else if (genotype === 'ab//ab') {
+                        gametes.push({ alleles: 'ab', freq: 1.0, display: 'ab' });
+                    } else {
+                        // Heterozygote AB//ab or Ab//aB
+                        const link = document.getElementById('chromosome-link').value;
+                        if (link === 'independent') {
+                            gametes.push({ alleles: 'AB', freq: 0.25, display: 'AB' });
+                            gametes.push({ alleles: 'Ab', freq: 0.25, display: 'Ab' });
+                            gametes.push({ alleles: 'aB', freq: 0.25, display: 'aB' });
+                            gametes.push({ alleles: 'ab', freq: 0.25, display: 'ab' });
+                        } else if (link === 'linked-absolute') {
+                            // Linkage without crossing over
+                            if (genotype === 'AB//ab') {
+                                gametes.push({ alleles: 'AB', freq: 0.5, display: 'AB' });
+                                gametes.push({ alleles: 'ab', freq: 0.5, display: 'ab' });
+                            } else {
+                                // Ab//aB
+                                gametes.push({ alleles: 'Ab', freq: 0.5, display: 'Ab' });
+                                gametes.push({ alleles: 'aB', freq: 0.5, display: 'aB' });
+                            }
+                        } else {
+                            // Linked with Crossing Over distance
+                            const val = parseInt(document.getElementById('co-distance').value);
+                            const recFreq = val / 100;
+                            const parFreq = 1.0 - recFreq;
+
+                            if (genotype === 'AB//ab') {
+                                gametes.push({ alleles: 'AB', freq: parFreq / 2, display: 'AB' });
+                                gametes.push({ alleles: 'ab', freq: parFreq / 2, display: 'ab' });
+                                gametes.push({ alleles: 'Ab', freq: recFreq / 2, display: 'Ab' });
+                                gametes.push({ alleles: 'aB', freq: recFreq / 2, display: 'aB' });
+                            } else {
+                                // Ab//aB
+                                gametes.push({ alleles: 'Ab', freq: parFreq / 2, display: 'Ab' });
+                                gametes.push({ alleles: 'aB', freq: parFreq / 2, display: 'aB' });
+                                gametes.push({ alleles: 'AB', freq: recFreq / 2, display: 'AB' });
+                                gametes.push({ alleles: 'ab', freq: recFreq / 2, display: 'ab' });
+                            }
+                        }
+                    }
+                } else {
+                    // Gonosomal dihybrid : XAB//XAB, Xab//Xab, XAB//Xab, XAB//Y, Xab//Y
+                    let alleles = genotype.split('//');
+                    if (gender === 'female') {
+                        if (alleles[0] === alleles[1]) {
+                            // pure
+                            let baseAlleles = alleles[0].substring(1); // strip X
+                            gametes.push({ alleles: alleles[0], freq: 1.0, display: alleles[0] });
+                        } else {
+                            // Heterozygote XAB//Xab
+                            const link = document.getElementById('chromosome-link').value;
+                            if (link === 'independent') {
+                                gametes.push({ alleles: 'XAB', freq: 0.25, display: 'XAB' });
+                                gametes.push({ alleles: 'XAb', freq: 0.25, display: 'XAb' });
+                                gametes.push({ alleles: 'XaB', freq: 0.25, display: 'XaB' });
+                                gametes.push({ alleles: 'Xab', freq: 0.25, display: 'Xab' });
+                            } else if (link === 'linked-absolute') {
+                                gametes.push({ alleles: 'XAB', freq: 0.5, display: 'XAB' });
+                                gametes.push({ alleles: 'Xab', freq: 0.5, display: 'Xab' });
+                            } else {
+                                const val = parseInt(document.getElementById('co-distance').value);
+                                const recFreq = val / 100;
+                                const parFreq = 1.0 - recFreq;
+                                gametes.push({ alleles: 'XAB', freq: parFreq / 2, display: 'XAB' });
+                                gametes.push({ alleles: 'Xab', freq: parFreq / 2, display: 'Xab' });
+                                gametes.push({ alleles: 'XAb', freq: recFreq / 2, display: 'XAb' });
+                                gametes.push({ alleles: 'XaB', freq: recFreq / 2, display: 'XaB' });
+                            }
+                        }
+                    } else {
+                        // Male: XAB//Y or Xab//Y
+                        gametes.push({ alleles: alleles[0], freq: 0.5, display: alleles[0] });
+                        gametes.push({ alleles: alleles[1], freq: 0.5, display: alleles[1] });
+                    }
+                }
+            }
+
+            return gametes;
+        }
+
+        function renderGametesMeiosis(motherGametes, fatherGametes) {
+            const container = document.getElementById('meiosis-stage');
+            container.innerHTML = "";
+
+            const stage = document.createElement('div');
+            stage.className = "meiosis-visualizer";
+
+            // Left: Mother gametes
+            const mSide = document.createElement('div');
+            mSide.style.display = "flex";
+            mSide.style.flexDirection = "column";
+            mSide.style.alignItems = "center";
+            mSide.style.gap = "0.5rem";
+            mSide.innerHTML = `<span class="badge-lab b-purple" style="font-size:0.7rem;">Ovules (♀)</span>`;
+            
+            const mGams = document.createElement('div');
+            mGams.style.display = "flex";
+            mGams.style.gap = "1rem";
+            motherGametes.forEach(g => {
+                const node = document.createElement('div');
+                node.className = "gamete-circle";
+                node.innerHTML = `
+                    <span class="g-alleles">${formatDisplayAlleles(g.display)}</span>
+                    <span class="g-percent">${Math.round(g.freq * 100)}%</span>
+                `;
+                mGams.appendChild(node);
+            });
+            mSide.appendChild(mGams);
+
+            // Center Separator
+            const divider = document.createElement('div');
+            divider.style.width = "1px";
+            divider.style.background = "rgba(255,255,255,0.1)";
+
+            // Right: Father gametes
+            const fSide = document.createElement('div');
+            fSide.style.display = "flex";
+            fSide.style.flexDirection = "column";
+            fSide.style.alignItems = "center";
+            fSide.style.gap = "0.5rem";
+            fSide.innerHTML = `<span class="badge-lab b-blue" style="font-size:0.7rem;">Spermatozoïdes (♂)</span>`;
+            
+            const fGams = document.createElement('div');
+            fGams.style.display = "flex";
+            fGams.style.gap = "1rem";
+            fatherGametes.forEach(g => {
+                const node = document.createElement('div');
+                node.className = "gamete-circle";
+                node.style.borderColor = "#38bdf8";
+                node.style.background = "rgba(56, 189, 248, 0.1)";
+                node.style.boxShadow = "0 0 15px rgba(56, 189, 248, 0.2)";
+                node.innerHTML = `
+                    <span class="g-alleles" style="color:#ffffff;">${formatDisplayAlleles(g.display)}</span>
+                    <span class="g-percent" style="color:#38bdf8;">${Math.round(g.freq * 100)}%</span>
+                `;
+                fGams.appendChild(node);
+            });
+            fSide.appendChild(fGams);
+
+            stage.appendChild(mSide);
+            stage.appendChild(divider);
+            stage.appendChild(fSide);
+
+            container.appendChild(stage);
+        }
+
+        function formatDisplayAlleles(all) {
+            // Converts XAB to X<sup>AB</sup>
+            if (all.startsWith('X')) {
+                return `X<sup>${all.substring(1)}</sup>`;
+            }
+            return all;
+        }
+
+        function renderPunnettSquare(motherGametes, fatherGametes, crossMode, loc) {
+            const container = document.getElementById('punnett-output-stage');
+            container.innerHTML = "";
+
+            const table = document.createElement('table');
+            table.className = "punnett-table";
+
+            // Row 1: Header Corner + Male Gametes
+            const r1 = document.createElement('tr');
+            const corner = document.createElement('td');
+            corner.className = "punnett-cell cell-corner";
+            corner.innerHTML = `
+                <div style="font-size:0.8rem; font-weight:800; display:flex; flex-direction:column; justify-content:space-between; height:100%; padding: 4px;">
+                    <span style="color:#e879f9; text-align:left;">♀</span>
+                    <span style="color:#38bdf8; text-align:right; margin-top:2px;">♂</span>
+                </div>
+            `;
+            r1.appendChild(corner);
+
+            fatherGametes.forEach(fg => {
+                const hCell = document.createElement('td');
+                hCell.className = "punnett-cell header-cell p-male";
+                hCell.innerHTML = `
+                    <div class="p-genotype" style="color:#38bdf8;">${formatDisplayAlleles(fg.display)}</div>
+                    <div class="p-freq">${Math.round(fg.freq * 100)}%</div>
+                `;
+                r1.appendChild(hCell);
+            });
+            table.appendChild(r1);
+
+            // Subsequent rows: Female Gamete + Descendants
+            motherGametes.forEach(mg => {
+                const row = document.createElement('tr');
+                
+                // Header cell
+                const hCell = document.createElement('td');
+                hCell.className = "punnett-cell header-cell p-female";
+                hCell.innerHTML = `
+                    <div class="p-genotype" style="color:#e879f9;">${formatDisplayAlleles(mg.display)}</div>
+                    <div class="p-freq">${Math.round(mg.freq * 100)}%</div>
+                `;
+                row.appendChild(hCell);
+
+                // Children cells
+                fatherGametes.forEach(fg => {
+                    const cCell = document.createElement('td');
+                    cCell.className = "punnett-cell";
+                    
+                    const childData = calculateZygote(mg.alleles, fg.alleles, crossMode, loc);
+                    
+                    cCell.innerHTML = `
+                        <div class="p-genotype">${childData.genotype}</div>
+                        <div class="p-phenotype">${childData.phenotype}</div>
+                        <div class="p-freq">${Math.round(mg.freq * fg.freq * 100)}%</div>
+                    `;
+
+                    // Add lethal gene override
+                    if (childData.isLethal) {
+                        cCell.innerHTML = `
+                            <div class="p-genotype" style="text-decoration: line-through; opacity:0.5;">${childData.genotype}</div>
+                            <div class="p-phenotype" style="background:rgba(239,68,68,0.2); color:#f87171; border: 1px solid #ef4444;">LÉTAL</div>
+                            <div class="p-freq" style="color:#ef4444; font-weight:800;">Mort (0%)</div>
+                        `;
+                    }
+
+                    cCell.onclick = () => showPunnettCellDetail(childData, mg.freq * fg.freq);
+                    row.appendChild(cCell);
+                });
+
+                table.appendChild(row);
+            });
+
+            container.appendChild(table);
+        }
+
+        function calculateZygote(mgAll, fgAll, crossMode, loc) {
+            // returns {genotype: 'A//a', phenotype: '[A]', isLethal: false}
+            let genotype = "";
+            let phenotype = "";
+            let isLethal = false;
+
+            if (crossMode === 'monohybrid') {
+                if (loc === 'autosomal') {
+                    // Sorting alleles: upper-case always comes first
+                    let sorted = [mgAll, fgAll].sort((a,b) => {
+                        if (a === a.toUpperCase() && b === b.toLowerCase()) return -1;
+                        if (b === b.toUpperCase() && a === a.toLowerCase()) return 1;
+                        return a.localeCompare(b);
+                    });
+
+                    genotype = `<div style="border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom:1px; width:40px; margin:0 auto;">${sorted[0]}</div><div style="padding-top:1px;">${sorted[1]}</div>`;
+                    
+                    // Determine phenotype
+                    const rel = document.getElementById('allele-relation-mono').value;
+                    if (rel === 'dom-abs') {
+                        phenotype = sorted[0] === 'A' || sorted[1] === 'A' ? '[A]' : '[a]';
+                    } else if (rel === 'codom') {
+                        if (sorted[0] === sorted[1]) {
+                            phenotype = `[${sorted[0]}]`;
+                        } else {
+                            // intermediate
+                            phenotype = `[AB]`;
+                        }
+                    } else if (rel === 'letal') {
+                        phenotype = sorted[0] === 'A' || sorted[1] === 'A' ? '[A]' : '[a]';
+                        if (sorted[0] === 'A' && sorted[1] === 'A') {
+                            isLethal = true;
+                        }
+                    }
+                } else {
+                    // Gonosomal monohybrid: Mother XA or Xa; Father XA/Xa or Y
+                    if (fgAll === 'Y') {
+                        // Male zygote: mgAll over Y
+                        let alleleLetter = mgAll.substring(1); // 'A' or 'a'
+                        genotype = `<div style="border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom:1px; width:40px; margin:0 auto;">X<sup>${alleleLetter}</sup></div><div style="padding-top:1px;">Y</div>`;
+                        phenotype = `[${alleleLetter}] ♂`;
+                    } else {
+                        // Female zygote: mgAll over fgAll
+                        let mLetter = mgAll.substring(1);
+                        let fLetter = fgAll.substring(1);
+                        let sorted = [mLetter, fLetter].sort((a,b) => {
+                            if (a === a.toUpperCase() && b === b.toLowerCase()) return -1;
+                            if (b === b.toUpperCase() && a === a.toLowerCase()) return 1;
+                            return a.localeCompare(b);
+                        });
+
+                        genotype = `<div style="border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom:1px; width:45px; margin:0 auto;">X<sup>${sorted[0]}</sup></div><div style="padding-top:1px;">X<sup>${sorted[1]}</sup></div>`;
+                        phenotype = sorted[0] === 'A' || sorted[1] === 'A' ? '[A] ♀' : '[a] ♀';
+                    }
+                }
+            } else {
+                // Dihybridisme
+                if (loc === 'autosomal') {
+                    // mgAll: 'AB', 'Ab', etc.; fgAll: 'AB', 'ab', etc.
+                    // Phenotypes: A vs a, B vs b
+                    // Genotype represented by double-bar AB//ab
+                    // Sorting alleles for display
+                    let a1 = mgAll[0];
+                    let b1 = mgAll[1];
+                    let a2 = fgAll[0];
+                    let b2 = fgAll[1];
+
+                    let sortedA = [a1, a2].sort((x,y) => {
+                        if (x === x.toUpperCase() && y === y.toLowerCase()) return -1;
+                        return x.localeCompare(y);
+                    });
+                    let sortedB = [b1, b2].sort((x,y) => {
+                        if (x === x.toUpperCase() && y === y.toLowerCase()) return -1;
+                        return x.localeCompare(y);
+                    });
+
+                    // Determine linkage displays
+                    const link = document.getElementById('chromosome-link').value;
+                    if (link === 'independent') {
+                        // AB, ab written with comma or semicolon
+                        genotype = `<div style="border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom:1px; width:65px; margin:0 auto;">${sortedA[0]} , ${sortedB[0]}</div><div style="padding-top:1px;">${sortedA[1]} , ${sortedB[1]}</div>`;
+                    } else {
+                        // Linked: written on the same bar
+                        genotype = `<div style="border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom:1px; width:55px; margin:0 auto;">${a1}${b1}</div><div style="padding-top:1px;">${a2}${b2}</div>`;
+                    }
+
+                    // Phenotype
+                    let pA = sortedA[0] === 'A' || sortedA[1] === 'A' ? 'A' : 'a';
+                    let pB = sortedB[0] === 'B' || sortedB[1] === 'B' ? 'B' : 'b';
+                    phenotype = `[${pA}, ${pB}]`;
+                } else {
+                    // Gonosomal dihybrid: mgAll like 'XAB', fgAll like 'XAB' or 'Y'
+                    if (fgAll === 'Y') {
+                        let mAlleles = mgAll.substring(1);
+                        genotype = `<div style="border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom:1px; width:50px; margin:0 auto;">X<sup>${mAlleles}</sup></div><div style="padding-top:1px;">Y</div>`;
+                        
+                        let pA = mAlleles[0] === 'A' ? 'A' : 'a';
+                        let pB = mAlleles[1] === 'B' ? 'B' : 'b';
+                        phenotype = `[${pA}, ${pB}] ♂`;
+                    } else {
+                        let mAlleles = mgAll.substring(1);
+                        let fAlleles = fgAll.substring(1);
+
+                        let sortedA = [mAlleles[0], fAlleles[0]].sort((x,y) => {
+                            if (x === x.toUpperCase() && y === y.toLowerCase()) return -1;
+                            return x.localeCompare(y);
+                        });
+                        let sortedB = [mAlleles[1], fAlleles[1]].sort((x,y) => {
+                            if (x === x.toUpperCase() && y === y.toLowerCase()) return -1;
+                            return x.localeCompare(y);
+                        });
+
+                        genotype = `<div style="border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom:1px; width:70px; margin:0 auto;">X<sup>${sortedA[0]}${sortedB[0]}</sup></div><div style="padding-top:1px;">X<sup>${sortedA[1]}${sortedB[1]}</sup></div>`;
+                        
+                        let pA = sortedA[0] === 'A' || sortedA[1] === 'A' ? 'A' : 'a';
+                        let pB = sortedB[0] === 'B' || sortedB[1] === 'B' ? 'B' : 'b';
+                        phenotype = `[${pA}, ${pB}] ♀`;
+                    }
+                }
+            }
+
+            return { genotype, phenotype, isLethal };
+        }
+
+        function showPunnettCellDetail(childData, prob) {
+            alert(`🔍 Zoom Descendance:\n\nGénotype : ${childData.genotype.replace(/<[^>]*>/g, ' ')}\nPhénotype : ${childData.phenotype}\nProbabilité théorique : ${Math.round(prob * 100)}%\nViabilité : ${childData.isLethal ? 'MORTEL (gène létal)' : 'VIABLE'}`);
+        }
+
+        function explainCrossReasoning(mGen, fGen, mGams, fGams, crossMode, loc) {
+            const el = document.getElementById('mendel-analysis-text');
+            
+            let q1 = "<strong>Q1: Dominance de l'allèle ?</strong><br> - L'analyse montre ";
+            let q2 = "<br><strong>Q2: Liaison au sexe (Gonosomal) ?</strong><br> - ";
+            let q3 = "<br><strong>Q3: Nombre de gènes en jeu & Liaison ?</strong><br> - ";
+
+            if (crossMode === 'monohybrid') {
+                const rel = document.getElementById('allele-relation-mono').value;
+                if (rel === 'dom-abs') {
+                    q1 += "une dominance absolue de l'allèle <span class='text-blue'>A</span> sur le récessif <span class='text-red'>a</span>. La F1 homogène valide la 1ère loi de Mendel.";
+                } else if (rel === 'codom') {
+                    q1 += "une <span class='text-purple'>codominance</span> entre les allèles A et B, créant le phénotype hybride [AB].";
+                } else if (rel === 'letal') {
+                    q1 += "un cas de <span class='text-orange'>gène létal</span> à l'état homozygote dominant (AA//AA), ce qui élimine 25% de la descendance F2, menant aux proportions typiques 2/3 [A] et 1/3 [a].";
+                }
+
+                if (loc === 'gonosomal') {
+                    q2 += "Le gène est <span class='text-purple'>lié au chromosome sexuel X</span>. Les croisements réciproques mâles/femelles donnent des proportions différentes, montrant que les mâles F1 héritent directement de l'allèle de leur mère.";
+                } else {
+                    q2 += "Le gène est <span class='text-green'>autosomal</span>. Les proportions sont équitablement réparties sans distinction de sexe.";
+                }
+
+                q3 += "Il s'agit de <span class='text-teal'>monohybridisme</span> (un seul gène codant pour le caractère étudié).";
+            } else {
+                // Dihybridisme
+                q1 += "la dominance absolue de [A] et [B] sur les récessifs respectifs [a] et [b].";
+                
+                if (loc === 'gonosomal') {
+                    q2 += "Les gènes sont localisés sur la partie homologue de <span class='text-purple'>X</span>, créant des proportions sexuelles asymétriques en F2.";
+                } else {
+                    q2 += "Les gènes sont portés par des autosomes.";
+                }
+
+                const link = document.getElementById('chromosome-link').value;
+                if (link === 'independent') {
+                    q3 += "Les deux gènes sont <span class='text-green'>INDÉPENDANTS</span> (situés sur des chromosomes différents). Un test-cross générerait 4 phénotypes équiprobables (<strong>25% / 25% / 25% / 25%</strong>) par brassage interchromosomique à l'Anaphase I de méiose.";
+                } else if (link === 'linked-absolute') {
+                    q3 += "Les deux gènes sont en <span class='text-red'>LIAISON ABSOLUE</span> (très proches sur le même chromosome, sans Crossing-Over). Le test-cross ne donne que 2 phénotypes parentaux (<strong>50% / 50%</strong>).";
+                } else {
+                    const dist = document.getElementById('co-distance').value;
+                    q3 += "Les deux gènes sont en <span class='text-orange'>LIAISON PARTIELLE</span> (sur le même chromosome avec crossing-over). Un test-cross donne 4 phénotypes avec 2 parentaux majoritaires et 2 recombinés minoritaires. La distance calculée est de <strong class='text-green'>${dist} cM</strong>, équivalente aux ${dist}% de recombinés formés en Prophase I.";
+                }
+            }
+
+            el.innerHTML = `${q1}${q2}${q3}`;
+        }
+
+
+        // ================= LAB 3: GAMES CODE =================
+        let gameScoreVal = 0;
+        let blitzTimer = null;
+        let blitzTimeLeft = 60;
+        let blitzQuestions = [
+            {
+                text: "Un test-cross en dihybridisme donne : 25% [A,B], 25% [A,b], 25% [a,B], 25% [a,b]. Quel est le diagnostic ?",
+                opts: [
+                    { t: "Gènes en liaison absolue", correct: false },
+                    { t: "Gènes indépendants (Chromosomes distincts)", correct: true },
+                    { t: "Liaison partielle avec 50 cM de distance", correct: false },
+                    { t: "Erreur de manipulation biologique", correct: false }
+                ],
+                explain: "Un test-cross (F1 x Double récessif) équiprobable (1:1:1:1) démontre l'indépendance des gènes grâce au brassage interchromosomique."
+            },
+            {
+                text: "Un croisement F1 x Double Récessif donne : 41% [A,B], 41% [a,b], 9% [A,b], 9% [a,B]. Quelle est la distance génétique ?",
+                opts: [
+                    { t: "82 cM (Parentaux)", correct: false },
+                    { t: "18 cM (Distance = % Recombinés)", correct: true },
+                    { t: "9 cM (Un seul recombiné)", correct: false },
+                    { t: "Gènes indépendants", correct: false }
+                ],
+                explain: "La distance = somme des fréquences recombinées = 9% + 9% = 18 cM (centiMorgan)."
+            },
+            {
+                text: "On croise deux drosophiles aux yeux rouges (F1). On obtient en F2 : 75% yeux rouges (mâles et femelles) et 25% yeux blancs (mâles uniquement). Localisation ?",
+                opts: [
+                    { t: "Gène lié au sexe (porté par X)", correct: true },
+                    { t: "Gène lié au sexe (porté par Y)", correct: false },
+                    { t: "Gène autosomal récessif", correct: false },
+                    { t: "Gène autosomal dominant", correct: false }
+                ],
+                explain: "La présence du caractère récessif [yeux blancs] uniquement chez les mâles indique une hérédité liée à l'X."
+            },
+            {
+                text: "En F2, un croisement monohybride donne des proportions : 2/3 phénotype dominant et 1/3 phénotype récessif. Quel est le phénomène ?",
+                opts: [
+                    { t: "Codominance allélitique", correct: false },
+                    { t: "Présence d'un gène létal à l'état homozygote", correct: true },
+                    { t: "Hérédité gonosomale", correct: false },
+                    { t: "Crossing-over accidentel", correct: false }
+                ],
+                explain: "Les proportions normales en dominance absolue sont 3/4 (75%) et 1/4 (25%). Les 2/3 et 1/3 révèlent la mort des homozygotes dominants (AA)."
+            }
+        ];
+        let currentBlitzIndex = 0;
+
+        function launchBlitzGame() {
+            document.getElementById('arcade-hub').classList.add('hidden');
+            const stage = document.getElementById('game-stage');
+            stage.classList.remove('hidden');
+
+            gameScoreVal = 0;
+            blitzTimeLeft = 60;
+            currentBlitzIndex = 0;
+
+            renderBlitzLayout();
+            startBlitzTimer();
+        }
+
+        function renderBlitzLayout() {
+            const stage = document.getElementById('game-stage');
+            const q = blitzQuestions[currentBlitzIndex];
+
+            if (!q) {
+                // Game Finished
+                clearInterval(blitzTimer);
+                stage.innerHTML = `
+                    <div style="text-align:center; padding: 2rem; display:flex; flex-direction:column; gap:1.5rem; align-items:center;">
+                        <h3 class="text-3xl font-bold text-green">⚡ Blitz Terminé !</h3>
+                        <p class="text-lg">Votre score final est de : <strong style="font-size:2rem; color:#fbbf24;">${gameScoreVal} points</strong></p>
+                        <div class="badge-lab b-green" style="font-size:1rem; padding: 0.5rem 1rem;">Badge : Généticien Élite 🎓</div>
+                        <p class="text-slate-400 text-sm">Vous avez le réflexe 4x4 gravé en vous. Prêt pour l'examen national !</p>
+                        <button class="btn-lab btn-lab-blue" onclick="closeGameStage()">Retour au Labo</button>
+                    </div>
+                `;
+                triggerConfetti();
+                return;
+            }
+
+            stage.innerHTML = `
+                <div class="blitz-header">
+                    <div class="game-timer" id="bl-timer">⏱️ ${blitzTimeLeft}s</div>
+                    <h3 class="text-xl font-bold text-sky-400">Le Blitz des Proportions 4×4</h3>
+                    <div class="game-score">Score : ${gameScoreVal}</div>
+                </div>
+
+                <div class="blitz-question-box">
+                    Q${currentBlitzIndex + 1}: ${q.text}
+                </div>
+
+                <div class="blitz-options-grid" id="bl-opts">
+                    <!-- Buttons injected -->
+                </div>
+
+                <div id="bl-feedback" class="feedback hidden" style="margin-top:2rem;">
+                    <div class="feedback-title" id="bl-fb-title">Explication :</div>
+                    <p class="text-sm text-slate-300" id="bl-fb-text">${q.explain}</p>
+                    <button class="btn-lab btn-lab-blue mt-md" onclick="nextBlitzQuestion()">Question Suivante</button>
+                </div>
+            `;
+
+            const optsGrid = document.getElementById('bl-opts');
+            q.opts.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "blitz-opt-btn";
+                btn.innerHTML = `<span style="width:24px; height:24px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:800; color:#cbd5e1; flex-shrink:0;">${String.fromCharCode(65 + idx)}</span> ${opt.t}`;
+                btn.onclick = () => submitBlitzAnswer(btn, opt.correct, q.explain);
+                optsGrid.appendChild(btn);
+            });
+        }
+
+        function startBlitzTimer() {
+            clearInterval(blitzTimer);
+            blitzTimer = setInterval(() => {
+                blitzTimeLeft--;
+                const timerEl = document.getElementById('bl-timer');
+                if (timerEl) {
+                    timerEl.textContent = `⏱️ ${blitzTimeLeft}s`;
+                    if (blitzTimeLeft <= 10) {
+                        timerEl.style.color = "#f43f5e";
+                        timerEl.style.borderColor = "rgba(244,63,94,0.4)";
+                    }
+                }
+                if (blitzTimeLeft <= 0) {
+                    clearInterval(blitzTimer);
+                    alert("Temps écoulé !");
+                    currentBlitzIndex = 100; // triggers end
+                    renderBlitzLayout();
+                }
+            }, 1000);
+        }
+
+        function submitBlitzAnswer(btn, isCorrect, explainText) {
+            // Disable all option buttons
+            const buttons = document.querySelectorAll('.blitz-opt-btn');
+            buttons.forEach(b => b.disabled = true);
+
+            const fb = document.getElementById('bl-feedback');
+            const fbTitle = document.getElementById('bl-fb-title');
+            
+            fb.classList.remove('hidden');
+
+            if (isCorrect) {
+                btn.classList.add('correct');
+                gameScoreVal += 10;
+                fbTitle.className = "feedback-title correct-t";
+                fbTitle.textContent = "✓ Excellent Réflexe ! (+10 pts)";
+                fb.className = "feedback correct-fb";
+            } else {
+                btn.classList.add('wrong');
+                // Highlight the correct one
+                const correctBtn = Array.from(buttons).find((b, idx) => blitzQuestions[currentBlitzIndex].opts[idx].correct);
+                if (correctBtn) correctBtn.classList.add('correct');
+                fbTitle.className = "feedback-title wrong-t";
+                fbTitle.textContent = "❌ Attention au piège !";
+                fb.className = "feedback wrong-fb";
+            }
+        }
+
+        function nextBlitzQuestion() {
+            currentBlitzIndex++;
+            renderBlitzLayout();
+        }
+
+        function closeGameStage() {
+            clearInterval(blitzTimer);
+            document.getElementById('game-stage').classList.add('hidden');
+            document.getElementById('arcade-hub').classList.remove('hidden');
+        }
+
+
+        // Game 2: Phrase-Type puzzle pieces
+        let puzzleCorrectOrder = [
+            "On constate qu'au niveau du triplet n°6 du gène de l'hémoglobine,",
+            "il y a eu une mutation par substitution du nucléotide A par T,",
+            "ce qui a entraîné le remplacement du codon GAG par le codon GUG sur l'ARNm,",
+            "donc le remplacement de l'acide aminé Glu par Val au niveau de la protéine.",
+            "Cette modification primaire produit une hémoglobine HbS déformée et non fonctionnelle,",
+            "ce qui explique les symptômes d'anémie falciforme (drépanocytose) observés chez l'élève."
+        ];
+        let puzzleSelectedOrder = [];
+
+        function launchPuzzleGame() {
+            document.getElementById('arcade-hub').classList.add('hidden');
+            const stage = document.getElementById('game-stage');
+            stage.classList.remove('hidden');
+
+            puzzleSelectedOrder = [];
+            renderPuzzleLayout();
+        }
+
+        function renderPuzzleLayout() {
+            const stage = document.getElementById('game-stage');
+
+            // Generate randomized index array for scrambled display
+            let scrambledIndices = [0, 1, 2, 3, 4, 5];
+            scrambledIndices.sort(() => Math.random() - 0.5);
+
+            stage.innerHTML = `
+                <div class="blitz-header">
+                    <h3 class="text-xl font-bold text-violet-400">Le Puzzle de la Phrase-Type 20/20</h3>
+                    <button class="btn-lab btn-lab-outline" onclick="closeGameStage()">Retour</button>
+                </div>
+
+                <p class="puzzle-instruction">Assemblez les paragraphes dans le bon ordre logique (de la cause moléculaire à la conséquence phénotypique macroscopique).</p>
+
+                <div class="grid grid-2" style="gap:1.5rem; align-items:start;">
+                    
+                    <!-- Left column: scrambled pool -->
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Blocs mélangés (Cliquez pour ajouter)</h4>
+                        <div class="puzzle-scrambled" id="scrambled-pool">
+                            <!-- Injected -->
+                        </div>
+                    </div>
+
+                    <!-- Right column: selected slots -->
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Votre démonstration scientifique rédigée</h4>
+                        <div class="puzzle-slots" id="selected-slots">
+                            <div class="text-slate-500 text-sm text-center" style="margin:auto;">Cliquez sur les blocs de gauche pour les ordonner ici.</div>
+                        </div>
+                        
+                        <div style="margin-top:1.5rem; display:flex; gap:0.75rem;">
+                            <button class="btn-lab btn-lab-outline" onclick="resetPuzzle()">Vider</button>
+                            <button class="btn-lab btn-lab-purple flex-grow" onclick="verifyPuzzle()">Vérifier la Rigueur</button>
+                        </div>
+                    </div>
+
+                </div>
+            `;
+
+            const pool = document.getElementById('scrambled-pool');
+            scrambledIndices.forEach(idx => {
+                const b = document.createElement('div');
+                b.className = "puzzle-piece";
+                b.id = `piece-${idx}`;
+                b.textContent = puzzleCorrectOrder[idx];
+                b.onclick = () => addPieceToSlots(idx, b);
+                pool.appendChild(b);
+            });
+        }
+
+        function addPieceToSlots(idx, element) {
+            if (puzzleSelectedOrder.includes(idx)) return; // already added
+
+            puzzleSelectedOrder.push(idx);
+            element.classList.add('selected');
+
+            // Redraw slots column
+            drawSlots();
+        }
+
+        function removePieceFromSlots(idx) {
+            puzzleSelectedOrder = puzzleSelectedOrder.filter(item => item !== idx);
+            const element = document.getElementById(`piece-${idx}`);
+            if (element) {
+                element.classList.remove('selected');
+            }
+            drawSlots();
+        }
+
+        function drawSlots() {
+            const container = document.getElementById('selected-slots');
+            container.innerHTML = "";
+
+            if (puzzleSelectedOrder.length === 0) {
+                container.innerHTML = `<div class="text-slate-500 text-sm text-center" style="margin:auto;">Cliquez sur les blocs de gauche pour les ordonner ici.</div>`;
+                return;
+            }
+
+            puzzleSelectedOrder.forEach((idx, orderIdx) => {
+                const item = document.createElement('div');
+                item.className = "puzzle-slot-item";
+                item.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:0.5rem;">
+                        <span style="font-weight:800; color:#a78bfa;">${orderIdx + 1}.</span>
+                        <span>${puzzleCorrectOrder[idx]}</span>
+                    </div>
+                    <button style="background:transparent; border:none; color:#f43f5e; font-weight:800; padding:0 0.25rem; font-size:1.1rem; cursor:pointer;" onclick="removePieceFromSlots(${idx})">×</button>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function resetPuzzle() {
+            puzzleSelectedOrder = [];
+            const pieces = document.querySelectorAll('.puzzle-piece');
+            pieces.forEach(p => p.classList.remove('selected'));
+            drawSlots();
+        }
+
+        function verifyPuzzle() {
+            if (puzzleSelectedOrder.length < puzzleCorrectOrder.length) {
+                alert("Assemblez tous les 6 blocs avant de valider votre démonstration !");
+                return;
+            }
+
+            let perfect = true;
+            for (let i = 0; i < puzzleCorrectOrder.length; i++) {
+                if (puzzleSelectedOrder[i] !== i) {
+                    perfect = false;
+                    break;
+                }
+            }
+
+            if (perfect) {
+                alert("🏆 FÉLICITATIONS ! Votre raisonnement est parfait. Vous avez obtenu les points complets (100% de rigueur scientifique).");
+                triggerConfetti();
+                closeGameStage();
+            } else {
+                alert("❌ L'enchaînement logique présente une faille. Rappelez-vous la chaîne causale : \n\nMutation ADN ➔ Codon ARNm ➔ Acide Aminé Protéine ➔ Rôle Protéine ➔ Symptôme Clinique.");
+            }
+        }
+
+
+        // ================= CONFETTI & DECORATION SCRIPTS =================
+        function triggerConfetti() {
+            const canvas = document.getElementById('celebration-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+
+            let particles = [];
+            const colors = ['#38bdf8', '#818cf8', '#e879f9', '#10b981', '#fbbf24'];
+
+            for (let i = 0; i < 80; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    radius: Math.random() * 4 + 2,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    vx: (Math.random() - 0.5) * 8,
+                    vy: (Math.random() - 0.5) * 8 - 3,
+                    alpha: 1.0,
+                    decay: Math.random() * 0.015 + 0.01
+                });
+            }
+
+            function drawConf() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let alive = false;
+
+                particles.forEach(p => {
+                    if (p.alpha > 0) {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                        ctx.fillStyle = p.color;
+                        ctx.globalAlpha = p.alpha;
+                        ctx.fill();
+
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.vy += 0.1; // gravity
+                        p.alpha -= p.decay;
+                        alive = true;
+                    }
+                });
+
+                if (alive) {
+                    requestAnimationFrame(drawConf);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+
+            drawConf();
+        }
+    </script>
+</body>
+</html>

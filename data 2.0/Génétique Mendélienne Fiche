@@ -1,0 +1,237 @@
+# 📌 FICHE HAUTE DENSITÉ — TEMPLATE B
+## Génétique Mendélienne : Transmission des caractères
+**Matière :** SVT | **Niveau :** 2BAC PC/SVT | **Format :** Recto-Verso
+
+---
+
+## 🅰️ RECTO — LE CŒUR THÉORIQUE
+
+### 🔑 DÉFINITIONS ESSENTIELLES (à connaître au mot près)
+
+| Terme | Définition exacte attendue par le correcteur |
+|---|---|
+| **Gène** | Fragment d'ADN porteur d'une information codant un caractère héréditaire |
+| **Allèle** | Version (forme alternative) d'un gène, occupant le même locus sur les chromosomes homologues |
+| **Locus** | Emplacement précis d'un gène sur un chromosome |
+| **Homozygote** | Individu portant deux allèles identiques pour un gène donné (race pure) |
+| **Hétérozygote** | Individu portant deux allèles différents pour un gène donné (hybride) |
+| **Génotype** | Ensemble des allèles que possède un individu (notation entre parenthèses ou avec barre) |
+| **Phénotype** | Ensemble des caractères observables (noté entre crochets [ ]) |
+| **Dominance** | Un allèle s'exprime à l'état hétérozygote ; l'autre est masqué (récessif) |
+| **Test-cross** | Croisement entre un individu de phénotype dominant × individu doublement homozygote récessif |
+| **Crossing-over** | Échange de segments entre chromosomes homologues lors de la prophase I de la méiose |
+| **Gènes liés** | Gènes situés sur le **même chromosome** |
+| **Gènes indépendants** | Gènes situés sur des **chromosomes différents** |
+
+### 📐 LES 4 LOIS DE MENDEL (à citer si demandé)
+
+| Loi | Énoncé |
+|---|---|
+| **1ère loi** — Uniformité de F1 | Le croisement de 2 races pures donne une F1 homogène |
+| **2ème loi** — Disjonction des allèles | En F2, ségrégation 3:1 (monohybridisme) |
+| **3ème loi** — Indépendance des caractères | Pour 2 gènes indépendants : F2 = 9:3:3:1 |
+| **Exception** — Liaison génétique (Morgan) | Si gènes liés : ratios différents + crossing-over |
+
+### 🌳 ARBRE DE DÉCISION (à exécuter dans l'ordre)
+
+```
+┌──────────────────────────────────────────────────┐
+│ Q1 : DOMINANCE ?                                 │
+│  → F1 100% homogène ? → Allèle exprimé = DOMINANT│
+│  → Parents = race pure (homozygotes)             │
+├──────────────────────────────────────────────────┤
+│ Q2 : LIÉ AU SEXE ?                               │
+│  → Croisement réciproque ≠ résultats ? → OUI     │
+│  → Phénotypes ♂ ≠ ♀ en F2 ? → OUI                │
+│  → Sinon → gène autosomal                        │
+├──────────────────────────────────────────────────┤
+│ Q3 : COMBIEN DE GÈNES ?                          │
+│  → 1 caractère étudié → monohybridisme           │
+│  → 2 caractères étudiés → dihybridisme           │
+├──────────────────────────────────────────────────┤
+│ Q4 : LIÉS OU INDÉPENDANTS ? (si dihybridisme)    │
+│  → Lire les proportions du test-cross            │
+│  → Voir tableau ci-dessous                       │
+└──────────────────────────────────────────────────┘
+```
+
+### 📊 TABLE DES PROPORTIONS (LE RÉFLEXE CRUCIAL)
+
+| Proportions observées | Type de croisement | Conclusion |
+|---|---|---|
+| **F1 100% homogène** | Race pure × Race pure | Allèle exprimé = dominant |
+| **F2 = 3 dom : 1 réc** | F1 × F1 (monohybridisme) | Confirme la dominance |
+| **Test-cross 1:1** | F1 × homozygote récessif (1 gène) | Confirme l'hétérozygotie de F1 |
+| **F2 = 9:3:3:1** | F1 × F1 (dihybridisme) | Gènes **INDÉPENDANTS** |
+| **Test-cross 25/25/25/25** | F1 (AaBb) × aabb | Gènes **INDÉPENDANTS** |
+| **Test-cross 50/50/0/0** | F1 × homozygote récessif | **LIAISON ABSOLUE** |
+| **Test-cross 40/40/10/10** (parentaux > recombinés) | F1 × homozygote récessif | **Liaison partielle + crossing-over** |
+
+### ⚙️ CONVERSIONS NUMÉRIQUES OBLIGATOIRES
+
+```
+Distance génétique (cM) = % gamètes recombinés
+                        = (nombre de recombinés / total) × 100
+
+Exemple : 40% + 40% + 10% + 10% → distance = 10 + 10 = 20 cM
+```
+
+### 📝 NOTATIONS CHROMOSOMIQUES (CONVENTIONS STRICTES)
+
+```
+┌────────────────────────────────────────────────────────┐
+│ CAS 1 — Gène autosomal                                 │
+│   Race pure dominant :   A    Race pure récessif : a   │
+│                         ───                       ───  │
+│                          A                         a   │
+│   (la barre représente la paire de chromosomes)        │
+├────────────────────────────────────────────────────────┤
+│ CAS 2 — Gène lié au sexe (porté par X)                 │
+│   Femelle : X^A X^a       Mâle : X^A Y                 │
+│   (allèle TOUJOURS en exposant du X — jamais à côté)   │
+├────────────────────────────────────────────────────────┤
+│ CAS 3 — Deux gènes                                     │
+│   Indépendants :  A/a ; B/b   (point-virgule)          │
+│   Liés         :  AB/ab       (sur la même barre)      │
+└────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🅱️ VERSO — LA MACHINE À POINTS
+
+### 🏆 LES 4 PHRASES-TYPES 20/20 (à mémoriser)
+
+> **🔹 Pour la dominance :**
+> *« La génération F1 est homogène et présente le phénotype [X]. On en déduit que l'allèle [X] est dominant sur l'allèle [x], et que les parents étaient de race pure (homozygotes). »*
+
+> **🔹 Pour la liaison au sexe :**
+> *« Les résultats du croisement réciproque sont différents et la répartition des phénotypes diffère entre mâles et femelles. On en déduit que le gène est porté par le chromosome sexuel X. »*
+
+> **🔹 Pour les gènes indépendants :**
+> *« Le test-cross donne 4 phénotypes en proportions équiprobables (25% chacun). On en déduit que les deux gènes sont portés par des chromosomes différents : ils sont **indépendants**. »*
+
+> **🔹 Pour la liaison partielle (crossing-over) :**
+> *« Le test-cross donne 2 phénotypes parentaux majoritaires ([X]% chacun) et 2 phénotypes recombinés minoritaires ([Y]% chacun). On en déduit que les deux gènes sont portés par le même chromosome (gènes liés), avec un crossing-over partiel. La distance génétique est de [2Y] cM. »*
+
+### 🎯 MÉTHODOLOGIE EN 5 ÉTAPES (à appliquer SYSTÉMATIQUEMENT)
+
+```
+ÉTAPE 1 : Identifier les phénotypes parentaux et écrire leurs génotypes
+   ↓
+ÉTAPE 2 : Déterminer les gamètes produits par chaque parent
+   ↓
+ÉTAPE 3 : Construire l'échiquier de croisement
+   ↓
+ÉTAPE 4 : Lire les génotypes obtenus → en déduire les phénotypes
+   ↓
+ÉTAPE 5 : Calculer les proportions + rédiger l'interprétation chromosomique
+```
+
+### 📊 ÉCHIQUIER MODÈLE — GÈNES INDÉPENDANTS (à reproduire)
+
+**Test-cross :** F1 (AaBb) × parent récessif (aabb)
+
+```
+Gamètes F1     :  AB  ¦  Ab  ¦  aB  ¦  ab    (1/4 chacun)
+Gamètes parent :  ab                          (100%)
+
+         ┃   AB    ┃   Ab    ┃   aB    ┃   ab    ┃
+  ━━━━━━━╋━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━━┫
+   ab    ┃  AaBb   ┃  Aabb   ┃  aaBb   ┃  aabb   ┃
+         ┃ [A,B]   ┃ [A,b]   ┃ [a,B]   ┃ [a,b]   ┃
+         ┃  25%    ┃  25%    ┃  25%    ┃  25%    ┃
+
+→ Conclusion : 4 phénotypes équiprobables (1:1:1:1)
+→ Les gènes A et B sont INDÉPENDANTS
+```
+
+### 📊 ÉCHIQUIER MODÈLE — GÈNES LIÉS AVEC CROSSING-OVER
+
+**Test-cross :** F1 (AB/ab) × parent récessif (ab/ab)
+
+```
+Gamètes F1 :
+  • Parentaux  : AB (40%) ¦ ab (40%)
+  • Recombinés : Ab (10%) ¦ aB (10%)
+Gamètes parent : ab (100%)
+
+         ┃ AB(40%) ┃ ab(40%) ┃ Ab(10%) ┃ aB(10%) ┃
+  ━━━━━━━╋━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━━┫
+ ab(100%)┃  AB/ab  ┃  ab/ab  ┃  Ab/ab  ┃  aB/ab  ┃
+         ┃ [A,B]   ┃ [a,b]   ┃ [A,b]   ┃ [a,B]   ┃
+         ┃  40%    ┃  40%    ┃  10%    ┃  10%    ┃
+
+→ Distance génétique = 10% + 10% = 20 cM
+→ Gènes LIÉS avec crossing-over partiel
+```
+
+### 📊 ÉCHIQUIER MODÈLE — GÈNE LIÉ AU SEXE
+
+**Croisement :** Femelle hétérozygote (X^A X^a) × Mâle sain (X^A Y)
+
+```
+Gamètes ♀ : X^A ¦ X^a    (50% / 50%)
+Gamètes ♂ : X^A ¦ Y      (50% / 50%)
+
+         ┃   X^A      ┃   X^a       ┃
+  ━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━┫
+   X^A   ┃  X^A X^A ♀ ┃  X^A X^a ♀  ┃   → ♀ saines (toutes)
+         ┃  saine     ┃  porteuse   ┃
+  ━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━┫
+   Y     ┃  X^A Y ♂   ┃  X^a Y ♂    ┃   → ♂ : 50% sains, 50% malades
+         ┃  sain      ┃  malade     ┃
+
+→ Le caractère récessif n'apparaît QUE chez les mâles → gène lié au X
+```
+
+### 🚫 LES 6 PIÈGES MORTELS À ÉVITER
+
+| ❌ Erreur | ✅ Correction |
+|---|---|
+| Conclure « gènes indépendants » sans calcul | **Toujours** vérifier les proportions exactes |
+| Oublier que ♂ drosophile = XY (Y ne porte pas l'allèle) | Notation correcte : X^a Y (jamais X^a Y^A) |
+| Confondre F1×F1 (9:3:3:1) avec test-cross (1:1:1:1) | Lire 2× l'énoncé : **qui** × **qui** ? |
+| Notation `X A` au lieu de `X^A` | L'allèle est **toujours en exposant** du X |
+| Dire « liaison absolue » avec recombinés > 0% | Liaison absolue = **0%** de recombinés strictement |
+| Oublier la distance génétique en cM | Toujours conclure par la distance pour la liaison partielle |
+
+### 🏅 MOTS-CLÉS NON NÉGOCIABLES (chaque mot = des points)
+
+`allèle` · `gène` · `locus` · `homozygote / hétérozygote` · `race pure` · `dominance / récessivité` · `gamètes` · `méiose` · `crossing-over` · `gènes liés / gènes indépendants` · `chromosomes homologues` · `chromosomes sexuels (X, Y)` · `autosome` · `test-cross` · `échiquier de croisement` · `phénotype parental / recombiné` · `distance génétique` · `centiMorgan (cM)` · `interprétation chromosomique`
+
+### ⚡ LES 5 EXERCICES TYPES À MAÎTRISER
+
+| Type | Animal/plante classique | Difficulté |
+|---|---|---|
+| Monohybridisme autosomal | Souris (couleur du pelage), pois (Mendel) | ★☆☆ |
+| Monohybridisme lié au sexe | Drosophile (yeux blancs), humain (daltonisme, hémophilie) | ★★☆ |
+| Dihybridisme — gènes indépendants | Drosophile (couleur corps + ailes) | ★★☆ |
+| Dihybridisme — gènes liés + crossing-over | Drosophile, maïs | ★★★ |
+| Mixte (1 autosomal + 1 lié au sexe) | Drosophile, lapin | ★★★ |
+
+### ✅ CHECKLIST FINALE (90 secondes avant de rendre la copie)
+
+- [ ] J'ai bien identifié **qui croise qui** (F1×F1, test-cross, ou réciproque ?)
+- [ ] Mon **génotype des parents** est correct (homozygote / hétérozygote ?)
+- [ ] J'ai listé **tous les gamètes possibles** avec leurs proportions
+- [ ] Mon **échiquier** contient les 5 éléments obligatoires
+- [ ] J'ai noté les phénotypes **entre crochets [ ]**
+- [ ] J'ai calculé les **proportions exactes** (pas de « environ »)
+- [ ] J'ai utilisé la **notation chromosomique correcte** (X^A et non X A)
+- [ ] J'ai rédigé l'**interprétation chromosomique** complète
+- [ ] J'ai donné la **distance génétique en cM** si liaison partielle
+- [ ] Je n'ai pas confondu **gènes liés** et **liés au sexe** (pièges du vocabulaire !)
+
+---
+
+## 💡 CONSEIL D'UTILISATION DE LA FICHE
+
+| Moment | Action |
+|---|---|
+| **J-7 avant l'examen** | Lire la fiche 2× par jour (matin + soir) |
+| **J-3** | Reproduire les 3 échiquiers modèles **de mémoire** sur feuille blanche |
+| **J-1** | Réciter les **4 phrases-types** à voix haute (5 fois chacune) |
+| **Le jour J** | Relecture rapide du **VERSO uniquement** (15 min avant l'épreuve) |
+
+---

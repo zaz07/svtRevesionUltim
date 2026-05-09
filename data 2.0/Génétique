@@ -1,0 +1,114 @@
+# 🎯 MÉTHODE 4×4 POUR MAÎTRISER LE TEMPLATE A (Génétique)
+
+## 📍 PRINCIPE DIRECTEUR
+
+Le correcteur du bac marocain ne cherche pas votre intelligence — il cherche **des mots-clés précis** dans **un ordre précis**. Votre objectif : transformer ce template en un **réflexe automatique** que vous exécutez en moins de 15 minutes.
+
+---
+
+## 🔷 ÉTAPE 1 — COMPRENDRE LA LOGIQUE PROFONDE (1 jour)
+
+Avant de mémoriser, il faut **visualiser la chaîne causale** qui sous-tend TOUTES les questions de génétique :
+
+```
+ADN (gène) → ARNm → Protéine → Caractère (phénotype)
+   ↑            ↑          ↑              ↑
+Mutation   Transcription  Traduction   Maladie/Santé
+```
+
+**🔑 Règle d'or à graver :** 
+> *« Toute différence de caractère (malade/sain) trouve son origine dans une différence de protéine, qui trouve son origine dans une différence d'ARNm, qui trouve son origine dans une mutation de l'ADN. »*
+
+**Action concrète :** Dessinez ce schéma sur une feuille A4, affichez-le au-dessus de votre bureau. Récitez-le à voix haute 3 fois par jour pendant 3 jours.
+
+---
+
+## 🔷 ÉTAPE 2 — AUTOMATISER LES 3 RÉFLEXES TECHNIQUES (3 jours)
+
+### ⚡ Réflexe n°1 : La conversion ADN → ARNm
+
+| Cas | Règle |
+|---|---|
+| **Brin transcrit (matrice)** donné | ARNm = complémentaire **antiparallèle** (A→U, T→A, C→G, G→C) |
+| **Brin non-transcrit (codant)** donné | ARNm = identique au brin, **remplacer T par U** |
+
+**🚨 Piège classique :** Confondre les deux brins. **Toujours vérifier** : si l'énoncé dit *« brin transcrit »* ou *« brin matrice »* → on fait le complémentaire. Si *« brin non transcrit »* ou *« brin codant »* → on recopie en remplaçant T par U.
+
+### ⚡ Réflexe n°2 : Lire le code génétique sans erreur
+
+**Procédure en 4 étapes — TOUJOURS dans cet ordre :**
+1. Découper l'ARNm en triplets (codons) **à partir du codon AUG** (start)
+2. Pour chaque codon, lire le tableau : 1ère lettre (ligne) → 2ème lettre (colonne) → 3ème lettre (sous-ligne)
+3. Écrire la séquence d'acides aminés **séparés par des tirets** : Met-Ala-Gly-...
+4. S'arrêter au **codon stop** (UAA, UAG, UGA)
+
+### ⚡ Réflexe n°3 : Identifier le type de mutation
+
+| Type | Signature | Conséquence typique |
+|---|---|---|
+| **Substitution** | Un nucléotide remplacé par un autre (longueur identique) | Change 1 acide aminé OU codon stop prématuré OU mutation silencieuse |
+| **Délétion** | Un (ou plusieurs) nucléotide supprimé | **Décalage du cadre de lecture** → tous les a.a. suivants changent |
+| **Addition** (insertion) | Un (ou plusieurs) nucléotide ajouté | **Décalage du cadre de lecture** → tous les a.a. suivants changent |
+
+---
+
+## 🔷 ÉTAPE 3 — MÉMORISER LA PHRASE-TYPE (LA FORMULE 20/20)
+
+Le correcteur attend **exactement** cette structure. Apprenez-la **par cœur, mot pour mot** :
+
+> 🏆 **PHRASE MODÈLE À RÉCITER :**
+> 
+> *« On constate qu'au niveau du triplet n°[X], il y a eu une mutation par [substitution/délétion/addition] du nucléotide [Y] par [Z], ce qui a entraîné le remplacement du codon [ABC] par le codon [A'B'C'], donc le remplacement de l'acide aminé [nom] par [nom] (ou l'apparition d'un codon stop prématuré). Cette modification de la séquence d'acides aminés a produit une protéine non fonctionnelle (ou de structure modifiée), incapable d'assurer son rôle [préciser le rôle], ce qui explique l'apparition des symptômes de la maladie [nom] chez l'individu malade. »*
+
+**🎯 Mots-clés non négociables (chacun = des points) :**
+- ✅ « mutation par substitution/délétion/addition »
+- ✅ « codon » (pas « triplet d'ARNm »)
+- ✅ « acide aminé » (jamais « protéine » à la place)
+- ✅ « protéine non fonctionnelle »
+- ✅ « caractère » ou « phénotype »
+- ✅ « individu sain » vs « individu malade »
+
+---
+
+## 🔷 ÉTAPE 4 — ENTRAÎNEMENT ESPACÉ (méthode des 7 jours)
+
+| Jour | Action | Durée |
+|---|---|---|
+| **J1** | Faire 1 exercice complet du template (annale 2020-2024) sans regarder le corrigé | 25 min |
+| **J2** | Refaire le **même** exercice → comparer mot pour mot avec le corrigé officiel | 20 min |
+| **J3** | Faire un **nouvel** exercice (autre annale) du même template | 25 min |
+| **J4** | Refaire les 2 exercices précédents en chronométré (15 min chacun) | 30 min |
+| **J5** | Nouvel exercice + auto-évaluation avec barème officiel | 30 min |
+| **J6** | **Réciter à voix haute** la phrase-type en remplissant les blancs avec 3 cas différents | 15 min |
+| **J7** | Examen blanc complet sur le template (3 exercices d'affilée, conditions réelles) | 60 min |
+
+**📌 Règle de la rétroaction :** Après chaque exercice, créez un **petit tableau personnel** :
+
+| Erreur commise | Mot-clé oublié | Points perdus | Correction à mémoriser |
+|---|---|---|---|
+
+---
+
+## 🔷 OUTIL BONUS — LA CHECKLIST DE 90 SECONDES (à utiliser le jour J)
+
+Avant de rendre votre copie, vérifiez :
+
+- [ ] J'ai bien identifié le **type de brin** (transcrit ou non transcrit) ?
+- [ ] Mon ARNm contient des **U** (jamais de T) ?
+- [ ] J'ai écrit les acides aminés en **toutes lettres** (Met, Phe, Gly...) ?
+- [ ] J'ai **comparé explicitement** sain vs malade (tableau à 2 colonnes recommandé) ?
+- [ ] J'ai utilisé la **phrase-type complète** avec tous les mots-clés ?
+- [ ] J'ai **conclu** par le lien protéine non fonctionnelle → caractère malade ?
+- [ ] J'ai utilisé un **tableau de comparaison** propre et un **schéma bilan** si demandé ?
+
+---
+
+## 🚀 PROCHAINE ÉTAPE RECOMMANDÉE
+
+Pour passer à la pratique immédiate, je peux vous générer :
+
+1. 🔹 Une **banque de 10 questions types** sur le Template A avec corrigés modèles et barèmes
+2. 🔹 Un **examen blanc complet** au format bac marocain (Partie I-II-III) sur la génétique
+3. 🔹 Une **fiche haute densité** (recto-verso) avec tous les codons, mutations et phrases-types
+
+**Lequel voulez-vous que je génère en premier ?** 📚

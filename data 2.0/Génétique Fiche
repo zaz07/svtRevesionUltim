@@ -1,0 +1,130 @@
+
+# 📌 FICHE HAUTE DENSITÉ — TEMPLATE A
+## Génétique : Expression de l'information & Maladies héréditaires
+**Matière :** SVT | **Niveau :** 2BAC PC/SVT | **Format :** Recto-Verso
+
+---
+
+## 🅰️ RECTO — LE CŒUR THÉORIQUE
+
+### 🔑 DÉFINITIONS ESSENTIELLES (à connaître au mot près)
+
+| Terme | Définition exacte attendue par le correcteur |
+|---|---|
+| **Gène** | Fragment d'ADN porteur d'une information génétique codant pour une protéine |
+| **Allèle** | Version d'un gène (forme alternative occupant le même locus) |
+| **Transcription** | Synthèse d'ARNm à partir du brin transcrit de l'ADN, dans le **noyau** |
+| **Traduction** | Synthèse d'une protéine à partir de l'ARNm, dans le **cytoplasme** (sur les ribosomes) |
+| **Codon** | Triplet de nucléotides sur l'**ARNm** codant pour un acide aminé |
+| **Code génétique** | Système de correspondance entre codons et acides aminés (universel, redondant, non-chevauchant) |
+| **Mutation** | Modification accidentelle de la séquence de nucléotides de l'ADN |
+| **Phénotype** | Ensemble des caractères observables d'un individu (moléculaire, cellulaire, macroscopique) |
+
+### 📐 RELATIONS CLÉS À CONNAÎTRE PAR CŒUR
+
+```
+┌──────────────────────────────────────────────────────────┐
+│   ADN (gène) ──[Transcription]──> ARNm                   │
+│                                     │                    │
+│                                [Traduction]              │
+│                                     ▼                    │
+│                                Protéine ──> Caractère    │
+│                                                          │
+│   Un gène → une protéine → un caractère                  │
+└──────────────────────────────────────────────────────────┘
+```
+
+### ⚙️ CONVERSIONS NUCLÉOTIDIQUES (LA RÈGLE ABSOLUE)
+
+| Si on vous donne... | Pour obtenir l'ARNm... |
+|---|---|
+| **Brin transcrit** (matrice, 3'→5') | Complémentaire antiparallèle : A↔U, T↔A, C↔G, G↔C |
+| **Brin non transcrit** (codant, 5'→3') | Recopier en remplaçant **T par U** uniquement |
+
+**Complémentarité ADN/ADN :** A=T, C≡G  
+**Complémentarité ADN/ARN :** A=U, T=A, C≡G, G≡C
+
+### 🔬 LES 3 TYPES DE MUTATIONS
+
+| Type | Définition | Effet sur la protéine |
+|---|---|---|
+| **Substitution** | Un nucléotide remplacé par un autre | • Faux-sens (1 a.a. changé) • Non-sens (codon stop précoce) • Silencieuse (même a.a.) |
+| **Délétion** | Suppression d'un (ou plusieurs) nucléotide(s) | **Décalage du cadre de lecture** → protéine totalement différente |
+| **Addition** (insertion) | Ajout d'un (ou plusieurs) nucléotide(s) | **Décalage du cadre de lecture** → protéine totalement différente |
+
+---
+
+## 🅱️ VERSO — LA MACHINE À POINTS
+
+### 🏆 LA PHRASE-TYPE 20/20 (à mémoriser MOT POUR MOT)
+
+> *« Au niveau du triplet n°___, on observe une mutation par [substitution / délétion / addition] du nucléotide ___ par ___, entraînant le remplacement du codon ___ par le codon ___, ce qui se traduit par le remplacement de l'acide aminé ___ par ___ [ou l'apparition d'un codon stop prématuré]. Cette modification produit une protéine non fonctionnelle, incapable d'assurer [son rôle], ce qui explique l'apparition du caractère [malade] chez l'individu atteint. »*
+
+### 🎯 MÉTHODOLOGIE EN 5 ÉTAPES (à appliquer SYSTÉMATIQUEMENT)
+
+```
+ÉTAPE 1 : Identifier le brin (transcrit / non transcrit)
+   ↓
+ÉTAPE 2 : Écrire l'ARNm (sain ET malade) en parallèle
+   ↓
+ÉTAPE 3 : Découper en codons à partir de AUG
+   ↓
+ÉTAPE 4 : Traduire en acides aminés via le tableau du code génétique
+   ↓
+ÉTAPE 5 : Comparer + Identifier la mutation + Rédiger la phrase-type
+```
+
+### 📊 TABLEAU COMPARATIF MODÈLE (à reproduire dans la copie)
+
+| Élément | Individu sain | Individu malade |
+|---|---|---|
+| Séquence ADN (brin non transcrit) | ...ATG-CTT-GAA... | ...ATG-CTT-**GTA**... |
+| Séquence ARNm | ...AUG-CUU-GAA... | ...AUG-CUU-**GUA**... |
+| Séquence d'acides aminés | Met-Leu-**Glu** | Met-Leu-**Val** |
+| Type de mutation | — | Substitution (A→T) au triplet n°3 |
+| Protéine | Fonctionnelle | Non fonctionnelle |
+| Caractère | Sain | Malade |
+
+### ⚡ TOP 7 DES MALADIES À CONNAÎTRE
+
+| Maladie | Protéine défaillante | Caractère observé |
+|---|---|---|
+| **Drépanocytose** | Hémoglobine HbS (Glu→Val en pos. 6) | Hématies en faucille, anémie |
+| **Mucoviscidose** | Protéine CFTR (canal Cl⁻) | Mucus épais, troubles respiratoires |
+| **Phénylcétonurie** | Phénylalanine hydroxylase | Accumulation de phénylalanine, retard mental |
+| **Albinisme** | Tyrosinase | Absence de mélanine |
+| **Hémophilie** | Facteur VIII ou IX de coagulation | Saignements prolongés |
+| **Myopathie de Duchenne** | Dystrophine | Dégénérescence musculaire |
+| **Xeroderma pigmentosum** | Enzymes de réparation de l'ADN | Hypersensibilité aux UV |
+
+### 🚫 LES 5 CONFUSIONS QUI COÛTENT DES POINTS
+
+| ❌ Erreur | ✅ Correction |
+|---|---|
+| Confondre triplet (ADN) et codon (ARNm) | **Codon = sur ARNm uniquement** |
+| Écrire « T » dans l'ARNm | L'ARNm contient **U**, jamais T |
+| Dire « la protéine est absente » sans preuve | Dire « **protéine non fonctionnelle** » (plus prudent et toujours juste) |
+| Oublier le sens 5'→3' / 3'→5' | Toujours **indiquer les extrémités** |
+| Décrire au lieu d'expliquer | Toujours faire la **chaîne causale complète** : mutation → protéine → caractère |
+
+### 🏅 MOTS-CLÉS NON NÉGOCIABLES (chaque mot = des points)
+
+`mutation` · `substitution / délétion / addition` · `codon` · `acide aminé` · `cadre de lecture` · `protéine non fonctionnelle` · `complémentaire antiparallèle` · `transcription` · `traduction` · `phénotype` · `caractère` · `individu sain / individu malade`
+
+### ✅ CHECKLIST FINALE (90 secondes avant de rendre la copie)
+
+- [ ] J'ai identifié le bon **type de brin**
+- [ ] Mon ARNm contient des **U** (zéro T)
+- [ ] J'ai écrit les acides aminés en **abrégé standard** (Met, Phe, Glu...)
+- [ ] J'ai un **tableau comparatif** sain/malade
+- [ ] J'ai utilisé la **phrase-type complète**
+- [ ] J'ai **conclu** sur le lien protéine non fonctionnelle → maladie
+- [ ] J'ai indiqué le **type précis de mutation**
+
+---
+
+## 💡 CONSEIL D'UTILISATION DE LA FICHE
+
+- **J-7 avant l'examen :** Lire la fiche 2× par jour (matin + soir)
+- **J-1 :** Réciter la phrase-type **5 fois à voix haute** + reproduire le tableau comparatif modèle de mémoire
+- **Le jour J :** Relecture rapide du verso uniquement (15 min avant l'épreuve)
