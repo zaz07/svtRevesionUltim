@@ -1098,81 +1098,292 @@
             <main class="lab-panel">
                 <canvas id="celebration-canvas" class="celebration-canvas"></canvas>
 
-                <!-- ================= TAB 1: EXPRESSION GENETIQUE ================= -->
-                <section id="lab-expression" class="lab-tab-content active">
-                    <div>
-                        <h2 class="text-3xl font-bold mb-2 text-white">Labo 1 : Transcription, Traduction & Mutations</h2>
-                        <p class="text-secondary text-sm">Visualisez l'impact des mutations sur la séquence d'acides aminés (cadre de lecture) et apprenez la phrase-type de justification.</p>
-                    </div>
-
-                    <!-- Control Panel shelf -->
-                    <div class="control-shelf">
-                        <div class="shelf-group">
-                            <label class="text-sm font-bold text-slate-400">Gène d'étude :</label>
-                            <select id="gene-selector" onchange="loadSelectedGene()">
-                                <option value="hba">Drépanocytose — Hémoglobine HbA (Normal)</option>
-                                <option value="hbs">Drépanocytose — Hémoglobine HbS (Muté)</option>
-                                <option value="cftr-normal">Mucoviscidose — Canal CFTR (Normal)</option>
-                                <option value="cftr-delta">Mucoviscidose — Mutation ΔF508 (Délétion 3bp)</option>
-                                <option value="albinos-normal">Albinisme — Tyrosinase (Normal)</option>
-                                <option value="albinos-mute">Albinisme — Tyrosinase (Insertion - Décalage)</option>
-                                <option value="custom">Séquence libre (Personnalisée)</option>
-                            </select>
+                    <!-- Mode Selector Toggle -->
+                    <div class="flex items-center justify-between bg-slate-800/25 backdrop-blur p-4 rounded-xl border border-slate-700/40 mb-6">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl animate-bounce">🕹️</span>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Mode d'apprentissage</h4>
+                                <p class="text-xs text-slate-400">Passez du simulateur automatique au défi actif de rigueur du Bac !</p>
+                            </div>
                         </div>
-                        <div class="shelf-group" id="custom-sequence-input-group" style="display: none;">
-                            <input type="text" id="custom-sequence-input" placeholder="Entrez bases ADN (ex: ATGGCCGTA...)" style="width: 280px; text-transform: uppercase;" oninput="validateAndSetCustomDNA()">
-                        </div>
-                        <div class="shelf-group">
-                            <button class="btn-lab btn-lab-outline" onclick="resetGeneSimulation()">Réinitialiser</button>
-                            <button class="btn-lab btn-lab-blue" id="btn-animate-trans" onclick="startExpressionAnimation()">Lancer Simulation</button>
+                        <div class="flex bg-slate-950 p-1.5 rounded-xl border border-slate-800">
+                            <button id="toggle-mode-demo" class="px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all bg-sky-500 text-white shadow" onclick="switchLabMode('demo')">📺 Mode Démo (Auto)</button>
+                            <button id="toggle-mode-challenge" class="px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all text-slate-400 hover:text-white" onclick="switchLabMode('challenge')">🏆 Mode Défi (Actif)</button>
                         </div>
                     </div>
 
-                    <!-- DNA Strand Workspace Box -->
-                    <div class="dna-strand-container">
-                        <div class="visual-sequence">
-                            <!-- Brin Codant -->
-                            <div class="nucleotide-row row-codant" id="row-dna-codant">
-                                <span class="strand-label lbl-codant">Brin Codant 5'</span>
-                                <!-- Bases injected dynamically -->
+                    <!-- DEMO WORKSPACE (Standard Simulation) -->
+                    <div id="demo-workspace" class="space-y-6">
+                        <!-- Control Panel shelf -->
+                        <div class="control-shelf">
+                            <div class="shelf-group">
+                                <label class="text-sm font-bold text-slate-400">Gène d'étude :</label>
+                                <select id="gene-selector" onchange="loadSelectedGene()">
+                                    <option value="hba">Drépanocytose — Hémoglobine HbA (Normal)</option>
+                                    <option value="hbs">Drépanocytose — Hémoglobine HbS (Muté)</option>
+                                    <option value="cftr-normal">Mucoviscidose — Canal CFTR (Normal)</option>
+                                    <option value="cftr-delta">Mucoviscidose — Mutation ΔF508 (Délétion 3bp)</option>
+                                    <option value="albinos-normal">Albinisme — Tyrosinase (Normal)</option>
+                                    <option value="albinos-mute">Albinisme — Tyrosinase (Insertion - Décalage)</option>
+                                    <option value="custom">Séquence libre (Personnalisée)</option>
+                                </select>
                             </div>
-                            <!-- Brin Matrice (Transcrit) -->
-                            <div class="nucleotide-row row-matrice" id="row-dna-matrice">
-                                <span class="strand-label lbl-matrice">Brin Transcrit 3'</span>
-                                <!-- Bases injected dynamically -->
+                            <div class="shelf-group" id="custom-sequence-input-group" style="display: none;">
+                                <input type="text" id="custom-sequence-input" placeholder="Entrez bases ADN (ex: ATGGCCGTA...)" style="width: 280px; text-transform: uppercase;" oninput="validateAndSetCustomDNA()">
                             </div>
-                            <!-- mRNA Row -->
-                            <div class="nucleotide-row row-mrna" id="row-mrna">
-                                <span class="strand-label lbl-mrna">ARNm 5'</span>
-                                <div id="mrna-codons-container" style="display: inline-flex;">
-                                    <!-- Codons injected dynamically -->
+                            <div class="shelf-group">
+                                <button class="btn-lab btn-lab-outline" onclick="resetGeneSimulation()">Réinitialiser</button>
+                                <button class="btn-lab btn-lab-blue" id="btn-animate-trans" onclick="startExpressionAnimation()">Lancer Simulation</button>
+                            </div>
+                        </div>
+
+                        <!-- DNA Strand Workspace Box -->
+                        <div class="dna-strand-container">
+                            <div class="visual-sequence">
+                                <!-- Brin Codant -->
+                                <div class="nucleotide-row row-codant" id="row-dna-codant">
+                                    <span class="strand-label lbl-codant">Brin Codant 5'</span>
+                                    <!-- Bases injected dynamically -->
+                                </div>
+                                <!-- Brin Matrice (Transcrit) -->
+                                <div class="nucleotide-row row-matrice" id="row-dna-matrice">
+                                    <span class="strand-label lbl-matrice">Brin Transcrit 3'</span>
+                                    <!-- Bases injected dynamically -->
+                                </div>
+                                <!-- mRNA Row -->
+                                <div class="nucleotide-row row-mrna" id="row-mrna">
+                                    <span class="strand-label lbl-mrna">ARNm 5'</span>
+                                    <div id="mrna-codons-container" style="display: inline-flex;">
+                                        <!-- Codons injected dynamically -->
+                                    </div>
+                                </div>
+                                <!-- Protein Row -->
+                                <div class="nucleotide-row row-protein" id="row-protein">
+                                    <span class="strand-label lbl-protein">Protéine</span>
+                                    <div id="protein-chain-container" style="display: inline-flex; align-items: center;">
+                                        <!-- Amino acids injected dynamically -->
+                                    </div>
                                 </div>
                             </div>
-                            <!-- Protein Row -->
-                            <div class="nucleotide-row row-protein" id="row-protein">
-                                <span class="strand-label lbl-protein">Protéine</span>
-                                <div id="protein-chain-container" style="display: inline-flex; align-items: center;">
-                                    <!-- Amino acids injected dynamically -->
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; font-size: 0.85rem; color: #64748b; background: rgba(15,23,42,0.3); padding: 0.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.02);">
+                            <span>💡 Astuce : <strong>Cliquez sur n'importe quel nucléotide</strong> du brin d'ADN ci-dessus pour insérer une mutation (Substitution, Délétion, Addition) !</span>
+                        </div>
+
+                        <!-- Expected Examen Phrase Output -->
+                        <div class="phrase-output-card card-glow-blue" id="phrase-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                <h4 class="text-lg font-bold text-sky-400 flex items-center gap-2">
+                                    🏆 LA PHRASE MODÈLE DU CORRECTEUR (BAC 20/20)
+                                </h4>
+                                <span class="badge-lab b-blue">Template A</span>
+                            </div>
+                            <p class="phrase-text" id="phrase-model-text">
+                                Sélectionnez une mutation ou cliquez sur un nucléotide pour générer automatiquement la phrase explicative parfaite conforme au barème officiel.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- CHALLENGE WORKSPACE (Active Interactive Test) -->
+                    <div id="challenge-workspace" style="display: none;" class="space-y-6">
+                        <!-- Onboarding/Setup screen -->
+                        <div id="challenge-setup-screen" class="bg-slate-900/40 border border-slate-800 p-8 rounded-2xl text-center space-y-6 max-w-2xl mx-auto">
+                            <div class="w-16 h-16 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-3xl mx-auto shadow-inner border border-indigo-500/20">🏆</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Prêt pour le Défi de Rigueur ?</h3>
+                                <p class="text-sm text-slate-400 mt-2">Réalisez vous-même la transcription et la traduction de l'allèle choisi sans commettre de fautes de rigueur.</p>
+                            </div>
+                            
+                            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 max-w-md mx-auto space-y-3">
+                                <label class="text-xs font-bold text-slate-400 block text-left uppercase tracking-wider">Allèle cible pour le défi :</label>
+                                <select id="challenge-gene-selector" class="w-full">
+                                    <option value="hba">Drépanocytose — Hémoglobine HbA (Normal)</option>
+                                    <option value="hbs">Drépanocytose — Hémoglobine HbS (Muté)</option>
+                                    <option value="cftr-normal">Mucoviscidose — Canal CFTR (Normal)</option>
+                                    <option value="cftr-delta">Mucoviscidose — Mutation ΔF508 (Délétion 3bp)</option>
+                                    <option value="albinos-normal">Albinisme — Tyrosinase (Normal)</option>
+                                    <option value="albinos-mute">Albinisme — Tyrosinase (Insertion - Décalage)</option>
+                                </select>
+                            </div>
+
+                            <div class="p-4 bg-slate-950/40 rounded-xl border border-slate-800 text-left space-y-2 text-xs text-slate-400 max-w-md mx-auto">
+                                <div class="flex items-center gap-2"><span class="text-rose-500">❤️</span> Vous commencez avec <strong>3 vies (cœurs)</strong>.</div>
+                                <div class="flex items-center gap-2"><span class="text-amber-500">⚠️</span> Chaque erreur de complémentarité ou de codon déclenche un mnémo-flash.</div>
+                                <div class="flex items-center gap-2"><span class="text-sky-500">🎓</span> En cas d'échec total (0 vie), vous passerez la **Session de Rattrapage** !</div>
+                            </div>
+
+                            <button onclick="startChallenge()" class="btn-lab btn-lab-purple px-8 py-3 rounded-xl font-bold shadow-lg shadow-purple-500/20 scale-105 hover:scale-110 transition-all text-base">
+                                🚀 Démarrer le Défi !
+                            </button>
+                        </div>
+
+                        <!-- Active Challenge Screen -->
+                        <div id="challenge-active-screen" style="display: none;" class="space-y-6">
+                            <!-- Header progress and scores -->
+                            <div class="flex flex-wrap justify-between items-center bg-slate-800/30 border border-slate-700/30 p-4 rounded-xl gap-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-sm font-bold text-slate-300">Étape : <span id="challenge-step-title" class="text-sky-400">Transcription</span></div>
+                                    <div class="w-40 bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
+                                        <div id="challenge-progress-bar" class="bg-gradient-to-r from-sky-400 to-indigo-500 h-full w-0 transition-all duration-300"></div>
+                                    </div>
                                 </div>
+                                <div class="flex items-center gap-6">
+                                    <div class="flex items-center gap-1.5 text-rose-500 font-extrabold text-lg" id="challenge-lives">
+                                        ❤️❤️❤️
+                                    </div>
+                                    <div class="bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-800 font-bold text-sm text-emerald-400">
+                                        Score : <span id="challenge-score">0</span> pts
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Current Challenge Prompt -->
+                            <div class="bg-slate-950 border border-slate-800 p-5 rounded-2xl relative overflow-hidden shadow-inner">
+                                <div class="absolute top-0 left-0 w-1.5 h-full bg-sky-500" id="challenge-indicator-line"></div>
+                                <h4 class="text-base font-bold text-white mb-1" id="challenge-prompt-title">Transcrivez le nucléotide n°1</h4>
+                                <p class="text-sm text-slate-400" id="challenge-prompt-desc">Complétez l'ARNm face au nucléotide correspondant sur le Brin Transcrit (3'). Rappelez-vous des règles de complémentarité !</p>
+                            </div>
+
+                            <!-- Challenge Strand Interactive Board -->
+                            <div class="dna-strand-container bg-slate-950/80 p-6 rounded-2xl border border-slate-800/60 relative">
+                                <div class="visual-sequence" id="challenge-board-visual" style="padding-left: 0; min-height: unset; gap: 1rem;">
+                                    <!-- DNA Transcrit Row -->
+                                    <div class="nucleotide-row" style="position: relative; padding-left: 8.5rem; height: 42px;">
+                                        <span class="strand-label lbl-matrice" style="top: 0.25rem;">ADN Transcrit 3'</span>
+                                        <div class="flex gap-1" id="challenge-dna-row">
+                                            <!-- DNA bases injected here -->
+                                        </div>
+                                    </div>
+
+                                    <!-- mRNA challenge target Row -->
+                                    <div class="nucleotide-row row-mrna" style="position: relative; padding-left: 8.5rem; height: 50px; border-top: none; margin-top: 0.5rem; padding-top: 0;">
+                                        <span class="strand-label lbl-mrna" style="top: 0.25rem;">ARNm Défi 5'</span>
+                                        <div class="flex gap-1" id="challenge-mrna-row">
+                                            <!-- Slots filled as the student answers -->
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Protein challenge target Row -->
+                                    <div class="nucleotide-row row-protein" id="challenge-protein-row-container" style="position: relative; padding-left: 8.5rem; height: 50px; border-top: none; margin-top: 0.5rem; padding-top: 0; display: none;">
+                                        <span class="strand-label lbl-protein" style="top: 0.25rem;">Protéine Défi</span>
+                                        <div class="flex gap-4" id="challenge-protein-row">
+                                            <!-- Amino acids filled as the student translates -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Helper Tables -->
+                            <div id="challenge-helper-tools" class="flex flex-wrap gap-3 justify-center">
+                                <button onclick="toggleChallengeHelperTable()" class="btn-lab btn-lab-outline text-xs px-4 py-2 rounded-lg flex items-center gap-2">
+                                    📋 Afficher la Table du Code Génétique
+                                </button>
+                            </div>
+
+                            <!-- User input buttons pad -->
+                            <div id="challenge-keyboard-container" class="p-6 bg-slate-900/40 border border-slate-800/60 rounded-2xl">
+                                <!-- Transcription Keyboard -->
+                                <div id="challenge-nuc-keyboard" class="flex flex-col gap-3 items-center">
+                                    <p class="text-xs text-slate-400 mb-1">Sélectionnez la base complémentaire pour l'ARNm :</p>
+                                    <div class="flex gap-3 justify-center flex-wrap">
+                                        <button onclick="pressChallengeNuc('A')" class="w-14 h-14 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-black text-xl shadow-lg border border-blue-400/20 active:scale-95 transition-all">A</button>
+                                        <button onclick="pressChallengeNuc('U')" class="w-14 h-14 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xl shadow-lg border border-amber-400/20 active:scale-95 transition-all">U</button>
+                                        <button onclick="pressChallengeNuc('C')" class="w-14 h-14 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xl shadow-lg border border-emerald-400/20 active:scale-95 transition-all">C</button>
+                                        <button onclick="pressChallengeNuc('G')" class="w-14 h-14 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-black text-xl shadow-lg border border-purple-400/20 active:scale-95 transition-all">G</button>
+                                        <button onclick="pressChallengeNuc('T')" class="w-14 h-14 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-black text-xl shadow-lg border border-rose-400/20 active:scale-95 transition-all relative">
+                                            T
+                                            <span class="absolute -top-1 -right-1 text-[8px] bg-black text-rose-400 border border-rose-500/30 px-1 rounded-full font-bold scale-90">Piège</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Translation Keyboard -->
+                                <div id="challenge-aa-keyboard" style="display: none;" class="w-full space-y-4">
+                                    <p class="text-xs text-center text-slate-400">Traduisez le codon actif en choisissant l'acide aminé correspondant :</p>
+                                    <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 gap-2 w-full max-w-3xl mx-auto" id="challenge-aa-grid">
+                                        <!-- Dynamic AA selector buttons loaded dynamically -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feedback / Trap Alert Box Modal-style -->
+                        <div id="challenge-feedback-overlay" style="display: none;" class="bg-slate-950/95 backdrop-blur-md p-6 rounded-2xl border border-rose-500/30 shadow-2xl space-y-4 max-w-xl mx-auto relative animate-fadeIn">
+                            <div class="flex items-start gap-4">
+                                <div id="challenge-feedback-icon" class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0 bg-rose-500/10 text-rose-400 border border-rose-500/20">⚠️</div>
+                                <div class="space-y-1">
+                                    <h4 id="challenge-feedback-title" class="text-lg font-extrabold text-white">OUPS ! PIÈGE DU BAC REPÉRÉ</h4>
+                                    <p id="challenge-feedback-subtitle" class="text-xs text-rose-400 font-bold uppercase tracking-wider">Erreur de Rigueur</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-3">
+                                <p id="challenge-feedback-desc" class="text-sm text-slate-300 leading-relaxed">
+                                    Explications claires de l'erreur...
+                                </p>
+                                <div class="p-3 bg-slate-950/60 rounded-lg border-l-4 border-amber-500 text-xs text-slate-300">
+                                    <strong class="text-amber-400 block mb-1">💡 LE MNÉMO-FLASH POUR RETENIR :</strong>
+                                    <span id="challenge-feedback-mnemonic">Règle de mnémonique géniale !</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-end">
+                                <button onclick="acknowledgeChallengeFeedback()" class="px-5 py-2 rounded-lg bg-rose-500 hover:bg-rose-400 text-white font-bold text-sm transition-all shadow-lg shadow-rose-500/20 active:scale-95">
+                                    D'accord, leçon retenue ! 🧠
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Complete/Result screen -->
+                        <div id="challenge-result-screen" style="display: none;" class="bg-slate-900/50 border border-slate-800 p-8 rounded-2xl text-center space-y-6 max-w-2xl mx-auto">
+                            <div id="challenge-result-medal" class="w-20 h-20 rounded-full flex items-center justify-center text-4xl mx-auto border shadow-lg">🏆</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white" id="challenge-result-title">Défi Réussi avec Brio !</h3>
+                                <p class="text-sm text-slate-400 mt-2" id="challenge-result-desc">Vous avez fait preuve d'une rigueur d'élite.</p>
+                            </div>
+
+                            <!-- Grading Card -->
+                            <div class="grid grid-cols-2 gap-4 max-w-md mx-auto">
+                                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                                    <span class="text-xs text-slate-400 uppercase font-bold block tracking-wider mb-1">Note de Rigueur</span>
+                                    <span class="text-3xl font-black" id="challenge-result-grade">20 / 20</span>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                                    <span class="text-xs text-slate-400 uppercase font-bold block tracking-wider mb-1">Score d'Élite</span>
+                                    <span class="text-3xl font-black text-indigo-400" id="challenge-result-score">1500</span>
+                                </div>
+                            </div>
+
+                            <!-- Mémos d'or / Summary card -->
+                            <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 text-left space-y-3">
+                                <h4 class="text-sm font-bold text-white border-b border-slate-800 pb-2 flex items-center gap-2">
+                                    <span>🌟</span> Vos Rappels Clés de Rigueur (SVT Bac)
+                                </h4>
+                                <ul class="space-y-2.5 text-xs text-slate-300" id="challenge-result-checklist">
+                                    <!-- Dynamic points summarized from mistakes made -->
+                                </ul>
+                            </div>
+
+                            <div class="flex gap-3 justify-center">
+                                <button onclick="restartChallenge()" class="btn-lab btn-lab-outline px-6 py-2.5 rounded-xl font-bold">Réessayer le Défi</button>
+                                <button onclick="switchLabMode('demo')" class="btn-lab btn-lab-blue px-6 py-2.5 rounded-xl font-bold">Retour au Simulateur</button>
                             </div>
                         </div>
                     </div>
 
-                    <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; font-size: 0.85rem; color: #64748b; background: rgba(15,23,42,0.3); padding: 0.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.02);">
-                        <span>💡 Astuce : <strong>Cliquez sur n'importe quel nucléotide</strong> du brin d'ADN ci-dessus pour insérer une mutation (Substitution, Délétion, Addition) !</span>
-                    </div>
-
-                    <!-- Expected Examen Phrase Output -->
-                    <div class="phrase-output-card card-glow-blue" id="phrase-card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                            <h4 class="text-lg font-bold text-sky-400 flex items-center gap-2">
-                                🏆 LA PHRASE MODÈLE DU CORRECTEUR (BAC 20/20)
-                            </h4>
-                            <span class="badge-lab b-blue">Template A</span>
+                    <!-- GENETIC CODE TABLE MODAL -->
+                    <div id="genetic-code-modal" class="dialog-overlay">
+                        <div class="dialog-box max-w-2xl w-full" style="max-height: 80vh; overflow-y: auto; background: #0f172a; border-color: rgba(255,255,255,0.1);">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+                                <h3 class="text-lg font-bold text-white flex items-center gap-2">📖 Table de Traduction du Code Génétique</h3>
+                                <button onclick="toggleChallengeHelperTable()" class="text-slate-400 hover:text-white text-2xl font-bold">&times;</button>
+                            </div>
+                            <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-1.5 text-center text-xs" id="genetic-code-table-grid">
+                                <!-- Loaded dynamically in script -->
+                            </div>
                         </div>
-                        <p class="phrase-text" id="phrase-model-text">
-                            Sélectionnez une mutation ou cliquez sur un nucléotide pour générer automatiquement la phrase explicative parfaite conforme au barème officiel.
-                        </p>
                     </div>
                 </section>
 
@@ -1844,10 +2055,536 @@
             phraseBox.innerHTML = `🏆 <strong>Phrase modèle rédigée :</strong> <br>« ${mutationClause}${consequencesClause} »`;
         }
 
+        // ================= CHALLENGE STATE ENGINE & MNEMONICS =================
+        let activeLabMode = "demo"; // default
+
+        function switchLabMode(mode) {
+            activeLabMode = mode;
+            const demoBtn = document.getElementById('toggle-mode-demo');
+            const challengeBtn = document.getElementById('toggle-mode-challenge');
+            const demoWp = document.getElementById('demo-workspace');
+            const challengeWp = document.getElementById('challenge-workspace');
+
+            if (mode === 'demo') {
+                demoBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all bg-sky-500 text-white shadow";
+                challengeBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all text-slate-400 hover:text-white";
+                demoWp.style.display = "block";
+                challengeWp.style.display = "none";
+                resetGeneSimulation();
+            } else {
+                challengeBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all bg-purple-600 text-white shadow";
+                demoBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all text-slate-400 hover:text-white";
+                demoWp.style.display = "none";
+                challengeWp.style.display = "block";
+                initChallengeSetup();
+            }
+        }
+
+        function loadGeneticCodeTable() {
+            const container = document.getElementById('genetic-code-table-grid');
+            if (!container) return;
+            container.innerHTML = "";
+            
+            for (let codon in GENETIC_CODE) {
+                const aaName = GENETIC_CODE[codon];
+                const box = document.createElement('div');
+                box.className = "p-2 rounded bg-slate-950 border border-slate-800 text-center flex flex-col justify-center items-center";
+                box.innerHTML = `
+                    <span class="font-mono font-bold text-sky-400 text-[10px]">${codon}</span>
+                    <span class="text-[10px] font-extrabold text-white mt-1">${aaName}</span>
+                `;
+                container.appendChild(box);
+            }
+        }
+
+        // ================= CHALLENGE STATE VARIABLES =================
+        let challengeStep = "setup"; 
+        let challengeSelectedGeneId = "hba";
+        let challengeDNA = "";
+        let challengeMatrice = "";
+        let challengeMRNA = "";
+        let challengeProtein = [];
+        let challengeNucIndex = 0;
+        let challengeCodonIndex = 0;
+        let challengeLivesLeft = 3;
+        let challengeScoreValue = 0;
+        let challengeMistakesArray = [];
+        let challengeFeedbackActive = false;
+
+        function initChallengeSetup() {
+            challengeStep = "setup";
+            document.getElementById('challenge-setup-screen').style.display = "block";
+            document.getElementById('challenge-active-screen').style.display = "none";
+            document.getElementById('challenge-result-screen').style.display = "none";
+            document.getElementById('challenge-feedback-overlay').style.display = "none";
+        }
+
+        function toggleChallengeHelperTable() {
+            const modal = document.getElementById('genetic-code-modal');
+            if (modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            } else {
+                modal.classList.add('active');
+            }
+        }
+
+        function startChallenge() {
+            challengeSelectedGeneId = document.getElementById('challenge-gene-selector').value;
+            const geneObj = GENES_DATABASE[challengeSelectedGeneId];
+            
+            challengeDNA = geneObj.dna;
+            
+            // Build DNA transcrit (Matrice)
+            challengeMatrice = "";
+            for(let i=0; i<challengeDNA.length; i++) {
+                challengeMatrice += getComplementaryBase(challengeDNA[i], false);
+            }
+            
+            challengeMRNA = "";
+            challengeProtein = [];
+            challengeNucIndex = 0;
+            challengeCodonIndex = 0;
+            challengeLivesLeft = 3;
+            challengeScoreValue = 0;
+            challengeMistakesArray = [];
+            challengeFeedbackActive = false;
+            
+            // Switch screen
+            document.getElementById('challenge-setup-screen').style.display = "none";
+            document.getElementById('challenge-active-screen').style.display = "block";
+            document.getElementById('challenge-result-screen').style.display = "none";
+            document.getElementById('challenge-feedback-overlay').style.display = "none";
+            
+            // Reset header display
+            updateChallengeHeader();
+            
+            // Draw DNA row and empty ARNm row
+            drawChallengeStrands();
+            
+            // Set current prompt
+            goToChallengeStep("transcription");
+        }
+
+        function updateChallengeHeader() {
+            // Render Hearts
+            let hearts = "";
+            for(let i=0; i<3; i++) {
+                if (i < challengeLivesLeft) {
+                    hearts += "❤️";
+                } else {
+                    hearts += "🖤";
+                }
+            }
+            document.getElementById('challenge-lives').textContent = hearts;
+            document.getElementById('challenge-score').textContent = challengeScoreValue;
+        }
+
+        function drawChallengeStrands() {
+            const dnaRow = document.getElementById('challenge-dna-row');
+            const mrnaRow = document.getElementById('challenge-mrna-row');
+            const protContainer = document.getElementById('challenge-protein-row-container');
+            const protRow = document.getElementById('challenge-protein-row');
+            
+            dnaRow.innerHTML = "";
+            mrnaRow.innerHTML = "";
+            protRow.innerHTML = "";
+            protContainer.style.display = "none";
+            
+            // Draw DNA bases
+            for (let i = 0; i < challengeMatrice.length; i++) {
+                const base = challengeMatrice[i];
+                const baseEl = document.createElement('span');
+                baseEl.className = `nuc-base nuc-${base} challenge-nuc-dna-${i}`;
+                baseEl.textContent = base;
+                dnaRow.appendChild(baseEl);
+                
+                // Draw empty slot for mRNA
+                const slotEl = document.createElement('span');
+                slotEl.className = `nuc-base nuc-blank challenge-nuc-mrna-${i}`;
+                slotEl.textContent = ".";
+                mrnaRow.appendChild(slotEl);
+            }
+        }
+
+        function goToChallengeStep(step) {
+            challengeStep = step;
+            const promptTitle = document.getElementById('challenge-prompt-title');
+            const promptDesc = document.getElementById('challenge-prompt-desc');
+            const nucKeyboard = document.getElementById('challenge-nuc-keyboard');
+            const aaKeyboard = document.getElementById('challenge-aa-keyboard');
+            
+            if (step === "transcription") {
+                promptTitle.textContent = "Étape 1 : Transcription de l'ARNm";
+                promptDesc.textContent = "Saisissez la base complémentaire pour chaque nucléotide du Brin Transcrit. Cliquez sur les touches A, U, C, G ou T ci-dessous.";
+                nucKeyboard.style.display = "flex";
+                aaKeyboard.style.display = "none";
+                highlightActiveNuc();
+                updateChallengeProgressBar(0);
+            } else if (step === "translation") {
+                promptTitle.textContent = "Étape 2 : Traduction en Acides Aminés";
+                promptDesc.textContent = "Traduisez les codons de l'ARNm obtenus (groupe de 3 bases) en utilisant la table du code génétique.";
+                nucKeyboard.style.display = "none";
+                aaKeyboard.style.display = "block";
+                
+                // Draw dynamic AA selector if not drawn
+                drawAaSelectorGrid();
+                
+                // Show protein row
+                document.getElementById('challenge-protein-row-container').style.display = "flex";
+                
+                highlightActiveCodon();
+                updateChallengeProgressBar(50);
+            }
+        }
+
+        function updateChallengeProgressBar(basePercent) {
+            const bar = document.getElementById('challenge-progress-bar');
+            let percent = basePercent;
+            if (challengeStep === "transcription") {
+                percent += Math.floor((challengeNucIndex / challengeMatrice.length) * 50);
+            } else if (challengeStep === "translation") {
+                let totalCodons = Math.floor(challengeMatrice.length / 3);
+                percent += Math.floor((challengeCodonIndex / totalCodons) * 50);
+            }
+            bar.style.width = `${percent}%`;
+        }
+
+        function highlightActiveNuc() {
+            // Remove active classes
+            for(let i=0; i<challengeMatrice.length; i++) {
+                const dnaEl = document.querySelector(`.challenge-nuc-dna-${i}`);
+                const mrnaEl = document.querySelector(`.challenge-nuc-mrna-${i}`);
+                if (dnaEl) {
+                    dnaEl.style.transform = "none";
+                    dnaEl.style.borderColor = "rgba(255,255,255,0.06)";
+                }
+                if (mrnaEl) {
+                    mrnaEl.style.borderColor = "rgba(255,255,255,0.15)";
+                }
+            }
+            
+            // Highlight current index
+            if (challengeNucIndex < challengeMatrice.length) {
+                const activeDna = document.querySelector(`.challenge-nuc-dna-${challengeNucIndex}`);
+                const activeMrna = document.querySelector(`.challenge-nuc-mrna-${challengeNucIndex}`);
+                if (activeDna) {
+                    activeDna.style.transform = "scale(1.2)";
+                    activeDna.style.borderColor = "#a78bfa";
+                }
+                if (activeMrna) {
+                    activeMrna.style.borderColor = "#fbbf24";
+                }
+                
+                document.getElementById('challenge-prompt-title').textContent = `Transcrivez le nucléotide n°${challengeNucIndex + 1}`;
+                document.getElementById('challenge-prompt-desc').innerHTML = `Base ADN Matrice active : <strong class="text-purple-400 font-black">${challengeMatrice[challengeNucIndex]}</strong>. Saisissez sa base complémentaire sur l'ARNm.`;
+            }
+        }
+
+        function pressChallengeNuc(base) {
+            if (challengeFeedbackActive || challengeStep !== "transcription") return;
+            
+            const targetBase = challengeMatrice[challengeNucIndex];
+            const correctBase = getComplementaryBase(targetBase, true); // true for RNA complimentary
+
+            // Check if student pressed 'T'
+            if (base === 'T') {
+                triggerChallengeMistake(
+                    "🚨 ATTENTION : LA THYMINE EST STRICTEMENT INTERDITE !",
+                    "Erreur de Rigueur de Base (ARN)",
+                    "En SVT, l'ARNm est un acide nucléique monocaténaire où la Thymine (T) est rigoureusement absente. Elle est remplacée par l'Uracile (U). Écrire 'T' dans un ARN sur votre copie est une faute éliminatoire qui vous fait perdre tous les points de la question !",
+                    "<strong>U</strong>nique à l'<strong>U</strong>racile ! Rappelez-vous : L'ADN a de la <strong>T</strong>enue (Thymine), mais l'ARN a de l'<strong>U</strong>rgences (Uracile) !",
+                    "T_instead_of_U"
+                );
+                return;
+            }
+
+            if (base === correctBase) {
+                // Correct!
+                challengeMRNA += base;
+                
+                // Show in UI
+                const mrnaEl = document.querySelector(`.challenge-nuc-mrna-${challengeNucIndex}`);
+                if (mrnaEl) {
+                    mrnaEl.textContent = base;
+                    mrnaEl.className = `nuc-base nuc-${base} challenge-nuc-mrna-${challengeNucIndex}`;
+                }
+                
+                challengeNucIndex++;
+                challengeScoreValue += 10;
+                updateChallengeHeader();
+                updateChallengeProgressBar(0);
+                
+                if (challengeNucIndex >= challengeMatrice.length) {
+                    // Transition to translation
+                    goToChallengeStep("translation");
+                } else {
+                    highlightActiveNuc();
+                }
+            } else {
+                // Complementarity mistake
+                triggerChallengeMistake(
+                    "🚨 COMPLÉMENTARITÉ INCORRECTE !",
+                    "Erreur d'appariement des bases",
+                    `La transcription obéit à la loi stricte d'appariement complémentaire des bases. Face à la base d'ADN Transcrit <strong class="text-purple-400">${targetBase}</strong>, la base correspondante de l'ARNm aurait dû être <strong class="text-amber-400">${correctBase}</strong>, et non ${base}.`,
+                    "<strong>C</strong>occinelle va avec <strong>G</strong>irafe (C-G), et <strong>A</strong>nanas va avec <strong>U</strong>kulele (A-U) ! Ne séparez jamais ces deux couples d'élite !",
+                    "appariement_incorrect"
+                );
+            }
+        }
+
+        function triggerChallengeMistake(title, subtitle, desc, mnemonic, type) {
+            challengeFeedbackActive = true;
+            challengeLivesLeft--;
+            challengeScoreValue = Math.max(0, challengeScoreValue - 20);
+            
+            // Record mistake for final report
+            challengeMistakesArray.push({
+                type: type,
+                title: title,
+                desc: desc,
+                mnemonic: mnemonic
+            });
+            
+            updateChallengeHeader();
+            
+            // Set overlay text
+            document.getElementById('challenge-feedback-title').textContent = title;
+            document.getElementById('challenge-feedback-subtitle').textContent = subtitle;
+            document.getElementById('challenge-feedback-desc').innerHTML = desc;
+            document.getElementById('challenge-feedback-mnemonic').innerHTML = mnemonic;
+            
+            // Show overlay
+            document.getElementById('challenge-feedback-overlay').style.display = "block";
+            document.getElementById('challenge-keyboard-container').style.opacity = "0.2";
+            document.getElementById('challenge-board-visual').style.opacity = "0.2";
+        }
+
+        function acknowledgeChallengeFeedback() {
+            document.getElementById('challenge-feedback-overlay').style.display = "none";
+            document.getElementById('challenge-keyboard-container').style.opacity = "1";
+            document.getElementById('challenge-board-visual').style.opacity = "1";
+            challengeFeedbackActive = false;
+            
+            if (challengeLivesLeft <= 0) {
+                // Game over -> Go to complete / Rattrapage!
+                endChallenge(false);
+            } else {
+                // Resume
+                if (challengeStep === "transcription") {
+                    highlightActiveNuc();
+                } else if (challengeStep === "translation") {
+                    highlightActiveCodon();
+                }
+            }
+        }
+
+        function drawAaSelectorGrid() {
+            const grid = document.getElementById('challenge-aa-grid');
+            if (grid.innerHTML !== "") return; // Already rendered
+            
+            const listAA = [
+                { short: "Ala", long: "Alanine" },
+                { short: "Arg", long: "Arginine" },
+                { short: "Asn", long: "Asparagine" },
+                { short: "Asp", long: "Ac. Aspartique" },
+                { short: "Cys", long: "Cystéine" },
+                { short: "Gln", long: "Glutamine" },
+                { short: "Glu", long: "Ac. Glutamique" },
+                { short: "Gly", long: "Glycine" },
+                { short: "His", long: "Histidine" },
+                { short: "Ile", long: "Isoleucine" },
+                { short: "Leu", long: "Leucine" },
+                { short: "Lys", long: "Lysine" },
+                { short: "Met", long: "Méthionine" },
+                { short: "Phe", long: "Phénylalanine" },
+                { short: "Pro", long: "Proline" },
+                { short: "Ser", long: "Sérine" },
+                { short: "Thr", long: "Thréonine" },
+                { short: "Trp", long: "Tryptophane" },
+                { short: "Tyr", long: "Tyrosine" },
+                { short: "Val", long: "Valine" },
+                { short: "STOP", long: "Codon STOP" }
+            ];
+            
+            listAA.forEach(aa => {
+                const btn = document.createElement('button');
+                btn.className = `p-2 rounded-lg font-bold text-center border text-[11px] active:scale-95 transition-all flex flex-col justify-center items-center ${aa.short === 'STOP' ? 'bg-rose-950/40 border-rose-800 text-rose-300 hover:bg-rose-900/50' : 'bg-slate-900/60 border-slate-800 text-slate-200 hover:bg-slate-800'}`;
+                btn.onclick = () => pressChallengeAA(aa.short);
+                btn.innerHTML = `
+                    <span class="font-extrabold text-xs">${aa.short}</span>
+                    <span class="text-[8px] text-slate-400 font-medium">${aa.long}</span>
+                `;
+                grid.appendChild(btn);
+            });
+        }
+
+        function highlightActiveCodon() {
+            let totalCodons = Math.floor(challengeMatrice.length / 3);
+            
+            for(let i=0; i<challengeMatrice.length; i++) {
+                const mrnaEl = document.querySelector(`.challenge-nuc-mrna-${i}`);
+                if (mrnaEl) {
+                    mrnaEl.style.transform = "none";
+                    mrnaEl.style.boxShadow = "none";
+                    mrnaEl.style.borderColor = "rgba(255,255,255,0.15)";
+                }
+            }
+            
+            if (challengeCodonIndex < totalCodons) {
+                let startIdx = challengeCodonIndex * 3;
+                let activeCodonStr = challengeMRNA.substring(startIdx, startIdx + 3);
+                
+                for(let b=0; b<3; b++) {
+                    const mrnaEl = document.querySelector(`.challenge-nuc-mrna-${startIdx + b}`);
+                    if (mrnaEl) {
+                        mrnaEl.style.transform = "scale(1.15)";
+                        mrnaEl.style.borderColor = "#fbbf24";
+                        mrnaEl.style.boxShadow = "0 0 10px rgba(245, 158, 11, 0.2)";
+                    }
+                }
+                
+                document.getElementById('challenge-prompt-title').textContent = `Traduisez le codon n°${challengeCodonIndex + 1}`;
+                document.getElementById('challenge-prompt-desc').innerHTML = `Codon actif : <strong class="text-amber-400 font-black tracking-widest font-mono">${activeCodonStr}</strong>. Trouvez l'acide aminé correspondant dans le Code Génétique et sélectionnez-le ci-dessous.`;
+            }
+        }
+
+        function pressChallengeAA(aa) {
+            if (challengeFeedbackActive || challengeStep !== "translation") return;
+            
+            let startIdx = challengeCodonIndex * 3;
+            let activeCodonStr = challengeMRNA.substring(startIdx, startIdx + 3);
+            let correctAA = GENETIC_CODE[activeCodonStr] || "Inconnu";
+            
+            if (aa === correctAA) {
+                challengeProtein.push(aa);
+                
+                const protRow = document.getElementById('challenge-protein-row');
+                const aaEl = document.createElement('span');
+                aaEl.className = `prot-aa ${aa === 'STOP' ? 'aa-stop' : ''}`;
+                aaEl.textContent = aa;
+                protRow.appendChild(aaEl);
+                
+                challengeCodonIndex++;
+                challengeScoreValue += 25;
+                updateChallengeHeader();
+                updateChallengeProgressBar(50);
+                
+                let totalCodons = Math.floor(challengeMatrice.length / 3);
+                
+                if (challengeCodonIndex >= totalCodons || aa === "STOP") {
+                    endChallenge(true);
+                } else {
+                    highlightActiveCodon();
+                }
+            } else {
+                let feedbackTitle = "🚨 DÉCODAGE ERRONÉ !";
+                let feedbackDesc = `Le codon <strong class="text-amber-400 font-black font-mono">${activeCodonStr}</strong> code pour l'acide aminé <strong class="text-emerald-400 font-black">${correctAA}</strong>, et non pour l'acide aminé ${aa}.`;
+                let feedbackMnemonic = "Prenez toujours le temps de croiser les coordonnées de la table d'examen. La rigueur paie toujours au Bac !";
+                
+                if (challengeSelectedGeneId === 'hbs' && activeCodonStr === 'GUG' && aa === 'Glu') {
+                    feedbackTitle = "🚨 ERREUR CLASSIQUE DE LA DRÉPANOCYTOSE (HbS) !";
+                    feedbackDesc = `Le codon <strong class="text-amber-400 font-black font-mono">GUG</strong> code pour la **Valine (Val)**. L'allèle sain HbA possédait un codon **GAG** codant pour l'**Acide Glutamique (Glu)**. Confondre les deux vous fait rater l'argument clé de votre examen !`;
+                    feedbackMnemonic = "Le codon <strong>G</strong>U<strong>G</strong> donne la <strong>V</strong>ALINE (Val). Retenez : <strong>G</strong>rand <strong>U</strong>rgent <strong>G</strong>lobule devient <strong>V</strong>ide (Valine - HbS) !";
+                }
+                
+                triggerChallengeMistake(
+                    feedbackTitle,
+                    "Erreur de décodage du Code Génétique",
+                    feedbackDesc,
+                    feedbackMnemonic,
+                    "wrong_aa_translation"
+                );
+            }
+        }
+
+        function endChallenge(success) {
+            document.getElementById('challenge-active-screen').style.display = "none";
+            document.getElementById('challenge-result-screen').style.display = "block";
+            
+            const medal = document.getElementById('challenge-result-medal');
+            const resTitle = document.getElementById('challenge-result-title');
+            const resDesc = document.getElementById('challenge-result-desc');
+            const resGrade = document.getElementById('challenge-result-grade');
+            const resScore = document.getElementById('challenge-result-score');
+            const checklist = document.getElementById('challenge-result-checklist');
+            
+            checklist.innerHTML = "";
+            
+            let finalGrade = 10 + (challengeLivesLeft * 3); // max 19
+            if (success && challengeMistakesArray.length === 0) finalGrade = 20; // flawless
+            if (!success) finalGrade = Math.min(9.5, 5 + Math.floor(challengeScoreValue / 100)); // Rattrapage if no lives left
+            
+            resGrade.textContent = `${finalGrade} / 20`;
+            if (finalGrade >= 16) {
+                resGrade.className = "text-3xl font-black text-emerald-400 animate-pulse";
+            } else if (finalGrade >= 10) {
+                resGrade.className = "text-3xl font-black text-sky-400";
+            } else {
+                resGrade.className = "text-3xl font-black text-rose-500";
+            }
+
+            resScore.textContent = challengeScoreValue;
+            
+            if (success) {
+                medal.textContent = "🏆";
+                medal.className = "w-20 h-20 rounded-full flex items-center justify-center text-4xl mx-auto border border-amber-500/30 bg-amber-500/10 text-amber-400 shadow-lg shadow-amber-500/15";
+                resTitle.textContent = finalGrade === 20 ? "👑 MAÎTRISE ABSOLUE - LE 20/20 D'ÉLITE !" : "🎉 DÉFI DU BAC RÉUSSI !";
+                resDesc.textContent = finalGrade === 20 ? "Aucune erreur de rigueur. Vous êtes un correcteur de SVT né !" : "Vous avez relevé le défi avec une belle rigueur moléculaire !";
+                
+                checklist.innerHTML += `
+                    <li class="flex items-center gap-2 text-emerald-400">
+                        <span>✓</span> <strong>Transcription validée :</strong> Aucun décalage et complémentarité correcte.
+                    </li>
+                    <li class="flex items-center gap-2 text-emerald-400">
+                        <span>✓</span> <strong>Traduction conforme :</strong> Utilisation rigoureuse de la table du code génétique.
+                    </li>
+                `;
+            } else {
+                medal.textContent = "🎓";
+                medal.className = "w-20 h-20 rounded-full flex items-center justify-center text-4xl mx-auto border border-rose-500/30 bg-rose-500/10 text-rose-400 shadow-lg shadow-rose-500/15";
+                resTitle.textContent = "🚨 SESSION DE RATTRAPAGE ACTIVÉE !";
+                resDesc.textContent = "Vous avez perdu toutes vos vies. Pas d'inquiétude : le Bac se prépare avec les erreurs !";
+            }
+            
+            if (challengeMistakesArray.length > 0) {
+                let uniqueMistakes = [];
+                challengeMistakesArray.forEach(m => {
+                    if (!uniqueMistakes.some(um => um.type === m.type)) {
+                        uniqueMistakes.push(m);
+                    }
+                });
+                
+                uniqueMistakes.forEach(m => {
+                    checklist.innerHTML += `
+                        <li class="p-3 bg-slate-950 rounded-lg border-l-4 border-rose-500 space-y-1">
+                            <strong class="text-rose-400 text-xs block">${m.title}</strong>
+                            <p class="text-[11px] text-slate-300">${m.desc}</p>
+                            <div class="text-[10px] text-amber-400 font-bold mt-1">💡 Mémo-Rappel : ${m.mnemonic}</div>
+                        </li>
+                    `;
+                });
+            } else if (success && finalGrade === 20) {
+                checklist.innerHTML += `
+                    <li class="p-3 bg-emerald-950/20 rounded-lg border-l-4 border-emerald-500 text-xs text-emerald-300">
+                        ⭐ <strong>Mention Très Bien :</strong> Votre rigueur est infaillible ! Vous savez parfaitement éviter les pièges de transcription d'ARN et de décodage. Conservez cet automatisme pour le jour J !
+                    </li>
+                `;
+            }
+            
+            if (success) {
+                triggerCelebrationConfetti();
+            }
+        }
+
+        function restartChallenge() {
+            startChallenge();
+        }
+
         // Initialize defaults
         window.addEventListener('load', () => {
             loadSelectedGene();
             adjustCrossSettings();
+            loadGeneticCodeTable();
         });
 
 
