@@ -1,0 +1,169 @@
+# 📌 FICHE HAUTE DENSITÉ — TEMPLATE C
+## Métabolisme de l'ATP & Contraction Musculaire
+**Matière :** SVT | **Niveau :** 2BAC PC/SVT | **Format :** Recto-Verso
+
+---
+
+## 🅰️ RECTO — LE CŒUR THÉORIQUE
+
+### 🔑 DÉFINITIONS ESSENTIELLES (à connaître au mot près)
+
+| Terme | Définition exacte attendue par le correcteur |
+|---|---|
+| **ATP** | Adénosine TriPhosphate, molécule énergétique universelle. Hydrolyse : ATP + H₂O → ADP + Pi + énergie |
+| **Métabolisme** | Ensemble des réactions chimiques d'une cellule (anabolisme + catabolisme) |
+| **Glycolyse** | Dégradation du glucose en pyruvate dans le **cytoplasme** ; bilan : 2 ATP + 2 NADH,H⁺ |
+| **Respiration aérobie** | Oxydation complète du glucose en présence d'O₂ ; bilan : **38 ATP** |
+| **Fermentation lactique** | Réduction du pyruvate en acide lactique (anaérobie) ; bilan : **2 ATP** |
+| **Cycle de Krebs** | Oxydation de l'acétyl-CoA dans la matrice mitochondriale → CO₂ + NADH,H⁺ + FADH₂ |
+| **Chaîne respiratoire** | Transfert d'électrons sur la membrane interne mitochondriale → gradient de H⁺ |
+| **Phosphorylation oxydative** | Synthèse d'ATP par l'ATP synthase grâce au gradient de H⁺ |
+| **VO₂ max** | Volume maximal d'O₂ que l'organisme peut consommer par minute |
+| **Seuil anaérobie** | Intensité d'effort à partir de laquelle la fermentation prend le relais |
+| **Acidose musculaire** | Baisse du pH du muscle due à l'accumulation d'acide lactique |
+
+### 📐 ÉQUATIONS BILANS (À CONNAÎTRE PAR CŒUR)
+
+```
+🔹 Respiration aérobie (totale) :
+   C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O + 38 ATP
+
+🔹 Fermentation lactique :
+   C₆H₁₂O₆ → 2 acide lactique (C₃H₆O₃) + 2 ATP
+
+🔹 Hydrolyse de l'ATP (énergie pour la contraction) :
+   ATP + H₂O → ADP + Pi + énergie (~30,5 kJ/mol)
+```
+
+### 🗂️ BILAN ÉNERGÉTIQUE DÉTAILLÉ DE LA RESPIRATION
+
+| Étape | Localisation | ATP produit | Cofacteurs |
+|---|---|---|---|
+| **Glycolyse** | Cytoplasme | +2 ATP | 2 NADH,H⁺ |
+| **Décarboxylation du pyruvate** | Matrice mitochondriale | 0 | 2 NADH,H⁺ |
+| **Cycle de Krebs** | Matrice mitochondriale | +2 ATP | 6 NADH,H⁺ + 2 FADH₂ |
+| **Chaîne respiratoire + phosphorylation** | Membrane interne mitochondriale | +34 ATP | (régénération NAD⁺ + FAD) |
+| **TOTAL** | — | **38 ATP** | — |
+
+### 🔬 SCHÉMA DE LA MITOCHONDRIE (À SAVOIR DESSINER)
+
+```
+   ┌──────────────────────────────────────────────┐
+   │  ⌒⌒⌒⌒⌒⌒⌒⌒⌒⌒⌒⌒⌒  ← Membrane externe       │
+   │ │                  │                         │
+   │ │  ╔══════════╗    │ ← Espace inter-membranaire│
+   │ │  ║ Crêtes ⤴ ║    │                         │
+   │ │  ║   ╔═══╗  ║    │ ← Membrane interne     │
+   │ │  ║   ║   ║  ║    │   (chaîne respiratoire │
+   │ │  ║   ║Mat║  ║    │    + ATP synthase)     │
+   │ │  ║   ║rice║ ║    │                         │
+   │ │  ║   ╚═══╝  ║    │ ← Matrice              │
+   │ │  ╚══════════╝    │   (cycle de Krebs,     │
+   │ │                  │    ADN mitochondrial)   │
+   │  ⌒⌒⌒⌒⌒⌒⌒⌒⌒⌒⌒⌒⌒                            │
+   └──────────────────────────────────────────────┘
+```
+
+### 🔁 ARBRE DE DÉCISION (À EXÉCUTER DANS L'ORDRE)
+
+```
+   ┌────────────────────────────────────────────────┐
+   │ Q1 : O₂ est-il consommé ?                      │
+   │   → OUI → respiration aérobie                  │
+   │   → NON → fermentation lactique                │
+   ├────────────────────────────────────────────────┤
+   │ Q2 : Acide lactique s'accumule-t-il ?          │
+   │   → OUI → fermentation active                  │
+   │   → NON → respiration suffit                   │
+   ├────────────────────────────────────────────────┤
+   │ Q3 : Quel rendement en ATP ?                   │
+   │   → 38 ATP → respiration                       │
+   │   → 2 ATP → fermentation                       │
+   ├────────────────────────────────────────────────┤
+   │ Q4 : Présence d'un poison/inhibiteur ?         │
+   │   → Cyanure → bloque chaîne respiratoire       │
+   │   → DNP → découple, O₂ consommé sans ATP       │
+   │   → Oligomycine → bloque ATP synthase          │
+   └────────────────────────────────────────────────┘
+```
+
+---
+
+## 🅱️ VERSO — LA MACHINE À POINTS
+
+### 🏆 LA PHRASE-TYPE 20/20 EN 4 TEMPS (à mémoriser)
+
+> *« ① **Observation** : On constate sur [doc X] que [paramètre] [augmente/diminue/s'arrête] à [condition]. ② **Déduction** : Ceci traduit [activation/inhibition] de [voie métabolique]. ③ **Mécanisme** : Dans cette voie, [glucose/pyruvate] est [oxydé/réduit] dans [mitochondrie/cytoplasme], produisant [38/2] ATP. ④ **Conclusion** : La cellule utilise donc [voie], ce qui explique [phénomène observé]. »*
+
+### 🎯 MÉTHODOLOGIE EN 5 ÉTAPES (À APPLIQUER SYSTÉMATIQUEMENT)
+
+```
+ÉTAPE 1 : Lire l'énoncé → identifier les conditions expérimentales
+   ↓ (avec/sans O₂, avec/sans poison, entraîné/non-entraîné, etc.)
+ÉTAPE 2 : Analyser CHAQUE courbe ou tableau séparément
+   ↓ (O₂, acide lactique, ATP, glucose...)
+ÉTAPE 3 : Croiser les observations → identifier la voie métabolique active
+   ↓
+ÉTAPE 4 : Citer le mécanisme moléculaire (localisation + acteurs)
+   ↓
+ÉTAPE 5 : Conclure sur le phénomène biologique observé (performance, fatigue, mort cellulaire)
+```
+
+### 📊 TABLEAU DE COMPARAISON MODÈLE (à reproduire dans la copie)
+
+| Critère | Respiration aérobie | Fermentation lactique |
+|---|---|---|
+| **Conditions** | Présence d'O₂ | Absence ou insuffisance d'O₂ |
+| **Localisation** | Cytoplasme + mitochondrie | Cytoplasme uniquement |
+| **Substrat** | Glucose | Glucose |
+| **Produits finaux** | CO₂ + H₂O | Acide lactique |
+| **Étapes** | Glycolyse + Krebs + chaîne respiratoire | Glycolyse + réduction du pyruvate |
+| **Bilan ATP** | **38 ATP** | **2 ATP** |
+| **Rendement** | Élevé (~40%) | Faible (~2%) |
+| **Conséquence physiologique** | Effort prolongé possible | Fatigue + crampes (acidose) |
+
+### ⚡ TOP 5 DES EXPÉRIENCES TYPES À CONNAÎTRE
+
+| Expérience | Observation attendue | Conclusion |
+|---|---|---|
+| **Mitochondrie isolée + glucose + O₂** | Conso O₂ ↑, ATP produit | Respiration fonctionnelle |
+| **Mitochondrie + cyanure** | Conso O₂ = 0, pas d'ATP | Inhibition cytochrome oxydase |
+| **Mitochondrie + DNP** | Conso O₂ ↑↑, **pas d'ATP** | Découplage chaîne / synthèse ATP |
+| **Muscle entraîné vs non-entraîné** | Entraîné : VO₂ max ↑, lactate ↓ | Plus de mitochondries chez l'entraîné |
+| **Effort intense prolongé** | Lactate ↑, pH muscle ↓, fatigue | Bascule vers fermentation |
+
+### 🚫 LES 5 CONFUSIONS QUI COÛTENT DES POINTS
+
+| ❌ Erreur | ✅ Correction |
+|---|---|
+| « La glycolyse est aérobie » | La glycolyse est **anaérobie** ; elle précède les 2 voies |
+| « La fermentation produit du CO₂ » | Non — c'est la fermentation **alcoolique** (levures). La lactique produit de l'acide lactique |
+| « Le cyanure tue la glycolyse » | Non — il bloque la **chaîne respiratoire** (mitochondrie). La glycolyse continue |
+| « La respiration produit 36 ATP » | **38 ATP** au total (rendement théorique du programme marocain) |
+| « Les crampes sont dues au manque d'O₂ » | Précision : à l'**acidose** par accumulation d'acide lactique |
+
+### 🏅 MOTS-CLÉS NON NÉGOCIABLES (chaque mot = des points)
+
+`ATP` · `ADP + Pi` · `glycolyse` · `pyruvate` · `cycle de Krebs` · `chaîne respiratoire` · `phosphorylation oxydative` · `ATP synthase` · `accepteur final d'électrons (O₂)` · `respiration aérobie` · `fermentation lactique` · `acide lactique` · `cytoplasme` · `mitochondrie` · `matrice mitochondriale` · `membrane interne` · `crêtes mitochondriales` · `gradient de protons (H⁺)` · `rendement énergétique` · `VO₂ max` · `seuil anaérobie` · `acidose musculaire`
+
+### ✅ CHECKLIST FINALE (90 secondes avant de rendre la copie)
+
+- [ ] J'ai analysé **chaque courbe séparément** avant de croiser
+- [ ] J'ai cité la **localisation cellulaire** (cytoplasme vs mitochondrie)
+- [ ] J'ai donné le **bilan ATP exact** (38 ou 2)
+- [ ] J'ai utilisé la **structure en 4 temps** (observation → déduction → mécanisme → conclusion)
+- [ ] J'ai mentionné l'**accepteur final d'électrons (O₂)** si la chaîne respiratoire est concernée
+- [ ] J'ai relié les observations à un **phénomène physiologique** (performance, fatigue, crampe)
+- [ ] J'ai vérifié les **unités** sur les graphiques (mL/min, mmol/L, etc.)
+- [ ] J'ai cité l'**équation bilan** appropriée si demandé
+
+---
+
+## 💡 CONSEIL D'UTILISATION DE LA FICHE
+
+| Moment | Action |
+|---|---|
+| **J-7 avant l'examen** | Lire la fiche 2× par jour (matin + soir) |
+| **J-3** | Reproduire le **schéma de la mitochondrie** + tableau comparatif **de mémoire** |
+| **J-1** | Réciter la **phrase-type en 4 temps** à voix haute (5 fois) |
+| **Le jour J** | Relecture rapide du **VERSO uniquement** (15 min avant l'épreuve) |

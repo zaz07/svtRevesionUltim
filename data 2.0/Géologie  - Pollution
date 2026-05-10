@@ -1,0 +1,236 @@
+# 🎯 MÉTHODE 4×4 POUR MAÎTRISER LE TEMPLATE D (Géologie / Pollution)
+
+## 📍 PRINCIPE DIRECTEUR
+
+Le Template D est un **template à double face** : selon l'année, l'examen porte sur **la Géologie des chaînes de montagnes** OU **la Pollution de l'environnement**. Les deux suivent la même logique d'**analyse de documents → identification d'un mécanisme → explication causale**. Maîtrisez les deux et vous êtes paré quelle que soit la session.
+
+---
+
+## 🌋 VOLET D1 — GÉOLOGIE (Chaînes de montagnes)
+
+### 🔷 ÉTAPE 1 — COMPRENDRE LA LOGIQUE PROFONDE (1 jour)
+
+Toute question de géologie repose sur **un dilemme à 2 contextes tectoniques** :
+
+```
+   ┌────────────────────────────────────────────────────────┐
+   │              CONVERGENCE DE 2 PLAQUES                  │
+   │                        │                               │
+   │             ┌──────────┴──────────┐                    │
+   │       Océanique/Continentale     Continentale/Continentale│
+   │             │                     │                    │
+   │             ▼                     ▼                    │
+   │      SUBDUCTION                COLLISION               │
+   │      (HP/BT)                   (HT/HP modérée)         │
+   │      ↓                         ↓                       │
+   │      Métamorphisme             Métamorphisme           │
+   │      DYNAMIQUE                 THERMODYNAMIQUE         │
+   │      ↓                         ↓                       │
+   │      Glaucophane,              Sillimanite,            │
+   │      Éclogite                  Disthène, Andalousite   │
+   │      ↓                         ↓                       │
+   │      Ex: Andes, Japon          Ex: Himalaya, Atlas, Alpes│
+   └────────────────────────────────────────────────────────┘
+```
+
+**🔑 Règle d'or à graver :**
+> *« Le minéral indicateur révèle les conditions P/T → les conditions P/T révèlent le contexte tectonique → le contexte tectonique révèle l'histoire de la chaîne. »*
+
+### 🔷 ÉTAPE 2 — AUTOMATISER LES 4 RÉFLEXES TECHNIQUES (3 jours)
+
+#### ⚡ Réflexe n°1 : Lire le diagramme Pression-Température (P/T)
+
+| Position du minéral sur le diagramme | Contexte | Métamorphisme |
+|---|---|---|
+| **Pression élevée + Température basse** (en haut à gauche) | **Subduction** | Dynamique |
+| **Pression modérée + Température élevée** (en bas à droite) | **Collision** | Thermodynamique |
+| **Pression élevée + Température élevée** (en haut à droite) | Subduction profonde puis remontée | Mixte |
+
+**🚨 Phrase modèle :** *« Le minéral [X] se forme dans des conditions de P = [valeur] kbar et T = [valeur] °C. Ces conditions correspondent à un contexte de [subduction / collision]. »*
+
+#### ⚡ Réflexe n°2 : Identifier le minéral indicateur
+
+| Minéral | Conditions P/T | Contexte |
+|---|---|---|
+| **Glaucophane** | HP / BT (~10 kbar / ~400°C) | Subduction |
+| **Éclogite** (jadéite + grenat) | HP très élevée / T modérée (~15-20 kbar) | Subduction profonde |
+| **Schiste bleu** | HP / BT | Subduction |
+| **Sillimanite** | P modérée / HT (~600-700°C) | Collision |
+| **Disthène (Kyanite)** | HP / T modérée | Collision profonde |
+| **Andalousite** | BP / HT | Métamorphisme de contact |
+| **Migmatites** (anatexie) | HP / HT (~700°C+) | Collision profonde — début de fusion |
+
+**🚨 Astuce mnémotechnique :** *« GE = Glaucophane / Éclogite = Subduction » ; « SDA = Sillimanite / Disthène / Andalousite = Collision »*
+
+#### ⚡ Réflexe n°3 : Lire une carte géologique
+
+| Indice sur la carte | Déduction |
+|---|---|
+| **Plis et failles inverses** | Compression → contexte convergent |
+| **Ophiolites** (basalte + gabbro + péridotite) | Vestiges de croûte océanique → ancienne subduction |
+| **Granites d'anatexie** | Fusion partielle → collision profonde |
+| **Roches métamorphiques en bandes parallèles** | Métamorphisme régional |
+| **Failles normales** (rares en convergence) | Distension post-orogénique |
+
+#### ⚡ Réflexe n°4 : Reconstituer l'histoire de la chaîne
+
+**Séquence type à mémoriser :**
+```
+1. Océan ouvert (sédimentation marine)
+   ↓
+2. Subduction de la plaque océanique → HP/BT (glaucophane, éclogite)
+   ↓
+3. Fermeture de l'océan (disparition de la lithosphère océanique)
+   ↓
+4. Collision continentale → HT (sillimanite, granites d'anatexie)
+   ↓
+5. Épaississement crustal → racine crustale
+   ↓
+6. Érosion → chaîne actuelle
+```
+
+### 🔷 ÉTAPE 3 — PHRASE-TYPE 20/20 (GÉOLOGIE)
+
+> 🏆 **PHRASE MODÈLE À RÉCITER :**
+> 
+> *« ① **Observation** : La présence du minéral [X] dans la région étudiée témoigne de conditions P = [valeur] kbar et T = [valeur] °C, lues sur le diagramme P/T. ② **Déduction** : Ces conditions de [haute pression / basse température / haute température] sont caractéristiques d'un métamorphisme [dynamique / thermodynamique]. ③ **Mécanisme** : Ce métamorphisme résulte d'un contexte de [subduction / collision] entre [plaque océanique et continentale / 2 plaques continentales]. ④ **Conclusion** : Cela prouve que la chaîne de montagnes [nom] s'est formée par [mécanisme tectonique], au cours de l'évolution suivante : [résumer la séquence]. »*
+
+**🎯 Mots-clés non négociables :**
+- ✅ « métamorphisme dynamique » / « métamorphisme thermodynamique »
+- ✅ « subduction » / « collision »
+- ✅ « haute pression / basse température » (HP/BT)
+- ✅ « lithosphère océanique » / « lithosphère continentale »
+- ✅ « ophiolites »
+- ✅ « anatexie »
+- ✅ « racine crustale »
+- ✅ « diagramme P/T »
+
+---
+
+## 🏭 VOLET D2 — POLLUTION (Qualité de l'eau)
+
+### 🔷 ÉTAPE 1 — COMPRENDRE LA LOGIQUE PROFONDE (1 jour)
+
+Toute question de pollution organique repose sur **une chaîne causale linéaire** :
+
+```
+   ┌─────────────────────────────────────────────────────────┐
+   │  Rejet de matière organique (usine, décharge, égout)    │
+   │                       │                                 │
+   │                       ▼                                 │
+   │  Multiplication des bactéries aérobies                  │
+   │  (qui décomposent la matière organique)                 │
+   │                       │                                 │
+   │                       ▼                                 │
+   │  Consommation massive d'O₂ dissous                      │
+   │  (DBO5 ↑ , DCO ↑ , [O₂ dissous] ↓)                      │
+   │                       │                                 │
+   │                       ▼                                 │
+   │  Hypoxie / Anoxie de l'eau                              │
+   │                       │                                 │
+   │            ┌──────────┴──────────┐                      │
+   │            ▼                     ▼                      │
+   │   Mort des poissons        Eutrophisation               │
+   │   (asphyxie)               (algues + cyanobactéries)    │
+   └─────────────────────────────────────────────────────────┘
+```
+
+**🔑 Règle d'or à graver :**
+> *« Plus de matière organique → plus de bactéries → moins d'O₂ → mort de la biodiversité aquatique. »*
+
+### 🔷 ÉTAPE 2 — AUTOMATISER LES 4 RÉFLEXES TECHNIQUES (3 jours)
+
+#### ⚡ Réflexe n°1 : Lire les indicateurs de qualité de l'eau
+
+| Indicateur | Définition | Eau saine | Eau polluée |
+|---|---|---|---|
+| **DBO5** (Demande Biochimique en O₂ sur 5 jours) | O₂ consommé par les **bactéries** pour dégrader la matière organique | < 3 mg/L | > 10 mg/L |
+| **DCO** (Demande Chimique en O₂) | O₂ consommé par **oxydation chimique** totale | < 30 mg/L | > 100 mg/L |
+| **[O₂ dissous]** | Concentration d'O₂ dans l'eau | > 7 mg/L | < 4 mg/L |
+| **Rapport DCO/DBO5** | Indique la biodégradabilité | < 3 = biodégradable | > 3 = pollution chimique persistante |
+
+#### ⚡ Réflexe n°2 : Lire un graphique en aval/amont d'un rejet
+
+| Observation graphique | Déduction |
+|---|---|
+| **DBO5 augmente brutalement après le rejet** | Pollution organique massive |
+| **[O₂ dissous] chute après le rejet** | Consommation par bactéries aérobies |
+| **[O₂ dissous] remonte plus loin en aval** | Auto-épuration de la rivière |
+| **[O₂ dissous] reste très bas** | Pollution dépasse la capacité d'auto-épuration |
+| **Disparition de certaines espèces** | Bio-indicateurs sensibles → eau dégradée |
+
+#### ⚡ Réflexe n°3 : Identifier le type de pollution
+
+| Source | Polluants typiques | Effet |
+|---|---|---|
+| **Eaux usées domestiques** | Matière organique, azote, phosphore | DBO5↑, eutrophisation |
+| **Lixiviat de décharge** | Métaux lourds, MO, ammoniac | DBO5↑↑, toxicité |
+| **Industries agroalimentaires** | Matière organique, graisses | DBO5↑↑↑ |
+| **Engrais agricoles** | Nitrates (NO₃⁻), phosphates (PO₄³⁻) | Eutrophisation |
+| **Industries chimiques** | Métaux, hydrocarbures | DCO↑↑, DBO5 stable |
+
+#### ⚡ Réflexe n°4 : Le mécanisme de l'eutrophisation
+
+```
+1. Apport excessif de nitrates et phosphates
+   ↓
+2. Prolifération d'algues et de cyanobactéries (« bloom »)
+   ↓
+3. Mort des algues → décomposition par bactéries
+   ↓
+4. Consommation massive d'O₂
+   ↓
+5. Anoxie au fond → mort des poissons et invertébrés
+   ↓
+6. Eau verte, putride, biodiversité effondrée
+```
+
+### 🔷 ÉTAPE 3 — PHRASE-TYPE 20/20 (POLLUTION)
+
+> 🏆 **PHRASE MODÈLE À RÉCITER :**
+> 
+> *« ① **Observation** : On constate qu'en aval de [source], la DBO5 [augmente / atteint X mg/L] et l'[O₂ dissous] [chute à X mg/L]. ② **Déduction** : Ces variations traduisent une pollution organique importante, qui stimule la multiplication des bactéries aérobies décomposeuses. ③ **Mécanisme** : Ces bactéries consomment massivement l'O₂ dissous pour oxyder la matière organique, provoquant une hypoxie de l'eau. ④ **Conclusion** : Cette dégradation entraîne [mort des poissons / eutrophisation / perte de biodiversité], ce qui prouve l'impact négatif de [source de pollution] sur l'écosystème aquatique. »*
+
+**🎯 Mots-clés non négociables :**
+- ✅ « DBO5 » / « DCO » / « O₂ dissous »
+- ✅ « matière organique »
+- ✅ « bactéries aérobies »
+- ✅ « décomposeurs / décomposition »
+- ✅ « hypoxie / anoxie »
+- ✅ « eutrophisation »
+- ✅ « auto-épuration »
+- ✅ « biodégradabilité »
+- ✅ « bio-indicateurs »
+- ✅ « lixiviat » (décharge)
+
+---
+
+## 🔷 ÉTAPE 4 — ENTRAÎNEMENT ESPACÉ (méthode des 7 jours)
+
+| Jour | Action | Durée |
+|---|---|---|
+| **J1** | Exercice **Géologie : carte + minéraux indicateurs** (annale Atlas marocain ou Alpes) | 30 min |
+| **J2** | Exercice **Géologie : diagramme P/T** + identification du contexte tectonique | 30 min |
+| **J3** | Exercice **Pollution : graphique DBO5 / O₂ dissous** en aval d'une usine | 30 min |
+| **J4** | Exercice **Pollution : eutrophisation** d'un lac ou rivière | 30 min |
+| **J5** | Exercice **mixte** ou **annale complète** (subduction + collision) | 35 min |
+| **J6** | **Réciter à voix haute** les 2 schémas causaux + reconstituer 3 graphiques de mémoire | 20 min |
+| **J7** | Examen blanc complet (3 exercices d'affilée, conditions réelles) | 90 min |
+
+### 📋 TABLEAU DE PROGRESSION PERSONNEL
+
+| Date | Volet (D1/D2) | Erreur principale | Mot-clé oublié | Points perdus |
+|---|---|---|---|---|
+
+---
+
+## 🚫 LES 6 PIÈGES MORTELS À ÉVITER
+
+| ❌ Piège | ✅ Solution |
+|---|---|
+| **Géologie** : confondre subduction et collision | Subduction = HP/BT (glaucophane) ; Collision = HT (sillimanite) |
+| **Géologie** : oublier de citer les ophiolites comme preuve d'océan disparu | Toujours mentionner ophiolites = ancienne croûte océanique |
+| **Géologie** : ne pas exploiter le diagramme P/T | Toujours **lire les valeurs** et les associer à un contexte |
+| **Pollution** : confondre DBO5 et DCO | DBO5 = pollution **organique biodégradable** ; DCO = pollution chimique totale |
+| **Pollution** : dire que la pollution « tue les poissons » sans expliquer le mécanisme | Toujours passer par : **bactéries → consommation O₂ → hypoxie → mort** |
+| **Pollution** : oublier le rapport DCO/DBO5 | Indispensable pour caractériser le type de pollution |

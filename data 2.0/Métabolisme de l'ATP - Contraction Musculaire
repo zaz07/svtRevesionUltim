@@ -1,0 +1,142 @@
+# 🎯 MÉTHODE 4×4 POUR MAÎTRISER LE TEMPLATE C (Métabolisme de l'ATP & Contraction Musculaire)
+
+## 📍 PRINCIPE DIRECTEUR
+
+Le Template C est **une enquête expérimentale** : à partir de graphiques, vous devez **identifier la voie métabolique** utilisée par la cellule. Le correcteur attend une démarche d'**observation → déduction → conclusion** rigoureuse, avec un vocabulaire biochimique précis. Maîtrisez ce raisonnement et vous décrochez automatiquement les points de l'analyse de documents (souvent 6-8 points par exercice).
+
+---
+
+## 🔷 ÉTAPE 1 — COMPRENDRE LA LOGIQUE PROFONDE (1 jour)
+
+Toute question sur le métabolisme de l'ATP repose sur **un dilemme à 2 voies** que la cellule musculaire doit choisir selon les conditions :
+
+```
+   ┌──────────────────────────────────────────────────────────┐
+   │                  GLUCOSE (C₆H₁₂O₆)                       │
+   │                        │                                 │
+   │                  [GLYCOLYSE — cytoplasme]                │
+   │                        │                                 │
+   │                  PYRUVATE (×2) + 2 ATP                   │
+   │                        │                                 │
+   │             ┌──────────┴──────────┐                      │
+   │       O₂ présent             O₂ absent ou insuffisant    │
+   │             │                     │                      │
+   │             ▼                     ▼                      │
+   │   RESPIRATION AÉROBIE     FERMENTATION LACTIQUE          │
+   │   (mitochondrie)          (cytoplasme)                   │
+   │   ↓                       ↓                              │
+   │   CO₂ + H₂O               Acide lactique                 │
+   │   + 36 ATP                + 0 ATP (déjà comptés)         │
+   │   = 38 ATP TOTAL          = 2 ATP TOTAL                  │
+   └──────────────────────────────────────────────────────────┘
+```
+
+**🔑 Règle d'or à graver :**
+> *« L'O₂ est l'arbitre. Sa présence active la respiration (rendement maximal). Son absence force la fermentation (rendement minimal + acide lactique → fatigue/crampes). »*
+
+**Action concrète :** Recopiez ce schéma sur une feuille A4. Affichez-le à côté des Templates A et B. Récitez les **chiffres-clés** (2 ATP / 38 ATP) 5 fois par jour pendant 3 jours.
+
+---
+
+## 🔷 ÉTAPE 2 — AUTOMATISER LES 4 RÉFLEXES TECHNIQUES (3 jours)
+
+### ⚡ Réflexe n°1 : Lire un graphique de consommation d'O₂
+
+| Observation graphique | Déduction immédiate |
+|---|---|
+| **Conso O₂ augmente avec l'effort** | Respiration aérobie active → mitochondries fonctionnelles |
+| **Conso O₂ stagne ou plafonne** | Capacité aérobie atteinte → fermentation prend le relais |
+| **Conso O₂ s'arrête brutalement** | Inhibiteur de la chaîne respiratoire (cyanure, roténone) ou anoxie |
+| **Conso O₂ plus élevée chez l'entraîné** | Plus de mitochondries (densité mitochondriale ↑) |
+
+**🚨 Phrase modèle :** *« On observe que la consommation d'O₂ [augmente / diminue / s'arrête] à partir de l'instant t. On en déduit que [la respiration mitochondriale est active / inhibée / saturée]. »*
+
+### ⚡ Réflexe n°2 : Interpréter la concentration en acide lactique
+
+| Observation | Déduction |
+|---|---|
+| **[Acide lactique] augmente** | Fermentation lactique active → manque d'O₂ ou besoin énergétique > capacité aérobie |
+| **[Acide lactique] reste stable** | Effort modéré → respiration aérobie suffit |
+| **[Acide lactique] augmente plus tôt chez le non-entraîné** | Seuil anaérobie plus bas → moins de mitochondries |
+
+**🚨 Phrase modèle :** *« L'accumulation d'acide lactique dans le muscle traduit l'activation de la fermentation lactique en réponse à un déficit en O₂. Cette accumulation provoque l'acidose musculaire, responsable des crampes et de la fatigue. »*
+
+### ⚡ Réflexe n°3 : Identifier l'effet d'un poison/inhibiteur
+
+| Poison | Cible | Effet observé |
+|---|---|---|
+| **Cyanure (CN⁻)** | Cytochrome oxydase (complexe IV) | Arrêt de la chaîne respiratoire → conso O₂ = 0 |
+| **Roténone** | Complexe I de la chaîne | Idem (inhibition partielle) |
+| **DNP (dinitrophénol)** | Découple chaîne / synthèse ATP | O₂ consommé MAIS pas d'ATP produit |
+| **Oligomycine** | ATP synthase | Arrêt synthèse ATP → conso O₂ ↓ aussi |
+
+**🚨 Phrase modèle :** *« L'ajout de [poison] entraîne [effet observé], ce qui prouve que ce poison inhibe [étape précise]. La cellule bascule alors vers la fermentation lactique pour produire un minimum d'ATP. »*
+
+### ⚡ Réflexe n°4 : Comparer entraîné vs non-entraîné
+
+| Paramètre | Entraîné | Non-entraîné |
+|---|---|---|
+| **Densité mitochondriale** | ↑↑ Élevée | ↓ Faible |
+| **VO₂ max** | Élevée | Faible |
+| **Seuil anaérobie** | Tardif (effort intense) | Précoce |
+| **Production d'acide lactique** | Faible / tardive | Forte / précoce |
+| **Récupération** | Rapide | Lente |
+
+**🚨 Conclusion type :** *« L'entraînement augmente la densité mitochondriale et la VO₂ max, ce qui retarde le seuil anaérobie et limite la production d'acide lactique. »*
+
+---
+
+## 🔷 ÉTAPE 3 — MÉMORISER LA PHRASE-TYPE 20/20 (LA FORMULE GAGNANTE)
+
+Le correcteur attend une **structure en 4 temps** pour toute analyse expérimentale du métabolisme. Apprenez-la **par cœur** :
+
+> 🏆 **PHRASE MODÈLE À RÉCITER :**
+> 
+> *« ① **Observation** : On constate sur le graphique [du document X] que [paramètre mesuré] [augmente / diminue / s'arrête] à partir de [condition / instant]. ② **Déduction** : Ceci s'explique par [activation / inhibition] de [voie métabolique : respiration aérobie / fermentation lactique]. ③ **Mécanisme** : En effet, dans cette voie, [glucose / pyruvate] est [oxydé dans la mitochondrie / réduit en acide lactique dans le cytoplasme], ce qui produit [38 ATP / 2 ATP]. ④ **Conclusion** : On en déduit donc que la cellule musculaire utilise [voie métabolique], ce qui explique [phénomène observé : performance, fatigue, crampe]. »*
+
+**🎯 Mots-clés non négociables (chacun = des points) :**
+- ✅ « respiration aérobie » (jamais « respiration cellulaire » seul)
+- ✅ « fermentation lactique » (jamais « fermentation » seul)
+- ✅ « mitochondrie » + « cytoplasme » (préciser la localisation)
+- ✅ « chaîne respiratoire » / « phosphorylation oxydative »
+- ✅ « ATP synthase »
+- ✅ « accepteur final d'électrons » (l'O₂)
+- ✅ « rendement énergétique » (38 vs 2 ATP)
+- ✅ « acidose musculaire » (cause des crampes)
+- ✅ « VO₂ max » et « seuil anaérobie »
+
+---
+
+## 🔷 ÉTAPE 4 — ENTRAÎNEMENT ESPACÉ (méthode des 7 jours)
+
+| Jour | Action | Durée |
+|---|---|---|
+| **J1** | Exercice **lecture de graphique** O₂ + acide lactique (annale 2020-2022) | 25 min |
+| **J2** | Exercice **expérience avec poison** (cyanure ou DNP) | 25 min |
+| **J3** | Exercice **comparaison entraîné vs non-entraîné** | 30 min |
+| **J4** | Exercice **mitochondrie isolée** (suspension dans solution + substrats variés) | 30 min |
+| **J5** | Exercice **muscle malade** (myopathie mitochondriale, déficit enzymatique) | 35 min |
+| **J6** | **Réciter à voix haute** le schéma des 2 voies + reconstituer 3 graphiques de mémoire | 20 min |
+| **J7** | Examen blanc complet (3 exercices d'affilée, conditions réelles) | 90 min |
+
+### 📋 TABLEAU DE PROGRESSION PERSONNEL
+
+| Date | Type d'exercice | Erreur principale | Mot-clé oublié | Points perdus |
+|---|---|---|---|---|
+
+---
+
+## 🚫 LES 6 PIÈGES MORTELS À ÉVITER
+
+| ❌ Piège | ✅ Solution |
+|---|---|
+| Confondre **glycolyse** (cytoplasme, anaérobie possible) et **respiration** (mitochondrie, aérobie obligatoire) | La glycolyse est **commune** aux 2 voies. La différence se fait **après** le pyruvate. |
+| Dire « la cellule fait de la respiration **OU** de la fermentation » comme exclusif | En réalité, la **glycolyse est toujours présente** ; seule la suite diffère selon O₂. |
+| Oublier de citer la **localisation cellulaire** | Toujours préciser : cytoplasme (glycolyse, fermentation) vs mitochondrie (Krebs, chaîne respiratoire) |
+| Confondre **ATP produit** et **ATP consommé** | Le bilan net est : 2 ATP (fermentation) ou 38 ATP (respiration totale) |
+| Dire que les crampes sont dues à « un manque d'O₂ » | Précision : à l'**accumulation d'acide lactique** → **acidose musculaire** |
+| Oublier que **l'O₂ est l'accepteur final d'électrons** | Phrase à placer obligatoirement dans toute explication de la chaîne respiratoire |
+
+
+
+

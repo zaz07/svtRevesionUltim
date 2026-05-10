@@ -1,0 +1,178 @@
+# 📌 FICHE HAUTE DENSITÉ — TEMPLATE D
+## Géologie (Chaînes de montagnes) & Pollution (Qualité de l'eau)
+**Matière :** SVT | **Niveau :** 2BAC PC/SVT | **Format :** Recto-Verso
+
+---
+
+## 🅰️ RECTO — LE CŒUR THÉORIQUE
+
+### 🌋 PARTIE D1 — GÉOLOGIE
+
+#### 🔑 DÉFINITIONS ESSENTIELLES
+
+| Terme | Définition exacte |
+|---|---|
+| **Métamorphisme** | Transformation d'une roche à l'état solide sous l'effet de variations de P et T |
+| **Métamorphisme dynamique** | Lié à la pression dominante (subduction) — HP/BT |
+| **Métamorphisme thermodynamique** | Lié à la température dominante (collision) — HT |
+| **Subduction** | Enfoncement d'une plaque (océanique) sous une autre |
+| **Collision** | Convergence de 2 plaques continentales → chaîne de montagnes |
+| **Ophiolites** | Vestiges de croûte océanique sur un continent (basalte + gabbro + péridotite) |
+| **Anatexie** | Fusion partielle d'une roche à très haute température |
+| **Racine crustale** | Épaississement de la croûte continentale en profondeur (sous une chaîne) |
+| **Faciès métamorphique** | Ensemble de minéraux caractéristiques d'un domaine P/T |
+| **Diagramme P/T** | Graphique avec P (pression, en kbar) en ordonnée et T (température, en °C) en abscisse |
+
+#### 🔬 TABLE DES MINÉRAUX INDICATEURS
+
+| Minéral | P/T | Contexte | Roche associée |
+|---|---|---|---|
+| **Glaucophane** | HP / BT | Subduction | Schiste bleu |
+| **Jadéite + grenat** | HP++ / T modérée | Subduction profonde | Éclogite |
+| **Sillimanite** | P modérée / HT | Collision | Gneiss |
+| **Disthène** | HP / T modérée | Collision profonde | Micaschiste |
+| **Andalousite** | BP / HT | Contact magmatique | Cornéenne |
+| **Migmatites** | HP / HT++ | Anatexie (collision) | Granite d'anatexie |
+
+#### 🗂️ SCHÉMA DU DIAGRAMME P/T
+
+```
+   P (kbar)
+   ↑
+20 │  ╔═══════════════╗
+   │  ║  ÉCLOGITE     ║
+15 │  ║ (Subduction++) ║
+   │  ║               ║
+10 │  ║ SCHISTE BLEU  ║━━━ DISTHÈNE
+   │  ║ (Glaucophane)  ║   (Collision)
+ 5 │  ║───────────────╣
+   │  ║ANDALOUSITE   SILLIMANITE
+   │  ║ (BP/HT)       (Collision)
+   └──╨───────────────────→ T (°C)
+      0   200   400   600   800
+         ↑               ↑
+       Subduction      Collision
+       (HP/BT)         (HT)
+```
+
+---
+
+### 🏭 PARTIE D2 — POLLUTION
+
+#### 🔑 DÉFINITIONS ESSENTIELLES
+
+| Terme | Définition exacte |
+|---|---|
+| **DBO5** | Demande Biochimique en O₂ pendant 5 jours à 20°C — mesure la matière organique biodégradable |
+| **DCO** | Demande Chimique en O₂ — mesure la matière organique totale (oxydable chimiquement) |
+| **O₂ dissous** | Quantité d'oxygène présente dans l'eau (mg/L) |
+| **Hypoxie** | Manque d'O₂ dans l'eau |
+| **Anoxie** | Absence totale d'O₂ |
+| **Eutrophisation** | Enrichissement excessif en nutriments → prolifération d'algues → anoxie |
+| **Lixiviat** | Liquide qui s'écoule des décharges, chargé en polluants |
+| **Auto-épuration** | Capacité naturelle d'une rivière à se nettoyer |
+| **Bio-indicateur** | Organisme dont la présence/absence renseigne sur la qualité de l'eau |
+| **Biodégradabilité** | Capacité d'une substance à être dégradée par les bactéries |
+
+#### 📊 GRILLE DE QUALITÉ DE L'EAU
+
+| Qualité | DBO5 (mg/L) | DCO (mg/L) | O₂ dissous (mg/L) |
+|---|---|---|---|
+| **Excellente** | < 3 | < 20 | > 7 |
+| **Bonne** | 3-5 | 20-30 | 5-7 |
+| **Moyenne** | 5-10 | 30-40 | 3-5 |
+| **Médiocre** | 10-25 | 40-80 | 1-3 |
+| **Mauvaise** | > 25 | > 80 | < 1 |
+
+---
+
+## 🅱️ VERSO — LA MACHINE À POINTS
+
+### 🏆 LES 2 PHRASES-TYPES 20/20
+
+> **🔹 Pour la GÉOLOGIE :**
+> *« La présence du minéral [X] indique des conditions P/T de [valeurs], caractéristiques d'un métamorphisme [dynamique/thermodynamique]. Ce métamorphisme résulte d'un contexte de [subduction/collision], prouvé également par [ophiolites/granites d'anatexie]. La chaîne s'est donc formée par fermeture d'un océan suivi d'une collision continentale. »*
+
+> **🔹 Pour la POLLUTION :**
+> *« En aval du rejet, la DBO5 augmente fortement et l'O₂ dissous chute, traduisant une pollution organique importante. Les bactéries aérobies décomposent la matière organique en consommant l'O₂, ce qui provoque une hypoxie. Cette hypoxie entraîne [mort des poissons/eutrophisation], confirmant l'impact négatif de [source] sur l'écosystème. »*
+
+### 🎯 MÉTHODOLOGIE EN 5 ÉTAPES (À APPLIQUER SYSTÉMATIQUEMENT)
+
+```
+ÉTAPE 1 : Identifier le sujet (Géologie ou Pollution)
+   ↓
+ÉTAPE 2 : Repérer les documents fournis (carte, diagramme, graphique, tableau)
+   ↓
+ÉTAPE 3 : Extraire les valeurs/observations clés
+   ↓ (Géologie : minéraux + P/T ; Pollution : DBO5, DCO, O₂)
+ÉTAPE 4 : Appliquer la chaîne causale (subduction/collision OU pollution → bactéries → O₂ → mort)
+   ↓
+ÉTAPE 5 : Conclure avec vocabulaire précis + mécanisme global
+```
+
+### 📊 TABLEAU COMPARATIF MODÈLE — GÉOLOGIE
+
+| Critère | SUBDUCTION | COLLISION |
+|---|---|---|
+| **Type de plaques** | Océanique sous Continentale | Continentale + Continentale |
+| **Conditions P/T** | HP / BT | HT (P modérée) |
+| **Métamorphisme** | Dynamique | Thermodynamique |
+| **Minéraux indicateurs** | Glaucophane, éclogite, jadéite | Sillimanite, disthène, andalousite |
+| **Roches associées** | Schiste bleu, éclogite | Gneiss, migmatites, granites |
+| **Indices de terrain** | Ophiolites, fosse océanique | Plis, racine crustale, anatexie |
+| **Exemples** | Andes, Japon | Himalaya, Atlas, Alpes |
+
+### 📊 TABLEAU COMPARATIF MODÈLE — POLLUTION
+
+| Étape | Phénomène | Indicateur mesuré |
+|---|---|---|
+| **1. Rejet** | Matière organique entre dans l'eau | DBO5 ↑↑, DCO ↑↑ |
+| **2. Multiplication bactérienne** | Bactéries aérobies se développent | Densité bactérienne ↑ |
+| **3. Consommation O₂** | Bactéries oxydent la MO | [O₂ dissous] ↓ |
+| **4. Hypoxie** | Manque d'O₂ dans l'eau | [O₂] < 4 mg/L |
+| **5. Conséquences biologiques** | Mort de la faune aquatique | Disparition des bio-indicateurs |
+| **6. Eutrophisation (si nitrates/phosphates)** | Bloom algal puis anoxie | Eau verte, putride |
+
+### 🚫 LES 6 CONFUSIONS QUI COÛTENT DES POINTS
+
+| ❌ Erreur | ✅ Correction |
+|---|---|
+| **Géo** : « Le glaucophane indique une collision » | Non — **subduction** (HP/BT) |
+| **Géo** : « Les ophiolites = roches de collision » | Non — **vestiges de croûte océanique** = subduction passée |
+| **Géo** : oublier la séquence subduction → collision | La plupart des chaînes ont les **deux** étapes successives |
+| **Pollution** : « DBO5 = pollution chimique » | Non — DBO5 = pollution **organique biodégradable** |
+| **Pollution** : « Les algues consomment l'O₂ → hypoxie » | Non — ce sont les **bactéries décomposant les algues mortes** qui consomment l'O₂ |
+| **Pollution** : confondre eutrophisation et pollution toxique | Eutrophisation = excès de **nutriments (N, P)** ; pollution toxique = **métaux/pesticides** |
+
+### 🏅 MOTS-CLÉS NON NÉGOCIABLES
+
+**🌋 Géologie :** `métamorphisme dynamique / thermodynamique` · `subduction / collision` · `HP/BT` · `glaucophane` · `éclogite` · `sillimanite` · `disthène` · `ophiolites` · `anatexie` · `racine crustale` · `lithosphère océanique / continentale` · `diagramme P/T` · `faciès métamorphique`
+
+**🏭 Pollution :** `DBO5` · `DCO` · `O₂ dissous` · `matière organique` · `bactéries aérobies` · `décomposeurs` · `hypoxie / anoxie` · `eutrophisation` · `auto-épuration` · `biodégradabilité` · `bio-indicateurs` · `lixiviat` · `nitrates / phosphates` · `bloom algal`
+
+### ✅ CHECKLIST FINALE (90 secondes avant de rendre la copie)
+
+**🌋 Géologie :**
+- [ ] J'ai **lu les valeurs P/T** sur le diagramme (en kbar et °C)
+- [ ] J'ai **nommé le minéral indicateur** précisément
+- [ ] J'ai associé le minéral au **bon contexte tectonique**
+- [ ] J'ai cité les **ophiolites** si présentes (preuve d'océan disparu)
+- [ ] J'ai mentionné la **séquence complète** (subduction → collision si applicable)
+
+**🏭 Pollution :**
+- [ ] J'ai **donné les valeurs chiffrées** de DBO5, DCO, O₂ dissous
+- [ ] J'ai **comparé amont vs aval** du rejet
+- [ ] J'ai expliqué le **rôle des bactéries** dans la consommation d'O₂
+- [ ] J'ai cité la **chaîne causale complète** (rejet → bactéries → O₂↓ → mort)
+- [ ] J'ai distingué **pollution organique** vs **eutrophisation** vs **pollution chimique**
+
+---
+
+## 💡 CONSEIL D'UTILISATION DE LA FICHE
+
+| Moment | Action |
+|---|---|
+| **J-7 avant l'examen** | Lire la fiche **D1 et D2** 2× par jour |
+| **J-3** | Reproduire le **diagramme P/T** + le **schéma de la chaîne causale pollution** de mémoire |
+| **J-1** | Réciter les **2 phrases-types** à voix haute (5 fois chacune) |
+| **Le jour J** | Relecture rapide du **VERSO uniquement** (15 min avant l'épreuve) |
