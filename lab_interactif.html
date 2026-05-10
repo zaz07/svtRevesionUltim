@@ -1034,6 +1034,268 @@
             pointer-events: none;
             z-index: 100;
         }
+
+        /* --- LAB 3 & 4 SPECIFIC STYLES --- */
+        .atp-grid, .geo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .atp-grid, .geo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .dashboard-box {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        .reaction-equation {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            color: #f43f5e;
+            font-weight: 700;
+            text-align: center;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+        .atp-yield-badge {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #f43f5e;
+            text-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        /* Contraction Muscle / Sarcomere Simulator Styles */
+        .sarcomere-container {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sarcomere-box {
+            position: relative;
+            width: 80%;
+            height: 120px;
+            transition: width 0.5s ease;
+        }
+        .z-disc {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 8px;
+            background: #cbd5e1;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            transition: left 0.5s ease, right 0.5s ease;
+        }
+        .z-left { left: 0; }
+        .z-right { right: 0; }
+        
+        .actin-filament-top-l, .actin-filament-top-r, .actin-filament-bot-l, .actin-filament-bot-r {
+            position: absolute;
+            height: 4px;
+            background: #38bdf8;
+            border-radius: 2px;
+            transition: width 0.5s ease, left 0.5s ease, right 0.5s ease;
+            box-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
+        }
+        /* Top Actin Filaments */
+        .actin-filament-top-l { top: 25px; left: 8px; width: 45%; }
+        .actin-filament-top-r { top: 25px; right: 8px; width: 45%; }
+        /* Bottom Actin Filaments */
+        .actin-filament-bot-l { bottom: 25px; left: 8px; width: 45%; }
+        .actin-filament-bot-r { bottom: 25px; right: 8px; width: 45%; }
+        
+        .myosin-thick {
+            position: absolute;
+            top: 45px;
+            left: 15%;
+            right: 15%;
+            height: 30px;
+            background: #f43f5e;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 2;
+        }
+        .myosin-head {
+            width: 6px;
+            height: 14px;
+            background: #e11d48;
+            border-radius: 3px;
+            position: absolute;
+            transition: transform 0.4s ease, top 0.4s ease;
+            transform-origin: bottom center;
+        }
+        .head-top-l1 { top: -14px; left: 20%; transform: rotate(20deg); }
+        .head-top-l2 { top: -14px; left: 35%; transform: rotate(20deg); }
+        .head-top-r1 { top: -14px; right: 35%; transform: rotate(-20deg); }
+        .head-top-r2 { top: -14px; right: 20%; transform: rotate(-20deg); }
+        .head-bot-l1 { bottom: -14px; left: 20%; transform: rotate(-20deg); }
+        .head-bot-l2 { bottom: -14px; left: 35%; transform: rotate(-20deg); }
+        .head-bot-r1 { bottom: -14px; right: 35%; transform: rotate(20deg); }
+        .head-bot-r2 { bottom: -14px; right: 20%; transform: rotate(20deg); }
+        
+        /* Contraction states classes */
+        .sarcomere-box.contracted {
+            width: 55%;
+        }
+        .sarcomere-box.contracted .head-top-l1, .sarcomere-box.contracted .head-top-l2 {
+            top: -16px; transform: rotate(50deg);
+        }
+        .sarcomere-box.contracted .head-top-r1, .sarcomere-box.contracted .head-top-r2 {
+            top: -16px; transform: rotate(-50deg);
+        }
+        .sarcomere-box.contracted .head-bot-l1, .sarcomere-box.contracted .head-bot-l2 {
+            bottom: -16px; transform: rotate(-50deg);
+        }
+        .sarcomere-box.contracted .head-bot-r1, .sarcomere-box.contracted .head-bot-r2 {
+            bottom: -16px; transform: rotate(50deg);
+        }
+        
+        /* Diagram P/T geology explorer */
+        .pt-diagram-canvas {
+            position: relative;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            height: 280px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+        }
+        .pt-grid-line {
+            position: absolute;
+            background: rgba(255,255,255,0.04);
+        }
+        .pt-grid-v { top: 0; bottom: 0; width: 1px; }
+        .pt-grid-h { left: 0; right: 0; height: 1px; }
+        .pt-axis-label {
+            position: absolute;
+            font-size: 0.72rem;
+            color: #64748b;
+            font-weight: 700;
+        }
+        .pt-zone-btn {
+            position: absolute;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.82rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            border: 1.5px dashed rgba(255, 255, 255, 0.15);
+        }
+        .pt-zone-btn:hover {
+            transform: scale(1.03);
+            border-style: solid;
+        }
+        .pt-zone-btn.active {
+            border-style: solid;
+            box-shadow: 0 0 20px currentColor;
+        }
+        .zone-subduction {
+            top: 40px; left: 15%; width: 35%; height: 90px;
+            background: rgba(56, 189, 248, 0.08); color: #38bdf8;
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        .zone-subduction.active { background: rgba(56, 189, 248, 0.2); }
+        .zone-collision {
+            bottom: 40px; right: 15%; width: 45%; height: 95px;
+            background: rgba(167, 139, 250, 0.08); color: #a78bfa;
+            border-color: rgba(167, 139, 250, 0.3);
+        }
+        .zone-collision.active { background: rgba(167, 139, 250, 0.2); }
+        .zone-contact {
+            bottom: 30px; left: 10%; width: 25%; height: 70px;
+            background: rgba(234, 179, 8, 0.08); color: #eab308;
+            border-color: rgba(234, 179, 8, 0.3);
+        }
+        .zone-contact.active { background: rgba(234, 179, 8, 0.2); }
+
+        /* Aquatic Pollution Curves slider */
+        .pollution-control {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.25rem;
+        }
+        .pollution-meter {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .pollution-indicator {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+        .pollution-bar-track {
+            height: 12px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+        .pollution-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.4s ease;
+        }
+        .eutroph-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-left: 2px solid rgba(234, 179, 8, 0.3);
+            padding-left: 1.25rem;
+            margin-top: 1rem;
+        }
+        .eutroph-step {
+            position: relative;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            background: rgba(30, 41, 59, 0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.3s;
+        }
+        .eutroph-step::before {
+            content: '';
+            position: absolute;
+            left: -25px; top: 12px;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: #64748b;
+            border: 2px solid #0f172a;
+            transition: background 0.3s;
+        }
+        .eutroph-step.active {
+            background: rgba(234, 179, 8, 0.08);
+            border-color: rgba(234, 179, 8, 0.2);
+        }
+        .eutroph-step.active::before {
+            background: #eab308;
+            box-shadow: 0 0 10px #eab308;
+        }
     </style>
 </head>
 <body>
@@ -1077,6 +1339,22 @@
                     </div>
                 </button>
 
+                <button class="lab-tab-btn tab-c" style="--btn-color: #f43f5e;" onclick="switchLabTab('lab-atp', this)">
+                    <div class="tab-icon">⚡</div>
+                    <div class="tab-title-text">
+                        <span class="tab-sub">Template C</span>
+                        <span class="tab-main-title">ATP & Contraction</span>
+                    </div>
+                </button>
+
+                <button class="lab-tab-btn tab-d" style="--btn-color: #eab308;" onclick="switchLabTab('lab-geology', this)">
+                    <div class="tab-icon">🌋</div>
+                    <div class="tab-title-text">
+                        <span class="tab-sub">Template D</span>
+                        <span class="tab-main-title">Géologie & Pollution</span>
+                    </div>
+                </button>
+
                 <button class="lab-tab-btn tab-game" style="--btn-color: #34d399;" onclick="switchLabTab('lab-arcade', this)">
                     <div class="tab-icon">🎮</div>
                     <div class="tab-title-text">
@@ -1098,6 +1376,7 @@
             <main class="lab-panel">
                 <canvas id="celebration-canvas" class="celebration-canvas"></canvas>
 
+                <section id="lab-expression" class="lab-tab-content active">
                     <!-- Mode Selector Toggle -->
                     <div class="flex items-center justify-between bg-slate-800/25 backdrop-blur p-4 rounded-xl border border-slate-700/40 mb-6">
                         <div class="flex items-center gap-3">
@@ -1522,6 +1801,580 @@
                     </div>
                 </section>
 
+                <!-- ================= TAB C: METABOLISME & MUSCLE ================= -->
+                <section id="lab-atp" class="lab-tab-content">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-2 text-white">Labo 3 : Métabolisme de l'ATP & Contraction Musculaire</h2>
+                        <p class="text-secondary text-sm">Explorez la bioénergétique cellulaire, simulez les effets de poisons métaboliques et observez le glissement des filaments musculaires.</p>
+                    </div>
+
+                    <!-- Mode Selector Toggle for ATP -->
+                    <div class="flex items-center justify-between bg-slate-800/25 backdrop-blur p-4 rounded-xl border border-slate-700/40 mb-6">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl animate-bounce">🔋</span>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Mode d'apprentissage (Unité 1)</h4>
+                                <p class="text-xs text-slate-400">Passez du tableau de bord de simulation au défi d'élite ATP !</p>
+                            </div>
+                        </div>
+                        <div class="flex bg-slate-950 p-1.5 rounded-xl border border-slate-800">
+                            <button id="atp-toggle-mode-demo" class="px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all bg-rose-500 text-white shadow" onclick="switchAtpMode('demo')">📺 Mode Démo (Auto)</button>
+                            <button id="atp-toggle-mode-challenge" class="px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all text-slate-400 hover:text-white" onclick="switchAtpMode('challenge')">🏆 Mode Défi (Actif)</button>
+                        </div>
+                    </div>
+
+                    <!-- DEMO WORKSPACE (ATP & Muscle Simulation) -->
+                    <div id="atp-demo-workspace" class="space-y-6">
+                        <div class="atp-grid">
+                            
+                            <!-- Left: Configuration & Sarcomere Animation -->
+                            <div class="space-y-6">
+                                <!-- Configuration Card -->
+                                <div class="dashboard-box space-y-4">
+                                    <h3 class="text-lg font-bold text-rose-400 flex items-center gap-2">⚙️ Paramètres Cellulaires</h3>
+                                    
+                                    <div class="grid grid-2 gap-4">
+                                        <div>
+                                            <label class="text-xs text-slate-400 font-bold uppercase">Présence d'O₂ :</label>
+                                            <select id="atp-o2" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-lg p-2 text-sm" onchange="runAtpSimulation()">
+                                                <option value="yes">Aérobiose (O₂ abondant)</option>
+                                                <option value="no">Anaérobiose (Hypoxie/Anoxie)</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="text-xs text-slate-400 font-bold uppercase">Statut de l'athlète :</label>
+                                            <select id="atp-athlete" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-lg p-2 text-sm" onchange="runAtpSimulation()">
+                                                <option value="trained">Entraîné (Haute densité mitochondriale)</option>
+                                                <option value="sedentary">Sédentaire (Fatigue rapide)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="text-xs text-slate-400 font-bold uppercase">Inhibiteur / Poison métabolique :</label>
+                                        <select id="atp-poison" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-lg p-2 text-sm" onchange="runAtpSimulation()">
+                                            <option value="none">Aucun (Fonctionnement optimal)</option>
+                                            <option value="cyanide">Cyanure (Bloque la Cytochrome C Oxydase - Chaîne Resp.)</option>
+                                            <option value="dnp">DNP (Agent découplant - Annule le gradient de H⁺)</option>
+                                            <option value="oligomycin">Oligomycine (Inhibe l'ATP Synthase / Sphère pédonculée)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Sarcomere Card -->
+                                <div class="dashboard-box space-y-4">
+                                    <div class="flex justify-between items-center">
+                                        <h3 class="text-lg font-bold text-sky-400">💪 Contraction du Sarcomère</h3>
+                                        <span class="badge-lab b-blue" id="sarcomere-step-badge">Repos</span>
+                                    </div>
+                                    
+                                    <p class="text-xs text-slate-400">Jouez les étapes de la contraction pour visualiser le glissement des filaments fins d'actine par rapport aux filaments épais de myosine.</p>
+                                    
+                                    <!-- Sarcomere animation steps controls -->
+                                    <div class="grid grid-4 gap-1">
+                                        <button class="px-2 py-1.5 text-xs font-bold rounded bg-slate-800 text-white" id="s-step-1" onclick="setSarcomereStep(1)">1. Repos</button>
+                                        <button class="px-2 py-1.5 text-xs font-bold rounded bg-slate-950 text-slate-400" id="s-step-2" onclick="setSarcomereStep(2)">2. Ca²⁺</button>
+                                        <button class="px-2 py-1.5 text-xs font-bold rounded bg-slate-950 text-slate-400" id="s-step-3" onclick="setSarcomereStep(3)">3. Pivot</button>
+                                        <button class="px-2 py-1.5 text-xs font-bold rounded bg-slate-950 text-slate-400" id="s-step-4" onclick="setSarcomereStep(4)">4. Détach</button>
+                                    </div>
+
+                                    <!-- Sarcomere visualizer canvas -->
+                                    <div class="sarcomere-container">
+                                        <div class="sarcomere-box" id="sarcomere-box">
+                                            <!-- Z discs -->
+                                            <div class="z-disc z-left"></div>
+                                            <div class="z-disc z-right"></div>
+                                            <!-- Actin filaments (blue) -->
+                                            <div class="actin-filament-top-l" id="act-tl"></div>
+                                            <div class="actin-filament-top-r" id="act-tr"></div>
+                                            <div class="actin-filament-bot-l" id="act-bl"></div>
+                                            <div class="actin-filament-bot-r" id="act-br"></div>
+                                            <!-- Myosin thick filament (red) -->
+                                            <div class="myosin-thick">
+                                                <div class="myosin-head head-top-l1" id="h-tl1"></div>
+                                                <div class="myosin-head head-top-l2" id="h-tl2"></div>
+                                                <div class="myosin-head head-top-r1" id="h-tr1"></div>
+                                                <div class="myosin-head head-top-r2" id="h-tr2"></div>
+                                                <div class="myosin-head head-bot-l1" id="h-bl1"></div>
+                                                <div class="myosin-head head-bot-l2" id="h-bl2"></div>
+                                                <div class="myosin-head head-bot-r1" id="h-br1"></div>
+                                                <div class="myosin-head head-bot-r2" id="h-br2"></div>
+                                                <div class="text-[10px] font-black uppercase text-slate-900 tracking-wider">Myosine</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Step explanation box -->
+                                    <div class="p-3 bg-slate-950/40 border border-slate-800 rounded-lg text-xs" id="sarcomere-explain-box">
+                                        <strong>Étape 1 : Repos.</strong> La concentration en calcium intracellulaire est extrêmement faible. La tropomyosine masque les sites de fixation de la myosine sur l'actine. Les filaments ne glissent pas, la tension est nulle.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Metabolic Results Dashboard -->
+                            <div class="space-y-6">
+                                <div class="dashboard-box space-y-5">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h3 class="text-lg font-bold text-white">📊 Tableau de Rendement Énergétique</h3>
+                                            <p class="text-xs text-slate-400">Bilan d'oxydation cellulaire par molécule de glucose dégradée.</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <span class="text-xs font-bold text-slate-400 block uppercase">Rendement Global</span>
+                                            <div class="atp-yield-badge" id="atp-yield-value">38 ATP</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-2 gap-4">
+                                        <div class="p-3 bg-slate-950/50 rounded-xl border border-slate-800">
+                                            <span class="text-[10px] font-bold text-slate-500 uppercase block">Voie Métabolique Active</span>
+                                            <strong class="text-sm text-emerald-400" id="atp-active-path">Respiration Aérobie</strong>
+                                        </div>
+                                        <div class="p-3 bg-slate-950/50 rounded-xl border border-slate-800">
+                                            <span class="text-[10px] font-bold text-slate-500 uppercase block">Conséquence Clinique</span>
+                                            <strong class="text-sm text-sky-400" id="atp-consequence">Effort normal maintenu</strong>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cellular Compartments Checklist -->
+                                    <div class="space-y-2">
+                                        <span class="text-xs text-slate-400 font-bold uppercase block">Compartiments Cellulaires Impliqués :</span>
+                                        <div class="grid grid-3 gap-2 text-xs">
+                                            <div class="flex items-center gap-1.5 p-2 bg-slate-950/30 border border-slate-800 rounded-lg" id="comp-cytosol">
+                                                <span class="text-emerald-500" id="icon-cytosol">✓</span> Hyaloplasme
+                                            </div>
+                                            <div class="flex items-center gap-1.5 p-2 bg-slate-950/30 border border-slate-800 rounded-lg" id="comp-matrix">
+                                                <span class="text-emerald-500" id="icon-matrix">✓</span> Matrice
+                                            </div>
+                                            <div class="flex items-center gap-1.5 p-2 bg-slate-950/30 border border-slate-800 rounded-lg" id="comp-membrane">
+                                                <span class="text-emerald-500" id="icon-membrane">✓</span> Crêtes Mito
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Chemical Equation -->
+                                    <div class="space-y-1.5">
+                                        <span class="text-xs text-slate-400 font-bold uppercase block">Équation Chimique Globale :</span>
+                                        <div class="reaction-equation" id="atp-equation">
+                                            C₆H₁₂O₆ + 6O₂ + 38ADP + 38Pi → 6CO₂ + 6H₂O + 38ATP
+                                        </div>
+                                    </div>
+
+                                    <!-- Graphical Indicator Meters -->
+                                    <div class="space-y-3">
+                                        <div class="pollution-meter">
+                                            <div class="pollution-indicator">
+                                                <span class="font-bold text-slate-300">Consommation d'O₂</span>
+                                                <span class="font-bold text-rose-400" id="atp-o2-rate">Très Élevée (~100%)</span>
+                                            </div>
+                                            <div class="pollution-bar-track">
+                                                <div class="pollution-bar-fill" id="atp-o2-bar" style="width: 100%; background: #f43f5e; box-shadow: 0 0 10px rgba(244,63,94,0.4);"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="pollution-meter">
+                                            <div class="pollution-indicator">
+                                                <span class="font-bold text-slate-300">Accumulation d'Acide Lactique (Lactate)</span>
+                                                <span class="font-bold text-slate-500" id="atp-lactate-rate">Nulle (~0%)</span>
+                                            </div>
+                                            <div class="pollution-bar-track">
+                                                <div class="pollution-bar-fill" id="atp-lactate-bar" style="width: 0%; background: #34d399; box-shadow: 0 0 10px rgba(52,211,153,0.4);"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Expected Examen Phrase Output for ATP -->
+                                <div class="phrase-output-card card-glow-blue" id="atp-phrase-card">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h4 class="text-lg font-bold text-rose-400 flex items-center gap-2">
+                                            🏆 LA PHRASE MODÈLE DU CORRECTEUR (BAC 20/20)
+                                        </h4>
+                                        <span class="badge-lab b-purple">Template C</span>
+                                    </div>
+                                    <p class="phrase-text" id="atp-phrase-model-text" style="font-size: 0.9rem;">
+                                        Configurez les paramètres cellulaires à gauche pour que le robot rédige la démonstration scientifique parfaite exigée au baccalauréat national marocain.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- CHALLENGE WORKSPACE (Active Interactive Test for ATP) -->
+                    <div id="atp-challenge-workspace" style="display: none;" class="space-y-6">
+                        <!-- Setup screen -->
+                        <div id="atp-challenge-setup-screen" class="bg-slate-900/40 border border-slate-800 p-8 rounded-2xl text-center space-y-6 max-w-2xl mx-auto">
+                            <div class="w-16 h-16 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-3xl mx-auto shadow-inner border border-rose-500/20">🔋</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Prêt pour le Défi d'Élite ATP ?</h3>
+                                <p class="text-sm text-slate-400 mt-2">Démontrez votre maîtrise de la glycolyse, du cycle de Krebs, de la chaîne respiratoire et des mécanismes physiopathologiques musculaires.</p>
+                            </div>
+
+                            <div class="p-4 bg-slate-950/40 rounded-xl border border-slate-800 text-left space-y-2 text-xs text-slate-400 max-w-md mx-auto">
+                                <div class="flex items-center gap-2"><span class="text-rose-500">❤️</span> Vous disposez de <strong>3 vies (cœurs)</strong>.</div>
+                                <div class="flex items-center gap-2"><span class="text-amber-500">⚠️</span> Chaque mauvaise explication déclenchera un mnémo-flash d'analyse d'erreur.</div>
+                                <div class="flex items-center gap-2"><span class="text-sky-500">🏆</span> Obtenez un score parfait de 20/20 de rigueur scientifique !</div>
+                            </div>
+
+                            <button onclick="startAtpChallenge()" class="btn-lab btn-lab-green px-8 py-3 rounded-xl font-bold shadow-lg shadow-emerald-500/20 scale-105 hover:scale-110 transition-all text-base">
+                                🚀 Lancer le Défi de Rigueur !
+                            </button>
+                        </div>
+
+                        <!-- Challenge Active Play Screen -->
+                        <div id="atp-challenge-active-screen" style="display: none;" class="space-y-6">
+                            <div class="flex flex-wrap justify-between items-center bg-slate-800/30 border border-slate-700/30 p-4 rounded-xl gap-4">
+                                <div class="text-sm font-bold text-slate-300">Scénario Bioénergétique Actif : <span id="atp-challenge-step-title" class="text-rose-400">Scénario 1</span></div>
+                                <div class="flex items-center gap-6">
+                                    <div class="flex items-center gap-1.5 text-rose-500 font-extrabold text-lg" id="atp-challenge-lives">
+                                        ❤️❤️❤️
+                                    </div>
+                                    <div class="bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-800 font-bold text-sm text-emerald-400">
+                                        Score : <span id="atp-challenge-score">0</span> pts
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Challenge Scenario Question box -->
+                            <div class="bg-slate-950 border border-slate-800 p-6 rounded-2xl relative overflow-hidden shadow-inner space-y-2">
+                                <div class="absolute top-0 left-0 w-1.5 h-full bg-rose-500"></div>
+                                <h4 class="text-base font-bold text-white" id="atp-challenge-question">En l'absence d'oxygène, quel est le devenir du pyruvate dans le cytosol de la cellule musculaire ?</h4>
+                                <p class="text-xs text-slate-400" id="atp-challenge-context">Contexte : Analyse de la contraction musculaire intense et anaérobie lors d'un sprint.</p>
+                            </div>
+
+                            <!-- Options Grid -->
+                            <div class="grid grid-2 gap-3" id="atp-challenge-options">
+                                <!-- Dynamic options injected -->
+                            </div>
+                        </div>
+
+                        <!-- Challenge Result Screen -->
+                        <div id="atp-challenge-result-screen" style="display: none;" class="bg-slate-900/50 border border-slate-800 p-8 rounded-2xl text-center space-y-6 max-w-2xl mx-auto">
+                            <div id="atp-challenge-result-medal" class="w-20 h-20 rounded-full flex items-center justify-center text-4xl mx-auto border shadow-lg">🏆</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white" id="atp-challenge-result-title">Défi ATP Validé !</h3>
+                                <p class="text-sm text-slate-400 mt-2" id="atp-challenge-result-desc">Vous possédez une rigueur scientifique remarquable.</p>
+                            </div>
+
+                            <div class="grid grid-2 gap-4 max-w-md mx-auto">
+                                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                                    <span class="text-xs text-slate-400 uppercase font-bold block tracking-wider mb-1">Note SVT</span>
+                                    <span class="text-3xl font-black text-rose-400" id="atp-challenge-result-grade">20 / 20</span>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                                    <span class="text-xs text-slate-400 uppercase font-bold block tracking-wider mb-1">Points</span>
+                                    <span class="text-3xl font-black text-indigo-400" id="atp-challenge-result-score-disp">2000</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 text-left space-y-3">
+                                <h4 class="text-sm font-bold text-white border-b border-slate-800 pb-2 flex items-center gap-2">
+                                    <span>💡</span> Synthèse des Mémos d'Or de l'Unité 1 :
+                                </h4>
+                                <ul class="space-y-2.5 text-xs text-slate-300" id="atp-challenge-result-summary">
+                                    <li>• Ne confondez pas le métabolisme de l'ATP et la régénération : la phosphocréatine réagit SANS oxygène ni mitochondrie.</li>
+                                    <li>• La fermentation ne produit que 2 ATP car le résidu organique (l'acide lactique) contient encore de l'énergie chimique non libérée.</li>
+                                    <li>• Le calcium est indispesable pour libérer le site d'actine et permettre la fixation de la tête de myosine chargée d'ADP+Pi.</li>
+                                </ul>
+                            </div>
+
+                            <div class="flex gap-3 justify-center">
+                                <button onclick="restartAtpChallenge()" class="btn-lab btn-lab-outline px-6 py-2.5 rounded-xl font-bold">Recommencer</button>
+                                <button onclick="switchAtpMode('demo')" class="btn-lab btn-lab-blue px-6 py-2.5 rounded-xl font-bold">Retour Simulation</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ================= TAB D: GEOLOGIE & POLLUTION ================= -->
+                <section id="lab-geology" class="lab-tab-content">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-2 text-white">Labo 4 : Géologie & Qualité de l'Eau</h2>
+                        <p class="text-secondary text-sm">Explorez le métamorphisme tectonique et observez l'impact environnemental des activités humaines sur la qualité de l'eau des rivières.</p>
+                    </div>
+
+                    <!-- Mode Selector Toggle for Geology -->
+                    <div class="flex items-center justify-between bg-slate-800/25 backdrop-blur p-4 rounded-xl border border-slate-700/40 mb-6">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl animate-bounce">🌋</span>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Mode d'apprentissage (Unités 3 & 4)</h4>
+                                <p class="text-xs text-slate-400">Passez de la cartographie géologique/pollution au défi de rigueur d'évaluation SVT !</p>
+                            </div>
+                        </div>
+                        <div class="flex bg-slate-950 p-1.5 rounded-xl border border-slate-800">
+                            <button id="geo-toggle-mode-demo" class="px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all bg-yellow-500 text-white shadow" onclick="switchGeologyMode('demo')">📺 Mode Démo (Auto)</button>
+                            <button id="geo-toggle-mode-challenge" class="px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all text-slate-400 hover:text-white" onclick="switchGeologyMode('challenge')">🏆 Mode Défi (Actif)</button>
+                        </div>
+                    </div>
+
+                    <!-- DEMO WORKSPACE (Geology & Water quality Simulation) -->
+                    <div id="geology-demo-workspace" class="space-y-6">
+                        <div class="geo-grid">
+                            
+                            <!-- Left: PT Diagram Explorer -->
+                            <div class="space-y-6">
+                                <div class="dashboard-box space-y-4">
+                                    <h3 class="text-lg font-bold text-yellow-400 flex items-center gap-2">🌋 D1 : Diagramme Pression-Température (P/T)</h3>
+                                    <p class="text-xs text-slate-400">Cliquez sur un domaine P/T pour explorer les faciès métamorphiques tectoniques (subduction, collision, métamorphisme de contact).</p>
+                                    
+                                    <!-- Dynamic PT Diagram -->
+                                    <div class="pt-diagram-canvas">
+                                        <!-- Grid lines -->
+                                        <div class="pt-grid-line pt-grid-v" style="left: 25%;"></div>
+                                        <div class="pt-grid-line pt-grid-v" style="left: 50%;"></div>
+                                        <div class="pt-grid-line pt-grid-v" style="left: 75%;"></div>
+                                        <div class="pt-grid-line pt-grid-h" style="top: 25%;"></div>
+                                        <div class="pt-grid-line pt-grid-h" style="top: 50%;"></div>
+                                        <div class="pt-grid-line pt-grid-h" style="top: 75%;"></div>
+                                        
+                                        <!-- Axis Labels -->
+                                        <div class="pt-axis-label" style="bottom: 5px; right: 10px;">Température T (°C) →</div>
+                                        <div class="pt-axis-label" style="top: 10px; left: 10px;">Pression P (kbar) ↑</div>
+                                        
+                                        <div class="pt-axis-label" style="bottom: 5px; left: 25%;">200°C</div>
+                                        <div class="pt-axis-label" style="bottom: 5px; left: 50%;">400°C</div>
+                                        <div class="pt-axis-label" style="bottom: 5px; left: 75%;">600°C</div>
+                                        <div class="pt-axis-label" style="top: 75%; left: 10px;">5 kb</div>
+                                        <div class="pt-axis-label" style="top: 50%; left: 10px;">10 kb</div>
+                                        <div class="pt-axis-label" style="top: 25%; left: 10px;">15 kb</div>
+                                        
+                                        <!-- Zone buttons -->
+                                        <div class="pt-zone-btn zone-subduction active" id="btn-zone-sub" onclick="selectMetamorphicZone('subduction')">
+                                            Subduction (HP / BT)
+                                        </div>
+                                        <div class="pt-zone-btn zone-collision" id="btn-zone-coll" onclick="selectMetamorphicZone('collision')">
+                                            Collision (HT / MP)
+                                        </div>
+                                        <div class="pt-zone-btn zone-contact" id="btn-zone-cont" onclick="selectMetamorphicZone('contact')">
+                                            Contact (BP / HT)
+                                        </div>
+                                    </div>
+
+                                    <!-- Metamorphic Information Panel -->
+                                    <div class="p-4 bg-slate-950/50 rounded-xl border border-slate-800 space-y-3" id="geology-info-card">
+                                        <div class="flex justify-between items-center border-b border-slate-800 pb-1.5">
+                                            <span class="text-sm font-bold text-white">Domaine de Subduction</span>
+                                            <span class="badge-lab b-blue">Faciès Schiste bleu / Éclogite</span>
+                                        </div>
+                                        
+                                        <div class="grid grid-2 gap-4 text-xs">
+                                            <div>
+                                                <span class="text-slate-500 font-bold uppercase block">Minéraux Indicateurs :</span>
+                                                <strong class="text-sky-400" id="geo-minerals">Glaucophane, Grenat, Jadéite</strong>
+                                            </div>
+                                            <div>
+                                                <span class="text-slate-500 font-bold uppercase block">Condition P / T moyennes :</span>
+                                                <strong id="geo-conditions">P = 10 à 20 kbar | T = 150 à 400°C</strong>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-xs">
+                                            <span class="text-slate-500 font-bold uppercase block mb-1">Scénario de reconstitution orogénique :</span>
+                                            <p class="text-slate-300" id="geo-reconstitution">1. Convergence tectonique provoquant l'enfoncement de la lithosphère océanique sous une autre plaque. ➔ 2. Augmentation vertigineuse de la pression avec échauffement très lent (HP/BT) menant au métamorphisme dynamique. ➔ 3. Apparition du Glaucophane (schiste bleu) puis d'éclogite en profondeur.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Water quality & Eutrophication -->
+                            <div class="space-y-6">
+                                <div class="dashboard-box space-y-4">
+                                    <div class="flex justify-between items-start">
+                                        <h3 class="text-lg font-bold text-teal-400">💧 D2 : Qualité de l'Eau & Écosystème Aquatique</h3>
+                                        <div class="flex items-center gap-2">
+                                            <label class="text-xs font-bold text-slate-400">Eutrophisation active :</label>
+                                            <input type="checkbox" id="eutroph-trigger" onchange="runPollutionSimulation()" style="width: 16px; height: 16px; accent-color: #eab308; cursor: pointer;">
+                                        </div>
+                                    </div>
+
+                                    <p class="text-xs text-slate-400">Faites glisser le curseur pour simuler un déversement organique dans la rivière (amont, point de rejet, en aval, ou zone d'auto-épuration).</p>
+                                    
+                                    <!-- Pollution location slider -->
+                                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-850 space-y-2">
+                                        <div class="flex justify-between text-[10px] font-extrabold uppercase text-slate-500">
+                                            <span>1. Amont (Sain)</span>
+                                            <span>2. Rejet</span>
+                                            <span>3. Aval 1 (Critique)</span>
+                                            <span>4. Aval 2</span>
+                                            <span>5. Épuré</span>
+                                        </div>
+                                        <input type="range" id="pollution-slider" min="1" max="5" value="1" step="1" oninput="runPollutionSimulation()" class="w-full accent-emerald-400 cursor-pointer">
+                                        <div class="text-center font-black text-xs text-emerald-400 mt-1" id="pollution-slider-desc">
+                                            Emplacement : Station 1 — Rivière saine de montagne
+                                        </div>
+                                    </div>
+
+                                    <!-- Standard Pollution indicators Curves (simulated as bars) -->
+                                    <div class="space-y-3" id="standard-indicators-panel">
+                                        <div class="pollution-meter">
+                                            <div class="pollution-indicator">
+                                                <span class="text-xs font-bold text-slate-300">DBO5 (Demande Biochimique en Oxygène - 5j)</span>
+                                                <strong class="text-xs text-emerald-400" id="val-dbo5">1.5 mg/L (Eau saine)</strong>
+                                            </div>
+                                            <div class="pollution-bar-track">
+                                                <div class="pollution-bar-fill" id="bar-dbo5" style="width: 10%; background: #ef4444;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="pollution-meter">
+                                            <div class="pollution-indicator">
+                                                <span class="text-xs font-bold text-slate-300">DCO (Demande Chimique en Oxygène - Matière Totale)</span>
+                                                <strong class="text-xs text-emerald-400" id="val-dco">12 mg/L (Eau saine)</strong>
+                                            </div>
+                                            <div class="pollution-bar-track">
+                                                <div class="pollution-bar-fill" id="bar-dco" style="width: 15%; background: #f97316;"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pollution-meter">
+                                            <div class="pollution-indicator">
+                                                <span class="text-xs font-bold text-slate-300">Oxygène Dissous ([O₂])</span>
+                                                <strong class="text-xs text-cyan-400" id="val-o2">9.5 mg/L (Abondant)</strong>
+                                            </div>
+                                            <div class="pollution-bar-track">
+                                                <div class="pollution-bar-fill" id="bar-o2" style="width: 95%; background: #06b6d4;"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Biological Bioindicators -->
+                                        <div class="p-3 bg-slate-950/40 rounded-lg border border-slate-800 text-xs flex justify-between items-center">
+                                            <span class="text-slate-500 font-bold uppercase">Espèces bio-indicatrices présentes :</span>
+                                            <strong class="text-emerald-400" id="geo-biodiversity">Poissons nobles (Truite), Larves d'Éphémères</strong>
+                                        </div>
+                                    </div>
+
+                                    <!-- Eutrophication step cards timeline (shows only when eutroph checkbox is checked) -->
+                                    <div class="eutroph-timeline hidden" id="eutroph-timeline-panel">
+                                        <div class="eutroph-step active" id="eut-step-1">
+                                            <strong class="text-xs text-white block">Étape 1 : Enrichissement excessif</strong>
+                                            <p class="text-[11px] text-slate-400">Rejet massif de Nitrates et Phosphates (engrais/lessives) stimulant la croissance végétale.</p>
+                                        </div>
+                                        <div class="eutroph-step" id="eut-step-2">
+                                            <strong class="text-xs text-white block">Étape 2 : Bloom algal (Prolifération)</strong>
+                                            <p class="text-[11px] text-slate-400">Développement exponentiel d'algues vertes de surface, bloquant l'accès de la lumière en profondeur.</p>
+                                        </div>
+                                        <div class="eutroph-step" id="eut-step-3">
+                                            <strong class="text-xs text-white block">Étape 3 : Décomposition & Multiplication bactérienne</strong>
+                                            <p class="text-[11px] text-slate-400">Mort des algues de fond. Des bactéries aérobies se multiplient pour les décomposer.</p>
+                                        </div>
+                                        <div class="eutroph-step" id="eut-step-4">
+                                            <strong class="text-xs text-white block">Étape 4 : Anoxie totale (Hypoxie critique)</strong>
+                                            <p class="text-[11px] text-slate-400">Consommation intensive de l'O₂ dissous par les bactéries aérobies. L'oxygène chute à 0 mg/L.</p>
+                                        </div>
+                                        <div class="eutroph-step" id="eut-step-5">
+                                            <strong class="text-xs text-white block">Étape 5 : Asphyxie de la biodiversité</strong>
+                                            <p class="text-[11px] text-slate-400">Mort généralisée de la faune aquatique par étouffement. Putréfaction et dégagement de gaz fétides.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Expected Examen Phrase Output for Geology -->
+                                <div class="phrase-output-card card-glow-purple" id="geo-phrase-card" style="border-color: rgba(234, 179, 8, 0.3); box-shadow: 0 0 15px rgba(234, 179, 8, 0.1);">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h4 class="text-lg font-bold text-yellow-400 flex items-center gap-2">
+                                            🏆 LA PHRASE MODÈLE DU CORRECTEUR (BAC 20/20)
+                                        </h4>
+                                        <span class="badge-lab b-green">Template D</span>
+                                    </div>
+                                    <p class="phrase-text" id="geo-phrase-model-text" style="font-size: 0.9rem;">
+                                        Cliquez sur un domaine métamorphique ou changez le curseur de pollution pour formuler automatiquement la phrase modèle d'évaluation de la rigueur SVT.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- CHALLENGE WORKSPACE (Active Interactive Test for Geology & Pollution) -->
+                    <div id="geology-challenge-workspace" style="display: none;" class="space-y-6">
+                        <!-- Setup screen -->
+                        <div id="geology-challenge-setup-screen" class="bg-slate-900/40 border border-slate-800 p-8 rounded-2xl text-center space-y-6 max-w-2xl mx-auto">
+                            <div class="w-16 h-16 rounded-2xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-3xl mx-auto shadow-inner border border-yellow-500/20">🌋</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Prêt pour le Défi de Géologie & Pollution ?</h3>
+                                <p class="text-sm text-slate-400 mt-2">Défiez-vous sur les indicateurs DBO5/DCO, les structures d'ophiolites et les interprétations des diagrammes P/T.</p>
+                            </div>
+
+                            <div class="p-4 bg-slate-950/40 rounded-xl border border-slate-800 text-left space-y-2 text-xs text-slate-400 max-w-md mx-auto">
+                                <div class="flex items-center gap-2"><span class="text-rose-500">❤️</span> Vous disposez de <strong>3 vies (cœurs)</strong>.</div>
+                                <div class="flex items-center gap-2"><span class="text-amber-500">⚠️</span> Chaque erreur d'interprétation déclenche un mnémo-flash.</div>
+                                <div class="flex items-center gap-2"><span class="text-sky-500">🏆</span> Obtenez un score parfait de 20/20 de rigueur scientifique !</div>
+                            </div>
+
+                            <button onclick="startGeologyChallenge()" class="btn-lab btn-lab-purple px-8 py-3 rounded-xl font-bold shadow-lg shadow-purple-500/20 scale-105 hover:scale-110 transition-all text-base">
+                                🚀 Lancer le Défi de Rigueur !
+                            </button>
+                        </div>
+
+                        <!-- Challenge Active Play Screen -->
+                        <div id="geology-challenge-active-screen" style="display: none;" class="space-y-6">
+                            <div class="flex flex-wrap justify-between items-center bg-slate-800/30 border border-slate-700/30 p-4 rounded-xl gap-4">
+                                <div class="text-sm font-bold text-slate-300">Scénario de Rigueur Actif : <span id="geology-challenge-step-title" class="text-yellow-400">Scénario 1</span></div>
+                                <div class="flex items-center gap-6">
+                                    <div class="flex items-center gap-1.5 text-rose-500 font-extrabold text-lg" id="geology-challenge-lives">
+                                        ❤️❤️❤️
+                                    </div>
+                                    <div class="bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-800 font-bold text-sm text-emerald-400">
+                                        Score : <span id="geology-challenge-score">0</span> pts
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Challenge Scenario Question box -->
+                            <div class="bg-slate-950 border border-slate-800 p-6 rounded-2xl relative overflow-hidden shadow-inner space-y-2">
+                                <div class="absolute top-0 left-0 w-1.5 h-full bg-yellow-500"></div>
+                                <h4 class="text-base font-bold text-white" id="geology-challenge-question">Question de géologie ou de pollution...</h4>
+                                <p class="text-xs text-slate-400" id="geology-challenge-context">Contexte...</p>
+                            </div>
+
+                            <!-- Options Grid -->
+                            <div class="grid grid-2 gap-3" id="geology-challenge-options">
+                                <!-- Dynamic options injected -->
+                            </div>
+                        </div>
+
+                        <!-- Challenge Result Screen -->
+                        <div id="geology-challenge-result-screen" style="display: none;" class="bg-slate-900/50 border border-slate-800 p-8 rounded-2xl text-center space-y-6 max-w-2xl mx-auto">
+                            <div id="geology-challenge-result-medal" class="w-20 h-20 rounded-full flex items-center justify-center text-4xl mx-auto border shadow-lg">🏆</div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white" id="geology-challenge-result-title">Défi Géodynamique & Qualité Validé !</h3>
+                                <p class="text-sm text-slate-400 mt-2" id="geology-challenge-result-desc">Vous possédez une rigueur scientifique remarquable.</p>
+                            </div>
+
+                            <div class="grid grid-2 gap-4 max-w-md mx-auto">
+                                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                                    <span class="text-xs text-slate-400 uppercase font-bold block tracking-wider mb-1">Note SVT</span>
+                                    <span class="text-3xl font-black text-yellow-500" id="geology-challenge-result-grade">20 / 20</span>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                                    <span class="text-xs text-slate-400 uppercase font-bold block tracking-wider mb-1">Points</span>
+                                    <span class="text-3xl font-black text-indigo-400" id="geology-challenge-result-score-disp">2000</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 text-left space-y-3">
+                                <h4 class="text-sm font-bold text-white border-b border-slate-800 pb-2 flex items-center gap-2">
+                                    <span>💡</span> Synthèse des Mémos d'Or des Unités 3 & 4 :
+                                </h4>
+                                <ul class="space-y-2.5 text-xs text-slate-300" id="geology-challenge-result-summary">
+                                    <li>• La présence du Glaucophane ou de l'Éclogite indique une plaque tectonique subductée (HP/BT - métamorphisme dynamique).</li>
+                                    <li>• Les ophiolites sur le continent sont la preuve indiscutable de la fermeture d'un ancien océan suivi d'une obduction/collision.</li>
+                                    <li>• Lors de l'eutrophisation, ce ne sont pas les algues vivantes qui consomment l'oxygène, mais bien la multiplication exponentielle des bactéries aérobies décomposant les algues mortes !</li>
+                                </ul>
+                            </div>
+
+                            <div class="flex gap-3 justify-center">
+                                <button onclick="restartGeologyChallenge()" class="btn-lab btn-lab-outline px-6 py-2.5 rounded-xl font-bold">Recommencer</button>
+                                <button onclick="switchGeologyMode('demo')" class="btn-lab btn-lab-blue px-6 py-2.5 rounded-xl font-bold">Retour Simulation</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
                 <!-- ================= TAB 3: ARCADE MODE GAMES ================= -->
                 <section id="lab-arcade" class="lab-tab-content">
                     <div>
@@ -1627,6 +2480,12 @@
             // Specific tab init logic
             if (tabId === 'lab-arcade') {
                 closeGameStage(); // Reset to hub when clicking the tab
+            } else if (tabId === 'lab-atp') {
+                runAtpSimulation();
+                setSarcomereStep(1);
+            } else if (tabId === 'lab-geology') {
+                selectMetamorphicZone('subduction');
+                runPollutionSimulation();
             }
         }
     </script>
@@ -3542,6 +4401,699 @@
             }
 
             drawConf();
+        }
+
+        // =========================================================================
+        // ==================== LABO 3 : ATP & CONTRACTION MUSCULAIRE =============
+        // =========================================================================
+        let activeAtpMode = "demo";
+        let atpSarcomereStep = 1;
+
+        function switchAtpMode(mode) {
+            activeAtpMode = mode;
+            const demoBtn = document.getElementById('atp-toggle-mode-demo');
+            const challengeBtn = document.getElementById('atp-toggle-mode-challenge');
+            const demoWp = document.getElementById('atp-demo-workspace');
+            const challengeWp = document.getElementById('atp-challenge-workspace');
+
+            if (mode === 'demo') {
+                demoBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all bg-rose-500 text-white shadow";
+                challengeBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all text-slate-400 hover:text-white";
+                demoWp.style.display = "block";
+                challengeWp.style.display = "none";
+                runAtpSimulation();
+            } else {
+                challengeBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all bg-purple-600 text-white shadow";
+                demoBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all text-slate-400 hover:text-white";
+                demoWp.style.display = "none";
+                challengeWp.style.display = "block";
+                initAtpChallengeSetup();
+            }
+        }
+
+        function runAtpSimulation() {
+            const o2 = document.getElementById('atp-o2').value;
+            const athlete = document.getElementById('atp-athlete').value;
+            const poison = document.getElementById('atp-poison').value;
+
+            let yieldVal = 38;
+            let pathway = "Respiration Aérobie";
+            let consequence = "Effort normal maintenu";
+            let cytosol = true;
+            let matrix = true;
+            let crêtes = true;
+            let eq = "C₆H₁₂O₆ + 6O₂ + 38ADP + 38Pi → 6CO₂ + 6H₂O + 38ATP";
+            let o2Rate = "Très Élevée (~100%)";
+            let o2Width = "100%";
+            let lacRate = "Nulle (~0%)";
+            let lacWidth = "0%";
+            let phrase = "";
+
+            if (athlete === 'sedentary' && poison === 'none' && o2 === 'yes') {
+                yieldVal = 36;
+                eq = "C₆H₁₂O₆ + 6O₂ + 36ADP + 36Pi → 6CO₂ + 6H₂O + 36ATP";
+                consequence = "Contraction normale, fatigue modérée";
+            }
+
+            // Poison override
+            if (poison === 'cyanide') {
+                pathway = "Fermentation Lactique (Bloqué mitochondrial)";
+                yieldVal = 2;
+                consequence = "Asphyxie cellulaire intense & Crampes musculaires";
+                matrix = false;
+                crêtes = false;
+                eq = "C₆H₁₂O₆ + 2ADP + 2Pi → 2 Acide Lactique + 2ATP";
+                o2Rate = "Nulle (~0% - Bloqué au Complexe IV)";
+                o2Width = "0%";
+                lacRate = "Maximale (~100% compensatoire)";
+                lacWidth = "100%";
+                phrase = "En présence de <span class='kw-mut'>Cyanure</span>, la <span class='kw-prot'>Cytochrome C Oxydase</span> (complexe IV) de la chaîne respiratoire est bloquée. L'O₂ ne peut plus être réduit en H₂O, stoppant le flux d'électrons et la <span class='kw-prot'>phosphorylation oxydative</span>. La mitochondrie (matrice et crêtes) devient inopérante. La cellule musculaire se rabat entièrement sur la <span class='kw-mut'>fermentation lactique</span> dans l'hyaloplasme pour survivre, générant seulement 2 ATP et une forte accumulation d'acide lactique responsable d'acidose et de crampes extrêmes.";
+            } else if (poison === 'dnp') {
+                pathway = "Respiration Inefficace (Découplée)";
+                yieldVal = 0;
+                consequence = "Effondrement thermique & Mort cellulaire";
+                matrix = true;
+                crêtes = true;
+                eq = "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + CHALEUR (0 ATP)";
+                o2Rate = "Hyperactive (~120% incontrôlée)";
+                o2Width = "100%";
+                lacRate = "Élevée (~70% panique cellulaire)";
+                lacWidth = "70%";
+                phrase = "L'exposition au <span class='kw-mut'>DNP</span> détruit la sélectivité de la membrane interne mitochondriale en y créant des fuites de protons H⁺. Le <span class='kw-prot'>gradient de protons</span> s'annule sans passer par l'ATP Synthase. Bien que le cycle de Krebs et la chaîne respiratoire s'accélèrent désespérément en consommant l'O₂, le rendement en ATP s'effondre à <span class='kw-mut'>0 ATP</span>. L'énergie est dissipée sous forme de chaleur mortelle, conduisant à la nécrose.";
+            } else if (poison === 'oligomycin') {
+                pathway = "Respiration Bloquée (Inhibition F₀F₁)";
+                yieldVal = 2;
+                consequence = "Fatigue totale & Crampes immédiates";
+                matrix = true;
+                crêtes = false;
+                eq = "C₆H₁₂O₆ + 2ADP + 2Pi → 2 Acide Lactique + 2ATP";
+                o2Rate = "Nulle (~0% - Gradient saturé)";
+                o2Width = "0%";
+                lacRate = "Maximale (~100% de secours)";
+                lacWidth = "100%";
+                phrase = "L'inhibiteur <span class='kw-mut'>Oligomycine</span> bloque directement la tête de la sphère pédonculée (l'ATP Synthase). Les protons accumulés dans l'espace intermembranaire ne peuvent plus refluer vers la matrice. Le gradient de H⁺ s'accumule jusqu'à saturation, ce qui finit par bloquer par contre-pression thermodynamique la chaîne respiratoire elle-même (conso O₂ à 0%). La cellule se replie sur la <span class='kw-mut'>fermentation hyaloplasmique</span>, produisant un faible bilan de 2 ATP et des crampes douloureuses.";
+            } else {
+                // No poison
+                if (o2 === 'no') {
+                    pathway = "Fermentation Lactique";
+                    yieldVal = 2;
+                    consequence = "Acidose lactique & fatigue rapide";
+                    matrix = false;
+                    crêtes = false;
+                    eq = "C₆H₁₂O₆ + 2ADP + 2Pi → 2 Acide Lactique + 2ATP";
+                    o2Rate = "Nulle (~0%)";
+                    o2Width = "0%";
+                    lacRate = "Élevée (~90%)";
+                    lacWidth = "90%";
+                    phrase = "En l'absence d'oxygène (<span class='kw-mut'>anaérobiose</span>), l'O₂ ne peut pas agir comme accepteur final d'électrons au bout de la chaîne respiratoire. Le cycle de Krebs et la phosphorylation oxydative mitochondriale s'arrêtent. La cellule régénère ses transporteurs NAD⁺ uniquement via la réduction du pyruvate en lactate (fermentation lactique) dans le <span class='kw-mut'>cytosol</span>. Le rendement est très faible (2 ATP par glucose) car l'acide lactique contient encore une grande part d'énergie inexploitée.";
+                } else {
+                    // Normal respiration
+                    phrase = `En aérobiose (O₂ abondant), la cellule musculaire dégrade complètement le glucose via la <span class='kw-mut'>glycolyse</span> cytosolique, puis le cycle de Krebs matriciel et la <span class='kw-prot'>phosphorylation oxydative</span> dans les crêtes de la membrane interne mitochondriale. Les électrons des transporteurs NADH,H⁺ et FADH₂ sont transférés à l'O₂ via la chaîne respiratoire, créant un gradient de protons H⁺ qui fait tourner l'ATP Synthase. Ce métabolisme d'élite fournit un rendement maximal de <span class='kw-mut'>${yieldVal} ATP</span> par glucose, permettant un effort physique maintenu sans accumulation d'acide lactique.`;
+                }
+            }
+
+            // Update DOM
+            document.getElementById('atp-yield-value').innerText = `${yieldVal} ATP`;
+            document.getElementById('atp-active-path').innerText = pathway;
+            document.getElementById('atp-consequence').innerText = consequence;
+            document.getElementById('atp-equation').innerText = eq;
+            
+            document.getElementById('atp-o2-rate').innerText = o2Rate;
+            document.getElementById('atp-o2-bar').style.width = o2Width;
+            
+            document.getElementById('atp-lactate-rate').innerText = lacRate;
+            document.getElementById('atp-lactate-bar').style.width = lacWidth;
+            
+            document.getElementById('atp-phrase-model-text').innerHTML = phrase;
+
+            // Highlight compartments
+            document.getElementById('comp-cytosol').style.borderColor = cytosol ? 'rgba(52, 211, 153, 0.4)' : 'rgba(255, 255, 255, 0.05)';
+            document.getElementById('comp-cytosol').style.background = cytosol ? 'rgba(52, 211, 153, 0.05)' : 'rgba(15, 23, 42, 0.3)';
+            document.getElementById('icon-cytosol').innerText = cytosol ? '✓' : '✗';
+            document.getElementById('icon-cytosol').className = cytosol ? 'text-emerald-500' : 'text-slate-600';
+
+            document.getElementById('comp-matrix').style.borderColor = matrix ? 'rgba(52, 211, 153, 0.4)' : 'rgba(255, 255, 255, 0.05)';
+            document.getElementById('comp-matrix').style.background = matrix ? 'rgba(52, 211, 153, 0.05)' : 'rgba(15, 23, 42, 0.3)';
+            document.getElementById('icon-matrix').innerText = matrix ? '✓' : '✗';
+            document.getElementById('icon-matrix').className = matrix ? 'text-emerald-500' : 'text-slate-600';
+
+            document.getElementById('comp-membrane').style.borderColor = crêtes ? 'rgba(52, 211, 153, 0.4)' : 'rgba(255, 255, 255, 0.05)';
+            document.getElementById('comp-membrane').style.background = crêtes ? 'rgba(52, 211, 153, 0.05)' : 'rgba(15, 23, 42, 0.3)';
+            document.getElementById('icon-membrane').innerText = crêtes ? '✓' : '✗';
+            document.getElementById('icon-membrane').className = crêtes ? 'text-emerald-500' : 'text-slate-600';
+
+            // Glow color changes based on yield
+            const card = document.getElementById('atp-phrase-card');
+            if (yieldVal >= 36) {
+                card.className = "phrase-output-card card-glow-green";
+            } else if (yieldVal === 2) {
+                card.className = "phrase-output-card card-glow-purple";
+            } else {
+                card.className = "phrase-output-card card-glow-red";
+            }
+        }
+
+        function setSarcomereStep(step) {
+            atpSarcomereStep = step;
+            
+            // Reset buttons
+            for (let i = 1; i <= 4; i++) {
+                const btn = document.getElementById(`s-step-${i}`);
+                if (i === step) {
+                    btn.className = "px-2 py-1.5 text-xs font-bold rounded bg-rose-500 text-white shadow";
+                } else {
+                    btn.className = "px-2 py-1.5 text-xs font-bold rounded bg-slate-950 text-slate-400 hover:text-white";
+                }
+            }
+
+            const box = document.getElementById('sarcomere-box');
+            const explain = document.getElementById('sarcomere-explain-box');
+            const badge = document.getElementById('sarcomere-step-badge');
+
+            // Reset Myosin head rotations
+            const headList = ['h-tl1', 'h-tl2', 'h-tr1', 'h-tr2', 'h-bl1', 'h-bl2', 'h-br1', 'h-br2'];
+            const defaultTransforms = {
+                'h-tl1': 'rotate(20deg)', 'h-tl2': 'rotate(20deg)',
+                'h-tr1': 'rotate(-20deg)', 'h-tr2': 'rotate(-20deg)',
+                'h-bl1': 'rotate(-20deg)', 'h-bl2': 'rotate(-20deg)',
+                'h-br1': 'rotate(20deg)', 'h-br2': 'rotate(20deg)'
+            };
+
+            box.className = "sarcomere-box";
+            
+            if (step === 1) {
+                badge.innerText = "Repos";
+                badge.className = "badge-lab b-blue";
+                explain.innerHTML = "<strong>Étape 1 : État de Repos (Pas de calcium).</strong> Le calcium (Ca²⁺) est stocké dans le réticulum sarcoplasmique. Les têtes de myosine sont redressées, chargées en ADP et Pi (état haute énergie), mais ne peuvent pas se lier à l'actine car la tropomyosine bloque les sites de fixation.";
+                headList.forEach(h => {
+                    const el = document.getElementById(h);
+                    if (el) el.style.transform = defaultTransforms[h] + " translateY(0px)";
+                });
+            } else if (step === 2) {
+                badge.innerText = "Fixation Ca²⁺";
+                badge.className = "badge-lab b-purple";
+                explain.innerHTML = "<strong>Étape 2 : Libération du Calcium & Fixation.</strong> Le calcium se fixe sur la troponine. Cela déplace la tropomyosine, découvrant les sites d'actine. Les têtes de myosine s'y fixent immédiatement, formant les complexes <strong>actomyosine</strong> (ponts d'union).";
+                // Heads bind to actin (move slightly up or down to touch the blue line)
+                headList.forEach(h => {
+                    const el = document.getElementById(h);
+                    if (!el) return;
+                    let translation = h.includes('top') ? 'translateY(-2px)' : 'translateY(2px)';
+                    el.style.transform = defaultTransforms[h] + " " + translation;
+                });
+            } else if (step === 3) {
+                badge.innerText = "Contraction active";
+                badge.className = "badge-lab b-red";
+                explain.innerHTML = "<strong>Étape 3 : Pivotement des têtes & Glissement.</strong> Les têtes de myosine libèrent l'ADP et le Pi. Ce départ d'énergie provoque le pivotement de la tête de myosine de 90° à 45°. Les filaments fins d'actine sont tirés vers le centre, raccourcissant le sarcomère (les deux disques Z se rapprochent).";
+                box.classList.add('contracted');
+                // Pivoted heads
+                const pivotedTransforms = {
+                    'h-tl1': 'rotate(50deg) translateY(-2px)', 'h-tl2': 'rotate(50deg) translateY(-2px)',
+                    'h-tr1': 'rotate(-50deg) translateY(-2px)', 'h-tr2': 'rotate(-50deg) translateY(-2px)',
+                    'h-bl1': 'rotate(-50deg) translateY(2px)', 'h-bl2': 'rotate(-50deg) translateY(2px)',
+                    'h-br1': 'rotate(50deg) translateY(2px)', 'h-br2': 'rotate(50deg) translateY(2px)'
+                };
+                headList.forEach(h => {
+                    const el = document.getElementById(h);
+                    if (el) el.style.transform = pivotedTransforms[h];
+                });
+            } else if (step === 4) {
+                badge.innerText = "Détachement";
+                badge.className = "badge-lab b-green";
+                explain.innerHTML = "<strong>Étape 4 : Détachement (Fixation ATP).</strong> Une nouvelle molécule d'ATP se lie à la tête de myosine, ce qui rompt instantanément le complexe actomyosine. La tête se détache. L'hydrolyse de cet ATP en ADP+Pi va redresser la tête pour entamer un nouveau cycle de contraction.";
+                // Detached heads, returning back
+                headList.forEach(h => {
+                    const el = document.getElementById(h);
+                    if (el) el.style.transform = defaultTransforms[h] + " translateY(0px)";
+                });
+            }
+        }
+
+        // --- Challenge ATP Database ---
+        let atpChallengeScore = 0;
+        let atpChallengeLives = 3;
+        let atpChallengeIndex = 0;
+        const ATP_QUESTIONS = [
+            {
+                q: "Pourquoi la fermentation lactique produit-elle beaucoup moins d'ATP (2 ATP) que la respiration cellulaire (38 ATP) ?",
+                context: "Raisonnement sur le bilan énergétique (Examen national).",
+                options: [
+                    { t: "Parce que le lactate (acide lactique) est un déchet organique qui contient encore une grande quantité d'énergie chimique non exploitée.", correct: true },
+                    { t: "Parce que le glucose n'est absolument pas dégradé au cours de la fermentation.", correct: false, memo: "Faux ! La glycolyse a bien lieu et dégrade le glucose en 2 pyruvates." },
+                    { t: "Parce que l'acide lactique s'évapore sous forme de gaz CO₂ inutilisable.", correct: false, memo: "Piège du bac : la fermentation lactique ne produit PAS de CO₂ !" },
+                    { t: "Parce que les enzymes de la fermentation fonctionnent 19 fois plus lentement.", correct: false, memo: "Non, les cinétiques enzymatiques sont très rapides, c'est le rendement thermodynamique qui est faible." }
+                ]
+            },
+            {
+                q: "Quel est l'effet physiologique immédiat d'une intoxication au Cyanure au niveau moléculaire ?",
+                context: "Phénomènes toxiques de la chaîne respiratoire.",
+                options: [
+                    { t: "Il bloque la Cytochrome Oxydase (complexe IV), stoppant le flux d'électrons et la phosphorylation oxydative mitochondriale.", correct: true },
+                    { t: "Il détruit les têtes de myosine, empêchant physiquement la contraction musculaire.", correct: false, memo: "Non, le cyanure est un poison respiratoire, il n'affecte pas directement les têtes de myosine." },
+                    { t: "Il découple la membrane interne, laissant fuir les protons sans fabriquer d'ATP.", correct: false, memo: "C'est la définition de l'agent découplant comme le DNP, pas du cyanure." },
+                    { t: "Il accélère la production d'O₂ pour faire exploser la mitochondrie.", correct: false, memo: "Absurde : l'O₂ est consommé par la cellule, pas produit." }
+                ]
+            },
+            {
+                q: "Lors de la contraction musculaire active, quelle étape moléculaire requiert précisément l'hydrolyse de l'ATP ?",
+                context: "Mécanisme moléculaire du sarcomère.",
+                options: [
+                    { t: "Le redressement de la tête de myosine pour charger l'énergie et la replacer en position d'attachement.", correct: true },
+                    { t: "La libération du calcium depuis le réticulum sarcoplasmique.", correct: false, memo: "La libération du Ca²⁺ se fait par diffusion passive lors du potentiel d'action musculaire." },
+                    { t: "Le pivotement à 45° de la tête de myosine fixée sur l'actine.", correct: false, memo: "Piège classique du Bac ! Le pivotement est déclenché par le départ de l'ADP et du Pi, pas par l'hydrolyse d'un nouvel ATP !" },
+                    { t: "Le déplacement de la tropomyosine pour démasquer l'actine.", correct: false, memo: "C'est le travail exclusif de la liaison du calcium (Ca²⁺) sur la troponine." }
+                ]
+            },
+            {
+                q: "Un athlète très entraîné en endurance possède une densité mitochondriale double de celle d'un sédentaire. Quelle en est la conséquence directe ?",
+                context: "Adaptation métabolique du muscle.",
+                options: [
+                    { t: "Il peut oxyder le pyruvate très rapidement via la respiration, repoussant le seuil de fermentation lactique et évitant la fatigue précoce.", correct: true },
+                    { t: "Ses muscles sécrètent deux fois plus de lactate pour stimuler la contraction.", correct: false, memo: "Non, le sédentaire produit du lactate beaucoup plus tôt à cause de l'hypoxie mitochondriale." },
+                    { t: "Il n'a plus besoin d'oxygène pour vivre et contracter ses muscles.", correct: false, memo: "Totalement faux, la respiration requiert impérativement de l'O₂." },
+                    { t: "Ses sarcomères sont deux fois plus longs, ce qui lui donne de plus grands muscles.", correct: false, memo: "La longueur d'un sarcomère sain est constante (~2 à 2.5 µm), c'est le métabolisme qui change." }
+                ]
+            }
+        ];
+
+        function initAtpChallengeSetup() {
+            document.getElementById('atp-challenge-setup-screen').style.display = "block";
+            document.getElementById('atp-challenge-active-screen').style.display = "none";
+            document.getElementById('atp-challenge-result-screen').style.display = "none";
+        }
+
+        function startAtpChallenge() {
+            atpChallengeScore = 0;
+            atpChallengeLives = 3;
+            atpChallengeIndex = 0;
+
+            document.getElementById('atp-challenge-setup-screen').style.display = "none";
+            document.getElementById('atp-challenge-active-screen').style.display = "block";
+            
+            showAtpQuestion();
+        }
+
+        function showAtpQuestion() {
+            // Update hearts
+            let heartsStr = "";
+            for (let i = 0; i < 3; i++) {
+                heartsStr += i < atpChallengeLives ? "❤️" : "🖤";
+            }
+            document.getElementById('atp-challenge-lives').innerText = heartsStr;
+            document.getElementById('atp-challenge-score').innerText = atpChallengeScore;
+
+            if (atpChallengeIndex >= ATP_QUESTIONS.length) {
+                endAtpChallenge(true);
+                return;
+            }
+
+            const qData = ATP_QUESTIONS[atpChallengeIndex];
+            document.getElementById('atp-challenge-step-title').innerText = `Scénario ${atpChallengeIndex + 1} / ${ATP_QUESTIONS.length}`;
+            document.getElementById('atp-challenge-question').innerText = qData.q;
+            document.getElementById('atp-challenge-context').innerText = `Contexte : ${qData.context}`;
+
+            // Inject options
+            const container = document.getElementById('atp-challenge-options');
+            container.innerHTML = "";
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "p-4 rounded-xl text-left text-xs border border-slate-800 bg-slate-900/60 hover:border-rose-500/50 hover:bg-rose-950/10 transition-all text-slate-200 font-medium leading-relaxed";
+                btn.innerHTML = opt.t;
+                btn.onclick = () => checkAtpAnswer(opt);
+                container.appendChild(btn);
+            });
+        }
+
+        function checkAtpAnswer(option) {
+            if (option.correct) {
+                alert("🏆 EXCELLENT ! Rigueur scientifique parfaite. +500 pts");
+                atpChallengeScore += 500;
+                atpChallengeIndex++;
+                showAtpQuestion();
+            } else {
+                atpChallengeLives--;
+                alert(`❌ PIÈGE DU CORRECTEUR DETECTÉ !\n\n${option.memo || "Cette formulation manque de rigueur."}\n\nPerte d'un cœur.`);
+                
+                if (atpChallengeLives <= 0) {
+                    endAtpChallenge(false);
+                } else {
+                    showAtpQuestion();
+                }
+            }
+        }
+
+        function endAtpChallenge(success) {
+            document.getElementById('atp-challenge-active-screen').style.display = "none";
+            document.getElementById('atp-challenge-result-screen').style.display = "block";
+
+            const medal = document.getElementById('atp-challenge-result-medal');
+            const title = document.getElementById('atp-challenge-result-title');
+            const desc = document.getElementById('atp-challenge-result-desc');
+            const grade = document.getElementById('atp-challenge-result-grade');
+            const scoreDisp = document.getElementById('atp-challenge-result-score-disp');
+
+            scoreDisp.innerText = atpChallengeScore;
+
+            if (success) {
+                medal.innerHTML = "🏆";
+                medal.className = "w-20 h-20 rounded-full flex items-center justify-center text-4xl mx-auto border border-yellow-500 bg-yellow-500/10 text-yellow-400 shadow-lg shadow-yellow-500/20";
+                title.innerText = "DÉFI ATP VALIDÉ AVEC HONNEURS !";
+                desc.innerText = "Félicitations. Vos rédactions en physiologie cellulaire sont conformes aux exigences du Bac marocain.";
+                
+                let calculatedGrade = 14 + atpChallengeLives * 2; // max 20
+                grade.innerText = `${calculatedGrade} / 20`;
+                triggerConfetti();
+            } else {
+                medal.innerHTML = "💀";
+                medal.className = "w-20 h-20 rounded-full flex items-center justify-center text-4xl mx-auto border border-rose-500 bg-rose-500/10 text-rose-400 shadow-lg shadow-rose-500/20";
+                title.innerText = "ÉCHEC DU DÉFI — ENTRAÎNEMENT REQUIS";
+                desc.innerText = "Vous êtes tombé dans les pièges de rigueur du correcteur du Bac.";
+                grade.innerText = `08 / 20`;
+            }
+        }
+
+        function restartAtpChallenge() {
+            startAtpChallenge();
+        }
+
+
+        // =========================================================================
+        // ==================== LABO 4 : GEOLOGIE & POLLUTION ======================
+        // =========================================================================
+        let activeGeologyMode = "demo";
+        let geoSelectedZone = "subduction";
+
+        function switchGeologyMode(mode) {
+            activeGeologyMode = mode;
+            const demoBtn = document.getElementById('geo-toggle-mode-demo');
+            const challengeBtn = document.getElementById('geo-toggle-mode-challenge');
+            const demoWp = document.getElementById('geology-demo-workspace');
+            const challengeWp = document.getElementById('geology-challenge-workspace');
+
+            if (mode === 'demo') {
+                demoBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all bg-yellow-500 text-white shadow";
+                challengeBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all text-slate-400 hover:text-white";
+                demoWp.style.display = "block";
+                challengeWp.style.display = "none";
+                selectMetamorphicZone('subduction');
+                runPollutionSimulation();
+            } else {
+                challengeBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all bg-purple-600 text-white shadow";
+                demoBtn.className = "px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all text-slate-400 hover:text-white";
+                demoWp.style.display = "none";
+                challengeWp.style.display = "block";
+                initGeologyChallengeSetup();
+            }
+        }
+
+        function selectMetamorphicZone(zone) {
+            geoSelectedZone = zone;
+            
+            // Toggle active classes
+            document.getElementById('btn-zone-sub').className = "pt-zone-btn zone-subduction" + (zone === 'subduction' ? " active" : "");
+            document.getElementById('btn-zone-coll').className = "pt-zone-btn zone-collision" + (zone === 'collision' ? " active" : "");
+            document.getElementById('btn-zone-cont').className = "pt-zone-btn zone-contact" + (zone === 'contact' ? " active" : "");
+
+            const infoCard = document.getElementById('geology-info-card');
+            let minerals = "";
+            let conditions = "";
+            let recon = "";
+            let phrase = "";
+
+            if (zone === 'subduction') {
+                minerals = "Glaucophane (Bleu), Grenat, Jadéite (Éclogite)";
+                conditions = "P = 10 à 20 kbar (HP) | T = 150 à 400°C (BT)";
+                recon = "1. Convergence lithosphérique entraînant l'enfoncement rapide d'une plaque froide. ➔ 2. Augmentation intense de pression avec réchauffement très lent (HP/BT). Métamorphisme dynamique. ➔ 3. Déshydratation des schistes verts formant le Glaucophane (schistes bleus) puis l'Éclogite.";
+                phrase = "La présence de <span class='kw-mut'>Glaucophane</span> et de <span class='kw-prot'>Jadéite/Grenat</span> atteste d'un métamorphisme de haute pression et basse température (<span class='kw-mut'>HP/BT</span>), caractéristique d'une zone de <span class='kw-prot'>subduction</span>. L'enfoncement rapide de la croûte océanique froide empêche l'ajustement thermique, générant une déshydratation intense des roches d'ophiolite.";
+            } else if (zone === 'collision') {
+                minerals = "Sillimanite, Disthène, Biotite, Gneiss, Migmatite";
+                conditions = "P = 4 à 8 kbar (MP) | T = 450 à 750°C (HT)";
+                recon = "1. Blocage de la subduction océanique menant à l'affrontement de deux plaques continentales. ➔ 2. Épaississement crustal majeur (racine crustale), enfouissant les sédiments à profondeur moyenne. ➔ 3. Augmentation conjointe de P et T, menant à l'anatexie (fusion partielle et formation de migmatite/granite d'anatexie).";
+                phrase = "L'association de <span class='kw-mut'>Disthène</span> et de <span class='kw-prot'>Sillimanite</span> traduit un métamorphisme de moyenne pression et haute température (<span class='kw-mut'>MP/HT</span>), typique d'une zone de <span class='kw-prot'>collision</span>. L'épaississement crustal par empilement de nappes de charriage enfouit les roches, provoquant leur réchauffement thermodynamique.";
+            } else if (zone === 'contact') {
+                minerals = "Andalousite, Silicates d'Alumine, Cornéenne";
+                conditions = "P = 1 à 3 kbar (BP) | T = 500 à 800°C (HT)";
+                recon = "1. Intrusion ascendante d'un pluton de magma granitique brûlant à travers des couches sédimentaires de faible profondeur. ➔ 2. Transfert thermique intense par conduction de chaleur (BP/HT) formant une auréole métamorphique de contact. ➔ 3. Cristallisation d'Andalousite.";
+                phrase = "Le minéral indicateur <span class='kw-mut'>Andalousite</span> indique des conditions de basse pression et haute température (<span class='kw-mut'>BP/HT</span>). C'est la preuve d'un métamorphisme de <span class='kw-prot'>contact</span> provoqué par l'intrusion thermique d'un magma granitique chaud recuisant les roches encaissantes superficielles froides.";
+            }
+
+            document.getElementById('geo-minerals').innerText = minerals;
+            document.getElementById('geo-conditions').innerText = conditions;
+            document.getElementById('geo-reconstitution').innerHTML = recon;
+            
+            document.getElementById('geo-phrase-model-text').innerHTML = phrase;
+        }
+
+        function runPollutionSimulation() {
+            const val = parseInt(document.getElementById('pollution-slider').value);
+            const eutrophActive = document.getElementById('eutroph-trigger').checked;
+
+            const sliderDesc = document.getElementById('pollution-slider-desc');
+            const standardPanel = document.getElementById('standard-indicators-panel');
+            const eutrophPanel = document.getElementById('eutroph-timeline-panel');
+            const phraseBox = document.getElementById('geo-phrase-model-text');
+
+            if (eutrophActive) {
+                // Show eutrophication timeline, hide standard indicators
+                standardPanel.classList.add('hidden');
+                eutrophPanel.classList.remove('hidden');
+
+                // Toggle steps active
+                for (let i = 1; i <= 5; i++) {
+                    const stepEl = document.getElementById(`eut-step-${i}`);
+                    if (i <= val) {
+                        stepEl.className = "eutroph-step active";
+                    } else {
+                        stepEl.className = "eutroph-step";
+                    }
+                }
+
+                // Update text descriptions
+                let stepText = "";
+                let phrase = "";
+                if (val === 1) {
+                    stepText = "Étape 1 : Apport massif de Nitrates (NO₃⁻) et Phosphates (PO₄³⁻) dans l'eau.";
+                    phrase = "La première phase de l'eutrophisation débute par un <span class='kw-mut'>apport excédentaire d'engrais agricoles</span> azotés et phosphatés dans la rivière, rompant l'équilibre trophique naturel.";
+                } else if (val === 2) {
+                    stepText = "Étape 2 : Bloom algal. Prolifération exponentielle des algues vertes superficielles.";
+                    phrase = "Les nitrates et phosphates stimulent le développement excessif des algues de surface (<span class='kw-mut'>bloom algal</span>). Cette couche verte opaque empêche la lumière solaire d'atteindre la flore de fond, stoppant sa photosynthèse.";
+                } else if (val === 3) {
+                    stepText = "Étape 3 : Mort des algues profondes et prolifération des bactéries décomposeurs.";
+                    phrase = "La mort de la végétation profonde privée de lumière génère une immense quantité de matière organique inerte. Les <span class='kw-prot'>bactéries aérobies</span> décomposeurs se multiplient de façon exponentielle pour consommer ce gisement.";
+                } else if (val === 4) {
+                    stepText = "Étape 4 : Anoxie totale du milieu aquatique (consommation d'O₂).";
+                    phrase = "La respiration intensive des bactéries décomposeurs consomme la quasi-totalité de l'O₂ dissous dans l'eau. Le milieu bascule en état d'<span class='kw-mut'>anoxie totale (oxygène à 0 mg/L)</span>, rendant toute respiration branchiale impossible.";
+                } else if (val === 5) {
+                    stepText = "Étape 5 : Asphyxie de la biodiversité, putréfaction anaérobie anaérobie.";
+                    phrase = "L'anoxie sévère entraîne l'asphyxie et la <span class='kw-mut'>mort massive des poissons</span> et invertébrés nobles. Les bactéries anaérobies prennent le relais, produisant des gaz fétides (H₂S, CH₄). C'est le stade ultime de l'eutrophisation.";
+                }
+
+                sliderDesc.innerText = `Processus d'Eutrophisation — ${stepText}`;
+                phraseBox.innerHTML = phrase;
+
+            } else {
+                // Show standard indicators
+                standardPanel.classList.remove('hidden');
+                eutrophPanel.classList.add('hidden');
+
+                let dbo5 = 1.5; let dboWidth = "10%";
+                let dco = 12; let dcoWidth = "15%";
+                let o2 = 9.5; let o2Width = "95%";
+                let bio = "";
+                let title = "";
+                let phrase = "";
+
+                if (val === 1) {
+                    title = "Station 1 : Amont de la rivière (Sain)";
+                    bio = "Poissons nobles (Truite de rivière), Larves de Perles, Éphémères";
+                    phrase = "À la station amont, l'eau est hautement oxygénée (9.5 mg/L) avec des indices de pollution <span class='kw-mut'>DBO5 et DCO extrêmement faibles</span>. La faune aquatique est composée d'espèces bio-indicatrices sténothermes très sensibles à la pollution.";
+                } else if (val === 2) {
+                    title = "Station 2 : Point de rejet d'égouts (Pollution directe)";
+                    dbo5 = 45; dboWidth = "75%";
+                    dco = 110; dcoWidth = "85%";
+                    o2 = 6.0; o2Width = "60%";
+                    bio = "Larves de Diptères (Chironomes), quelques Aselles, pas de Truite";
+                    phrase = "Au point de déversement, l'introduction soudaine de matière organique augmente brutalement la <span class='kw-mut'>DCO et la DBO5</span>. L'O₂ dissous commence à chuter car les bactéries aérobies commencent à consommer l'oxygène pour biodégrader les polluants.";
+                } else if (val === 3) {
+                    title = "Station 3 : Aval direct (Zone de dégradation critique)";
+                    dbo5 = 60; dboWidth = "100%";
+                    dco = 130; dcoWidth = "100%";
+                    o2 = 2.1; o2Width = "21%";
+                    bio = "Vers Tubifex en colonie dense (indicateur de pollution majeure), Asphyxie";
+                    phrase = "Dans la zone critique, la prolifération des <span class='kw-prot'>bactéries aérobies</span> décomposant la MO atteint son apogée, consommant l'O₂ de manière drastique (hypoxie critique à 2.1 mg/L). La DBO5 atteint son maximum. Les espèces exigeantes disparaissent au profit d'espèces d'eaux fétides (<span class='kw-mut'>Tubifex</span>).";
+                } else if (val === 4) {
+                    title = "Station 4 : Aval moyen (Zone d'auto-épuration en cours)";
+                    dbo5 = 15; dboWidth = "35%";
+                    dco = 40; dcoWidth = "40%";
+                    o2 = 5.5; o2Width = "55%";
+                    bio = "Aselles, Larves de Sialis, quelques poissons tolérants (Gardon)";
+                    phrase = "En aval moyen, la charge en matière organique commence à s'épuiser. La consommation d'O₂ ralentit, permettant une réoxygénation progressive de l'eau par échange atmosphérique. C'est la phase active d'<span class='kw-prot'>auto-épuration naturelle</span>.";
+                } else if (val === 5) {
+                    title = "Station 5 : Aval lointain (Eau entièrement régénérée)";
+                    dbo5 = 2.0; dboWidth = "12%";
+                    dco = 15; dcoWidth = "18%";
+                    o2 = 8.8; o2Width = "88%";
+                    bio = "Poissons blancs (Gardon, Ablette), Larves d'Éphémères, faune saine";
+                    phrase = "Grâce au phénomène biologique d'<span class='kw-prot'>auto-épuration</span>, les bactéries ont minéralisé l'ensemble des déchets organiques. La <span class='kw-mut'>DBO5 s'effondre</span> à 2 mg/L et l'O₂ dissous remonte à 8.8 mg/L, restaurant la biodiversité d'origine.";
+                }
+
+                sliderDesc.innerText = title;
+                document.getElementById('val-dbo5').innerText = `${dbo5} mg/L` + (val > 1 ? " (Alerte élevée)" : " (Sain)");
+                document.getElementById('bar-dbo5').style.width = dboWidth;
+                
+                document.getElementById('val-dco').innerText = `${dco} mg/L` + (val > 1 ? " (Charge organique)" : " (Sain)");
+                document.getElementById('bar-dco').style.width = dcoWidth;
+                
+                document.getElementById('val-o2').innerText = `${o2} mg/L` + (o2 < 3 ? " (Anoxie critique)" : " (Correct)");
+                document.getElementById('bar-o2').style.width = o2Width;
+
+                document.getElementById('geo-biodiversity').innerText = bio;
+                phraseBox.innerHTML = phrase;
+            }
+        }
+
+        // --- Challenge Geology Database ---
+        let geologyChallengeScore = 0;
+        let geologyChallengeLives = 3;
+        let geologyChallengeIndex = 0;
+        const GEOLOGY_QUESTIONS = [
+            {
+                q: "Dans une chaîne de collision, à quoi correspond l'apparition de roches contenant de la Sillimanite et présentant des traces d'Anatexie (Migmatites) ?",
+                context: "Raisonnement sur le diagramme P/T et histoire de collision.",
+                options: [
+                    { t: "À un réchauffement intense (HT/MP) menant à la fusion partielle de la croûte continentale épaissie par empilement.", correct: true },
+                    { t: "À un refroidissement brutal sous haute pression dans une zone de subduction active.", correct: false, memo: "Faux, la subduction est caractérisée par de la basse température (HP/BT), pas de l'anatexie." },
+                    { t: "À un volcanisme explosif recouvrant les sédiments de cendres d'Andalousite.", correct: false, memo: "L'Andalousite se forme par métamorphisme de contact, pas par volcanisme de cendres." },
+                    { t: "À l'ouverture d'un nouvel océan par divergence tectonique.", correct: false, memo: "Non, la collision et la fusion partielle sont des phénomènes purement convergents de fermeture océanique." }
+                ]
+            },
+            {
+                q: "Lors d'une pollution organique dans une rivière, quel organisme est le véritable responsable de la chute dramatique de l'oxygène dissous (hypoxie) ?",
+                context: "Chaîne d'auto-épuration et DBO5.",
+                options: [
+                    { t: "La prolifération bactérienne aérobie qui consomme l'O₂ pour oxyder et décomposer la matière organique déversée.", correct: true },
+                    { t: "Les poissons qui respirent trop vite à cause du stress du rejet.", correct: false, memo: "Non, les poissons subissent l'hypoxie, ils ne la provoquent pas." },
+                    { t: "Les vers Tubifex qui absorbent chimiquement l'oxygène dans leur peau rouge.", correct: false, memo: "Les vers Tubifex tolèrent le manque d'oxygène, mais ne causent pas sa chute initiale." },
+                    { t: "Les molécules de détergent qui emprisonnent l'oxygène au fond de l'eau.", correct: false, memo: "C'est un processus biologique lié aux bactéries aérobies qui cause l'essentiel de la chute d'O₂ (mesuré par la DBO5)." }
+                ]
+            },
+            {
+                q: "Dans le processus d'Eutrophisation d'un lac, pourquoi les algues vertes de surface finissent-elles par causer la mort de la biodiversité ?",
+                context: "Mécanismes écologiques de l'eutrophisation.",
+                options: [
+                    { t: "Elles bloquent la lumière en surface, tuant la flore de fond dont la décomposition par les bactéries consomme tout l'oxygène.", correct: true },
+                    { t: "Elles sécrètent un poison neurotoxique qui paralyse le cœur des poissons.", correct: false, memo: "Bien que certaines cyanobactéries sécrètent des toxines, l'asphyxie globale par anoxie reste la cause majeure de mortalité." },
+                    { t: "Elles aspirent activement l'oxygène la nuit par photosynthèse inverse géante.", correct: false, memo: "La respiration nocturne des algues y contribue un peu, mais l'anoxie fatale est principalement due à la décomposition bactérienne des algues mortes accumulées au fond !" },
+                    { t: "Elles dévorent les œufs de truite de rivière.", correct: false, memo: "Les algues sont des producteurs primaires autotrophes, elles ne se nourrissent pas d'œufs." }
+                ]
+            },
+            {
+                q: "Qu'est-ce que la présence d'un complexe ophiolitique (métagabbros, basaltes en oreillers) sur un haut sommet alpin prouve de manière indiscutable ?",
+                context: "Interprétation tectonique d'Examen National.",
+                options: [
+                    { t: "L'existence d'un ancien océan qui s'est fermé, suivi de l'obduction de morceaux de lithosphère océanique sur le continent lors de la collision.", correct: true },
+                    { t: "Qu'un volcan sous-marin a explosé directement au sommet de la montagne.", correct: false, memo: "Absurde : les montagnes n'existaient pas encore lorsque les basaltes se sont solidifiés sous l'eau." },
+                    { t: "Que le niveau de la mer globale a baissé de plus de 4000 mètres.", correct: false, memo: "Non, c'est le mouvement vertical des plaques tectoniques (orogenèse) qui a soulevé ces roches de fond marin, pas une baisse de l'océan." },
+                    { t: "Que la région a subi un métamorphisme thermique de contact très intense.", correct: false, memo: "Non, l'ophiolite est une relique lithosphérique océanique, pas un produit de métamorphisme localisé." }
+                ]
+            }
+        ];
+
+        function initGeologyChallengeSetup() {
+            document.getElementById('geology-challenge-setup-screen').style.display = "block";
+            document.getElementById('geology-challenge-active-screen').style.display = "none";
+            document.getElementById('geology-challenge-result-screen').style.display = "none";
+        }
+
+        function startGeologyChallenge() {
+            geologyChallengeScore = 0;
+            geologyChallengeLives = 3;
+            geologyChallengeIndex = 0;
+
+            document.getElementById('geology-challenge-setup-screen').style.display = "none";
+            document.getElementById('geology-challenge-active-screen').style.display = "block";
+            
+            showGeologyQuestion();
+        }
+
+        function showGeologyQuestion() {
+            let heartsStr = "";
+            for (let i = 0; i < 3; i++) {
+                heartsStr += i < geologyChallengeLives ? "❤️" : "🖤";
+            }
+            document.getElementById('geology-challenge-lives').innerText = heartsStr;
+            document.getElementById('geology-challenge-score').innerText = geologyChallengeScore;
+
+            if (geologyChallengeIndex >= GEOLOGY_QUESTIONS.length) {
+                endGeologyChallenge(true);
+                return;
+            }
+
+            const qData = GEOLOGY_QUESTIONS[geologyChallengeIndex];
+            document.getElementById('geology-challenge-step-title').innerText = `Raisonnement ${geologyChallengeIndex + 1} / ${GEOLOGY_QUESTIONS.length}`;
+            document.getElementById('geology-challenge-question').innerText = qData.q;
+            document.getElementById('geology-challenge-context').innerText = `Contexte : ${qData.context}`;
+
+            const container = document.getElementById('geology-challenge-options');
+            container.innerHTML = "";
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "p-4 rounded-xl text-left text-xs border border-slate-800 bg-slate-900/60 hover:border-yellow-500/50 hover:bg-yellow-950/10 transition-all text-slate-200 font-medium leading-relaxed";
+                btn.innerHTML = opt.t;
+                btn.onclick = () => checkGeologyAnswer(opt);
+                container.appendChild(btn);
+            });
+        }
+
+        function checkGeologyAnswer(option) {
+            if (option.correct) {
+                alert("🏆 FÉLICITATIONS ! Rigueur géodynamique parfaite. +500 pts");
+                geologyChallengeScore += 500;
+                geologyChallengeIndex++;
+                showGeologyQuestion();
+            } else {
+                geologyChallengeLives--;
+                alert(`❌ FAILLE ANALYTIQUE DETECTÉE !\n\n${option.memo || "Cette hypothèse contredit les lois thermodynamiques orogéniques."}\n\nPerte d'un cœur.`);
+                
+                if (geologyChallengeLives <= 0) {
+                    endGeologyChallenge(false);
+                } else {
+                    showGeologyQuestion();
+                }
+            }
+        }
+
+        function endGeologyChallenge(success) {
+            document.getElementById('geology-challenge-active-screen').style.display = "none";
+            document.getElementById('geology-challenge-result-screen').style.display = "block";
+
+            const medal = document.getElementById('geology-challenge-result-medal');
+            const title = document.getElementById('geology-challenge-result-title');
+            const desc = document.getElementById('geology-challenge-result-desc');
+            const grade = document.getElementById('geology-challenge-result-grade');
+            const scoreDisp = document.getElementById('geology-challenge-result-score-disp');
+
+            scoreDisp.innerText = geologyChallengeScore;
+
+            if (success) {
+                medal.innerHTML = "🏆";
+                medal.className = "w-20 h-20 rounded-full flex items-center justify-center text-4xl mx-auto border border-yellow-500 bg-yellow-500/10 text-yellow-400 shadow-lg shadow-yellow-500/20";
+                title.innerText = "DÉFI TECTONIQUE & POLLUTION VALIDÉ !";
+                desc.innerText = "Remarquable. Votre rigueur analytique honore les exigences du Bac marocain.";
+                
+                let calculatedGrade = 14 + geologyChallengeLives * 2;
+                grade.innerText = `${calculatedGrade} / 20`;
+                triggerConfetti();
+            } else {
+                medal.innerHTML = "💀";
+                medal.className = "w-20 h-20 rounded-full flex items-center justify-center text-4xl mx-auto border border-rose-500 bg-rose-500/10 text-rose-400 shadow-lg shadow-rose-500/20";
+                title.innerText = "ÉCHEC DU DÉFI — GÉOLOGIE EST UNE SCIENCE EXIGEANTE";
+                desc.innerText = "Révisez les ophiolites, les diagrammes P/T et les bio-indicateurs d'eutrophisation.";
+                grade.innerText = `08 / 20`;
+            }
+        }
+
+        function restartGeologyChallenge() {
+            startGeologyChallenge();
         }
     </script>
 </body>
