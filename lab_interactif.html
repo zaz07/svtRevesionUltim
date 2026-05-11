@@ -148,6 +148,18 @@
             border-color: rgba(139, 92, 246, 0.3);
             box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
         }
+        .lab-tab-btn.active.tab-c {
+            border-color: rgba(244, 63, 94, 0.3);
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.1);
+        }
+        .lab-tab-btn.active.tab-d {
+            border-color: rgba(234, 179, 8, 0.3);
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.1);
+        }
+        .lab-tab-btn.active.tab-e {
+            border-color: rgba(13, 148, 136, 0.3);
+            box-shadow: 0 0 15px rgba(13, 148, 136, 0.1);
+        }
         .lab-tab-btn.active.tab-game {
             border-color: rgba(16, 185, 129, 0.3);
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
@@ -168,6 +180,9 @@
 
         .lab-tab-btn.active.tab-a .tab-icon { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
         .lab-tab-btn.active.tab-b .tab-icon { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+        .lab-tab-btn.active.tab-c .tab-icon { background: rgba(244, 63, 94, 0.15); color: #f43f5e; }
+        .lab-tab-btn.active.tab-d .tab-icon { background: rgba(234, 179, 8, 0.15); color: #eab308; }
+        .lab-tab-btn.active.tab-e .tab-icon { background: rgba(13, 148, 136, 0.15); color: #0d9488; }
         .lab-tab-btn.active.tab-game .tab-icon { background: rgba(16, 185, 129, 0.15); color: #34d399; }
 
         .tab-title-text {
@@ -1326,7 +1341,7 @@
                 <button class="lab-tab-btn active tab-a" style="--btn-color: #38bdf8;" onclick="switchLabTab('lab-expression', this)">
                     <div class="tab-icon">🧬</div>
                     <div class="tab-title-text">
-                        <span class="tab-sub">Template A</span>
+                        <span class="tab-sub">Génétique Moléculaire</span>
                         <span class="tab-main-title">Synthèse des Protéines</span>
                     </div>
                 </button>
@@ -1334,31 +1349,39 @@
                 <button class="lab-tab-btn tab-b" style="--btn-color: #a78bfa;" onclick="switchLabTab('lab-mendel', this)">
                     <div class="tab-icon">📊</div>
                     <div class="tab-title-text">
-                        <span class="tab-sub">Template B</span>
-                        <span class="tab-main-title">Lois Statistiques</span>
+                        <span class="tab-sub">Lois de Mendel</span>
+                        <span class="tab-main-title">Hérédité & Croisements</span>
                     </div>
                 </button>
 
                 <button class="lab-tab-btn tab-c" style="--btn-color: #f43f5e;" onclick="switchLabTab('lab-atp', this)">
                     <div class="tab-icon">⚡</div>
                     <div class="tab-title-text">
-                        <span class="tab-sub">Template C</span>
-                        <span class="tab-main-title">ATP & Contraction</span>
+                        <span class="tab-sub">Consommation de l'ATP</span>
+                        <span class="tab-main-title">Énergie & Muscles</span>
                     </div>
                 </button>
 
                 <button class="lab-tab-btn tab-d" style="--btn-color: #eab308;" onclick="switchLabTab('lab-geology', this)">
                     <div class="tab-icon">🌋</div>
                     <div class="tab-title-text">
-                        <span class="tab-sub">Template D</span>
-                        <span class="tab-main-title">Géologie & Pollution</span>
+                        <span class="tab-sub">Géodynamique Externe</span>
+                        <span class="tab-main-title">Géologie & Métamorphisme</span>
+                    </div>
+                </button>
+
+                <button class="lab-tab-btn tab-e" style="--btn-color: #0d9488;" onclick="switchLabTab('lab-water', this)">
+                    <div class="tab-icon">💧</div>
+                    <div class="tab-title-text">
+                        <span class="tab-sub">Écologie & Qualité</span>
+                        <span class="tab-main-title">Qualité de l'Eau & Pollution</span>
                     </div>
                 </button>
 
                 <button class="lab-tab-btn tab-game" style="--btn-color: #34d399;" onclick="switchLabTab('lab-arcade', this)">
                     <div class="tab-icon">🎮</div>
                     <div class="tab-title-text">
-                        <span class="tab-sub">Mode Arcade</span>
+                        <span class="tab-sub">Défi Mémorisation</span>
                         <span class="tab-main-title">Jeux Réflexes Bac</span>
                     </div>
                 </button>
@@ -1457,7 +1480,7 @@
                                 <h4 class="text-lg font-bold text-sky-400 flex items-center gap-2">
                                     🏆 LA PHRASE MODÈLE DU CORRECTEUR (BAC 20/20)
                                 </h4>
-                                <span class="badge-lab b-blue">Template A</span>
+                                <span class="badge-lab b-blue">Séquence d'ADN</span>
                             </div>
                             <p class="phrase-text" id="phrase-model-text">
                                 Sélectionnez une mutation ou cliquez sur un nucléotide pour générer automatiquement la phrase explicative parfaite conforme au barème officiel.
@@ -1676,61 +1699,74 @@
                     <div class="mendel-workspace">
                         
                         <!-- Left configuration panel -->
-                        <div class="setup-panel">
+                        <div class="setup-panel space-y-4">
                             <h3 class="text-lg font-bold text-white border-b border-slate-700 pb-2">🔩 Configuration</h3>
                             
-                            <div class="setup-group">
-                                <label>Mode de croisement</label>
-                                <select id="cross-mode" onchange="adjustCrossSettings()">
-                                    <option value="monohybrid">Monohybridisme (1 gène)</option>
-                                    <option value="dihybrid">Dihybridisme (2 gènes)</option>
-                                </select>
+                            <!-- Groupe 1: Paramètres Génétiques -->
+                            <div class="bg-slate-900/50 p-3 rounded-xl border border-slate-800/60 space-y-3">
+                                <div class="text-xs font-bold uppercase tracking-wider text-purple-400 flex items-center gap-1">
+                                    <span>⚙️</span> Lois de Transmission
+                                </div>
+                                
+                                <div class="setup-group">
+                                    <label>Mode de croisement</label>
+                                    <select id="cross-mode" onchange="adjustCrossSettings()">
+                                        <option value="monohybrid">Monohybridisme (1 gène)</option>
+                                        <option value="dihybrid">Dihybridisme (2 gènes)</option>
+                                    </select>
+                                </div>
+
+                                <div class="setup-group" id="relationship-mono-group">
+                                    <label>Relation d'allèles (Gène 1)</label>
+                                    <select id="allele-relation-mono" onchange="adjustCrossSettings()">
+                                        <option value="dom-abs">Dominance Absolue (A > a)</option>
+                                        <option value="codom">Codominance (A = B)</option>
+                                        <option value="letal">Gène Létal (Zygote AA non viable)</option>
+                                    </select>
+                                </div>
+
+                                <div class="setup-group" id="link-type-group" style="display: none;">
+                                    <label>Liaison chromosomique</label>
+                                    <select id="chromosome-link" onchange="adjustCrossingOverUI()">
+                                        <option value="independent">Gènes Indépendants (Chromosomes différents)</option>
+                                        <option value="linked-absolute">Liaison Absolue (Même chromosome, 0% CO)</option>
+                                        <option value="linked-partial">Liaison Partielle (Même chromosome, avec Crossing-Over)</option>
+                                    </select>
+                                </div>
+
+                                <div class="setup-group" id="co-distance-group" style="display: none;">
+                                    <label id="co-distance-label">Distance génétique : 15 cM</label>
+                                    <input type="range" id="co-distance" min="1" max="49" value="15" oninput="updateCODistanceText()" style="width:100%; accent-color: #8b5cf6;">
+                                </div>
+
+                                <div class="setup-group">
+                                    <label>Localisation</label>
+                                    <select id="gene-loc" onchange="adjustCrossSettings()">
+                                        <option value="autosomal">Autosomale (Chromosomes non-sexuels)</option>
+                                        <option value="gonosomal">Gonosomale (Lié au sexe, porté par X)</option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <div class="setup-group" id="relationship-mono-group">
-                                <label>Relation d'allèles (Gène 1)</label>
-                                <select id="allele-relation-mono" onchange="adjustCrossSettings()">
-                                    <option value="dom-abs">Dominance Absolue (A > a)</option>
-                                    <option value="codom">Codominance (A = B)</option>
-                                    <option value="letal">Gène Létal (Zygote AA non viable)</option>
-                                </select>
-                            </div>
+                            <!-- Groupe 2: Choix des Génotypes Parents -->
+                            <div class="bg-slate-900/50 p-3 rounded-xl border border-slate-800/60 space-y-3">
+                                <div class="text-xs font-bold uppercase tracking-wider text-purple-400 flex items-center gap-1">
+                                    <span>👫</span> Génotypes des Parents
+                                </div>
 
-                            <div class="setup-group" id="link-type-group" style="display: none;">
-                                <label>Liaison chromosomique</label>
-                                <select id="chromosome-link" onchange="adjustCrossingOverUI()">
-                                    <option value="independent">Gènes Indépendants (Chromosomes différents)</option>
-                                    <option value="linked-absolute">Liaison Absolue (Même chromosome, 0% CO)</option>
-                                    <option value="linked-partial">Liaison Partielle (Même chromosome, avec Crossing-Over)</option>
-                                </select>
-                            </div>
+                                <div class="setup-group">
+                                    <label>Génotype Mère (♀)</label>
+                                    <select id="mother-genotype">
+                                        <!-- Populated dynamically -->
+                                    </select>
+                                </div>
 
-                            <div class="setup-group" id="co-distance-group" style="display: none;">
-                                <label id="co-distance-label">Distance génétique : 15 cM</label>
-                                <input type="range" id="co-distance" min="1" max="49" value="15" oninput="updateCODistanceText()" style="width:100%; accent-color: #8b5cf6;">
-                            </div>
-
-                            <div class="setup-group">
-                                <label>Localisation</label>
-                                <select id="gene-loc" onchange="adjustCrossSettings()">
-                                    <option value="autosomal">Autosomale (Chromosomes non-sexuels)</option>
-                                    <option value="gonosomal">Gonosomale (Lié au sexe, porté par X)</option>
-                                </select>
-                            </div>
-
-                            <!-- Genotypes Selection -->
-                            <div class="setup-group">
-                                <label>Génotype Mère (♀)</label>
-                                <select id="mother-genotype">
-                                    <!-- Populated dynamically -->
-                                </select>
-                            </div>
-
-                            <div class="setup-group">
-                                <label>Génotype Père (♂)</label>
-                                <select id="father-genotype">
-                                    <!-- Populated dynamically -->
-                                </select>
+                                <div class="setup-group">
+                                    <label>Génotype Père (♂)</label>
+                                    <select id="father-genotype">
+                                        <!-- Populated dynamically -->
+                                    </select>
+                                </div>
                             </div>
 
                             <button class="btn-lab btn-lab-purple btn-block mt-md" onclick="runCrossSimulation()">
@@ -1990,7 +2026,7 @@
                                         <h4 class="text-lg font-bold text-rose-400 flex items-center gap-2">
                                             🏆 LA PHRASE MODÈLE DU CORRECTEUR (BAC 20/20)
                                         </h4>
-                                        <span class="badge-lab b-purple">Template C</span>
+                                        <span class="badge-lab b-purple">Bilan Énergétique</span>
                                     </div>
                                     <p class="phrase-text" id="atp-phrase-model-text" style="font-size: 0.9rem;">
                                         Configurez les paramètres cellulaires à gauche pour que le robot rédige la démonstration scientifique parfaite exigée au baccalauréat national marocain.
@@ -2088,29 +2124,29 @@
                     </div>
                 </section>
 
-                <!-- ================= TAB D: GEOLOGIE & POLLUTION ================= -->
+                <!-- ================= TAB D: GEOLOGIE & METAMORPHISME ================= -->
                 <section id="lab-geology" class="lab-tab-content">
                     <div>
-                        <h2 class="text-3xl font-bold mb-2 text-white">Labo 4 : Géologie & Qualité de l'Eau</h2>
-                        <p class="text-secondary text-sm">Explorez le métamorphisme tectonique et observez l'impact environnemental des activités humaines sur la qualité de l'eau des rivières.</p>
+                        <h2 class="text-3xl font-bold mb-2 text-white">Labo 4 : Géodynamique Interne & Métamorphisme</h2>
+                        <p class="text-secondary text-sm">Explorez les domaines thermodynamiques de pression-température, les minéraux indicateurs et la reconstitution géodynamique du métamorphisme.</p>
                     </div>
 
                     <!-- Mode Selector Toggle for Geology -->
-                    <div class="flex items-center justify-between bg-slate-800/25 backdrop-blur p-4 rounded-xl border border-slate-700/40 mb-6">
+                    <div class="flex items-center justify-between bg-slate-800/25 backdrop-blur p-4 rounded-xl border border-slate-700/40 mb-6 mt-4">
                         <div class="flex items-center gap-3">
                             <span class="text-2xl animate-bounce">🌋</span>
                             <div>
-                                <h4 class="font-bold text-white text-sm">Mode d'apprentissage (Unités 3 & 4)</h4>
-                                <p class="text-xs text-slate-400">Passez de la cartographie géologique/pollution au défi de rigueur d'évaluation SVT !</p>
+                                <h4 class="font-bold text-white text-sm">Mode d'apprentissage (Unité 4)</h4>
+                                <p class="text-xs text-slate-400">Passez du simulateur thermodynamique interactif au défi de rigueur d'évaluation SVT !</p>
                             </div>
                         </div>
                         <div class="flex bg-slate-950 p-1.5 rounded-xl border border-slate-800">
-                            <button id="geo-toggle-mode-demo" class="px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all bg-yellow-500 text-white shadow" onclick="switchGeologyMode('demo')">📺 Mode Démo (Auto)</button>
-                            <button id="geo-toggle-mode-challenge" class="px-4 py-1.5 text-xs font-extrabold rounded-lg transition-all text-slate-400 hover:text-white" onclick="switchGeologyMode('challenge')">🏆 Mode Défi (Actif)</button>
+                            <button id="geo-toggle-mode-demo" class="px-5 py-1.5 text-xs font-extrabold rounded-lg transition-all bg-yellow-500 text-white shadow" onclick="switchGeologyMode('demo')">📺 Mode Démo (Auto)</button>
+                            <button id="geo-toggle-mode-challenge" class="px-5 py-1.5 text-xs font-extrabold rounded-lg transition-all text-slate-400 hover:text-white" onclick="switchGeologyMode('challenge')">🏆 Mode Défi (Actif)</button>
                         </div>
                     </div>
 
-                    <!-- DEMO WORKSPACE (Geology & Water quality Simulation) -->
+                    <!-- DEMO WORKSPACE (Geology Metamorphism) -->
                     <div id="geology-demo-workspace" class="space-y-6">
                         <div class="geo-grid">
                             
@@ -2152,12 +2188,18 @@
                                             Contact (BP / HT)
                                         </div>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <!-- Metamorphic Information Panel -->
+                            <!-- Right: Reconstitution & Phrase Modèle -->
+                            <div class="space-y-6">
+                                <!-- Metamorphic Information Panel -->
+                                <div class="dashboard-box space-y-4">
+                                    <h3 class="text-lg font-bold text-yellow-400 flex items-center gap-2">🔍 D2 : Faciès & Minéraux Indicateurs</h3>
                                     <div class="p-4 bg-slate-950/50 rounded-xl border border-slate-800 space-y-3" id="geology-info-card">
                                         <div class="flex justify-between items-center border-b border-slate-800 pb-1.5">
-                                            <span class="text-sm font-bold text-white">Domaine de Subduction</span>
-                                            <span class="badge-lab b-blue">Faciès Schiste bleu / Éclogite</span>
+                                            <span class="text-sm font-bold text-white" id="geo-info-title">Domaine de Subduction</span>
+                                            <span class="badge-lab b-blue" id="geo-facies-badge">Faciès Schiste bleu / Éclogite</span>
                                         </div>
                                         
                                         <div class="grid grid-2 gap-4 text-xs">
@@ -2177,99 +2219,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- Right: Water quality & Eutrophication -->
-                            <div class="space-y-6">
-                                <div class="dashboard-box space-y-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="text-lg font-bold text-teal-400">💧 D2 : Qualité de l'Eau & Écosystème Aquatique</h3>
-                                        <div class="flex items-center gap-2">
-                                            <label class="text-xs font-bold text-slate-400">Eutrophisation active :</label>
-                                            <input type="checkbox" id="eutroph-trigger" onchange="runPollutionSimulation()" style="width: 16px; height: 16px; accent-color: #eab308; cursor: pointer;">
-                                        </div>
-                                    </div>
-
-                                    <p class="text-xs text-slate-400">Faites glisser le curseur pour simuler un déversement organique dans la rivière (amont, point de rejet, en aval, ou zone d'auto-épuration).</p>
-                                    
-                                    <!-- Pollution location slider -->
-                                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-850 space-y-2">
-                                        <div class="flex justify-between text-[10px] font-extrabold uppercase text-slate-500">
-                                            <span>1. Amont (Sain)</span>
-                                            <span>2. Rejet</span>
-                                            <span>3. Aval 1 (Critique)</span>
-                                            <span>4. Aval 2</span>
-                                            <span>5. Épuré</span>
-                                        </div>
-                                        <input type="range" id="pollution-slider" min="1" max="5" value="1" step="1" oninput="runPollutionSimulation()" class="w-full accent-emerald-400 cursor-pointer">
-                                        <div class="text-center font-black text-xs text-emerald-400 mt-1" id="pollution-slider-desc">
-                                            Emplacement : Station 1 — Rivière saine de montagne
-                                        </div>
-                                    </div>
-
-                                    <!-- Standard Pollution indicators Curves (simulated as bars) -->
-                                    <div class="space-y-3" id="standard-indicators-panel">
-                                        <div class="pollution-meter">
-                                            <div class="pollution-indicator">
-                                                <span class="text-xs font-bold text-slate-300">DBO5 (Demande Biochimique en Oxygène - 5j)</span>
-                                                <strong class="text-xs text-emerald-400" id="val-dbo5">1.5 mg/L (Eau saine)</strong>
-                                            </div>
-                                            <div class="pollution-bar-track">
-                                                <div class="pollution-bar-fill" id="bar-dbo5" style="width: 10%; background: #ef4444;"></div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="pollution-meter">
-                                            <div class="pollution-indicator">
-                                                <span class="text-xs font-bold text-slate-300">DCO (Demande Chimique en Oxygène - Matière Totale)</span>
-                                                <strong class="text-xs text-emerald-400" id="val-dco">12 mg/L (Eau saine)</strong>
-                                            </div>
-                                            <div class="pollution-bar-track">
-                                                <div class="pollution-bar-fill" id="bar-dco" style="width: 15%; background: #f97316;"></div>
-                                            </div>
-                                        </div>
-
-                                        <div class="pollution-meter">
-                                            <div class="pollution-indicator">
-                                                <span class="text-xs font-bold text-slate-300">Oxygène Dissous ([O₂])</span>
-                                                <strong class="text-xs text-cyan-400" id="val-o2">9.5 mg/L (Abondant)</strong>
-                                            </div>
-                                            <div class="pollution-bar-track">
-                                                <div class="pollution-bar-fill" id="bar-o2" style="width: 95%; background: #06b6d4;"></div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Biological Bioindicators -->
-                                        <div class="p-3 bg-slate-950/40 rounded-lg border border-slate-800 text-xs flex justify-between items-center">
-                                            <span class="text-slate-500 font-bold uppercase">Espèces bio-indicatrices présentes :</span>
-                                            <strong class="text-emerald-400" id="geo-biodiversity">Poissons nobles (Truite), Larves d'Éphémères</strong>
-                                        </div>
-                                    </div>
-
-                                    <!-- Eutrophication step cards timeline (shows only when eutroph checkbox is checked) -->
-                                    <div class="eutroph-timeline hidden" id="eutroph-timeline-panel">
-                                        <div class="eutroph-step active" id="eut-step-1">
-                                            <strong class="text-xs text-white block">Étape 1 : Enrichissement excessif</strong>
-                                            <p class="text-[11px] text-slate-400">Rejet massif de Nitrates et Phosphates (engrais/lessives) stimulant la croissance végétale.</p>
-                                        </div>
-                                        <div class="eutroph-step" id="eut-step-2">
-                                            <strong class="text-xs text-white block">Étape 2 : Bloom algal (Prolifération)</strong>
-                                            <p class="text-[11px] text-slate-400">Développement exponentiel d'algues vertes de surface, bloquant l'accès de la lumière en profondeur.</p>
-                                        </div>
-                                        <div class="eutroph-step" id="eut-step-3">
-                                            <strong class="text-xs text-white block">Étape 3 : Décomposition & Multiplication bactérienne</strong>
-                                            <p class="text-[11px] text-slate-400">Mort des algues de fond. Des bactéries aérobies se multiplient pour les décomposer.</p>
-                                        </div>
-                                        <div class="eutroph-step" id="eut-step-4">
-                                            <strong class="text-xs text-white block">Étape 4 : Anoxie totale (Hypoxie critique)</strong>
-                                            <p class="text-[11px] text-slate-400">Consommation intensive de l'O₂ dissous par les bactéries aérobies. L'oxygène chute à 0 mg/L.</p>
-                                        </div>
-                                        <div class="eutroph-step" id="eut-step-5">
-                                            <strong class="text-xs text-white block">Étape 5 : Asphyxie de la biodiversité</strong>
-                                            <p class="text-[11px] text-slate-400">Mort généralisée de la faune aquatique par étouffement. Putréfaction et dégagement de gaz fétides.</p>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <!-- Expected Examen Phrase Output for Geology -->
                                 <div class="phrase-output-card card-glow-purple" id="geo-phrase-card" style="border-color: rgba(234, 179, 8, 0.3); box-shadow: 0 0 15px rgba(234, 179, 8, 0.1);">
@@ -2277,10 +2226,10 @@
                                         <h4 class="text-lg font-bold text-yellow-400 flex items-center gap-2">
                                             🏆 LA PHRASE MODÈLE DU CORRECTEUR (BAC 20/20)
                                         </h4>
-                                        <span class="badge-lab b-green">Template D</span>
+                                        <span class="badge-lab b-green">Raisonnement Scientifique</span>
                                     </div>
                                     <p class="phrase-text" id="geo-phrase-model-text" style="font-size: 0.9rem;">
-                                        Cliquez sur un domaine métamorphique ou changez le curseur de pollution pour formuler automatiquement la phrase modèle d'évaluation de la rigueur SVT.
+                                        Cliquez sur un domaine métamorphique pour formuler automatiquement la phrase modèle d'évaluation de la rigueur SVT.
                                     </p>
                                 </div>
                             </div>
@@ -2372,6 +2321,136 @@
                             </div>
                         </div>
 
+                    </div>
+                </section>
+
+                <!-- ================= TAB E: QUALITE DE L'EAU ================= -->
+                <section id="lab-water" class="lab-tab-content">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-2 text-white">Labo 5 : Écologie & Qualité de l'Eau</h2>
+                        <p class="text-secondary text-sm">Étudiez l'impact environnemental des rejets de matière organique sur l'oxygène dissous et découvrez la dynamique de l'eutrophisation des lacs.</p>
+                    </div>
+
+                    <!-- DEMO WORKSPACE (Water quality & Eutrophication Simulation) -->
+                    <div id="water-demo-workspace" class="space-y-6 mt-6">
+                        <div class="geo-grid">
+                            
+                            <!-- Left: Water quality sliders & standard indicators -->
+                            <div class="space-y-6">
+                                <div class="dashboard-box space-y-4">
+                                    <div class="flex justify-between items-start">
+                                        <h3 class="text-lg font-bold text-teal-400 flex items-center gap-2">💧 D1 : Rejets Organiques & Indicateurs Physico-chimiques</h3>
+                                        <div class="flex items-center gap-2 bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800">
+                                            <label class="text-xs font-bold text-slate-400 cursor-pointer" for="eutroph-trigger">Eutrophisation active :</label>
+                                            <input type="checkbox" id="eutroph-trigger" onchange="runPollutionSimulation()" style="width: 16px; height: 16px; accent-color: #0d9488; cursor: pointer;">
+                                        </div>
+                                    </div>
+
+                                    <p class="text-xs text-slate-400">Faites glisser le curseur pour simuler un déversement organique dans la rivière (amont, point de rejet, en aval, ou zone d'auto-épuration).</p>
+                                    
+                                    <!-- Pollution location slider -->
+                                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-850 space-y-2">
+                                        <div class="flex justify-between text-[10px] font-extrabold uppercase text-slate-500">
+                                            <span>1. Amont (Sain)</span>
+                                            <span>2. Rejet</span>
+                                            <span>3. Aval 1 (Critique)</span>
+                                            <span>4. Aval 2</span>
+                                            <span>5. Épuré</span>
+                                        </div>
+                                        <input type="range" id="pollution-slider" min="1" max="5" value="1" step="1" oninput="runPollutionSimulation()" class="w-full accent-emerald-400 cursor-pointer">
+                                        <div class="text-center font-black text-xs text-emerald-400 mt-1" id="pollution-slider-desc">
+                                            Emplacement : Station 1 — Rivière saine de montagne
+                                        </div>
+                                    </div>
+
+                                    <!-- Standard Pollution indicators Curves (simulated as bars) -->
+                                    <div class="space-y-3" id="standard-indicators-panel">
+                                        <div class="pollution-meter">
+                                            <div class="pollution-indicator">
+                                                <span class="text-xs font-bold text-slate-300">DBO5 (Demande Biochimique en Oxygène - 5j)</span>
+                                                <strong class="text-xs text-emerald-400" id="val-dbo5">1.5 mg/L (Eau saine)</strong>
+                                            </div>
+                                            <div class="pollution-bar-track">
+                                                <div class="pollution-bar-fill" id="bar-dbo5" style="width: 10%; background: #ef4444;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="pollution-meter">
+                                            <div class="pollution-indicator">
+                                                <span class="text-xs font-bold text-slate-300">DCO (Demande Chimique en Oxygène - Matière Totale)</span>
+                                                <strong class="text-xs text-emerald-400" id="val-dco">12 mg/L (Eau saine)</strong>
+                                            </div>
+                                            <div class="pollution-bar-track">
+                                                <div class="pollution-bar-fill" id="bar-dco" style="width: 15%; background: #f97316;"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pollution-meter">
+                                            <div class="pollution-indicator">
+                                                <span class="text-xs font-bold text-slate-300">Oxygène Dissous ([O₂])</span>
+                                                <strong class="text-xs text-cyan-400" id="val-o2">9.5 mg/L (Abondant)</strong>
+                                            </div>
+                                            <div class="pollution-bar-track">
+                                                <div class="pollution-bar-fill" id="bar-o2" style="width: 95%; background: #06b6d4;"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Biological Bioindicators -->
+                                        <div class="p-3 bg-slate-950/40 rounded-lg border border-slate-800 text-xs flex justify-between items-center">
+                                            <span class="text-slate-500 font-bold uppercase">Espèces bio-indicatrices présentes :</span>
+                                            <strong class="text-emerald-400" id="geo-biodiversity">Poissons nobles (Truite), Larves d'Éphémères</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Eutrophication timeline & model phrases -->
+                            <div class="space-y-6">
+                                <div class="dashboard-box space-y-4">
+                                    <h3 class="text-lg font-bold text-teal-400 flex items-center gap-2">🔄 D2 : Chaîne Trophique & Eutrophisation</h3>
+                                    
+                                    <!-- Eutrophication step cards timeline (shows only when eutroph checkbox is checked) -->
+                                    <div class="eutroph-timeline hidden" id="eutroph-timeline-panel">
+                                        <div class="eutroph-step active" id="eut-step-1">
+                                            <strong class="text-xs text-white block">Étape 1 : Enrichissement excessif</strong>
+                                            <p class="text-[11px] text-slate-400">Rejet massif de Nitrates et Phosphates (engrais/lessives) stimulant la croissance végétale.</p>
+                                        </div>
+                                        <div class="eutroph-step" id="eut-step-2">
+                                            <strong class="text-xs text-white block">Étape 2 : Bloom algal (Prolifération)</strong>
+                                            <p class="text-[11px] text-slate-400">Développement exponentiel d'algues vertes de surface, bloquant l'accès de la lumière en profondeur.</p>
+                                        </div>
+                                        <div class="eutroph-step" id="eut-step-3">
+                                            <strong class="text-xs text-white block">Étape 3 : Décomposition & Multiplication bactérienne</strong>
+                                            <p class="text-[11px] text-slate-400">Mort des algues de fond. Des bactéries aérobies se multiplient pour les décomposer.</p>
+                                        </div>
+                                        <div class="eutroph-step" id="eut-step-4">
+                                            <strong class="text-xs text-white block">Étape 4 : Anoxie totale (Hypoxie critique)</strong>
+                                            <p class="text-[11px] text-slate-400">Consommation intensive de l'O₂ dissous par les bactéries aérobies. L'oxygène chute à 0 mg/L.</p>
+                                        </div>
+                                        <div class="eutroph-step" id="eut-step-5">
+                                            <strong class="text-xs text-white block">Étape 5 : Asphyxie de la biodiversité</strong>
+                                            <p class="text-[11px] text-slate-400">Mort généralisée de la faune aquatique par étouffement. Putréfaction et dégagement de gaz fétides.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="text-[11px] text-slate-500 italic mt-2 text-center" id="water-help-tip">ℹ️ Cochez "Eutrophisation active" pour visualiser les étapes de pollution d'un lac fermé.</p>
+                                </div>
+
+                                <!-- Expected Examen Phrase Output for Water Quality -->
+                                <div class="phrase-output-card card-glow-purple" id="water-phrase-card" style="border-color: rgba(13, 148, 136, 0.3); box-shadow: 0 0 15px rgba(13, 148, 136, 0.1);">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h4 class="text-lg font-bold text-teal-400 flex items-center gap-2">
+                                            🏆 LA PHRASE MODÈLE DU CORRECTEUR (BAC 20/20)
+                                        </h4>
+                                        <span class="badge-lab b-green">Qualité Environnementale</span>
+                                    </div>
+                                    <p class="phrase-text" id="water-phrase-model-text" style="font-size: 0.9rem;">
+                                        Faites glisser le curseur de pollution pour formuler automatiquement la phrase modèle d'évaluation de la qualité de l'eau.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </section>
 
@@ -2485,6 +2564,7 @@
                 setSarcomereStep(1);
             } else if (tabId === 'lab-geology') {
                 selectMetamorphicZone('subduction');
+            } else if (tabId === 'lab-water') {
                 runPollutionSimulation();
             }
         }
@@ -4112,12 +4192,16 @@
             }
 
             stage.innerHTML = `
-                <div class="blitz-header">
-                    <div class="game-timer" id="bl-timer">⏱️ ${blitzTimeLeft}s</div>
-                    <h3 class="text-xl font-bold text-sky-400">Le Blitz des Proportions 4×4</h3>
-                    <div class="game-score">Score : ${gameScoreVal}</div>
+                <div class="blitz-header flex items-center justify-between" style="flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+                    <div class="flex items-center gap-4">
+                        <div class="game-timer" id="bl-timer" style="margin:0;">⏱️ ${blitzTimeLeft}s</div>
+                        <h3 class="text-xl font-bold text-sky-400">Le Blitz des Proportions 4×4</h3>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="game-score" style="margin:0; font-weight:800; background:rgba(255,255,255,0.05); padding: 0.25rem 0.75rem; border-radius: 9999px;">Score : ${gameScoreVal}</div>
+                        <button class="btn-lab btn-lab-outline" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;" onclick="closeGameStage()">Quitter</button>
+                    </div>
                 </div>
-
                 <div class="blitz-question-box">
                     Q${currentBlitzIndex + 1}: ${q.text}
                 </div>
@@ -4850,7 +4934,7 @@
             const sliderDesc = document.getElementById('pollution-slider-desc');
             const standardPanel = document.getElementById('standard-indicators-panel');
             const eutrophPanel = document.getElementById('eutroph-timeline-panel');
-            const phraseBox = document.getElementById('geo-phrase-model-text');
+            const phraseBox = document.getElementById('water-phrase-model-text');
 
             if (eutrophActive) {
                 // Show eutrophication timeline, hide standard indicators
