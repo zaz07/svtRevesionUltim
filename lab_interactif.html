@@ -1311,6 +1311,205 @@
             background: #eab308;
             box-shadow: 0 0 10px #eab308;
         }
+
+        /* Tectonic Profile Canvas */
+        .tectonic-profile-box {
+            position: relative;
+            background: linear-gradient(135deg, #090d16 0%, #0c101d 100%);
+            border: 1.5px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            height: 195px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* River Map Interactive Layout */
+        .river-map-wrapper {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            width: 100%;
+        }
+        .river-station-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1.5px solid rgba(255, 255, 255, 0.05);
+            border-radius: 0.75rem;
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .river-station-card:hover {
+            transform: translateY(-2px);
+            background: rgba(30, 41, 59, 0.5);
+            border-color: rgba(13, 148, 136, 0.3);
+        }
+        .river-station-card.active {
+            background: rgba(13, 148, 136, 0.1);
+            border-color: #0d9488;
+            box-shadow: 0 0 15px rgba(13, 148, 136, 0.2);
+        }
+        .river-station-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.35rem;
+            transition: transform 0.3s;
+        }
+        .river-station-card:hover .river-station-icon {
+            transform: scale(1.12) rotate(3deg);
+        }
+
+        /* Codon Wheel Interactive Styles */
+        .codon-wheel-sector {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            stroke: #090d16;
+            stroke-width: 0.5px;
+            cursor: pointer;
+        }
+        .codon-wheel-sector:hover {
+            opacity: 0.95;
+            filter: brightness(1.25) drop-shadow(0 0 3px rgba(255,255,255,0.15));
+        }
+        .codon-wheel-sector.active {
+            opacity: 1;
+            stroke: #ffffff !important;
+            stroke-width: 1.5px !important;
+            filter: brightness(1.4) drop-shadow(0 0 6px currentColor);
+        }
+        .codon-wheel-sector.dimmed {
+            opacity: 0.12;
+            pointer-events: none;
+        }
+        .codon-wheel-text {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 900;
+            user-select: none;
+            pointer-events: none;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            transition: opacity 0.25s;
+        }
+        .codon-wheel-text.dimmed {
+            opacity: 0.15;
+        }
+
+        #codon-wheel-modal {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            z-index: 9999 !important;
+            display: none;
+            background-color: rgba(9, 13, 22, 0.9) !important;
+            backdrop-filter: blur(12px) !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Phase 4: Mendel's Interactive Punnett Square Styles */
+        .punnett-container {
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+            align-items: stretch;
+            min-height: 250px;
+            margin-bottom: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .punnett-container {
+                flex-direction: column;
+            }
+        }
+        .punnett-table-wrapper {
+            flex: 1.25;
+            overflow-x: auto;
+            background: rgba(15, 23, 42, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #punnett-detail-panel {
+            flex: 0.75;
+            background: rgba(9, 13, 22, 0.75);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 16px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(139, 92, 246, 0.04), 0 4px 20px rgba(0,0,0,0.4);
+            min-height: 320px;
+        }
+        .punnett-cell {
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .punnett-cell:not(.header-cell):not(.cell-corner):hover {
+            background: rgba(139, 92, 246, 0.16) !important;
+            border-color: rgba(139, 92, 246, 0.6) !important;
+            transform: scale(1.02);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+        }
+        .punnett-cell.header-cell {
+            transition: all 0.22s ease;
+        }
+        .punnett-cell.header-cell.highlight-header {
+            background: rgba(139, 92, 246, 0.35) !important;
+            border-color: #c084fc !important;
+            color: #ffffff !important;
+            text-shadow: 0 0 5px rgba(255,255,255,0.4);
+            box-shadow: 0 0 8px rgba(139, 92, 246, 0.35);
+        }
+
+        /* Karyotype Chromosome SVG Styles */
+        .chromosome-rod {
+            stroke-linecap: round;
+            stroke-width: 9px;
+            filter: drop-shadow(0 0 4px rgba(255,255,255,0.08));
+        }
+        .chromosome-centromere {
+            fill: #ffffff;
+            stroke: #090d16;
+            stroke-width: 1.5px;
+        }
+        .chromosome-locus-line {
+            stroke: rgba(255, 255, 255, 0.5);
+            stroke-width: 1px;
+            stroke-dasharray: 2,2;
+        }
+        .chromosome-allele-circle {
+            stroke-width: 1.5px;
+            stroke: #090d16;
+        }
+        .chromosome-allele-tag {
+            font-size: 8px;
+            font-weight: 900;
+            fill: #ffffff;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        @keyframes fertilizePulse {
+            0% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.03); filter: brightness(1.2); }
+            100% { transform: scale(1); filter: brightness(1); }
+        }
+        .animate-fertilize-pulse {
+            animation: fertilizePulse 2.5s infinite ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -1437,6 +1636,7 @@
                             <div class="shelf-group">
                                 <button class="btn-lab btn-lab-outline" onclick="resetGeneSimulation()">Réinitialiser</button>
                                 <button class="btn-lab btn-lab-blue" id="btn-animate-trans" onclick="startExpressionAnimation()">Lancer Simulation</button>
+                                <button class="btn-lab font-extrabold text-xs transition-all hover:scale-[1.02]" style="border-color: #eab308; color: #eab308; background: rgba(234,179,8,0.06);" onclick="openCodonWheelModal()">📖 Roue des Codons</button>
                             </div>
                         </div>
 
@@ -1789,9 +1989,19 @@
                             <div>
                                 <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">2. Échiquier de croisement parfait</h4>
                                 <div class="punnett-container">
-                                    <div id="punnett-output-stage" style="min-height: 200px; display: flex; align-items: center; justify-content: center;">
-                                        <div class="text-slate-500 font-medium text-center">
-                                            L'échiquier de croisement s'affichera ici avec toutes les proportions théoriques et notations rigoureuses.
+                                    <div class="punnett-table-wrapper">
+                                        <div id="punnett-output-stage" class="w-full flex items-center justify-center">
+                                            <div class="text-slate-500 font-medium text-center py-8">
+                                                L'échiquier de croisement s'affichera ici avec toutes les proportions théoriques et notations rigoureuses.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="punnett-detail-panel">
+                                        <!-- Initial Welcome state inside detail panel -->
+                                        <div class="text-center py-10 text-slate-500 space-y-3 flex-1 flex flex-col justify-center items-center">
+                                            <span class="text-3xl animate-pulse">🔬</span>
+                                            <p class="text-xs font-black text-violet-400 uppercase tracking-widest">Loupe de Fécondation</p>
+                                            <p class="text-[10px] text-slate-400 max-w-[190px] leading-relaxed mx-auto">Cliquez sur n'importe quelle cellule de l'échiquier obtenu pour zoomer sur la fécondation et dessiner le caryotype du zygote.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -2189,6 +2399,15 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="dashboard-box space-y-3">
+                                    <h4 class="text-sm font-extrabold text-yellow-400 uppercase tracking-wider flex items-center gap-1.5">
+                                        🗺️ D1.2 : Contexte Géodynamique Réel (Coupe de l'Écorce)
+                                    </h4>
+                                    <div id="tectonic-profile-canvas" class="tectonic-profile-box">
+                                        <!-- Will be dynamically injected by selectMetamorphicZone() -->
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- Right: Reconstitution & Phrase Modèle -->
@@ -2349,15 +2568,41 @@
                                     <p class="text-xs text-slate-400">Faites glisser le curseur pour simuler un déversement organique dans la rivière (amont, point de rejet, en aval, ou zone d'auto-épuration).</p>
                                     
                                     <!-- Pollution location slider -->
-                                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-850 space-y-2">
-                                        <div class="flex justify-between text-[10px] font-extrabold uppercase text-slate-500">
-                                            <span>1. Amont (Sain)</span>
-                                            <span>2. Rejet</span>
-                                            <span>3. Aval 1 (Critique)</span>
-                                            <span>4. Aval 2</span>
-                                            <span>5. Épuré</span>
+                                    <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-850 space-y-4">
+                                        <!-- Interactive Isometric River Map -->
+                                        <div class="river-map-wrapper">
+                                            <div class="river-station-card active" id="river-card-1" onclick="setRiverStation(1)">
+                                                <div class="river-station-icon">🏔️</div>
+                                                <div class="text-[10px] font-extrabold uppercase text-slate-400">Station 1</div>
+                                                <div class="text-[9px] text-teal-400 font-bold">Amont (Sain)</div>
+                                            </div>
+                                            <div class="river-station-card" id="river-card-2" onclick="setRiverStation(2)">
+                                                <div class="river-station-icon">🚜</div>
+                                                <div class="text-[10px] font-extrabold uppercase text-slate-400">Station 2</div>
+                                                <div class="text-[9px] text-teal-400 font-bold">Rejet Org</div>
+                                            </div>
+                                            <div class="river-station-card" id="river-card-3" onclick="setRiverStation(3)">
+                                                <div class="river-station-icon">☠️</div>
+                                                <div class="text-[10px] font-extrabold uppercase text-slate-400">Station 3</div>
+                                                <div class="text-[9px] text-teal-400 font-bold">Aval Crit</div>
+                                            </div>
+                                            <div class="river-station-card" id="river-card-4" onclick="setRiverStation(4)">
+                                                <div class="river-station-icon">🌿</div>
+                                                <div class="text-[10px] font-extrabold uppercase text-slate-400">Station 4</div>
+                                                <div class="text-[9px] text-teal-400 font-bold">Aval Moy</div>
+                                            </div>
+                                            <div class="river-station-card" id="river-card-5" onclick="setRiverStation(5)">
+                                                <div class="river-station-icon">💧</div>
+                                                <div class="text-[10px] font-extrabold uppercase text-slate-400">Station 5</div>
+                                                <div class="text-[9px] text-teal-400 font-bold">Zone Épurée</div>
+                                            </div>
                                         </div>
-                                        <input type="range" id="pollution-slider" min="1" max="5" value="1" step="1" oninput="runPollutionSimulation()" class="w-full accent-emerald-400 cursor-pointer">
+
+                                        <!-- Hidden backing input element for backwards compatibility -->
+                                        <div style="display: none;">
+                                            <input type="range" id="pollution-slider" min="1" max="5" value="1" step="1" oninput="runPollutionSimulation()">
+                                        </div>
+                                        
                                         <div class="text-center font-black text-xs text-emerald-400 mt-1" id="pollution-slider-desc">
                                             Emplacement : Station 1 — Rivière saine de montagne
                                         </div>
@@ -3877,9 +4122,9 @@
             `;
             r1.appendChild(corner);
 
-            fatherGametes.forEach(fg => {
+            fatherGametes.forEach((fg, colIdx) => {
                 const hCell = document.createElement('td');
-                hCell.className = "punnett-cell header-cell p-male";
+                hCell.className = `punnett-cell header-cell p-male col-header-${colIdx}`;
                 hCell.innerHTML = `
                     <div class="p-genotype" style="color:#38bdf8;">${formatDisplayAlleles(fg.display)}</div>
                     <div class="p-freq">${Math.round(fg.freq * 100)}%</div>
@@ -3889,12 +4134,12 @@
             table.appendChild(r1);
 
             // Subsequent rows: Female Gamete + Descendants
-            motherGametes.forEach(mg => {
+            motherGametes.forEach((mg, rowIdx) => {
                 const row = document.createElement('tr');
                 
                 // Header cell
                 const hCell = document.createElement('td');
-                hCell.className = "punnett-cell header-cell p-female";
+                hCell.className = `punnett-cell header-cell p-female row-header-${rowIdx}`;
                 hCell.innerHTML = `
                     <div class="p-genotype" style="color:#e879f9;">${formatDisplayAlleles(mg.display)}</div>
                     <div class="p-freq">${Math.round(mg.freq * 100)}%</div>
@@ -3902,7 +4147,7 @@
                 row.appendChild(hCell);
 
                 // Children cells
-                fatherGametes.forEach(fg => {
+                fatherGametes.forEach((fg, colIdx) => {
                     const cCell = document.createElement('td');
                     cCell.className = "punnett-cell";
                     
@@ -3923,7 +4168,21 @@
                         `;
                     }
 
-                    cCell.onclick = () => showPunnettCellDetail(childData, mg.freq * fg.freq);
+                    // Hover crosshair listeners
+                    cCell.onmouseover = () => {
+                        const rH = table.querySelector(`.row-header-${rowIdx}`);
+                        const cH = table.querySelector(`.col-header-${colIdx}`);
+                        if (rH) rH.classList.add('highlight-header');
+                        if (cH) cH.classList.add('highlight-header');
+                    };
+                    cCell.onmouseout = () => {
+                        const rH = table.querySelector(`.row-header-${rowIdx}`);
+                        const cH = table.querySelector(`.col-header-${colIdx}`);
+                        if (rH) rH.classList.remove('highlight-header');
+                        if (cH) cH.classList.remove('highlight-header');
+                    };
+
+                    cCell.onclick = () => showPunnettCellDetail(childData, mg.freq * fg.freq, mg, fg, crossMode, loc);
                     row.appendChild(cCell);
                 });
 
@@ -3931,6 +4190,12 @@
             });
 
             container.appendChild(table);
+
+            // Auto-select first cell to trigger details visualizer
+            const firstCell = table.querySelector('.punnett-cell:not(.header-cell):not(.cell-corner)');
+            if (firstCell) {
+                firstCell.click();
+            }
         }
 
         function calculateZygote(mgAll, fgAll, crossMode, loc) {
@@ -4057,8 +4322,242 @@
             return { genotype, phenotype, isLethal };
         }
 
-        function showPunnettCellDetail(childData, prob) {
-            alert(`🔍 Zoom Descendance:\n\nGénotype : ${childData.genotype.replace(/<[^>]*>/g, ' ')}\nPhénotype : ${childData.phenotype}\nProbabilité théorique : ${Math.round(prob * 100)}%\nViabilité : ${childData.isLethal ? 'MORTEL (gène létal)' : 'VIABLE'}`);
+        function showPunnettCellDetail(childData, prob, mg, fg, crossMode, loc) {
+            const panel = document.getElementById('punnett-detail-panel');
+            if (!panel) return;
+
+            const svgHTML = buildChromosomeSVG(mg.alleles, fg.alleles, crossMode, loc);
+            
+            let lethalWarningHTML = "";
+            if (childData.isLethal) {
+                lethalWarningHTML = `
+                    <div class="mt-2 bg-red-950/40 border border-red-500/30 rounded-lg p-2 flex items-start gap-1.5">
+                        <span class="text-red-400 text-xs">💀</span>
+                        <div>
+                            <span class="text-[9px] font-extrabold text-red-400 uppercase block">Arrêt de développement</span>
+                            <span class="text-[8px] text-red-300 block leading-tight">Zygote homozygote dominant non viable (dose létale double). Lyse cellulaire.</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            panel.innerHTML = `
+                <div class="space-y-3 flex-1 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                            <h4 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5">
+                                <span>🔬</span> Loupe de Fécondation
+                            </h4>
+                            <span class="px-2 py-0.5 text-[8px] font-extrabold rounded bg-violet-500/10 border border-violet-500/30 text-violet-400">2n = Diploïde</span>
+                        </div>
+
+                        <!-- Gametes matchup vector -->
+                        <div class="grid grid-cols-3 gap-1 items-center text-center bg-slate-950/60 border border-slate-800/80 p-1.5 rounded-xl">
+                            <div>
+                                <span class="text-[8px] font-extrabold text-slate-500 block uppercase">Gamète ♀</span>
+                                <span class="text-xs font-black text-pink-400">${formatDisplayAlleles(mg.display)}</span>
+                                <span class="text-[8px] text-slate-500 block">${Math.round(mg.freq * 100)}%</span>
+                            </div>
+                            <div class="text-slate-600 font-extrabold text-[9px] animate-pulse">⚡ Fusion ⚡</div>
+                            <div>
+                                <span class="text-[8px] font-extrabold text-slate-500 block uppercase">Gamète ♂</span>
+                                <span class="text-xs font-black text-sky-400">${formatDisplayAlleles(fg.display)}</span>
+                                <span class="text-[8px] text-slate-500 block">${Math.round(fg.freq * 100)}%</span>
+                            </div>
+                        </div>
+
+                        <!-- Chromosomal visualizer canvas (SVG) -->
+                        <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-2 flex flex-col items-center justify-center relative min-h-[135px]">
+                            <div class="absolute top-1.5 left-2 text-[8px] font-bold text-slate-500 uppercase tracking-widest">Caryotype Réduit du Zygote</div>
+                            ${svgHTML}
+                        </div>
+                    </div>
+
+                    <!-- Resulting zygote details card -->
+                    <div class="bg-violet-950/15 border border-violet-900/25 rounded-xl p-2.5 space-y-1">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-slate-300">Génotype obtenu :</span>
+                            <span class="text-[10px] font-extrabold text-white bg-slate-950 px-2 py-0.5 rounded border border-slate-800/80">${childData.genotype.replace(/<[^>]*>/g, ' ')}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-slate-300">Phénotype :</span>
+                            <span class="text-[10px] font-black text-violet-400">${childData.phenotype}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-slate-300">Fréquence globale :</span>
+                            <span class="text-[10px] font-extrabold text-yellow-500">${Math.round(prob * 100)}% (${formatFraction(prob)})</span>
+                        </div>
+                        ${lethalWarningHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        function formatFraction(prob) {
+            const p = Math.round(prob * 100);
+            if (p === 100) return "1/1";
+            if (p === 75) return "3/4";
+            if (p === 50) return "1/2";
+            if (p === 25) return "1/4";
+            if (p === 12.5 || p === 13) return "1/8";
+            if (p === 6.25 || p === 6) return "1/16";
+            if (p === 18.75 || p === 19) return "3/16";
+            if (p === 56.25 || p === 56) return "9/16";
+            if (p === 37.5 || p === 38) return "6/16";
+            if (p === 66.67 || p === 67) return "2/3";
+            if (p === 33.33 || p === 33) return "1/3";
+            return `${p}/100`;
+        }
+
+        function buildChromosomeSVG(mgAll, fgAll, crossMode, loc) {
+            // Colors: Maternal (pink/purple), Paternal (blue/sky)
+            const mColor = "#f472b6"; // Pink
+            const fColor = "#38bdf8"; // Sky
+
+            let svg = `<svg viewBox="0 0 240 130" class="w-full max-h-[120px] animate-fertilize-pulse">`;
+
+            if (crossMode === 'monohybrid') {
+                if (loc === 'gonosomal') {
+                    // X vs X, or X vs Y
+                    const mAllele = mgAll.includes('_') ? mgAll.split('_')[1] : mgAll;
+                    const fAllele = fgAll.includes('_') ? fgAll.split('_')[1] : fgAll;
+
+                    const isMaleY = fgAll === 'Y';
+
+                    // Draw Maternal X (left)
+                    svg += `
+                        <!-- Chromosome X maternel -->
+                        <line x1="95" y1="15" x2="95" y2="115" stroke="${mColor}" class="chromosome-rod" />
+                        <circle cx="95" cy="65" r="4" class="chromosome-centromere" />
+                        <!-- Locus Gène 1 -->
+                        <line x1="95" y1="45" x2="110" y2="45" class="chromosome-locus-line" />
+                        <circle cx="110" cy="45" r="6" fill="${mColor}" class="chromosome-allele-circle" />
+                        <text x="110" y="45" class="chromosome-allele-tag">${mAllele}</text>
+                        <text x="95" y="125" class="chromosome-allele-tag" fill="${mColor}">X</text>
+                    `;
+
+                    if (isMaleY) {
+                        // Draw Paternal Y (right, shorter, hooked)
+                        svg += `
+                            <!-- Chromosome Y paternel -->
+                            <path d="M 145 35 L 145 95 Q 145 110 155 110" fill="none" stroke="${fColor}" stroke-width="9" stroke-linecap="round" class="chromosome-rod" />
+                            <circle cx="145" cy="65" r="4" class="chromosome-centromere" />
+                            <text x="145" y="125" class="chromosome-allele-tag" fill="${fColor}">Y</text>
+                        `;
+                    } else {
+                        // Draw Paternal X (right)
+                        svg += `
+                            <!-- Chromosome X paternel -->
+                            <line x1="145" y1="15" x2="145" y2="115" stroke="${fColor}" class="chromosome-rod" />
+                            <circle cx="145" cy="65" r="4" class="chromosome-centromere" />
+                            <!-- Locus Gène 1 -->
+                            <line x1="145" y1="45" x2="130" y2="45" class="chromosome-locus-line" />
+                            <circle cx="130" cy="45" r="6" fill="${fColor}" class="chromosome-allele-circle" />
+                            <text x="130" y="45" class="chromosome-allele-tag">${fAllele}</text>
+                            <text x="145" y="125" class="chromosome-allele-tag" fill="${fColor}">X</text>
+                        `;
+                    }
+                } else {
+                    // Autosomal Monohybrid
+                    svg += `
+                        <!-- Paire d'autosomes homologues -->
+                        <line x1="95" y1="15" x2="95" y2="115" stroke="${mColor}" class="chromosome-rod" />
+                        <circle cx="95" cy="65" r="4" class="chromosome-centromere" />
+                        <line x1="95" y1="50" x2="110" y2="50" class="chromosome-locus-line" />
+                        <circle cx="110" cy="50" r="6" fill="${mColor}" class="chromosome-allele-circle" />
+                        <text x="110" y="50" class="chromosome-allele-tag">${mgAll}</text>
+
+                        <line x1="145" y1="15" x2="145" y2="115" stroke="${fColor}" class="chromosome-rod" />
+                        <circle cx="145" cy="65" r="4" class="chromosome-centromere" />
+                        <line x1="145" y1="50" x2="130" y2="50" class="chromosome-locus-line" />
+                        <circle cx="130" cy="50" r="6" fill="${fColor}" class="chromosome-allele-circle" />
+                        <text x="130" y="50" class="chromosome-allele-tag">${fgAll}</text>
+                        
+                        <text x="120" y="124" class="chromosome-allele-tag" fill="#64748b">Paire Autosomale</text>
+                    `;
+                }
+            } else {
+                // Dihybridisme
+                const link = document.getElementById('chromosome-link').value;
+                if (link === 'independent') {
+                    const m1 = mgAll[0];
+                    const m2 = mgAll[1];
+                    const f1 = fgAll[0];
+                    const f2 = fgAll[1];
+
+                    svg += `
+                        <!-- Paire 1 (Gène 1) -->
+                        <line x1="55" y1="20" x2="55" y2="100" stroke="${mColor}" class="chromosome-rod" />
+                        <circle cx="55" cy="60" r="3.5" class="chromosome-centromere" />
+                        <line x1="55" y1="50" x2="65" y2="50" class="chromosome-locus-line" />
+                        <circle cx="65" cy="50" r="5.5" fill="${mColor}" class="chromosome-allele-circle" />
+                        <text x="65" y="50" class="chromosome-allele-tag">${m1}</text>
+
+                        <line x1="85" y1="20" x2="85" y2="100" stroke="${fColor}" class="chromosome-rod" />
+                        <circle cx="85" cy="60" r="3.5" class="chromosome-centromere" />
+                        <line x1="85" y1="50" x2="75" y2="50" class="chromosome-locus-line" />
+                        <circle cx="75" cy="50" r="5.5" fill="${fColor}" class="chromosome-allele-circle" />
+                        <text x="75" y="50" class="chromosome-allele-tag">${f1}</text>
+                        <text x="70" y="112" class="chromosome-allele-tag" fill="#64748b" style="font-size:7px;">Gène 1</text>
+
+                        <!-- Paire 2 (Gène 2) -->
+                        <line x1="155" y1="20" x2="155" y2="100" stroke="${mColor}" class="chromosome-rod" />
+                        <circle cx="155" cy="60" r="3.5" class="chromosome-centromere" />
+                        <line x1="155" y1="50" x2="165" y2="50" class="chromosome-locus-line" />
+                        <circle cx="165" cy="50" r="5.5" fill="${mColor}" class="chromosome-allele-circle" />
+                        <text x="165" y="50" class="chromosome-allele-tag">${m2}</text>
+
+                        <line x1="185" y1="20" x2="185" y2="100" stroke="${fColor}" class="chromosome-rod" />
+                        <circle cx="185" cy="60" r="3.5" class="chromosome-centromere" />
+                        <line x1="185" y1="50" x2="175" y2="50" class="chromosome-locus-line" />
+                        <circle cx="175" cy="50" r="5.5" fill="${fColor}" class="chromosome-allele-circle" />
+                        <text x="175" y="50" class="chromosome-allele-tag">${f2}</text>
+                        <text x="170" y="112" class="chromosome-allele-tag" fill="#64748b" style="font-size:7px;">Gène 2</text>
+                        
+                        <text x="120" y="124" class="chromosome-allele-tag" fill="#c084fc">Brassage Interchromosomique</text>
+                    `;
+                } else {
+                    // Linked
+                    const m1 = mgAll[0];
+                    const m2 = mgAll[1];
+                    const f1 = fgAll[0];
+                    const f2 = fgAll[1];
+
+                    svg += `
+                        <!-- Paire Liée (1 paire homologue, 2 gènes) -->
+                        <line x1="95" y1="15" x2="95" y2="115" stroke="${mColor}" class="chromosome-rod" />
+                        <circle cx="95" cy="65" r="4" class="chromosome-centromere" />
+                        
+                        <!-- Locus 1 -->
+                        <line x1="95" y1="35" x2="110" y2="35" class="chromosome-locus-line" />
+                        <circle cx="110" cy="35" r="5.5" fill="${mColor}" class="chromosome-allele-circle" />
+                        <text x="110" y="35" class="chromosome-allele-tag">${m1}</text>
+                        
+                        <!-- Locus 2 -->
+                        <line x1="95" y1="85" x2="110" y2="85" class="chromosome-locus-line" />
+                        <circle cx="110" cy="85" r="5.5" fill="${mColor}" class="chromosome-allele-circle" />
+                        <text x="110" y="85" class="chromosome-allele-tag">${m2}</text>
+
+                        <line x1="145" y1="15" x2="145" y2="115" stroke="${fColor}" class="chromosome-rod" />
+                        <circle cx="145" cy="65" r="4" class="chromosome-centromere" />
+                        
+                        <!-- Locus 1 -->
+                        <line x1="145" y1="35" x2="130" y2="35" class="chromosome-locus-line" />
+                        <circle cx="130" cy="35" r="5.5" fill="${fColor}" class="chromosome-allele-circle" />
+                        <text x="130" y="35" class="chromosome-allele-tag">${f1}</text>
+                        
+                        <!-- Locus 2 -->
+                        <line x1="145" y1="85" x2="130" y2="85" class="chromosome-locus-line" />
+                        <circle cx="130" cy="85" r="5.5" fill="${fColor}" class="chromosome-allele-circle" />
+                        <text x="130" y="85" class="chromosome-allele-tag">${f2}</text>
+                        
+                        <text x="120" y="124" class="chromosome-allele-tag" fill="#f472b6">Brassage Intrachromosomique</text>
+                    `;
+                }
+            }
+
+            svg += `</svg>`;
+            return svg;
         }
 
         function explainCrossReasoning(mGen, fGen, mGams, fGams, crossMode, loc) {
@@ -4925,11 +5424,164 @@
             document.getElementById('geo-reconstitution').innerHTML = recon;
             
             document.getElementById('geo-phrase-model-text').innerHTML = phrase;
+
+            // Trigger tectonic cross-section profile updates
+            updateTectonicProfile(zone);
+        }
+
+        function updateTectonicProfile(zone) {
+            const canvas = document.getElementById('tectonic-profile-canvas');
+            if (!canvas) return;
+
+            let svgContent = "";
+
+            if (zone === 'subduction') {
+                svgContent = `
+<svg viewBox="0 0 500 180" class="w-full h-full" style="background:#090d16;">
+    <!-- Overriding continental plate -->
+    <path d="M 180 180 L 500 180 L 500 40 L 280 40 Z" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    
+    <!-- Ocean -->
+    <path d="M 0 40 L 280 40 L 180 180 L 0 180 Z" fill="#082f49" opacity="0.3" />
+    
+    <!-- Subducting oceanic plate -->
+    <path d="M 0 35 L 240 35 L 140 180 L 90 180 L 0 55 Z" fill="#0f172a" stroke="#0284c7" stroke-width="2" stroke-dasharray="4,2" />
+    
+    <!-- Fault/Benioff zone arrows -->
+    <path d="M 230 45 L 135 175" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3" />
+    <path d="M 135 175 L 140 165 M 135 175 L 145 175" fill="none" stroke="#ef4444" stroke-width="1.5" />
+    
+    <!-- Metamorphic minerals markers -->
+    <!-- Schiste bleu (HP/BT) -->
+    <circle cx="170" cy="110" r="6" fill="#3b82f6" style="filter: drop-shadow(0 0 5px #3b82f6);" />
+    <text x="185" y="113" fill="#93c5fd" font-size="9" font-weight="bold">Faciès Schiste Bleu (Glaucophane)</text>
+    
+    <!-- Eclogite (HP/BT de forte profondeur) -->
+    <circle cx="150" cy="150" r="6" fill="#ec4899" style="filter: drop-shadow(0 0 5px #ec4899);" />
+    <text x="165" y="153" fill="#fbcfe8" font-size="9" font-weight="bold">Faciès Éclogite (Grenat / Jadéite)</text>
+    
+    <!-- Labels -->
+    <text x="10" y="25" fill="#64748b" font-size="10" font-weight="bold">Fosse océanique</text>
+    <text x="350" y="30" fill="#64748b" font-size="10" font-weight="bold">Croûte Continentale</text>
+    <text x="10" y="100" fill="#38bdf8" font-size="9" font-weight="bold" transform="rotate(55 10 100)">Lithosphère Océanique</text>
+    
+    <!-- Heat/Fluid arrows -->
+    <path d="M 160 110 Q 185 90 200 70" fill="none" stroke="#60a5fa" stroke-width="1" stroke-dasharray="2,2" />
+    <text x="205" y="73" fill="#60a5fa" font-size="8">H2O</text>
+</svg>
+                `;
+            } else if (zone === 'collision') {
+                svgContent = `
+<svg viewBox="0 0 500 180" class="w-full h-full" style="background:#090d16;">
+    <!-- Left Plate -->
+    <path d="M 0 180 L 180 180 Q 250 140 250 45 L 0 45 Z" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+    
+    <!-- Right Plate colliding -->
+    <path d="M 500 180 L 320 180 Q 250 140 250 45 L 500 45 Z" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    
+    <!-- Fold mountains uplift (Alpes/Himalaya style) -->
+    <path d="M 180 45 Q 250 -10 320 45 Z" fill="#334155" stroke="#475569" stroke-width="1.5" />
+    <path d="M 210 30 Q 250 5 290 30 Z" fill="#475569" />
+    
+    <!-- Thrust faults (nappes de charriage) -->
+    <path d="M 150 130 Q 230 80 270 15" fill="none" stroke="#ef4444" stroke-width="2" />
+    <path d="M 350 130 Q 270 80 230 15" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3" />
+    
+    <!-- Crustal thickening Root (Racine crustale) -->
+    <path d="M 180 140 Q 250 200 320 140 Z" fill="#1e1b4b" opacity="0.6" stroke="#4338ca" stroke-width="1" stroke-dasharray="3,3" />
+    
+    <!-- Metamorphic indicators markers -->
+    <circle cx="250" cy="85" r="5" fill="#10b981" style="filter: drop-shadow(0 0 5px #10b981);" />
+    <text x="260" y="88" fill="#a7f3d0" font-size="9" font-weight="bold">Faciès Schiste Vert (Moyenne P / T)</text>
+    
+    <circle cx="250" cy="135" r="5" fill="#f59e0b" style="filter: drop-shadow(0 0 5px #f59e0b);" />
+    <text x="260" y="138" fill="#fde68a" font-size="9" font-weight="bold">Faciès Amphibolite (Racine crustale)</text>
+    
+    <!-- Labels -->
+    <text x="20" y="25" fill="#64748b" font-size="10" font-weight="bold">Plaque 1</text>
+    <text x="420" y="25" fill="#64748b" font-size="10" font-weight="bold">Plaque 2</text>
+    <text x="200" y="15" fill="#fbbf24" font-size="10" font-weight="bold">Chaîne de Collision</text>
+    <text x="165" y="170" fill="#818cf8" font-size="8" font-weight="bold">Racine Crustale (Moho profond)</text>
+</svg>
+                `;
+            } else if (zone === 'contact') {
+                svgContent = `
+<svg viewBox="0 0 500 180" class="w-full h-full" style="background:#090d16;">
+    <!-- Layered sedimentary cold rocks -->
+    <rect x="0" y="30" width="500" height="25" fill="#1e293b" opacity="0.8" stroke="#334155" stroke-width="0.5" />
+    <rect x="0" y="55" width="500" height="30" fill="#334155" opacity="0.8" stroke="#475569" stroke-width="0.5" />
+    <rect x="0" y="85" width="500" height="35" fill="#475569" opacity="0.8" stroke="#64748b" stroke-width="0.5" />
+    <rect x="0" y="120" width="500" height="60" fill="#0f172a" opacity="0.8" stroke="#1e293b" stroke-width="0.5" />
+    
+    <!-- Magmatic Pluton intrusion (Granite) -->
+    <path d="M 200 180 C 200 80, 300 80, 300 180 Z" fill="#ef4444" opacity="0.9" style="filter: drop-shadow(0 0 15px #ef4444);" />
+    <text x="232" y="150" fill="#fef2f2" font-size="10" font-weight="extrabold">PLUTON</text>
+    <text x="225" y="163" fill="#fee2e2" font-size="9" font-weight="bold">GRANITIQUE</text>
+    
+    <!-- Thermal metamorphism aureole (radial border halo) -->
+    <path d="M 170 180 C 170 60, 330 60, 330 180 Z" fill="none" stroke="#f59e0b" stroke-width="15" opacity="0.4" style="filter: blur(4px);" />
+    
+    <!-- Heat arrows -->
+    <path d="M 215 110 L 190 95" fill="none" stroke="#fca5a5" stroke-width="1.5" />
+    <path d="M 190 95 L 198 94 M 190 95 L 191 103" fill="none" stroke="#fca5a5" stroke-width="1.5" />
+    
+    <path d="M 285 110 L 310 95" fill="none" stroke="#fca5a5" stroke-width="1.5" />
+    <path d="M 310 95 L 309 103 M 310 95 L 302 94" fill="none" stroke="#fca5a5" stroke-width="1.5" />
+    
+    <!-- Metamorphic marker in the aureole -->
+    <circle cx="150" cy="95" r="5" fill="#f59e0b" style="filter: drop-shadow(0 0 5px #f59e0b);" />
+    <text x="10" y="110" fill="#fde68a" font-size="9" font-weight="bold">Auréole de métamorphisme (BP/HT)</text>
+    
+    <circle cx="350" cy="95" r="5" fill="#ef4444" style="filter: drop-shadow(0 0 5px #ef4444);" />
+    <text x="360" y="110" fill="#fecaca" font-size="9" font-weight="bold">Roche Cornéenne (Andalousite)</text>
+    
+    <!-- General title text -->
+    <text x="15" y="20" fill="#64748b" font-size="9" font-weight="bold">Roches encaissantes sédimentaires froides</text>
+</svg>
+                `;
+            }
+
+            canvas.innerHTML = svgContent;
+        }
+
+        function setRiverStation(stationNumber) {
+            // Update backing slider element
+            const slider = document.getElementById('pollution-slider');
+            if (slider) {
+                slider.value = stationNumber;
+            }
+
+            // Sync visual active states on the river cards
+            for (let i = 1; i <= 5; i++) {
+                const card = document.getElementById(`river-card-${i}`);
+                if (card) {
+                    if (i === stationNumber) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                }
+            }
+
+            // Trigger the simulation engine update
+            runPollutionSimulation();
         }
 
         function runPollutionSimulation() {
             const val = parseInt(document.getElementById('pollution-slider').value);
             const eutrophActive = document.getElementById('eutroph-trigger').checked;
+
+            // Sync visual active states on the river cards
+            for (let i = 1; i <= 5; i++) {
+                const card = document.getElementById(`river-card-${i}`);
+                if (card) {
+                    if (i === val) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                }
+            }
 
             const sliderDesc = document.getElementById('pollution-slider-desc');
             const standardPanel = document.getElementById('standard-indicators-panel');
@@ -5179,6 +5831,491 @@
         function restartGeologyChallenge() {
             startGeologyChallenge();
         }
+
+        // ==========================================
+        // PHASE 3 : INTERACTIVE CODON WHEEL ENGINE
+        // ==========================================
+        let wheelSelectedBases = []; // up to 3 bases e.g. ['A', 'U', 'G']
+        let wheelActiveAminoHighlight = null; // amino key filter e.g. 'Leu'
+
+        const BASE_COLORS = {
+            'A': '#14b8a6', // Teal
+            'C': '#eab308', // Gold
+            'G': '#f97316', // Orange
+            'U': '#3b82f6'  // Blue
+        };
+
+        const AMINO_COLORS = {
+            "Phe": "#38bdf8", "Leu": "#0ea5e9", "Ser": "#10b981", "Tyr": "#a855f7",
+            "Cys": "#f43f5e", "Trp": "#ec4899", "Pro": "#f59e0b", "His": "#6366f1",
+            "Gln": "#8b5cf6", "Arg": "#3b82f6", "Ile": "#06b6d4", "Met": "#eab308",
+            "Thr": "#14b8a6", "Asn": "#22c55e", "Lys": "#6d28d9", "Val": "#0284c7",
+            "Ala": "#4f46e5", "Asp": "#dc2626", "Glu": "#b91c1c", "Gly": "#16a34a",
+            "Stop": "#64748b"
+        };
+
+        const CODON_WHEEL_MAP = {
+            "UUU": "Phe", "UUC": "Phe", "UUA": "Leu", "UUG": "Leu",
+            "UCU": "Ser", "UCC": "Ser", "UCA": "Ser", "UCG": "Ser",
+            "UAU": "Tyr", "UAC": "Tyr", "UAA": "Stop", "UAG": "Stop",
+            "UGU": "Cys", "UGC": "Cys", "UGA": "Stop", "UGG": "Trp",
+            "CUU": "Leu", "CUC": "Leu", "CUA": "Leu", "CUG": "Leu",
+            "CCU": "Pro", "CCC": "Pro", "CCA": "Pro", "CCG": "Pro",
+            "CAU": "His", "CAC": "His", "CAA": "Gln", "CAG": "Gln",
+            "CGU": "Arg", "CGC": "Arg", "CGA": "Arg", "CGG": "Arg",
+            "AUU": "Ile", "AUC": "Ile", "AUA": "Ile", "AUG": "Met",
+            "ACU": "Thr", "ACC": "Thr", "ACA": "Thr", "ACG": "Thr",
+            "AAU": "Asn", "AAC": "Asn", "AAA": "Lys", "AAG": "Lys",
+            "AGU": "Ser", "AGC": "Ser", "AGA": "Arg", "AGG": "Arg",
+            "GUU": "Val", "GUC": "Val", "GUA": "Val", "GUG": "Val",
+            "GCU": "Ala", "GCC": "Ala", "GCA": "Ala", "GCG": "Ala",
+            "GAU": "Asp", "GAC": "Asp", "GAA": "Glu", "GAG": "Glu",
+            "GGU": "Gly", "GGC": "Gly", "GGA": "Gly", "GGG": "Gly"
+        };
+
+        const AMINO_ACID_DETAILS = {
+            "Phe": { name: "Phénylalanine", prop: "Hydrophobe, Aromatique", role: "Constituant essentiel des protéines, précurseur de la tyrosine.", symbol: "F" },
+            "Leu": { name: "Leucine", prop: "Hydrophobe, Aliphatique", role: "Régulateur puissant de la synthèse protéique musculaire.", symbol: "L" },
+            "Ser": { name: "Sérine", prop: "Polaire, non-chargée", role: "Site clé de phosphorylation dans la régulation enzymatique.", symbol: "S" },
+            "Tyr": { name: "Tyrosine", prop: "Polaire, Aromatique", role: "Précurseur de la dopamine, de l'adrénaline et de la mélanine.", symbol: "Y" },
+            "Cys": { name: "Cystéine", prop: "Polaire, Soufrée", role: "Forme des ponts disulfures stabilisant la structure 3D des protéines.", symbol: "C" },
+            "Trp": { name: "Tryptophane", prop: "Hydrophobe, Aromatique", role: "Précurseur de la sérotonine (neuromédiateur régulateur).", symbol: "W" },
+            "Pro": { name: "Proline", prop: "Hydrophobe, Cyclique", role: "Provoque des coudes rigides caractéristiques dans les hélices polypeptidiques.", symbol: "P" },
+            "His": { name: "Histidine", prop: "Basique (Chargé +)", role: "Rôle catalytique majeur dans le site actif de nombreuses enzymes.", symbol: "H" },
+            "Gln": { name: "Glutamine", prop: "Polaire, Amide", role: "Transporteur d'azote principal pour les cellules à division rapide.", symbol: "Q" },
+            "Arg": { name: "Arginine", prop: "Très Basique (Chargé +)", role: "Intermédiaire du cycle de l'urée et stimulant immunitaire.", symbol: "R" },
+            "Ile": { name: "Isoleucine", prop: "Hydrophobe, Aliphatique", role: "Production énergétique directe au niveau des muscles squelettiques.", symbol: "I" },
+            "Met": { name: "Méthionine", prop: "Hydrophobe, Soufrée", role: "Codon d'initiation (AUG). Démarre TOUTES les traductions protéiques du vivant.", symbol: "M" },
+            "Thr": { name: "Thréonine", prop: "Polaire, non-chargée", role: "Participe activement à la biosynthèse du collagène.", symbol: "T" },
+            "Asn": { name: "Asparagine", prop: "Polaire, Amide", role: "Indispensable au développement et au bon fonctionnement neuronal.", symbol: "N" },
+            "Lys": { name: "Lysine", prop: "Basique (Chargé +)", role: "Permet la fixation du calcium et l'élasticité des vaisseaux.", symbol: "K" },
+            "Val": { name: "Valine", prop: "Hydrophobe, Aliphatique", role: "Restauration tissulaire et maintien de la coordination musculaire.", symbol: "V" },
+            "Ala": { name: "Alanine", prop: "Hydrophobe, Aliphatique", role: "Source carbonée majeure lors d'un effort physique prolongé.", symbol: "A" },
+            "Asp": { name: "Acide Aspartique", prop: "Acide (Chargé -)", role: "Neurotransmetteur excitateur du système nerveux central.", symbol: "D" },
+            "Glu": { name: "Acide Glutamique", prop: "Acide (Chargé -)", role: "Principal neurotransmetteur excitateur du cerveau humain.", symbol: "E" },
+            "Gly": { name: "Glycine", prop: "Non-polaire", role: "Plus petit acide aminé, offre une flexibilité structurale critique.", symbol: "G" },
+            "Stop": { name: "Codon STOP (Terminaison)", prop: "Signal de fin de chaîne", role: "Provoque l'arrivée d'un facteur de libération et la dissociation immédiate du ribosome.", symbol: "🛑" }
+        };
+
+        function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+            // Adjust angle to match SVG coordinate layout (0 deg at top)
+            const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+            return {
+                x: centerX + (radius * Math.cos(angleInRadians)),
+                y: centerY + (radius * Math.sin(angleInRadians))
+            };
+        }
+
+        function getDonutSegmentPath(x, y, innerRadius, outerRadius, startAngle, endAngle) {
+            const startValOuter = polarToCartesian(x, y, outerRadius, endAngle);
+            const endValOuter = polarToCartesian(x, y, outerRadius, startAngle);
+            const startValInner = polarToCartesian(x, y, innerRadius, endAngle);
+            const endValInner = polarToCartesian(x, y, innerRadius, startAngle);
+            
+            const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+            
+            return [
+                "M", startValOuter.x, startValOuter.y,
+                "A", outerRadius, outerRadius, 0, largeArcFlag, 0, endValOuter.x, endValOuter.y,
+                "L", endValInner.x, endValInner.y,
+                "A", innerRadius, innerRadius, 0, largeArcFlag, 1, startValInner.x, startValInner.y,
+                "Z"
+            ].join(" ");
+        }
+
+        function drawCodonWheelSVG() {
+            const container = document.getElementById('codon-wheel-svg-container');
+            if (!container) return;
+
+            const cx = 160;
+            const cy = 160;
+
+            let svg = `<svg viewBox="0 0 320 320" class="w-full h-full" style="background: transparent;">`;
+            
+            // Draw core center plate
+            svg += `<circle cx="${cx}" cy="${cy}" r="35" fill="#090d16" stroke="#1e293b" stroke-width="1.5" />`;
+
+            const bases = ['U', 'C', 'A', 'G'];
+
+            // RING 1: First base (radius 35 to 65)
+            bases.forEach((b1, idx1) => {
+                const startAngle = idx1 * 90;
+                const endAngle = (idx1 + 1) * 90;
+
+                let isDimmed = false;
+                let isActive = false;
+
+                if (wheelSelectedBases.length > 0) {
+                    if (wheelSelectedBases[0] === b1) isActive = true;
+                    else isDimmed = true;
+                }
+
+                if (wheelActiveAminoHighlight) {
+                    const canCode = Object.keys(CODON_WHEEL_MAP).some(codon => codon[0] === b1 && CODON_WHEEL_MAP[codon] === wheelActiveAminoHighlight);
+                    if (!canCode) isDimmed = true;
+                    else if (wheelSelectedBases.length === 0) isActive = true;
+                }
+
+                const path = getDonutSegmentPath(cx, cy, 35, 65, startAngle, endAngle);
+                const color = BASE_COLORS[b1];
+                let cls = "codon-wheel-sector";
+                if (isActive) cls += " active";
+                if (isDimmed) cls += " dimmed";
+
+                svg += `<path d="${path}" fill="${color}22" stroke="${color}" stroke-width="0.5" class="${cls}" style="color: ${color};" onclick="selectWheelBase(0, '${b1}')" />`;
+
+                // Add base letters
+                const midAngle = startAngle + 45;
+                const textPos = polarToCartesian(cx, cy, 50, midAngle);
+                const textCls = isDimmed ? "codon-wheel-text dimmed" : "codon-wheel-text";
+                svg += `<text x="${textPos.x}" y="${textPos.y}" class="${textCls}" font-size="12" fill="${color}">${b1}</text>`;
+
+                // RING 2: Second base (radius 65 to 95)
+                bases.forEach((b2, idx2) => {
+                    const startAngle2 = startAngle + idx2 * 22.5;
+                    const endAngle2 = startAngle2 + 22.5;
+
+                    let isDimmed2 = isDimmed;
+                    let isActive2 = false;
+
+                    if (wheelSelectedBases.length > 0) {
+                        if (wheelSelectedBases[0] === b1 && wheelSelectedBases[1] === b2) isActive2 = true;
+                        else if (wheelSelectedBases[0] !== b1 || (wheelSelectedBases.length > 1 && wheelSelectedBases[1] !== b2)) {
+                            isDimmed2 = true;
+                        }
+                    }
+
+                    if (wheelActiveAminoHighlight) {
+                        const canCode = Object.keys(CODON_WHEEL_MAP).some(codon => codon[0] === b1 && codon[1] === b2 && CODON_WHEEL_MAP[codon] === wheelActiveAminoHighlight);
+                        if (!canCode) isDimmed2 = true;
+                        else if (wheelSelectedBases.length <= 1) isActive2 = true;
+                    }
+
+                    const path2 = getDonutSegmentPath(cx, cy, 65, 95, startAngle2, endAngle2);
+                    const color2 = BASE_COLORS[b2];
+                    let cls2 = "codon-wheel-sector";
+                    if (isActive2) cls2 += " active";
+                    if (isDimmed2) cls2 += " dimmed";
+
+                    svg += `<path d="${path2}" fill="${color2}15" stroke="${color2}" stroke-width="0.3" class="${cls2}" style="color: ${color2};" onclick="selectWheelBase(1, '${b2}', '${b1}')" />`;
+
+                    const midAngle2 = startAngle2 + 11.25;
+                    const textPos2 = polarToCartesian(cx, cy, 80, midAngle2);
+                    const textCls2 = isDimmed2 ? "codon-wheel-text dimmed" : "codon-wheel-text";
+                    svg += `<text x="${textPos2.x}" y="${textPos2.y}" class="${textCls2}" font-size="8" fill="${color2}">${b2}</text>`;
+
+                    // RING 3: Third base (radius 95 to 125)
+                    bases.forEach((b3, idx3) => {
+                        const startAngle3 = startAngle2 + idx3 * 5.625;
+                        const endAngle3 = startAngle3 + 5.625;
+
+                        let isDimmed3 = isDimmed2;
+                        let isActive3 = false;
+
+                        const codon = b1 + b2 + b3;
+                        const amino = CODON_WHEEL_MAP[codon];
+
+                        if (wheelSelectedBases.length > 0) {
+                            if (wheelSelectedBases[0] === b1 && wheelSelectedBases[1] === b2 && wheelSelectedBases[2] === b3) isActive3 = true;
+                            else if (wheelSelectedBases[0] !== b1 || wheelSelectedBases[1] !== b2 || (wheelSelectedBases.length > 2 && wheelSelectedBases[2] !== b3)) {
+                                isDimmed3 = true;
+                            }
+                        }
+
+                        if (wheelActiveAminoHighlight) {
+                            if (amino !== wheelActiveAminoHighlight) isDimmed3 = true;
+                            else isActive3 = true;
+                        }
+
+                        const path3 = getDonutSegmentPath(cx, cy, 95, 125, startAngle3, endAngle3);
+                        const color3 = BASE_COLORS[b3];
+                        let cls3 = "codon-wheel-sector";
+                        if (isActive3) cls3 += " active";
+                        if (isDimmed3) cls3 += " dimmed";
+
+                        svg += `<path d="${path3}" fill="${color3}10" stroke="${color3}" stroke-width="0.2" class="${cls3}" style="color: ${color3};" onclick="selectWheelBase(2, '${b3}', '${b1}', '${b2}')" />`;
+
+                        const midAngle3 = startAngle3 + 2.8125;
+                        const textPos3 = polarToCartesian(cx, cy, 110, midAngle3);
+                        const textCls3 = isDimmed3 ? "codon-wheel-text dimmed" : "codon-wheel-text";
+                        svg += `<text x="${textPos3.x}" y="${textPos3.y}" class="${textCls3}" font-size="5" fill="${color3}">${b3}</text>`;
+                    });
+                });
+            });
+
+            // Group codon spans radially to draw beautiful outer amino acid badges
+            const aminoSpans = {};
+            let globalIdx = 0;
+            bases.forEach(b1 => {
+                bases.forEach(b2 => {
+                    bases.forEach(b3 => {
+                        const codon = b1 + b2 + b3;
+                        const amino = CODON_WHEEL_MAP[codon];
+                        const start = globalIdx * 5.625;
+                        const end = (globalIdx + 1) * 5.625;
+
+                        if (!aminoSpans[amino]) {
+                            aminoSpans[amino] = [];
+                        }
+                        const list = aminoSpans[amino];
+                        const last = list[list.length - 1];
+                        if (last && Math.abs(last.endAngle - start) < 0.01) {
+                            last.endAngle = end;
+                        } else {
+                            list.push({ startAngle: start, endAngle: end });
+                        }
+                        globalIdx++;
+                    });
+                });
+            });
+
+            // Draw amino acid borders and text markers on outer layer
+            Object.keys(aminoSpans).forEach(amino => {
+                const list = aminoSpans[amino];
+                const color = AMINO_COLORS[amino] || "#94a3b8";
+
+                list.forEach(span => {
+                    let isDimmed = false;
+                    let isActive = false;
+
+                    if (wheelSelectedBases.length === 3) {
+                        const currentCodon = wheelSelectedBases.join('');
+                        if (CODON_WHEEL_MAP[currentCodon] === amino) isActive = true;
+                        else isDimmed = true;
+                    }
+                    if (wheelActiveAminoHighlight) {
+                        if (amino === wheelActiveAminoHighlight) isActive = true;
+                        else isDimmed = true;
+                    }
+
+                    const borderPath = getDonutSegmentPath(cx, cy, 125, 127, span.startAngle, span.endAngle);
+                    let arcCls = "codon-wheel-sector";
+                    if (isActive) arcCls += " active";
+                    if (isDimmed) arcCls += " dimmed";
+                    svg += `<path d="${borderPath}" fill="${color}" stroke="none" class="${arcCls}" style="color: ${color};" />`;
+
+                    const midAngle = (span.startAngle + span.endAngle) / 2;
+                    const textPos = polarToCartesian(cx, cy, 142, midAngle);
+
+                    let rotation = midAngle;
+                    if (midAngle > 90 && midAngle < 270) {
+                        rotation = midAngle - 180;
+                    }
+
+                    const labelCls = isDimmed ? "codon-wheel-text dimmed" : "codon-wheel-text";
+                    const symbol = AMINO_ACID_DETAILS[amino]?.symbol || "";
+
+                    svg += `<text x="${textPos.x}" y="${textPos.y}" transform="rotate(${rotation}, ${textPos.x}, ${textPos.y})" class="${labelCls}" font-size="7" fill="${color}" font-weight="900">${amino} (${symbol})</text>`;
+                });
+            });
+
+            // Draw center code feedback
+            if (wheelSelectedBases.length > 0) {
+                const text = wheelSelectedBases.join('');
+                svg += `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="middle" font-size="11" font-weight="900" fill="#ffffff">${text}</text>`;
+            } else {
+                svg += `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="middle" font-size="8" font-weight="900" fill="#64748b">CODON</text>`;
+            }
+
+            svg += `</svg>`;
+            container.innerHTML = svg;
+        }
+
+        function selectWheelBase(ringIndex, base, p1, p2) {
+            // Cancel active searches when directly choosing bases
+            wheelActiveAminoHighlight = null;
+            document.getElementById('wheel-amino-search').value = "";
+
+            if (ringIndex === 0) {
+                wheelSelectedBases = [base];
+            } else if (ringIndex === 1) {
+                wheelSelectedBases = [p1, base];
+            } else if (ringIndex === 2) {
+                wheelSelectedBases = [p1, p2, base];
+            }
+
+            drawCodonWheelSVG();
+            updateCodonWheelReadout();
+        }
+
+        function updateCodonWheelReadout() {
+            const b1 = wheelSelectedBases[0] || "-";
+            const b2 = wheelSelectedBases[1] || "-";
+            const b3 = wheelSelectedBases[2] || "-";
+
+            const el1 = document.getElementById('wheel-base-1');
+            const el2 = document.getElementById('wheel-base-2');
+            const el3 = document.getElementById('wheel-base-3');
+
+            el1.innerText = b1;
+            el1.style.color = b1 !== "-" ? BASE_COLORS[b1] : "#64748b";
+            el2.innerText = b2;
+            el2.style.color = b2 !== "-" ? BASE_COLORS[b2] : "#64748b";
+            el3.innerText = b3;
+            el3.style.color = b3 !== "-" ? BASE_COLORS[b3] : "#64748b";
+
+            if (wheelSelectedBases.length === 3) {
+                const codon = wheelSelectedBases.join('');
+                const amino = CODON_WHEEL_MAP[codon];
+                showAminoAcidInfo(amino);
+            } else {
+                document.getElementById('wheel-no-selection-desc').style.display = "block";
+                document.getElementById('wheel-selection-desc').style.display = "none";
+            }
+        }
+
+        function showAminoAcidInfo(amino) {
+            const details = AMINO_ACID_DETAILS[amino];
+            if (!details) return;
+
+            document.getElementById('wheel-no-selection-desc').style.display = "none";
+            document.getElementById('wheel-selection-desc').style.display = "block";
+
+            document.getElementById('wheel-amino-name').innerText = details.name + (amino === "Stop" ? "" : ` (${amino})`);
+            document.getElementById('wheel-amino-prop').innerText = details.prop;
+            document.getElementById('wheel-amino-symbol').innerText = details.symbol;
+            document.getElementById('wheel-amino-role').innerText = details.role;
+
+            const color = AMINO_COLORS[amino] || "#eab308";
+            document.getElementById('wheel-info-banner-border').style.backgroundColor = color;
+            document.getElementById('wheel-amino-symbol').style.color = color;
+            document.getElementById('wheel-amino-symbol').style.borderColor = color + "40";
+            document.getElementById('wheel-amino-symbol').style.backgroundColor = color + "10";
+        }
+
+        function highlightAminoAcidRedundancy() {
+            const val = document.getElementById('wheel-amino-search').value;
+            wheelActiveAminoHighlight = val || null;
+            wheelSelectedBases = [];
+
+            drawCodonWheelSVG();
+            updateCodonWheelReadout();
+
+            if (val) showAminoAcidInfo(val);
+        }
+
+        function resetCodonWheelSelection() {
+            wheelSelectedBases = [];
+            wheelActiveAminoHighlight = null;
+            document.getElementById('wheel-amino-search').value = "";
+            drawCodonWheelSVG();
+            updateCodonWheelReadout();
+        }
+
+        function openCodonWheelModal() {
+            document.getElementById('codon-wheel-modal').style.display = "flex";
+            const select = document.getElementById('wheel-amino-search');
+            if (select.options.length <= 1) {
+                const keys = Object.keys(AMINO_ACID_DETAILS).sort((a,b) => AMINO_ACID_DETAILS[a].name.localeCompare(AMINO_ACID_DETAILS[b].name));
+                keys.forEach(key => {
+                    const opt = document.createElement('option');
+                    opt.value = key;
+                    opt.innerText = `${AMINO_ACID_DETAILS[key].name} (${AMINO_ACID_DETAILS[key].symbol})`;
+                    select.appendChild(opt);
+                });
+            }
+            resetCodonWheelSelection();
+            drawCodonWheelSVG();
+            updateCodonWheelReadout();
+        }
+
+        function closeCodonWheelModal() {
+            document.getElementById('codon-wheel-modal').style.display = "none";
+        }
     </script>
+
+    <!-- Interactive Codon Wheel Modal -->
+    <div id="codon-wheel-modal" style="display: none;" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md transition-all duration-300">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-4xl shadow-2xl relative overflow-hidden flex flex-col max-h-[90vh]">
+            <!-- Header -->
+            <div class="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-950/40">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-2xl">🧬</span>
+                    <div>
+                        <h3 class="text-lg font-bold text-white leading-tight">Roue des Codons Interactive</h3>
+                        <p class="text-xs text-slate-400">Cliquez sur les secteurs concentriques (Bases 1, 2, 3) pour traduire ou filtrez par acide aminé.</p>
+                    </div>
+                </div>
+                <button onclick="closeCodonWheelModal()" class="w-8 h-8 rounded-full border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-700 transition-all font-bold">&times;</button>
+            </div>
+
+            <!-- Body Grid -->
+            <div class="flex-1 overflow-y-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-6 min-h-0">
+                <!-- Left: SVG Wheel -->
+                <div class="flex flex-col items-center justify-center bg-slate-950/40 border border-slate-800/40 rounded-xl p-4 min-h-[360px] relative">
+                    <!-- SVG Canvas -->
+                    <div id="codon-wheel-svg-container" class="w-full max-w-[320px] h-[320px]">
+                        <!-- Dynamic SVG will be rendered here -->
+                    </div>
+                    
+                    <!-- Reset Button under Wheel -->
+                    <button class="mt-4 px-4 py-1.5 text-xs font-bold rounded-lg border border-slate-800 bg-slate-900 hover:border-slate-700 text-slate-300 transition-all" onclick="resetCodonWheelSelection()">Réinitialiser la Sélection</button>
+                </div>
+
+                <!-- Right: Information Console -->
+                <div class="flex flex-col justify-between space-y-4">
+                    <!-- Codon progress and search dropdown -->
+                    <div class="space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <span class="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider block mb-1">Codon Actuel</span>
+                                <div class="bg-slate-950 border border-slate-800 px-3 py-2 rounded-xl text-center flex items-center justify-center gap-1.5">
+                                    <span class="text-lg font-black" id="wheel-base-1" style="color: #64748b;">-</span>
+                                    <span class="text-sm text-slate-600">•</span>
+                                    <span class="text-lg font-black" id="wheel-base-2" style="color: #64748b;">-</span>
+                                    <span class="text-sm text-slate-600">•</span>
+                                    <span class="text-lg font-black" id="wheel-base-3" style="color: #64748b;">-</span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider block mb-1">Redondance du Code</span>
+                                <select id="wheel-amino-search" onchange="highlightAminoAcidRedundancy()" class="w-full bg-slate-950 border border-slate-800 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 focus:outline-none focus:border-yellow-500 cursor-pointer">
+                                    <option value="">Rechercher un acide aminé...</option>
+                                    <!-- Dynamic options injected -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Main Translation card -->
+                        <div class="bg-slate-950/80 border border-slate-800 p-4 rounded-xl relative overflow-hidden shadow-inner flex-1 min-h-[140px] flex flex-col justify-center">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-sky-500" id="wheel-info-banner-border"></div>
+                            
+                            <div id="wheel-no-selection-desc" class="text-center py-6 text-slate-500 space-y-1">
+                                <span class="text-2xl block animate-pulse">🎯</span>
+                                <p class="text-xs font-bold">Sélectionnez les bases pour démarrer</p>
+                                <p class="text-[10px] text-slate-600">Ou choisissez un acide aminé pour voir ses codons.</p>
+                            </div>
+
+                            <div id="wheel-selection-desc" style="display: none;" class="space-y-2">
+                                <div class="flex justify-between items-center border-b border-slate-800/80 pb-2">
+                                    <div>
+                                        <h4 class="text-base font-black text-white" id="wheel-amino-name">Méthionine</h4>
+                                        <span class="text-[9px] text-slate-500 font-extrabold uppercase tracking-widest block" id="wheel-amino-prop">Hydrophobe, Soufré</span>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 font-black text-lg flex items-center justify-center" id="wheel-amino-symbol">M</div>
+                                </div>
+                                <div class="text-xs text-slate-300 leading-relaxed" id="wheel-amino-role">
+                                    Codon d'initiation universel (AUG). Rôle clé dans la structure primaire tridimensionnelle des protéines de tous les êtres vivants.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memo Bac Box -->
+                    <div class="bg-slate-950 border border-slate-800/60 p-4 rounded-xl space-y-2 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-500/5 rounded-full blur-xl"></div>
+                        <h4 class="text-xs font-extrabold text-yellow-500 uppercase tracking-widest flex items-center gap-1.5">
+                            💡 RÈGLES D'OR DU BAC (UNITÉ 1)
+                        </h4>
+                        <ul class="text-[10px] text-slate-400 space-y-1.5 list-disc pl-4 leading-relaxed">
+                            <li><strong>Redondance / Dégénérescence</strong> : Plusieurs codons différents peuvent coder pour le MÊME acide aminé (ex: la Leucine est codée par 6 codons).</li>
+                            <li><strong>Universalité</strong> : Le code génétique est identique pour toutes les espèces vivantes, prouvant leur origine commune.</li>
+                            <li><strong>Non-chevauchement</strong> : Les codons se lisent l'un après l'autre de manière contiguë (triplets non chevauchants).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
